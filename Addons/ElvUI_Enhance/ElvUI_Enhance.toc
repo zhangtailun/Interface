@@ -1,0 +1,11 @@
+## Interface: 70200
+## Title: |cff1784d1ElvUI|r Enhance
+## Title-zhCN: |cff1784d1ElvUI|r 增强功能
+## Title-zhTW: |cff1784d1ElvUI|r 增強功能
+## Notes: 提供一些简单的增强功能
+## Author: HopeAsd
+## X-Category: ElvUI
+## Version: 02a
+## RequiredDeps: ElvUI
+
+load_enhanced.xml

@@ -1,0 +1,14 @@
+------------------------------------------------------------------------
+r430 | Zensunim | 2018-09-28 03:57:15 +0000 (Fri, 28 Sep 2018) | 3 lines
+Changed paths:
+   M /trunk/GTFO.lua
+   M /trunk/GTFO.toc
+   M /trunk/GTFO_Fail_BFA.lua
+   M /trunk/GTFO_Spells_BFA.lua
+   M /trunk/ReadMe.txt
+
+4.46.9
+* Added Battle for Azeroth spells (world)
+* Added BFA spells for Uldir
+------------------------------------------------------------------------
+

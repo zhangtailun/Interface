@@ -1,0 +1,13 @@
+## Interface: 80000
+## Author: Blazeflack
+## Credit: Azilroka, Benik
+## Version: 1.38
+## Title: |cff1784d1ElvUI|r |cff4beb2cCustomTweaks|r
+## Notes: A collection of various tweaks to ElvUI, requested by the users.
+## RequiredDeps: ElvUI
+## DefaultState: enabled
+## X-Tukui-ProjectFolders: ElvUI_CustomTweaks
+
+locales.lua
+core.lua
+categories\load_categories.xml

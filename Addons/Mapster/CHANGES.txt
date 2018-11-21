@@ -1,0 +1,54 @@
+tag c50479aef726602ef53d1b7388a54ee64d24d09c 1.8.1
+Author:	Hendrik Leppkes <h.leppkes@gmail.com>
+Date:	Tue Aug 21 11:44:21 2018 +0200
+
+Tag as 1.8.1
+
+commit d710a95fa6f261edd5e2e9fdb9f161a4a7da1dae
+Author: Hendrik Leppkes <h.leppkes@gmail.com>
+Date:   Tue Aug 21 11:42:45 2018 +0200
+
+    Re-implement configuring the map fade alpha
+
+commit b29cd18bf87df5db343b4229ffa520996b719b88
+Author: Hendrik Leppkes <h.leppkes@gmail.com>
+Date:   Tue Aug 21 11:36:30 2018 +0200
+
+    Re-implement Quest POI scaling
+
+commit 636af525f260c4b3acdf760c42b80a8bd97f1676
+Author: Hendrik Leppkes <h.leppkes@gmail.com>
+Date:   Sun Aug 19 18:01:44 2018 +0200
+
+    Remove UIPanel scale handling
+
+commit caae3d3d511a32ab1f0a292034446d2aadd32f6f
+Author: Hendrik Leppkes <h.leppkes@gmail.com>
+Date:   Sun Aug 19 14:13:10 2018 +0200
+
+    Restore Player Arrow scale functionality
+
+commit 4e12ef7b93f7c3edfdab8310326ec0b77c9b9424
+Author: Hendrik Leppkes <h.leppkes@gmail.com>
+Date:   Sun Aug 19 14:06:34 2018 +0200
+
+    Restore EJ Icon scale functionality
+
+commit 85f9757104b4e7cd154eab8e15782dd73e035431
+Author: Hendrik Leppkes <h.leppkes@gmail.com>
+Date:   Sun Aug 19 13:50:21 2018 +0200
+
+    Restore closing the map on ESC
+
+commit 53fe23981c3aa1573b63866067ff24ad56755a15
+Author: Hendrik Leppkes <h.leppkes@gmail.com>
+Date:   Sun Aug 19 13:46:00 2018 +0200
+
+    Restore position when loading a profile
+
+commit a3712a50d36c69578446342f3a1745de9c51b8be
+Author: Hendrik Leppkes <h.leppkes@gmail.com>
+Date:   Sun Aug 19 13:38:03 2018 +0200
+
+    Restore the ability to move the map
+

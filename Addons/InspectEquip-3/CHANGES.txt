@@ -1,0 +1,10 @@
+lightweight tag 81aa0dbe1dfaa39235af1e1e391c190fb110dec8 v3.0.10
+Author:	Vsevolod Klementjev <vsevolod@klemix.com>
+Date:	Tue Jul 24 21:26:48 2018 +0300
+
+commit 81aa0dbe1dfaa39235af1e1e391c190fb110dec8
+Author: Vsevolod Klementjev <vsevolod@klemix.com>
+Date:   Tue Jul 24 21:26:48 2018 +0300
+
+    * Update to 8.0
+

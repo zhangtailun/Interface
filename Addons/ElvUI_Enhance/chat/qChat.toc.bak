@@ -1,0 +1,11 @@
+## Interface: 70200
+## Title: |cff3399FFqChat
+## Author: shiguang
+## DefaultState: Enabled
+## LoadOnDemand: 0
+qChat.lua
+Chatbar.lua
+ChatEmote.lua
+ChatEmoteButton.xml
+ChatLinkLevel.lua
+ChatLinkIcon.lua

@@ -1,0 +1,11 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">	
+<!--	<Script file='qChat.lua'/>  -->
+	<Script file='ChatEmote.lua'/>
+	<Include file="ChatEmoteButton.xml"/>
+	<Script file='Chatbar.lua'/>
+	<Script file='ChatLinkLevel.lua'/>
+	<!--
+	<Script file='ChatLinkIcon.lua'/>
+	-->
+	<Script file='ChatCustomTab.lua' />
+</Ui>

@@ -1,0 +1,7 @@
+﻿## Interface: 70000
+## Title: |cff00FF55skada单位修改|r
+## Notes: 让skada的单位显示中文"万""亿"
+## Dependencies: skada
+
+##skada单位更改
+SkadaFormat.lua

@@ -1,0 +1,12 @@
+Buttons 滚动条
+CHATFRAME 下拉箭头
+Common 输入框美化
+DialogFrame 界面边框和背景
+FrameGeneral 插件界面
+FriendsFrame 集合石列表顶部边框
+Glues 登录元素
+GROUPFRAME 团队职责图标
+MainMenuBar 游戏主菜单
+PaperDollInfoFrame 选项按钮美化
+Store 暴雪商城
+Tooltips 输入法边框 集合石边框

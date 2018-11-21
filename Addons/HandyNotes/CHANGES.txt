@@ -1,0 +1,32 @@
+------------------------------------------------------------------------
+r305 | nevcairiel | 2018-07-24 12:05:59 +0000 (Tue, 24 Jul 2018) | 1 line
+Changed paths:
+   M /trunk/HandyNotes.lua
+
+style nit
+------------------------------------------------------------------------
+r304 | nevcairiel | 2018-07-24 12:04:36 +0000 (Tue, 24 Jul 2018) | 1 line
+Changed paths:
+   M /trunk/HandyNotes.lua
+
+Clean out commented code
+------------------------------------------------------------------------
+r303 | nevcairiel | 2018-07-24 12:02:03 +0000 (Tue, 24 Jul 2018) | 1 line
+Changed paths:
+   M /trunk/HandyNotes.lua
+
+Support all mouse buttons for clicks
+------------------------------------------------------------------------
+r302 | nevcairiel | 2018-07-24 09:10:11 +0000 (Tue, 24 Jul 2018) | 1 line
+Changed paths:
+   M /trunk/HandyNotes.lua
+
+Verify that coordinates are valid before creating pins
+------------------------------------------------------------------------
+r301 | nevcairiel | 2018-07-20 07:25:09 +0000 (Fri, 20 Jul 2018) | 1 line
+Changed paths:
+   M /trunk/HandyNotes.lua
+
+Protect against errors when the addon is disabled
+------------------------------------------------------------------------
+

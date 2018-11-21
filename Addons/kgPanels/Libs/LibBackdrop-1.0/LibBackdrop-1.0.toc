@@ -1,0 +1,10 @@
+## Interface: 60000
+## Title: Lib: Backdrop-1.0
+## Notes: Dropin replacement library for SetBackDrop
+## Author: kagaro, lilsparky
+## X-Website: http://www.wowace.com
+## X-Category: Library
+## X-License: All Rights Reserved
+
+LibStub\LibStub.lua
+LibBackdrop-1.0.lua
