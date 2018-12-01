@@ -1,14 +1,22 @@
-# [2.10.1](https://github.com/WeakAuras/WeakAuras2/tree/2.10.1) (2018-11-28)
+# [2.10.2](https://github.com/WeakAuras/WeakAuras2/tree/2.10.2) (2018-11-28)
 
-[Full Changelog](https://github.com/WeakAuras/WeakAuras2/compare/2.10.0...2.10.1)
+[Full Changelog](https://github.com/WeakAuras/WeakAuras2/compare/2.10.1...2.10.2)
 
 ## Highlights
 
- Fix regression in Inverse Cast trigger 
+  
 
 ## Commits
 
+InfusOnWoW (5):
+
+- Use a unicode code point from the private use area
+- Fix WeakAuras.RemoveCollapsed
+- Tweak AuthorOptions
+- Fix lua errors for multi bufftriggers
+- Increase min width/height
+
 mrbuds (1):
 
-- fix regression with inversed castbar
+- fix texteditor crashing on PTR - ticket #971
 

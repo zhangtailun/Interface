@@ -51,14 +51,12 @@ local L = WeakAuras.L
 	L["Buffs"] = "강화 효과"
 	L["Cancel"] = "취소"
 	L["Cast"] = "시전"
-	--[[Translation missing --]]
-	L["Charge and Buff Tracking"] = "Charge and Buff Tracking"
-	--[[Translation missing --]]
-	L["Charge and Debuff Tracking"] = "Charge and Debuff Tracking"
+	L["Charge and Buff Tracking"] = "충전 및 버프 추적"
+	L["Charge and Debuff Tracking"] = "충전 및 디버프 추적"
 	--[[Translation missing --]]
 	L["Charge Tracking"] = "Charge Tracking"
 	L["cooldown"] = "재사용 대기시간"
-	L["Cooldown Tracking"] = "재사용 추적"
+	L["Cooldown Tracking"] = "재사용 대기시간 추적"
 	L["Create Auras"] = "효과 생성"
 	L["Debuffs"] = "약화 효과"
 	L["Enchants"] = "마법부여"

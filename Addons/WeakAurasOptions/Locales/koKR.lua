@@ -107,8 +107,7 @@ local L = WeakAuras.L
 	L["Bracket Matching"] = "괄호 맞춤"
 	L["Button Glow"] = "버튼 반짝임"
 	L["Can be a name or a UID (e.g., party1). A name only works on friendly players in your group."] = "이름 또는 UID (예. party1)를 사용할 수 있습니다. 이름은 같은 파티에 속해 있는 우호적 플레이어에게만 작동합니다."
-	--[[Translation missing --]]
-	L["Can be a Name or a Unit ID (e.g. party1). A name only works on friendly players in your group."] = "Can be a Name or a Unit ID (e.g. party1). A name only works on friendly players in your group."
+	L["Can be a Name or a Unit ID (e.g. party1). A name only works on friendly players in your group."] = "이름 또는 UID (예. party1)를 사용할 수 있습니다. 이름은 같은 파티에 속해 있는 우호적 플레이어에게만 작동합니다."
 	L["Cancel"] = "취소"
 	L["Channel Number"] = "채널 번호"
 	L["Chat Message"] = "대화 메시지"
@@ -149,11 +148,9 @@ local L = WeakAuras.L
 	L["Convert to New Aura Trigger"] = "신규 방식 효과 활성 조건으로 변환"
 	L["Convert to..."] = "변환하기..."
 	L["Cooldown"] = "재사용 대기시간"
-	--[[Translation missing --]]
-	L["Cooldown Edge"] = "Cooldown Edge"
-	L["Cooldown Settings"] = "재사용 셋팅"
-	--[[Translation missing --]]
-	L["Cooldown Swipe"] = "Cooldown Swipe"
+	L["Cooldown Edge"] = "재사용 대기시간 모서리"
+	L["Cooldown Settings"] = "재사용 대기시간 설정"
+	L["Cooldown Swipe"] = "재사용 대기시간 Swipe"
 	L["Copy settings..."] = "설정 복사..."
 	L["Copy to all auras"] = "모든 효과에 복사"
 	L["Copy URL"] = "URL 복사"

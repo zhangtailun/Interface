@@ -25,6 +25,9 @@ local RGB_P = ThreatPlates.RGB_P
 local IsFriend
 local IsGuildmate
 local ShowQuestUnit
+-- Extra M+ G'huun Buff settings
+local GhuunBuff = 277242
+local ghuun = {r = 0, g = 0, b = 255}
 
 local reference = {
   FRIENDLY = { NPC = "FriendlyNPC", PLAYER = "FriendlyPlayer", },
@@ -274,7 +277,15 @@ function Addon:SetHealthbarColor(unit)
     local color = db_healthbar.BackgroundColor
     color_bg_r, color_bg_g, color_bg_b, bg_alpha = color.r, color.g, color.b, 1 - db_healthbar.BackgroundOpacity
   end
-
+  -- colors extra custom buffs/debuffs for G'huun 
+  for i = 1, 40 do 
+  local spellIDs = {select(10, UnitBuff(unit.unitid, i))}
+  	for _, v in pairs(spellIDs) do 
+  		if v == GhuunBuff then 
+  			color_r, color_g, color_b = ghuun.r, ghuun.g, ghuun.b
+  		end
+  	end
+  end
   return color_r, color_g, color_b, nil, color_bg_r, color_bg_g, color_bg_b, bg_alpha
 end
 
