@@ -5,8 +5,12 @@ end
 local L = WeakAuras.L
 
 -- WeakAuras/Options
+	--[[Translation missing --]]
+	L[" by "] = " by "
 	L[" Configuration"] = "구성"
 	L["-- Do not remove this comment, it is part of this trigger: "] = "-- 이 주석을 삭제하지 마세요, 이 활성 조건의 일부입니다: "
+	--[[Translation missing --]]
+	L[" to version "] = " to version "
 	L["% of Progress"] = "진행 상태의 %"
 	L["%i auras selected"] = "%i 효과 선택됨"
 	L["%i Matches"] = "%i개 일치"
@@ -274,6 +278,8 @@ UNIT_POWER, UNIT_AURA PLAYER_TARGET_CHANGED]=]
 	L["Frame"] = "프레임"
 	L["Frame Strata"] = "프레임 우선순위"
 	L["From Template"] = "견본으로부터"
+	--[[Translation missing --]]
+	L["From version "] = "From version "
 	L["General Text Settings"] = "일반 문자 설정"
 	L["Global Conditions"] = "전역 조건"
 	L["Glow Action"] = "반짝임 동작"
@@ -323,9 +329,13 @@ UNIT_POWER, UNIT_AURA PLAYER_TARGET_CHANGED]=]
 	--[[Translation missing --]]
 	L["If unchecked, then this space will fill the entire line it is on in User Mode."] = "If unchecked, then this space will fill the entire line it is on in User Mode."
 	--[[Translation missing --]]
+	L["Ignore all Updates"] = "Ignore all Updates"
+	--[[Translation missing --]]
 	L["Ignore self"] = "Ignore self"
 	--[[Translation missing --]]
 	L["Ignore Self"] = "Ignore Self"
+	--[[Translation missing --]]
+	L["Ignore this Update"] = "Ignore this Update"
 	L["Ignored"] = "무시됨"
 	L["Import"] = "가져오기"
 	L["Import a display from an encoded string"] = "암호화된 문자열에서 디스플레이 가져오기"
@@ -423,7 +433,7 @@ UNIT_POWER, UNIT_AURA PLAYER_TARGET_CHANGED]=]
 	--[[Translation missing --]]
 	L["Paste Animations Settings"] = "Paste Animations Settings"
 	--[[Translation missing --]]
-	L["Paste Author Option Settings"] = "Paste Author Option Settings"
+	L["Paste Author Options Settings"] = "Paste Author Options Settings"
 	--[[Translation missing --]]
 	L["Paste Condition Settings"] = "Paste Condition Settings"
 	--[[Translation missing --]]
@@ -552,6 +562,10 @@ UNIT_POWER, UNIT_AURA PLAYER_TARGET_CHANGED]=]
 	--[[Translation missing --]]
 	L["Step Size"] = "Step Size"
 	L["Sticky Duration"] = "지속시간 고정"
+	--[[Translation missing --]]
+	L["Stop ignoring this Update"] = "Stop ignoring this Update"
+	--[[Translation missing --]]
+	L["Stop ignoring Updates"] = "Stop ignoring Updates"
 	L["Stop Sound"] = "소리 중지"
 	L["Symbol Settings"] = "기호 설정"
 	L["Temporary Group"] = "임시 그룹"
@@ -604,7 +618,11 @@ UNIT_POWER, UNIT_AURA PLAYER_TARGET_CHANGED]=]
 	L["Unit Count"] = "유닛 수"
 	L["Unlike the start or finish animations, the main animation will loop over and over until the display is hidden."] = "시작 또는 종료 애니메이션과 달리 메인 애니메이션은 디스플레이가 숨겨질 때까지 계속 반복됩니다."
 	L["Up"] = "위로"
+	--[[Translation missing --]]
+	L["Update "] = "Update "
 	L["Update Custom Text On..."] = "사용자 설정 문자 갱신 중..."
+	--[[Translation missing --]]
+	L["Update this Aura"] = "Update this Aura"
 	L["Use Full Scan (High CPU)"] = "전체 스캔 사용 (높은 CPU 사용률)"
 	--[[Translation missing --]]
 	L["Use nth value from tooltip:"] = "Use nth value from tooltip:"
@@ -627,6 +645,8 @@ UNIT_POWER, UNIT_AURA PLAYER_TARGET_CHANGED]=]
 	L["Vertical Align"] = "수직 정렬"
 	L["Vertical Bar"] = "수직 바"
 	L["View"] = "보기"
+	--[[Translation missing --]]
+	L["Wago Update"] = "Wago Update"
 	L["Width"] = "너비"
 	L["X Offset"] = "X 좌표"
 	L["X Rotation"] = "X 회전"

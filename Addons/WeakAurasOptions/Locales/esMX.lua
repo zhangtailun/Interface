@@ -6,8 +6,12 @@ local L = WeakAuras.L
 
 -- WeakAuras/Options
 	--[[Translation missing --]]
+	L[" by "] = " by "
+	--[[Translation missing --]]
 	L[" Configuration"] = " Configuration"
 	L["-- Do not remove this comment, it is part of this trigger: "] = "-- No remover este comentario. Es parte de este desencadenador:"
+	--[[Translation missing --]]
+	L[" to version "] = " to version "
 	L["% of Progress"] = "% de progreso"
 	--[[Translation missing --]]
 	L["%i auras selected"] = "%i auras selected"
@@ -297,6 +301,8 @@ UNIT_POWER, UNIT_AURA PLAYER_TARGET_CHANGED]=]
 	L["Frame"] = "Macro"
 	L["Frame Strata"] = "Importancia del macro"
 	L["From Template"] = "Desde la plantilla"
+	--[[Translation missing --]]
+	L["From version "] = "From version "
 	L["General Text Settings"] = "Preferencias generales de texto"
 	--[[Translation missing --]]
 	L["Global Conditions"] = "Global Conditions"
@@ -357,9 +363,13 @@ Con |cFF00CC00>= 0|r se activará siempre.]=]
 	--[[Translation missing --]]
 	L["If unchecked, then this space will fill the entire line it is on in User Mode."] = "If unchecked, then this space will fill the entire line it is on in User Mode."
 	--[[Translation missing --]]
+	L["Ignore all Updates"] = "Ignore all Updates"
+	--[[Translation missing --]]
 	L["Ignore self"] = "Ignore self"
 	--[[Translation missing --]]
 	L["Ignore Self"] = "Ignore Self"
+	--[[Translation missing --]]
+	L["Ignore this Update"] = "Ignore this Update"
 	L["Ignored"] = "Ignorar"
 	L["Import"] = "Importar"
 	L["Import a display from an encoded string"] = "Importar un aura desde un texto cifrado"
@@ -473,7 +483,7 @@ Sólo un valor coincidente puede ser escogido.]=]
 	--[[Translation missing --]]
 	L["Paste Animations Settings"] = "Paste Animations Settings"
 	--[[Translation missing --]]
-	L["Paste Author Option Settings"] = "Paste Author Option Settings"
+	L["Paste Author Options Settings"] = "Paste Author Options Settings"
 	--[[Translation missing --]]
 	L["Paste Condition Settings"] = "Paste Condition Settings"
 	--[[Translation missing --]]
@@ -620,6 +630,10 @@ Sólo un valor coincidente puede ser escogido.]=]
 	L["Step Size"] = "Step Size"
 	L["Sticky Duration"] = "Duración adhesiva"
 	--[[Translation missing --]]
+	L["Stop ignoring this Update"] = "Stop ignoring this Update"
+	--[[Translation missing --]]
+	L["Stop ignoring Updates"] = "Stop ignoring Updates"
+	--[[Translation missing --]]
 	L["Stop Sound"] = "Stop Sound"
 	L["Symbol Settings"] = "Configuración de símbolos"
 	L["Temporary Group"] = "Grupo temporal"
@@ -681,7 +695,11 @@ Sólo un valor coincidente puede ser escogido.]=]
 	L["Unlike the start or finish animations, the main animation will loop over and over until the display is hidden."] = "Ignorar animaciones de inicio y final: la animación principal se repetirá hasta que el aura se oculte."
 	--[[Translation missing --]]
 	L["Up"] = "Up"
+	--[[Translation missing --]]
+	L["Update "] = "Update "
 	L["Update Custom Text On..."] = "Actualizar texto personalizado en..."
+	--[[Translation missing --]]
+	L["Update this Aura"] = "Update this Aura"
 	L["Use Full Scan (High CPU)"] = "Escaneo Total (carga el procesador)"
 	--[[Translation missing --]]
 	L["Use nth value from tooltip:"] = "Use nth value from tooltip:"
@@ -707,6 +725,8 @@ Sólo un valor coincidente puede ser escogido.]=]
 	L["Vertical Align"] = "Alineación vertical"
 	L["Vertical Bar"] = "Barra vertical"
 	L["View"] = "Visualización"
+	--[[Translation missing --]]
+	L["Wago Update"] = "Wago Update"
 	L["Width"] = "Ancho"
 	L["X Offset"] = "Posición de X"
 	L["X Rotation"] = "Rotación de X"

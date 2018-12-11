@@ -5,8 +5,12 @@ end
 local L = WeakAuras.L
 
 -- WeakAuras/Options
+	--[[Translation missing --]]
+	L[" by "] = " by "
 	L[" Configuration"] = "設定選項"
 	L["-- Do not remove this comment, it is part of this trigger: "] = "-- Do not remove this comment, it is part of this trigger: "
+	--[[Translation missing --]]
+	L[" to version "] = " to version "
 	L["% of Progress"] = "進度%"
 	L["%i auras selected"] = "已選擇 %i 個提醒效果"
 	L["%i Matches"] = "%i 個符合"
@@ -248,6 +252,8 @@ UNIT_POWER, UNIT_AURA PLAYER_TARGET_CHANGED]=]
 	L["Frame"] = "框架"
 	L["Frame Strata"] = "框架層級"
 	L["From Template"] = "從範本建立 (**推薦**)"
+	--[[Translation missing --]]
+	L["From version "] = "From version "
 	L["General Text Settings"] = "一般文字設定"
 	L["Global Conditions"] = "整體條件"
 	L["Glow Action"] = "發光動作"
@@ -293,8 +299,12 @@ UNIT_POWER, UNIT_AURA PLAYER_TARGET_CHANGED]=]
 	L["If Trigger %s"] = "(if) 如果觸發 %s"
 	L["If unchecked, then a default color will be used (usually yellow)"] = "不勾選時會使用預設的顏色 (通常是黃色)"
 	L["If unchecked, then this space will fill the entire line it is on in User Mode."] = "取消勾選時，會用這個空格填滿使用者模式中的整行。"
+	--[[Translation missing --]]
+	L["Ignore all Updates"] = "Ignore all Updates"
 	L["Ignore self"] = "忽略自己"
 	L["Ignore Self"] = "忽略自己"
+	--[[Translation missing --]]
+	L["Ignore this Update"] = "Ignore this Update"
 	L["Ignored"] = "忽略"
 	L["Import"] = "匯入"
 	L["Import a display from an encoded string"] = "從編碼字串匯入提醒效果"
@@ -379,7 +389,8 @@ UNIT_POWER, UNIT_AURA PLAYER_TARGET_CHANGED]=]
 	L["Own Only"] = "只顯示自己的"
 	L["Paste Action Settings"] = "貼上動作設定"
 	L["Paste Animations Settings"] = "貼上動畫設定"
-	L["Paste Author Option Settings"] = "貼上作者選項設定"
+	--[[Translation missing --]]
+	L["Paste Author Options Settings"] = "Paste Author Options Settings"
 	L["Paste Condition Settings"] = "貼上條件設定"
 	L["Paste Custom Configuration"] = "貼上自訂設定選項"
 	L["Paste Display Settings"] = "貼上顯示設定"
@@ -490,6 +501,10 @@ UNIT_POWER, UNIT_AURA PLAYER_TARGET_CHANGED]=]
 	L["Stealable"] = "可法術竊取"
 	L["Step Size"] = "數值間距"
 	L["Sticky Duration"] = "快速更新時間"
+	--[[Translation missing --]]
+	L["Stop ignoring this Update"] = "Stop ignoring this Update"
+	--[[Translation missing --]]
+	L["Stop ignoring Updates"] = "Stop ignoring Updates"
 	L["Stop Sound"] = "停止音效"
 	L["Symbol Settings"] = "符號設定"
 	L["Temporary Group"] = "暫時性的群組"
@@ -537,7 +552,11 @@ UNIT_POWER, UNIT_AURA PLAYER_TARGET_CHANGED]=]
 	L["Unit Count"] = "單位數量"
 	L["Unlike the start or finish animations, the main animation will loop over and over until the display is hidden."] = "不同於開始或結束時的動畫，主要動畫將重複循環直到提醒效果被隱藏。"
 	L["Up"] = "上移"
+	--[[Translation missing --]]
+	L["Update "] = "Update "
 	L["Update Custom Text On..."] = "更新自訂文字於..."
+	--[[Translation missing --]]
+	L["Update this Aura"] = "Update this Aura"
 	L["Use Full Scan (High CPU)"] = "使用完整掃描 (高 CPU)"
 	L["Use nth value from tooltip:"] = "使用滑鼠提示中的第 N 個值:"
 	L["Use SetTransform"] = "使用 SetTransform"
@@ -553,6 +572,8 @@ UNIT_POWER, UNIT_AURA PLAYER_TARGET_CHANGED]=]
 	L["Vertical Align"] = "垂直對齊"
 	L["Vertical Bar"] = "垂直進度條"
 	L["View"] = "檢視"
+	--[[Translation missing --]]
+	L["Wago Update"] = "Wago Update"
 	L["Width"] = "寬度"
 	L["X Offset"] = "水平位置"
 	L["X Rotation"] = "水平旋轉"

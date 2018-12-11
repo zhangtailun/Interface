@@ -36,6 +36,7 @@ do
 	--helps blend the icons within the map texture
 	WQT_ZONEWIDGET_ALPHA =		0.83
 	WQT_WORLDWIDGET_ALPHA =	0.845
+	WQT_WORLDWIDGET_BLENDED =	ALPHA_BLEND_AMOUNT - 0.10
 	
 	--where these came from
 	QUESTTYPE_GOLD = 0x1
@@ -122,23 +123,34 @@ do
 				autosearch_cooldown = 600,
 				autosearch_share = false,
 			},
+
+			world_map_config = {
+				onmap_show = true,
+				onmap_scale_offset = 0,
+				summary_show = true,
+				summary_scale = 1,
+				summary_showbyzone = false,
+				summary_anchor = "left",
+				summary_widgets_per_row = 7,
+			},
 			
-			disable_world_map_widgets = true,
+			disable_world_map_widgets = false,
+			
 			worldmap_widgets = {
 				textsize = 9,
 				scale = 1,
+				quest_icons_scale_offset = 0,
 			},
-			zonemap_widgets = {
-				scale = 1,
-			},
+
 			filter_always_show_faction_objectives = true,
 			filter_force_show_brokenshore = false, --deprecated at this point, but won't be removed since further expantion might need this back
-			sort_time_priority = false,
+			sort_time_priority = 0,
 			force_sort_by_timeleft = false,
 			alpha_time_priority = true,
 			show_timeleft = false,
 			quests_tracked = {},
 			quests_all_characters = {},
+			banned_quests = {},
 			syntheticMapIdList = {
 				[1015] = 1, --azsuna
 				[1018] = 2, --valsharah
@@ -160,7 +172,21 @@ do
 			tracker_scale = 1,
 			tracker_show_time = false,
 			tracker_textsize = 12,
+			
+			show_faction_frame = true,
+			
+			map_frame_anchor = "center",
+			
+			map_frame_scale_enabled = false,
+			map_frame_scale_mod = 1,
+			
 			use_quest_summary = true,
+			zone_map_config = {
+				quest_summary_scale = 1,
+				show_widgets = true,
+				scale = 1,
+			},
+			
 			zone_only_tracked = false,
 			low_level_tutorial = false, --
 			bar_anchor = "bottom",
@@ -237,6 +263,20 @@ do
 	WorldQuestTracker.AnchoringFrame = WorldMapFrame.BorderFrame
 	--frame level for things attached to the world map
 	WorldQuestTracker.DefaultFrameLevel = 5000
+	--the client has all the data for the quest
+	WorldQuestTracker.HasQuestData = {}
+	
+	--color pallete
+	WorldQuestTracker.ColorPalette = {
+		orange = {1, .8, .22},
+		yellow = {.8, .8, .22},
+		red = {.9, .22, .22},
+		green = {.22, .9, .22},
+		blue = {.22, .22, .9},
+	}
+	
+	--store the available resources from each quest and map
+	WorldQuestTracker.ResourceData = {}
 	
 	--comms
 	WorldQuestTracker.CommFunctions = {}
@@ -281,6 +321,9 @@ do
 		WorldMapSquareSize = 24,
 		TimeBlipSize = 14,
 	}
+	
+	WorldQuestTrackerAddon.WorldWidgetAlpha = .75
+	WorldQuestTrackerAddon.WorldWidgetSmallAlpha = .75
 	
 end
 

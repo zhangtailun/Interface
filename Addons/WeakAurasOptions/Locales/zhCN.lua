@@ -6,8 +6,12 @@ local L = WeakAuras.L
 
 -- WeakAuras/Options
 	--[[Translation missing --]]
+	L[" by "] = " by "
+	--[[Translation missing --]]
 	L[" Configuration"] = " Configuration"
 	L["-- Do not remove this comment, it is part of this trigger: "] = "-- 不要移除这条信息，这是该触发器的一部分。"
+	--[[Translation missing --]]
+	L[" to version "] = " to version "
 	L["% of Progress"] = "% 进度"
 	L["%i auras selected"] = "%i 个光环被选中"
 	L["%i Matches"] = "%i 符合"
@@ -260,6 +264,8 @@ UNIT_POWER, UNIT_AURA PLAYER_TARGET_CHANGED]=]
 	L["Frame"] = "框架"
 	L["Frame Strata"] = "框架层级"
 	L["From Template"] = "从模板"
+	--[[Translation missing --]]
+	L["From version "] = "From version "
 	L["General Text Settings"] = "通用字体设置"
 	L["Global Conditions"] = "全局条件"
 	L["Glow Action"] = "发光动作"
@@ -305,8 +311,12 @@ UNIT_POWER, UNIT_AURA PLAYER_TARGET_CHANGED]=]
 	L["If unchecked, then a default color will be used (usually yellow)"] = "如果不勾选，则使用默认颜色（通常是黄色）"
 	--[[Translation missing --]]
 	L["If unchecked, then this space will fill the entire line it is on in User Mode."] = "If unchecked, then this space will fill the entire line it is on in User Mode."
+	--[[Translation missing --]]
+	L["Ignore all Updates"] = "Ignore all Updates"
 	L["Ignore self"] = "忽略自己的"
 	L["Ignore Self"] = "忽略自身"
+	--[[Translation missing --]]
+	L["Ignore this Update"] = "Ignore this Update"
 	L["Ignored"] = "被忽略"
 	L["Import"] = "导入"
 	L["Import a display from an encoded string"] = "从字串导入一个图示"
@@ -403,7 +413,7 @@ UNIT_POWER, UNIT_AURA PLAYER_TARGET_CHANGED]=]
 	L["Paste Action Settings"] = "粘贴动作设置"
 	L["Paste Animations Settings"] = "粘贴动画设置"
 	--[[Translation missing --]]
-	L["Paste Author Option Settings"] = "Paste Author Option Settings"
+	L["Paste Author Options Settings"] = "Paste Author Options Settings"
 	L["Paste Condition Settings"] = "粘贴条件设置"
 	--[[Translation missing --]]
 	L["Paste Custom Configuration"] = "Paste Custom Configuration"
@@ -525,6 +535,10 @@ UNIT_POWER, UNIT_AURA PLAYER_TARGET_CHANGED]=]
 	--[[Translation missing --]]
 	L["Step Size"] = "Step Size"
 	L["Sticky Duration"] = "持续时间置顶"
+	--[[Translation missing --]]
+	L["Stop ignoring this Update"] = "Stop ignoring this Update"
+	--[[Translation missing --]]
+	L["Stop ignoring Updates"] = "Stop ignoring Updates"
 	L["Stop Sound"] = "停止播放声音"
 	L["Symbol Settings"] = "标志设置"
 	L["Temporary Group"] = "模板群组"
@@ -574,7 +588,11 @@ UNIT_POWER, UNIT_AURA PLAYER_TARGET_CHANGED]=]
 	L["Unit Count"] = "单位计数"
 	L["Unlike the start or finish animations, the main animation will loop over and over until the display is hidden."] = "不同于开始或结束动画，主动画将不停循环，直到图示被隐藏。"
 	L["Up"] = "上"
+	--[[Translation missing --]]
+	L["Update "] = "Update "
 	L["Update Custom Text On..."] = "更新自定义文字于"
+	--[[Translation missing --]]
+	L["Update this Aura"] = "Update this Aura"
 	L["Use Full Scan (High CPU)"] = "使用完整扫描(高CPU)"
 	L["Use nth value from tooltip:"] = "使用来自鼠标提示的值的顺序："
 	L["Use SetTransform"] = "使用 SetTransform 方法"
@@ -595,6 +613,8 @@ UNIT_POWER, UNIT_AURA PLAYER_TARGET_CHANGED]=]
 	L["Vertical Align"] = "垂直对齐"
 	L["Vertical Bar"] = "垂直条"
 	L["View"] = "视图"
+	--[[Translation missing --]]
+	L["Wago Update"] = "Wago Update"
 	L["Width"] = "宽度"
 	L["X Offset"] = "X 偏移"
 	L["X Rotation"] = "X旋转"

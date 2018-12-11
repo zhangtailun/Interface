@@ -6,8 +6,12 @@ local L = WeakAuras.L
 
 -- WeakAuras/Options
 	--[[Translation missing --]]
+	L[" by "] = " by "
+	--[[Translation missing --]]
 	L[" Configuration"] = " Configuration"
 	L["-- Do not remove this comment, it is part of this trigger: "] = "-- Não remova este comentário, ele é parte deste gatilho:"
+	--[[Translation missing --]]
+	L[" to version "] = " to version "
 	L["% of Progress"] = "% do progresso"
 	--[[Translation missing --]]
 	L["%i auras selected"] = "%i auras selected"
@@ -340,6 +344,8 @@ WeakAuras → Opções → Opções ]=]
 	--[[Translation missing --]]
 	L["From Template"] = "From Template"
 	--[[Translation missing --]]
+	L["From version "] = "From version "
+	--[[Translation missing --]]
 	L["General Text Settings"] = "General Text Settings"
 	--[[Translation missing --]]
 	L["Global Conditions"] = "Global Conditions"
@@ -404,9 +410,13 @@ WeakAuras → Opções → Opções ]=]
 	--[[Translation missing --]]
 	L["If unchecked, then this space will fill the entire line it is on in User Mode."] = "If unchecked, then this space will fill the entire line it is on in User Mode."
 	--[[Translation missing --]]
+	L["Ignore all Updates"] = "Ignore all Updates"
+	--[[Translation missing --]]
 	L["Ignore self"] = "Ignore self"
 	--[[Translation missing --]]
 	L["Ignore Self"] = "Ignore Self"
+	--[[Translation missing --]]
+	L["Ignore this Update"] = "Ignore this Update"
 	L["Ignored"] = "Ignorado"
 	L["Import"] = "Importar"
 	L["Import a display from an encoded string"] = "Importar um display de um string codificado"
@@ -544,7 +554,7 @@ WeakAuras → Opções → Opções ]=]
 	--[[Translation missing --]]
 	L["Paste Animations Settings"] = "Paste Animations Settings"
 	--[[Translation missing --]]
-	L["Paste Author Option Settings"] = "Paste Author Option Settings"
+	L["Paste Author Options Settings"] = "Paste Author Options Settings"
 	--[[Translation missing --]]
 	L["Paste Condition Settings"] = "Paste Condition Settings"
 	--[[Translation missing --]]
@@ -726,6 +736,10 @@ WeakAuras → Opções → Opções ]=]
 	--[[Translation missing --]]
 	L["Sticky Duration"] = "Sticky Duration"
 	--[[Translation missing --]]
+	L["Stop ignoring this Update"] = "Stop ignoring this Update"
+	--[[Translation missing --]]
+	L["Stop ignoring Updates"] = "Stop ignoring Updates"
+	--[[Translation missing --]]
 	L["Stop Sound"] = "Stop Sound"
 	--[[Translation missing --]]
 	L["Symbol Settings"] = "Symbol Settings"
@@ -816,7 +830,11 @@ WeakAuras → Opções → Opções ]=]
 	--[[Translation missing --]]
 	L["Up"] = "Up"
 	--[[Translation missing --]]
+	L["Update "] = "Update "
+	--[[Translation missing --]]
 	L["Update Custom Text On..."] = "Update Custom Text On..."
+	--[[Translation missing --]]
+	L["Update this Aura"] = "Update this Aura"
 	--[[Translation missing --]]
 	L["Use Full Scan (High CPU)"] = "Use Full Scan (High CPU)"
 	--[[Translation missing --]]
@@ -847,6 +865,8 @@ WeakAuras → Opções → Opções ]=]
 	L["Vertical Bar"] = "Vertical Bar"
 	--[[Translation missing --]]
 	L["View"] = "View"
+	--[[Translation missing --]]
+	L["Wago Update"] = "Wago Update"
 	--[[Translation missing --]]
 	L["Width"] = "Width"
 	--[[Translation missing --]]

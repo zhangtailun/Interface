@@ -6,8 +6,12 @@ local L = WeakAuras.L
 
 -- WeakAuras/Options
 	--[[Translation missing --]]
+	L[" by "] = " by "
+	--[[Translation missing --]]
 	L[" Configuration"] = " Configuration"
 	L["-- Do not remove this comment, it is part of this trigger: "] = "-- No elimines este comentario, es parte de este activador:"
+	--[[Translation missing --]]
+	L[" to version "] = " to version "
 	L["% of Progress"] = "% de Progreso"
 	--[[Translation missing --]]
 	L["%i auras selected"] = "%i auras selected"
@@ -348,6 +352,8 @@ UNIT_POWER, UNIT_AURA PLAYER_TARGET_CHANGED
 	--[[Translation missing --]]
 	L["From Template"] = "From Template"
 	--[[Translation missing --]]
+	L["From version "] = "From version "
+	--[[Translation missing --]]
 	L["General Text Settings"] = "General Text Settings"
 	--[[Translation missing --]]
 	L["Global Conditions"] = "Global Conditions"
@@ -419,9 +425,13 @@ Con |cFF00CC00>= 0|r se activará siempre.]=]
 	--[[Translation missing --]]
 	L["If unchecked, then this space will fill the entire line it is on in User Mode."] = "If unchecked, then this space will fill the entire line it is on in User Mode."
 	--[[Translation missing --]]
+	L["Ignore all Updates"] = "Ignore all Updates"
+	--[[Translation missing --]]
 	L["Ignore self"] = "Ignore self"
 	--[[Translation missing --]]
 	L["Ignore Self"] = "Ignore Self"
+	--[[Translation missing --]]
+	L["Ignore this Update"] = "Ignore this Update"
 	L["Ignored"] = "Ignorar"
 	L["Import"] = "Importar"
 	L["Import a display from an encoded string"] = "Importar un aura desde un texto cifrado"
@@ -555,7 +565,7 @@ Sólo un valor coincidente puede ser escogido.]=]
 	--[[Translation missing --]]
 	L["Paste Animations Settings"] = "Paste Animations Settings"
 	--[[Translation missing --]]
-	L["Paste Author Option Settings"] = "Paste Author Option Settings"
+	L["Paste Author Options Settings"] = "Paste Author Options Settings"
 	--[[Translation missing --]]
 	L["Paste Condition Settings"] = "Paste Condition Settings"
 	--[[Translation missing --]]
@@ -732,6 +742,10 @@ Sólo un valor coincidente puede ser escogido.]=]
 	L["Step Size"] = "Step Size"
 	L["Sticky Duration"] = "Duración Adhesiva"
 	--[[Translation missing --]]
+	L["Stop ignoring this Update"] = "Stop ignoring this Update"
+	--[[Translation missing --]]
+	L["Stop ignoring Updates"] = "Stop ignoring Updates"
+	--[[Translation missing --]]
 	L["Stop Sound"] = "Stop Sound"
 	--[[Translation missing --]]
 	L["Symbol Settings"] = "Symbol Settings"
@@ -799,7 +813,11 @@ Sólo un valor coincidente puede ser escogido.]=]
 	L["Unlike the start or finish animations, the main animation will loop over and over until the display is hidden."] = "Ignorar animaciones de inicio y final: la animación principal se repetirá hasta que el aura se oculte."
 	--[[Translation missing --]]
 	L["Up"] = "Up"
+	--[[Translation missing --]]
+	L["Update "] = "Update "
 	L["Update Custom Text On..."] = "Actualizar Texto Personalizado En..."
+	--[[Translation missing --]]
+	L["Update this Aura"] = "Update this Aura"
 	L["Use Full Scan (High CPU)"] = "Escaneo Total (carga el procesador)"
 	--[[Translation missing --]]
 	L["Use nth value from tooltip:"] = "Use nth value from tooltip:"
@@ -827,6 +845,8 @@ Sólo un valor coincidente puede ser escogido.]=]
 	L["Vertical Bar"] = "Vertical Bar"
 	--[[Translation missing --]]
 	L["View"] = "View"
+	--[[Translation missing --]]
+	L["Wago Update"] = "Wago Update"
 	L["Width"] = "Ancho"
 	L["X Offset"] = "X Posicion"
 	--[[Translation missing --]]
