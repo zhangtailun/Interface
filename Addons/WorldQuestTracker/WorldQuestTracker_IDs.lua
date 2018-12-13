@@ -146,12 +146,32 @@ WorldQuestTracker.mapTables = {
 				[WorldQuestTracker.MapData.ZoneIDs.AZEROTH] = true,
 			},
 		},
+		
+		[WorldQuestTracker.MapData.ZoneIDs.DARKSHORE] = {
+			widgets = {},
+			Anchor_X = 0.01,
+			Anchor_Y = 0.30,
+			GrowRight = true,
+			show_on_map = {
+				[WorldQuestTracker.MapData.ZoneIDs.AZEROTH] = true,
+			},
+		},
+		
+		[WorldQuestTracker.MapData.ZoneIDs.ARATHI] = {
+			widgets = {},
+			Anchor_X = 0.01,
+			Anchor_Y = 0.20,
+			GrowRight = true,
+			show_on_map = {
+				[WorldQuestTracker.MapData.ZoneIDs.AZEROTH] = true,
+			},
+		},
 
 	--BFA
 		[1161] = { --boralus
 			widgets = {},
 			Anchor_X = 0.99,
-			Anchor_Y = 0.45,
+			Anchor_Y = 0.48,
 			GrowRight = false,
 			show_on_map = {
 					[WorldQuestTracker.MapData.ZoneIDs.KULTIRAS] = true,
@@ -161,7 +181,7 @@ WorldQuestTracker.mapTables = {
 		[1165] = { --dazar'alor
 			widgets = {},
 			Anchor_X = 0.99,
-			Anchor_Y = 0.51,
+			Anchor_Y = 0.48,
 			GrowRight = false,
 			show_on_map = {
 					[WorldQuestTracker.MapData.ZoneIDs.ZANDALAR] = true,
@@ -172,7 +192,7 @@ WorldQuestTracker.mapTables = {
 		[WorldQuestTracker.MapData.ZoneIDs.TIRAGARDE] = {
 			widgets = {},
 			Anchor_X = 0.99,
-			Anchor_Y = 0.67,
+			Anchor_Y = 0.62,
 			GrowRight = false,
 			show_on_map = {
 					[WorldQuestTracker.MapData.ZoneIDs.KULTIRAS] = true,
@@ -181,7 +201,7 @@ WorldQuestTracker.mapTables = {
 		[WorldQuestTracker.MapData.ZoneIDs.STORMSONG] = {
 			widgets = {},
 			Anchor_X = 0.99,
-			Anchor_Y = 0.25,
+			Anchor_Y = 0.18,
 			GrowRight = false,
 			show_on_map = {
 					[WorldQuestTracker.MapData.ZoneIDs.KULTIRAS] = true,
@@ -190,7 +210,7 @@ WorldQuestTracker.mapTables = {
 		[WorldQuestTracker.MapData.ZoneIDs.DRUSTVAR] = {
 			widgets = {},
 			Anchor_X = 0.01,
-			Anchor_Y = 0.42,
+			Anchor_Y = 0.36,
 			GrowRight = true,
 			show_on_map = {
 					[WorldQuestTracker.MapData.ZoneIDs.KULTIRAS] = true,
@@ -219,7 +239,7 @@ WorldQuestTracker.mapTables = {
 		[WorldQuestTracker.MapData.ZoneIDs.NAZMIR] = {
 			widgets = {},
 			Anchor_X = 0.99,
-			Anchor_Y = 0.23,
+			Anchor_Y = 0.18,
 			GrowRight = false,
 			show_on_map = {
 					[WorldQuestTracker.MapData.ZoneIDs.ZANDALAR] = true,
@@ -239,7 +259,7 @@ WorldQuestTracker.mapTables = {
 		[WorldQuestTracker.MapData.ZoneIDs.AZSUNA] = {
 			widgets = {},
 			Anchor_X = 0.01,
-			Anchor_Y = 0.52,
+			Anchor_Y = 0.53,
 			GrowRight = true,
 			show_on_map = {
 				[WorldQuestTracker.MapData.ZoneIDs.BROKENISLES] = true,
@@ -248,7 +268,7 @@ WorldQuestTracker.mapTables = {
 		[WorldQuestTracker.MapData.ZoneIDs.VALSHARAH] = {
 			widgets = {},
 			Anchor_X = 0.01,
-			Anchor_Y = 0.37,
+			Anchor_Y = 0.33,
 			GrowRight = true,
 			show_on_map = {
 				[WorldQuestTracker.MapData.ZoneIDs.BROKENISLES] = true,
@@ -257,7 +277,7 @@ WorldQuestTracker.mapTables = {
 		[WorldQuestTracker.MapData.ZoneIDs.HIGHMONTAIN] = {
 			widgets = {},
 			Anchor_X = 0.01,
-			Anchor_Y = 0.20,
+			Anchor_Y = 0.10,
 			GrowRight = true,
 			show_on_map = {
 				[WorldQuestTracker.MapData.ZoneIDs.BROKENISLES] = true,
@@ -266,7 +286,7 @@ WorldQuestTracker.mapTables = {
 		[WorldQuestTracker.MapData.ZoneIDs.STORMHEIM] = {
 			widgets = {},
 			Anchor_X = 0.99,
-			Anchor_Y = 0.37,
+			Anchor_Y = 0.30,
 			show_on_map = {
 				[WorldQuestTracker.MapData.ZoneIDs.BROKENISLES] = true,
 			}
@@ -274,7 +294,7 @@ WorldQuestTracker.mapTables = {
 		[WorldQuestTracker.MapData.ZoneIDs.SURAMAR] = {
 			widgets = {},
 			Anchor_X = 0.99,
-			Anchor_Y = 0.52,
+			Anchor_Y = 0.50,
 			show_on_map = {
 				[WorldQuestTracker.MapData.ZoneIDs.BROKENISLES] = true,
 			}
@@ -282,7 +302,7 @@ WorldQuestTracker.mapTables = {
 		[WorldQuestTracker.MapData.ZoneIDs.BROKENSHORE] = { --broken shore
 			widgets = {},
 			Anchor_X = 0.99,
-			Anchor_Y = 0.67,
+			Anchor_Y = 0.69,
 			show_on_map = {
 				[WorldQuestTracker.MapData.ZoneIDs.BROKENISLES] = true,
 			}
@@ -362,14 +382,25 @@ WorldQuestTracker.MapData.EquipmentIcons = {
 }
 
 WorldQuestTracker.MapData.ItemIcons = {
-	["BFA_RESOURCE"] = [[Interface\ICONS\INV_Crate_02]],
-	["BFA_ARTIFACT"] = [[Interface\ICONS\INV_SmallAzeriteShard]],
+	--["BFA_RESOURCE"] = [[Interface\ICONS\INV_Crate_02]],
+	["BFA_RESOURCE"] = [[Interface\AddOns\WorldQuestTracker\media\icon_resource]],
+	--["BFA_ARTIFACT"] = [[Interface\ICONS\INV_SmallAzeriteShard]],
+	["BFA_ARTIFACT"] = [[Interface\AddOns\WorldQuestTracker\media\icon_artifact_power]],
 }
 
 WorldQuestTracker.MapData.ResourceIcons = {
 	[2032600] = true, --war resources BFA
 	[WorldQuestTracker.MapData.ItemIcons ["BFA_RESOURCE"]] = true, --custom icon for the BFA war resource
 	[1397630] = true, --order resources LEGION
+}
+
+--which faction set to be used by the map id
+WorldQuestTracker.MapData.FactionByMapID = {
+	[WorldQuestTracker.MapData.ZoneIDs.ZANDALAR] = "BFA",
+	[WorldQuestTracker.MapData.ZoneIDs.KULTIRAS] = "BFA",
+	[WorldQuestTracker.MapData.ZoneIDs.AZEROTH] = "BFA",
+	[619] = "LEGION", --brosken isles map
+	[905] = "LEGION", --argus map
 }
 
 -- texture ID of the reward when the world quest reward is a faction rep token
@@ -455,7 +486,7 @@ WorldQuestTracker.MapData.QuestTypeIcons = {
 	[WQT_QUESTTYPE_DUNGEON] = {name = L["S_QUESTTYPE_DUNGEON"], icon = [[Interface\TARGETINGFRAME\Nameplates]], coords = {41/256, 0/256, 29/128, 63/128}},
 	[WQT_QUESTTYPE_PROFESSION] = {name = L["S_QUESTTYPE_PROFESSION"], icon = [[Interface\MINIMAP\TRACKING\Profession]], coords = {2/32, 30/32, 2/32, 30/32}},
 	[WQT_QUESTTYPE_PVP] = {name = L["S_QUESTTYPE_PVP"], icon = [[Interface\QUESTFRAME\QuestTypeIcons]], coords = {37/128, 53/128, 19/64, 36/64}},
-	[WQT_QUESTTYPE_PETBATTLE] = {name = L["S_QUESTTYPE_PETBATTLE"], icon = [[Interface\MINIMAP\ObjectIconsAtlas]], coords = {530/1024, 554/1024, 380/512, 403/512}},
+	[WQT_QUESTTYPE_PETBATTLE] = {name = L["S_QUESTTYPE_PETBATTLE"], icon = [[Interface\AddOns\WorldQuestTracker\media\icon_pet]], coords = {0.05, 0.95, 0.05, 0.95}},
 	[WQT_QUESTTYPE_TRADE] = {name = L["S_QUESTTYPE_TRADESKILL"], icon = [[Interface\ICONS\INV_Blood of Sargeras]], coords = {5/64, 59/64, 5/64, 59/64}},
 	[WQT_QUESTTYPE_REPUTATION] = {name = "Reputation", icon = [[Interface\ICONS\Achievement_Reputation_01]], coords = {5/64, 59/64, 5/64, 59/64}},
 }

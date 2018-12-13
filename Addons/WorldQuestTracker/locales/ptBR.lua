@@ -7,10 +7,8 @@ L["S_DECREASESIZE"] = "Diminuir Tamanho"
 L["S_ENABLED"] = "Ativado"
 L["S_ERROR_NOTIMELEFT"] = "Esta missão expirou."
 L["S_ERROR_NOTLOADEDYET"] = "Esta missão não foi carregada ainda, por favor aguarde alguns segundos."
---[[Translation missing --]]
---[[ L["S_FACTION_TOOLTIP_SELECT"] = ""--]] 
---[[Translation missing --]]
---[[ L["S_FACTION_TOOLTIP_TRACK"] = ""--]] 
+L["S_FACTION_TOOLTIP_SELECT"] = "Clique: selecione esta facção."
+L["S_FACTION_TOOLTIP_TRACK"] = "Shift + Clique: rastreie as missões desta facção."
 L["S_FLYMAP_SHOWTRACKEDONLY"] = "Apenas Rastreadas"
 L["S_FLYMAP_SHOWTRACKEDONLY_DESC"] = "Mostrar apenas missões que estão sendo rastreadas."
 L["S_FLYMAP_SHOWWORLDQUESTS"] = "Mostrar Missões Mundiais"
@@ -95,14 +93,12 @@ L["S_MAPBAR_SUMMARYMENU_NOATTENTION"] = [=[Nenhuma quest sendo rastreadas nos se
 tem menos de 2 horas de tempo restante.]=]
 L["S_MAPBAR_SUMMARYMENU_REQUIREATTENTION"] = "Requer Atenção"
 L["S_MAPBAR_SUMMARYMENU_TODAYREWARDS"] = "Conquistas de Hoje"
+L["S_MAPFRAME_ALIGN_CENTER"] = "centro"
+L["S_MAPFRAME_ALIGN_DESC"] = "|cFF22FF22Clique|r para alternar o alinhamento da janela do mapa do centro para a esquerda e da esquerda para o centro da sua tela."
+L["S_MAPFRAME_ALIGN_LEFT"] = "esquerda"
 --[[Translation missing --]]
---[[ L["S_MAPFRAME_ALIGN_CENTER"] = ""--]] 
---[[Translation missing --]]
---[[ L["S_MAPFRAME_ALIGN_DESC"] = ""--]] 
---[[Translation missing --]]
---[[ L["S_MAPFRAME_ALIGN_LEFT"] = ""--]] 
---[[Translation missing --]]
---[[ L["S_OPTIONS_MAPFRAME_ALIGN"] = ""--]] 
+--[[ L["S_OPTIONS_ANIMATIONS"] = ""--]] 
+L["S_OPTIONS_MAPFRAME_ALIGN"] = "Janela do Mapa Centralizada"
 --[[Translation missing --]]
 --[[ L["S_OPTIONS_MAPFRAME_ERROR_SCALING_DISABLED"] = ""--]] 
 --[[Translation missing --]]
@@ -176,6 +172,14 @@ L["S_TUTORIAL_TIMELEFT"] = "indica o tempo restante (+4 horas, +90 minutos, +30 
 --[[ L["S_TUTORIAL_WORLDBUTTONS"] = ""--]] 
 L["S_TUTORIAL_WORLDMAPBUTTON"] = "Este botão mostra o mapa das Ilhas Partidas."
 L["S_UNKNOWNQUEST"] = "Missão desconhecida"
+--[[Translation missing --]]
+--[[ L["S_WORLDBUTTONS_SHOW_NONE"] = ""--]] 
+--[[Translation missing --]]
+--[[ L["S_WORLDBUTTONS_SHOW_TYPE"] = ""--]] 
+--[[Translation missing --]]
+--[[ L["S_WORLDBUTTONS_SHOW_ZONE"] = ""--]] 
+--[[Translation missing --]]
+--[[ L["S_WORLDBUTTONS_TOGGLE_QUESTS"] = ""--]] 
 L["S_WORLDMAP_QUESTLOCATIONS"] = "Mostrar local da quest"
 L["S_WORLDMAP_QUESTSUMMARY"] = "Mostrar resumo de quest"
 L["S_WORLDMAP_TOOGLEQUESTS"] = "Alternar Missões"

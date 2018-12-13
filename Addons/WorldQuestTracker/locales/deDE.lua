@@ -104,6 +104,8 @@ L["S_MAPBAR_SUMMARYMENU_TODAYREWARDS"] = "Heutige Belohnungen"
 --[[Translation missing --]]
 --[[ L["S_MAPFRAME_ALIGN_LEFT"] = ""--]] 
 --[[Translation missing --]]
+--[[ L["S_OPTIONS_ANIMATIONS"] = ""--]] 
+--[[Translation missing --]]
 --[[ L["S_OPTIONS_MAPFRAME_ALIGN"] = ""--]] 
 --[[Translation missing --]]
 --[[ L["S_OPTIONS_MAPFRAME_ERROR_SCALING_DISABLED"] = ""--]] 
@@ -178,6 +180,14 @@ L["S_TUTORIAL_TIMELEFT"] = "Zeigt die verbleibende Zeit an (+4 Stunden, +90 Minu
 --[[ L["S_TUTORIAL_WORLDBUTTONS"] = ""--]] 
 L["S_TUTORIAL_WORLDMAPBUTTON"] = "Diese Schaltfläche öffnet die Karte der Verheerten Inseln."
 L["S_UNKNOWNQUEST"] = "Unbekannte Quest"
+--[[Translation missing --]]
+--[[ L["S_WORLDBUTTONS_SHOW_NONE"] = ""--]] 
+--[[Translation missing --]]
+--[[ L["S_WORLDBUTTONS_SHOW_TYPE"] = ""--]] 
+--[[Translation missing --]]
+--[[ L["S_WORLDBUTTONS_SHOW_ZONE"] = ""--]] 
+--[[Translation missing --]]
+--[[ L["S_WORLDBUTTONS_TOGGLE_QUESTS"] = ""--]] 
 --[[Translation missing --]]
 --[[ L["S_WORLDMAP_QUESTLOCATIONS"] = ""--]] 
 --[[Translation missing --]]

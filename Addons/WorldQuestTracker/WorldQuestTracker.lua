@@ -189,6 +189,9 @@ function WorldQuestTracker:OnInit()
 				end
 			end
 		end
+		
+		-- ~review disabling scale since it have some issues for some users
+		WorldQuestTracker.db.profile.map_frame_scale_enabled = false
 	end)
 
 	if (LibWindow) then
@@ -636,7 +639,7 @@ end
 	--pega o icone para as quest que dao goild
 	local goldCoords = {0, 1, 0, 1}
 	function WorldQuestTracker.GetGoldIcon()
-		return [[Interface\GossipFrame\auctioneerGossipIcon]], goldCoords
+		return [[Interface\AddOns\WorldQuestTracker\media\icon_gold]], goldCoords
 	end
 
 

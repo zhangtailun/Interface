@@ -219,7 +219,16 @@ function WorldQuestTracker.GetBorderByQuestType (self, rarity, worldQuestType)
 		return "border_zone_browT"
 		
 	elseif (rarity == LE_WORLD_QUEST_QUALITY_COMMON) then
-		if (worldQuestType == LE_QUEST_TAG_TYPE_INVASION) then
+		if (worldQuestType == LE_QUEST_TAG_TYPE_FACTION_ASSAULT) then
+			
+			if (UnitFactionGroup("player") == "Alliance") then
+				return "border_zone_redT"
+				
+			elseif (UnitFactionGroup("player") == "Horde") then
+				return "border_zone_redT"
+			end
+			
+		elseif (worldQuestType == LE_QUEST_TAG_TYPE_INVASION) then
 			return "border_zone_legionT"
 		else
 			return "border_zone_whiteT"
@@ -273,10 +282,12 @@ function WorldQuestTracker.UpdateStatusBarAnchors()
 	
 		if (WorldMapFrame.isMaximized) then
 			WorldQuestTrackerRewardHistoryButton:SetPoint ("bottomleft", statusBar, "bottomleft", 0, 3)
-			WorldQuestTracker.IndicatorsAnchor:SetPoint ("bottomright", WorldQuestTrackerGoToAllianceButton, "bottomleft", -10, 3)
+			--WorldQuestTracker.IndicatorsAnchor:SetPoint ("bottomright", WorldQuestTrackerGoToAllianceButton, "bottomleft", -10, 3) --now is anchored to horde (horde and alliance button got swapped)
+			WorldQuestTracker.IndicatorsAnchor:SetPoint ("bottomright", WorldQuestTrackerGoToHordeButton, "bottomleft", -10, 3)
 		else
 			WorldQuestTrackerRewardHistoryButton:SetPoint ("bottomleft", statusBar, "bottomleft", 0, 2)
-			WorldQuestTracker.IndicatorsAnchor:SetPoint ("bottomright", WorldQuestTrackerGoToAllianceButton, "bottomleft", -10, 2)
+			--WorldQuestTracker.IndicatorsAnchor:SetPoint ("bottomright", WorldQuestTrackerGoToAllianceButton, "bottomleft", -10, 2)
+			WorldQuestTracker.IndicatorsAnchor:SetPoint ("bottomright", WorldQuestTrackerGoToHordeButton, "bottomleft", -10, 2)
 		end
 		
 	elseif (anchor == "top") then
@@ -328,7 +339,7 @@ function WorldQuestTracker.UpdateBorder (self, rarity, worldQuestType, mapID, is
 		self.shineAnimation:Hide()
 		AnimatedShine_Stop (self)
 		
-		if (rarity == LE_WORLD_QUEST_QUALITY_COMMON and worldQuestType ~= LE_QUEST_TAG_TYPE_INVASION) then
+		if (rarity == LE_WORLD_QUEST_QUALITY_COMMON and (worldQuestType ~= LE_QUEST_TAG_TYPE_INVASION and worldQuestType ~= LE_QUEST_TAG_TYPE_FACTION_ASSAULT)) then
 			
 			if (worldQuestType == LE_QUEST_TAG_TYPE_PVP) then
 				self.commonBorder:SetVertexColor (1, .7, .2)
@@ -337,7 +348,8 @@ function WorldQuestTracker.UpdateBorder (self, rarity, worldQuestType, mapID, is
 				
 			elseif (worldQuestType == LE_QUEST_TAG_TYPE_PET_BATTLE) then
 				self.commonBorder:SetVertexColor (.4, 1, .4)
-				self:SetBackdropBorderColor (.4, 1, .4, 1)
+				self.commonBorder:SetAlpha (0)
+				self:SetBackdropBorderColor (.4, 1, .4, .5)
 			
 			else
 				self.commonBorder:SetVertexColor (.45, .45, .45)
@@ -358,7 +370,15 @@ function WorldQuestTracker.UpdateBorder (self, rarity, worldQuestType, mapID, is
 		elseif (rarity == LE_WORLD_QUEST_QUALITY_RARE) then
 			--self.rareBorder:Show()
 			--self:SetBackdropBorderColor (.3, .3, .98, 1)
-			self:SetBackdropBorderColor (.1, .1, .1, 1)
+			--self:SetBackdropBorderColor (.1, .1, .1, 1)
+			
+			--paint with a blue border
+			self.commonBorder:SetAlpha (0)
+			self.commonBorder:SetVertexColor (1, 1, 1)
+			self:SetBackdropBorderColor (.11, .29, 1, .80)
+			
+			
+			
 			
 			if (not self.IsZoneSummaryQuestButton) then
 				if (WorldQuestTracker.WorldSummary.FactionSelected == self.FactionID) then
@@ -374,7 +394,7 @@ function WorldQuestTracker.UpdateBorder (self, rarity, worldQuestType, mapID, is
 			self.shineAnimation:Show()
 			AnimatedShine_Start (self, 1, 1, 1);
 			
-		elseif (worldQuestType == LE_QUEST_TAG_TYPE_INVASION) then
+		elseif (worldQuestType == LE_QUEST_TAG_TYPE_FACTION_ASSAULT) then
 			self.invasionBorder:Show()
 			
 			if (UnitFactionGroup("player") == "Alliance") then
@@ -385,6 +405,9 @@ function WorldQuestTracker.UpdateBorder (self, rarity, worldQuestType, mapID, is
 			end
 			
 		end
+		
+		self:SetBackdropColor (.3, .3, .3, 1)
+		self.commonBorder:Hide()
 
 	else
 		if (not isCriteria) then
@@ -392,8 +415,11 @@ function WorldQuestTracker.UpdateBorder (self, rarity, worldQuestType, mapID, is
 			self.circleBorder:Show()
 			self.circleBorder:SetTexture ("Interface\\AddOns\\WorldQuestTracker\\media\\" .. borderTextureFile)
 		else
-			self.circleBorder:Hide()
-			self.BountyRing:Show()
+			local borderTextureFile = WorldQuestTracker.GetBorderByQuestType (self, rarity, worldQuestType)
+			self.circleBorder:Show()
+			self.circleBorder:SetTexture ("Interface\\AddOns\\WorldQuestTracker\\media\\" .. borderTextureFile)
+			
+			--self.BountyRing:Show()
 		end
 		
 		if (rarity == LE_WORLD_QUEST_QUALITY_COMMON) then
@@ -424,7 +450,6 @@ function WorldQuestTracker.UpdateBorder (self, rarity, worldQuestType, mapID, is
 
 				--self.bgFlag:Show()
 				self.flagText:SetPoint ("top", self.bgFlag, "top", 0, -3)
-				--self.glassTransparence:Show()
 			end
 			
 		elseif (rarity == LE_WORLD_QUEST_QUALITY_EPIC) then

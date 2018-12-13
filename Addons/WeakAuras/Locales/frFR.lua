@@ -515,6 +515,8 @@ L["On Cooldown"] = "En Recharge"
 L["Only if Primary"] = "Seulement si primaire"
 L["Opaque"] = "Opaque"
 L["Options will finish loading after combat ends."] = "Les options finiront de se charger après la fin du combat."
+--[[Translation missing --]]
+L["Options will finish loading after the login process has completed."] = "Options will finish loading after the login process has completed."
 L["Orbit"] = "Orbite"
 L["Orientation"] = "Orientation"
 L["Outline"] = "Contour"

@@ -155,8 +155,6 @@ Soll die Anzeige in einer neuen |cFF22AA22Dynamischen Gruppe|r platziert werden?
 	--[[Translation missing --]]
 	L["Combine Matches Per Unit"] = "Combine Matches Per Unit"
 	--[[Translation missing --]]
-	L["Common Options"] = "Common Options"
-	--[[Translation missing --]]
 	L["Compare against the number of units affected."] = "Compare against the number of units affected."
 	L["Compress"] = "Stauchen"
 	L["Condition %i"] = "Bedingung %i"
@@ -244,6 +242,8 @@ UNIT_POWER, UNIT_AURA PLAYER_TARGET_CHANGED]=]
 	--[[Translation missing --]]
 	L["Dynamic Duration"] = "Dynamic Duration"
 	L["Dynamic Group"] = "Dynamische Gruppe"
+	--[[Translation missing --]]
+	L["Dynamic Group Settings"] = "Dynamic Group Settings"
 	L["Dynamic Information"] = "Dynamische Information"
 	L["Dynamic information from first active trigger"] = "Dynamische Information vom ersten aktiven Auslöser"
 	L["Dynamic information from Trigger %i"] = "Dynamische Information des %i. Auslösers"
@@ -335,6 +335,8 @@ Falls die Zahl als Dezimalzahl (z.B. 0.5), Bruch (z.B. 1/2) oder Prozentsatz (z.
 	--[[Translation missing --]]
 	L["Group Scale"] = "Group Scale"
 	--[[Translation missing --]]
+	L["Group Settings"] = "Group Settings"
+	--[[Translation missing --]]
 	L["Grow"] = "Grow"
 	L["Hawk"] = "Falke"
 	L["Height"] = "Höhe"
@@ -355,6 +357,8 @@ Falls die Zahl als Dezimalzahl (z.B. 0.5), Bruch (z.B. 1/2) oder Prozentsatz (z.
 	L["Icon Color"] = "Symbolfarbe"
 	L["Icon Info"] = "Symbolinfo"
 	L["Icon Inset"] = "Symboleinrückung"
+	--[[Translation missing --]]
+	L["Icon Settings"] = "Icon Settings"
 	L["If"] = "Falls"
 	L["If this option is enabled, you are no longer able to import auras."] = "Der Import von Auren ist gesperrt solange diese Option aktiv ist."
 	L["If Trigger %s"] = "Falls Auslöser %s"
@@ -365,9 +369,9 @@ Falls die Zahl als Dezimalzahl (z.B. 0.5), Bruch (z.B. 1/2) oder Prozentsatz (z.
 	--[[Translation missing --]]
 	L["Ignore all Updates"] = "Ignore all Updates"
 	--[[Translation missing --]]
-	L["Ignore self"] = "Ignore self"
-	--[[Translation missing --]]
 	L["Ignore Self"] = "Ignore Self"
+	--[[Translation missing --]]
+	L["Ignore self"] = "Ignore self"
 	--[[Translation missing --]]
 	L["Ignore this Update"] = "Ignore this Update"
 	L["Ignored"] = "Ignoriert"
@@ -417,6 +421,8 @@ Falls die Zahl als Dezimalzahl (z.B. 0.5), Bruch (z.B. 1/2) oder Prozentsatz (z.
 	L["Min"] = "Min"
 	L["Mirror"] = "Spiegeln"
 	L["Model"] = "Modell"
+	--[[Translation missing --]]
+	L["Model Settings"] = "Model Settings"
 	L["Move Down"] = "Nach unten verschieben"
 	L["Move this display down in its group's order"] = "Verschiebt diese Anzeige in der Reihenfolge seiner Gruppe nach unten"
 	L["Move this display up in its group's order"] = "Verschiebt diese Anzeige in der Reihenfolge seiner Gruppe nach oben"
@@ -512,7 +518,11 @@ Nur ein Wert kann ausgewählt werden.]=]
 	--[[Translation missing --]]
 	L["Processed %i chars"] = "Processed %i chars"
 	L["Progress Bar"] = "Fortschrittsbalken"
+	--[[Translation missing --]]
+	L["Progress Bar Settings"] = "Progress Bar Settings"
 	L["Progress Texture"] = "Fortschrittstextur"
+	--[[Translation missing --]]
+	L["Progress Texture Settings"] = "Progress Texture Settings"
 	L["Purple Rune"] = "Violette Rune"
 	L["Put this display in a group"] = "Diese Anzeige in eine Gruppe stecken"
 	L["Radius"] = "Radius"
@@ -637,8 +647,12 @@ Nur ein Wert kann ausgewählt werden.]=]
 	L["Text"] = "Text"
 	L["Text Color"] = "Textfarbe"
 	L["Text Position"] = "Textposition"
+	--[[Translation missing --]]
+	L["Text Settings"] = "Text Settings"
 	L["Texture"] = "Textur"
 	L["Texture Info"] = "Texturinfo"
+	--[[Translation missing --]]
+	L["Texture Settings"] = "Texture Settings"
 	--[[Translation missing --]]
 	L["Texture Wrap"] = "Texture Wrap"
 	L["The duration of the animation in seconds."] = "Die Dauer der Animation in Sekunden."

@@ -519,6 +519,8 @@ L["On Cooldown"] = "Перезаряжается"
 L["Only if Primary"] = "Только если основной"
 L["Opaque"] = "Непрозрачность"
 L["Options will finish loading after combat ends."] = "Параметры загрузятся после окончания боя."
+--[[Translation missing --]]
+L["Options will finish loading after the login process has completed."] = "Options will finish loading after the login process has completed."
 L["Orbit"] = "Вращение по орбите"
 L["Orientation"] = "Ориентация"
 L["Outline"] = "Контур"

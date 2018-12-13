@@ -171,8 +171,6 @@ Si la duración de la animación es |cFF00CC0010%|r, y el disparador del aura es
 	--[[Translation missing --]]
 	L["Combine Matches Per Unit"] = "Combine Matches Per Unit"
 	--[[Translation missing --]]
-	L["Common Options"] = "Common Options"
-	--[[Translation missing --]]
 	L["Compare against the number of units affected."] = "Compare against the number of units affected."
 	L["Compress"] = "Comprimir"
 	--[[Translation missing --]]
@@ -284,6 +282,8 @@ UNIT_POWER, UNIT_AURA PLAYER_TARGET_CHANGED
 	L["Dynamic Duration"] = "Dynamic Duration"
 	L["Dynamic Group"] = "Grupo Dinámico"
 	--[[Translation missing --]]
+	L["Dynamic Group Settings"] = "Dynamic Group Settings"
+	--[[Translation missing --]]
 	L["Dynamic Information"] = "Dynamic Information"
 	--[[Translation missing --]]
 	L["Dynamic information from first active trigger"] = "Dynamic information from first active trigger"
@@ -386,6 +386,8 @@ Con |cFF00CC00>= 0|r se activará siempre.]=]
 	--[[Translation missing --]]
 	L["Group Scale"] = "Group Scale"
 	--[[Translation missing --]]
+	L["Group Settings"] = "Group Settings"
+	--[[Translation missing --]]
 	L["Grow"] = "Grow"
 	--[[Translation missing --]]
 	L["Hawk"] = "Hawk"
@@ -415,6 +417,8 @@ Con |cFF00CC00>= 0|r se activará siempre.]=]
 	L["Icon Info"] = "Información del Icono"
 	L["Icon Inset"] = "Interior del Icono"
 	--[[Translation missing --]]
+	L["Icon Settings"] = "Icon Settings"
+	--[[Translation missing --]]
 	L["If"] = "If"
 	--[[Translation missing --]]
 	L["If this option is enabled, you are no longer able to import auras."] = "If this option is enabled, you are no longer able to import auras."
@@ -427,9 +431,9 @@ Con |cFF00CC00>= 0|r se activará siempre.]=]
 	--[[Translation missing --]]
 	L["Ignore all Updates"] = "Ignore all Updates"
 	--[[Translation missing --]]
-	L["Ignore self"] = "Ignore self"
-	--[[Translation missing --]]
 	L["Ignore Self"] = "Ignore Self"
+	--[[Translation missing --]]
+	L["Ignore self"] = "Ignore self"
 	--[[Translation missing --]]
 	L["Ignore this Update"] = "Ignore this Update"
 	L["Ignored"] = "Ignorar"
@@ -487,6 +491,8 @@ Con |cFF00CC00>= 0|r se activará siempre.]=]
 	L["Min"] = "Min"
 	L["Mirror"] = "Reflejar"
 	L["Model"] = "Modelo"
+	--[[Translation missing --]]
+	L["Model Settings"] = "Model Settings"
 	--[[Translation missing --]]
 	L["Move Down"] = "Move Down"
 	--[[Translation missing --]]
@@ -594,7 +600,11 @@ Sólo un valor coincidente puede ser escogido.]=]
 	L["Prevents duration information from decreasing when an aura refreshes. May cause problems if used with multiple auras with different durations."] = "Prevenir que el temporizador siga contando cuando el aura se refresca. Ten cuidado, pueden aparecer problemas si usas múltiples auras con múltiples duraciones."
 	L["Processed %i chars"] = "%i personajes procesados"
 	L["Progress Bar"] = "Barra de Progreso"
+	--[[Translation missing --]]
+	L["Progress Bar Settings"] = "Progress Bar Settings"
 	L["Progress Texture"] = "Texture de Progreso"
+	--[[Translation missing --]]
+	L["Progress Texture Settings"] = "Progress Texture Settings"
 	--[[Translation missing --]]
 	L["Purple Rune"] = "Purple Rune"
 	--[[Translation missing --]]
@@ -753,8 +763,12 @@ Sólo un valor coincidente puede ser escogido.]=]
 	L["Text"] = "Texto"
 	L["Text Color"] = "Color del Texto"
 	L["Text Position"] = "Posición del Texto"
+	--[[Translation missing --]]
+	L["Text Settings"] = "Text Settings"
 	L["Texture"] = "Textura"
 	L["Texture Info"] = "Información de Textura"
+	--[[Translation missing --]]
+	L["Texture Settings"] = "Texture Settings"
 	--[[Translation missing --]]
 	L["Texture Wrap"] = "Texture Wrap"
 	L["The duration of the animation in seconds."] = "Duración de la animación (en segundos)."

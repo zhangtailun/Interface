@@ -104,6 +104,8 @@ L["S_MAPBAR_SUMMARYMENU_TODAYREWARDS"] = "오늘의 보상"
 --[[Translation missing --]]
 --[[ L["S_MAPFRAME_ALIGN_LEFT"] = ""--]] 
 --[[Translation missing --]]
+--[[ L["S_OPTIONS_ANIMATIONS"] = ""--]] 
+--[[Translation missing --]]
 --[[ L["S_OPTIONS_MAPFRAME_ALIGN"] = ""--]] 
 --[[Translation missing --]]
 --[[ L["S_OPTIONS_MAPFRAME_ERROR_SCALING_DISABLED"] = ""--]] 
@@ -178,6 +180,14 @@ L["S_TUTORIAL_TIMELEFT"] = "남은 시간을 나타냅니다 (+4시간, +90분, 
 --[[ L["S_TUTORIAL_WORLDBUTTONS"] = ""--]] 
 L["S_TUTORIAL_WORLDMAPBUTTON"] = "이 버튼을 누르면 부서진 섬 지도로 변경됩니다."
 L["S_UNKNOWNQUEST"] = "알 수 없는 퀘스트"
+--[[Translation missing --]]
+--[[ L["S_WORLDBUTTONS_SHOW_NONE"] = ""--]] 
+--[[Translation missing --]]
+--[[ L["S_WORLDBUTTONS_SHOW_TYPE"] = ""--]] 
+--[[Translation missing --]]
+--[[ L["S_WORLDBUTTONS_SHOW_ZONE"] = ""--]] 
+--[[Translation missing --]]
+--[[ L["S_WORLDBUTTONS_TOGGLE_QUESTS"] = ""--]] 
 --[[Translation missing --]]
 --[[ L["S_WORLDMAP_QUESTLOCATIONS"] = ""--]] 
 --[[Translation missing --]]

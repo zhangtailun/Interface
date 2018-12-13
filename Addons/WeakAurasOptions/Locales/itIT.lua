@@ -230,8 +230,6 @@ local L = WeakAuras.L
 	--[[Translation missing --]]
 	L["Combine Matches Per Unit"] = "Combine Matches Per Unit"
 	--[[Translation missing --]]
-	L["Common Options"] = "Common Options"
-	--[[Translation missing --]]
 	L["Compare against the number of units affected."] = "Compare against the number of units affected."
 	--[[Translation missing --]]
 	L["Compress"] = "Compress"
@@ -358,6 +356,8 @@ local L = WeakAuras.L
 	--[[Translation missing --]]
 	L["Dynamic Group"] = "Dynamic Group"
 	--[[Translation missing --]]
+	L["Dynamic Group Settings"] = "Dynamic Group Settings"
+	--[[Translation missing --]]
 	L["Dynamic Information"] = "Dynamic Information"
 	--[[Translation missing --]]
 	L["Dynamic information from first active trigger"] = "Dynamic information from first active trigger"
@@ -470,6 +470,8 @@ local L = WeakAuras.L
 	--[[Translation missing --]]
 	L["Group Scale"] = "Group Scale"
 	--[[Translation missing --]]
+	L["Group Settings"] = "Group Settings"
+	--[[Translation missing --]]
 	L["Grow"] = "Grow"
 	--[[Translation missing --]]
 	L["Hawk"] = "Hawk"
@@ -504,6 +506,8 @@ local L = WeakAuras.L
 	--[[Translation missing --]]
 	L["Icon Inset"] = "Icon Inset"
 	--[[Translation missing --]]
+	L["Icon Settings"] = "Icon Settings"
+	--[[Translation missing --]]
 	L["If"] = "If"
 	--[[Translation missing --]]
 	L["If this option is enabled, you are no longer able to import auras."] = "If this option is enabled, you are no longer able to import auras."
@@ -516,9 +520,9 @@ local L = WeakAuras.L
 	--[[Translation missing --]]
 	L["Ignore all Updates"] = "Ignore all Updates"
 	--[[Translation missing --]]
-	L["Ignore self"] = "Ignore self"
-	--[[Translation missing --]]
 	L["Ignore Self"] = "Ignore Self"
+	--[[Translation missing --]]
+	L["Ignore self"] = "Ignore self"
 	--[[Translation missing --]]
 	L["Ignore this Update"] = "Ignore this Update"
 	--[[Translation missing --]]
@@ -589,6 +593,8 @@ local L = WeakAuras.L
 	L["Mirror"] = "Mirror"
 	--[[Translation missing --]]
 	L["Model"] = "Model"
+	--[[Translation missing --]]
+	L["Model Settings"] = "Model Settings"
 	--[[Translation missing --]]
 	L["Move Down"] = "Move Down"
 	--[[Translation missing --]]
@@ -718,7 +724,11 @@ local L = WeakAuras.L
 	--[[Translation missing --]]
 	L["Progress Bar"] = "Progress Bar"
 	--[[Translation missing --]]
+	L["Progress Bar Settings"] = "Progress Bar Settings"
+	--[[Translation missing --]]
 	L["Progress Texture"] = "Progress Texture"
+	--[[Translation missing --]]
+	L["Progress Texture Settings"] = "Progress Texture Settings"
 	--[[Translation missing --]]
 	L["Purple Rune"] = "Purple Rune"
 	--[[Translation missing --]]
@@ -922,9 +932,13 @@ local L = WeakAuras.L
 	--[[Translation missing --]]
 	L["Text Position"] = "Text Position"
 	--[[Translation missing --]]
+	L["Text Settings"] = "Text Settings"
+	--[[Translation missing --]]
 	L["Texture"] = "Texture"
 	--[[Translation missing --]]
 	L["Texture Info"] = "Texture Info"
+	--[[Translation missing --]]
+	L["Texture Settings"] = "Texture Settings"
 	--[[Translation missing --]]
 	L["Texture Wrap"] = "Texture Wrap"
 	--[[Translation missing --]]

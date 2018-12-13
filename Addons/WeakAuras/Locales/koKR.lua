@@ -482,6 +482,8 @@ L["On Cooldown"] = "재사용 대기 중일 때"
 L["Only if Primary"] = "주 자원일때만"
 L["Opaque"] = "불투명"
 L["Options will finish loading after combat ends."] = "옵션은 전투가 끝난 후 로딩을 완료합니다."
+--[[Translation missing --]]
+L["Options will finish loading after the login process has completed."] = "Options will finish loading after the login process has completed."
 L["Orbit"] = "공전"
 L["Orientation"] = "방향"
 L["Outline"] = "외곽선"

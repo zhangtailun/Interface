@@ -757,6 +757,8 @@ L["Only if Primary"] = "Only if Primary"
 L["Opaque"] = "Opaque"
 --[[Translation missing --]]
 L["Options will finish loading after combat ends."] = "Options will finish loading after combat ends."
+--[[Translation missing --]]
+L["Options will finish loading after the login process has completed."] = "Options will finish loading after the login process has completed."
 L["Orbit"] = "Órbita"
 --[[Translation missing --]]
 L["Orientation"] = "Orientation"
