@@ -31,8 +31,8 @@ local UTF8Symbols = {
 	['#']='',['&']='',[';']='',[':']='',['~']='',['\\']='',['=']='',
 	["\t"]='',["\n"]='',["\r"]='',[" "]='',
 }
-local RaidAlertTagList = {"%*%*.+%*%*", "EUI[:_]", "|Hspell.+[=>%-]> ", "受伤源自 |Hspell", "已打断.*|Hspell", "打断→|Hspell", "打断：.+|Hspell", "打断.+>.+<", "<iLvl>", "^%-+$", "<EH>"}
-local QuestReportTagList = {"任务进度提示", "任务完成[%)%-]", "<大脚", "接受任务[%]:]", "进度:.+: %d+/%d+", "【爱不易】", "任务.*%[%d+%].+ 已完成!", "%[World Quest Tracker%]", "一起来做世界任务<"}
+local RaidAlertTagList = {"%*%*.+%*%*", "EUI[:_]", "|Hspell.+[=>%-]> ", "受伤源自 |Hspell", "已打断.*|Hspell", "→|Hspell", "打断：.+|Hspell", "打断.+>.+<", "<iLvl>", "^%-+$", "<EH>"}
+local QuestReportTagList = {"任务进度提示", "任务完成[%)%-]", "<大脚", "接受任务[%]:%-]", "进度:.+: %d+/%d+", "【爱不易】", "任务.*%[%d+%].+ 已完成!", "%[World Quest Tracker%]", "一起来做世界任务<"}
 local NormalTagList = {"<LFG>"}
 local AggressiveTagList = {"|Hjournal"}
 G.RegexCharList = "[().%%%+%-%*?%[%]$^{}]" -- won't work on regex blackWord, but works on others
@@ -221,8 +221,11 @@ local function ECFfilterRecord(self,event,msg,player,_,_,_,flags,_,_,_,_,lineID,
 	prevLineID = lineID
 
 	player = Ambiguate(player, "none")
-	local IsMyFriend = guid and (BNGetGameAccountInfoByGUID(guid) or IsCharacterFriend(guid))
-	local good = IsMyFriend or IsGuildMember(guid) or IsGUIDInGroup(guid)
+	local IsMyFriend, good
+	if guid then
+		IsMyFriend = BNGetGameAccountInfoByGUID(guid) or IsCharacterFriend(guid)
+		good = IsMyFriend or IsGuildMember(guid) or IsGUIDInGroup(guid)
+	end
 	filterResult = ECFfilter(chatChannels[event],msg,player,flags,IsMyFriend,good)
 
 	if filterResult and not good then playerCache[player] = playerCache[player] + 1 end
