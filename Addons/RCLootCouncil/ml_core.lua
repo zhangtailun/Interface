@@ -7,9 +7,6 @@
 --[[TODOs/NOTES:
 ]]
 
---[===[@debug@
-if LibDebug then LibDebug() end
---@end-debug@]===]
 local addon = LibStub("AceAddon-3.0"):GetAddon("RCLootCouncil")
 _G.RCLootCouncilML = addon:NewModule("RCLootCouncilML", "AceEvent-3.0", "AceBucket-3.0", "AceComm-3.0", "AceTimer-3.0", "AceHook-3.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("RCLootCouncil")
@@ -441,7 +438,7 @@ function RCLootCouncilML:BuildMLdb()
 			end
 		end
 	end
-	local changedButtons = {};
+	local changedButtons = {default = {}};
 	for type, buttons in pairs(db.buttons) do
 		for i in ipairs(buttons) do
 			if i > db.buttons[type].numButtons then break end
@@ -452,7 +449,7 @@ function RCLootCouncilML:BuildMLdb()
 			end
 		end
 	end
-	if changedButtons.default then changedButtons.default.numButtons = db.buttons.default.numButtons end
+	changedButtons.default.numButtons = db.buttons.default.numButtons -- Always include this
 
 	local MLdb = {
 		selfVote			= db.selfVote or nil,

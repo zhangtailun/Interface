@@ -37,9 +37,6 @@
 		StartHandleLoot 			- Sent whenever RCLootCouncil starts handling loot.
 		StopHandleLoot				- Sent whenever RCLootCouncil stops handling loot.
 ]]
---[===[@debug@
---if LibDebug then LibDebug() end
---@end-debug@]===]
 
 -- GLOBALS: GetLootMethod, GetAddOnMetadata, UnitClass
 
@@ -228,6 +225,7 @@ function RCLootCouncil:OnInitialize()
 			showSpecIcon = false,
 			sortItems = true, -- Sort sessions by item type and item level
 			rejectTrade = false, -- Can candidates choose not to give loot to the council
+			autoTrade = false,
 
 			UI = { -- stores all ui information
 				['**'] = { -- Defaults
@@ -709,10 +707,12 @@ end
 
 -- Update the recentTradableItem by link, if it is in bag and tradable.
 function RCLootCouncil:UpdateAndSendRecentTradableItem(info, count)
+	local found = false
 	for i = 0, _G.NUM_BAG_SLOTS do
 		for j = 1, GetContainerNumSlots(i) do
 			local _, _, _, _, _, _, link2 = GetContainerItemInfo(i, j)
 			if link2 and self:ItemIsItem(info.link, link2) then
+				found = true -- We found something, might be an old copy of the item, continue searching.
 				if self:GetContainerItemTradeTimeRemaining(i, j) > 0 then
 					if self.mldb.rejectTrade then
 						LibDialog:Spawn("RCLOOTCOUNCIL_KEEP_ITEM", info.link)
@@ -720,13 +720,14 @@ function RCLootCouncil:UpdateAndSendRecentTradableItem(info, count)
 					end
 					self:SendCommand("group", "tradable", info.link, info.guid)
 					return
-				else -- Not tradeable
-					-- REVIEW: This might fail if the recipient happens to have an exact copy of the item
-					self:SendCommand("group", "not_tradeable", info.link, info.guid)
-					return
 				end
 			end
 		end
+	end
+	if found then
+		-- We've searched every single bag space, and found at least 1 item that wasn't tradeable,
+		-- and none that was. We can now safely assume the item can't be traded.
+		return self:SendCommand("group", "not_tradeable", info.link, info.guid)
 	end
 	-- We haven't found it, maybe we just haven't received it yet, so try again in one second
 	if not count or (count and count <= 3) then -- Only try a few times

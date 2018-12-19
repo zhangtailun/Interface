@@ -93,6 +93,8 @@ L["Auto Pass"] = "Auto pasar"
 L["Auto pass BoE"] = "Auto entregar BoE"
 L["Auto Pass Trinkets"] = "Auto pasar abalorios."
 L["Auto Start"] = "Inicio automatico"
+--[[Translation missing --]]
+--[[ L["Auto Trade"] = ""--]] 
 L["auto_award_desc"] = "Activa Recompensa Automatica."
 L["auto_award_to_desc"] = "El jugador a recompensar automaticamente. Una lista seleccionable de miembros de la raid aparece si se está en un grupo de raid."
 L["auto_close_desc"] = "marca la casilla para cerrar la ventana de votación cuando el Maestro despojador termine la sesión"
@@ -368,6 +370,8 @@ L["open_the_loot_history_desc"] = "Pulsar para abrir historial de botin"
 L["Opens the synchronizer"] = "Abrir el sincronizador"
 --[[Translation missing --]]
 --[[ L["opt_addButton_desc"] = ""--]] 
+--[[Translation missing --]]
+--[[ L["opt_autoTrade_desc"] = ""--]] 
 --[[Translation missing --]]
 --[[ L["opt_buttonsGroup_desc"] = ""--]] 
 --[[Translation missing --]]

@@ -78,6 +78,8 @@ L["Auto Pass"] = "自動放棄"
 L["Auto pass BoE"] = "自動放棄裝綁"
 L["Auto Pass Trinkets"] = "自動放棄飾品"
 L["Auto Start"] = "自動開始"
+--[[Translation missing --]]
+--[[ L["Auto Trade"] = ""--]] 
 L["auto_award_desc"] = "啓用自動分配"
 L["auto_award_to_desc"] = "自動獲得物品的玩家"
 L["auto_close_desc"] = "分裝者結束分裝程序後自動關閉投票視窗"
@@ -310,6 +312,8 @@ L["Open the Loot History"] = "開啟拾取歷史"
 L["open_the_loot_history_desc"] = "打開拾取歷史"
 L["Opens the synchronizer"] = "開啟同步"
 L["opt_addButton_desc"] = "對選擇部位增加新的按鈕群組"
+--[[Translation missing --]]
+--[[ L["opt_autoTrade_desc"] = ""--]] 
 --[[Translation missing --]]
 --[[ L["opt_buttonsGroup_desc"] = ""--]] 
 L["opt_deleteDate_confirm"] = "你確定你要將比選項舊的紀錄刪除嗎? 刪除後無法復原。"

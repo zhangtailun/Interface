@@ -95,6 +95,8 @@ L["Auto pass BoE"] = "Passer automatiquement sur les objets LqE"
 --[[Translation missing --]]
 --[[ L["Auto Pass Trinkets"] = ""--]] 
 L["Auto Start"] = "Lancement automatique"
+--[[Translation missing --]]
+--[[ L["Auto Trade"] = ""--]] 
 L["auto_award_desc"] = "Active l'attribution automatique."
 L["auto_award_to_desc"] = "Joueur à qui les objets seront automatiquement attribués. Une liste de sélection des membres du raid s'affichera si vous êtes dans un groupe de raid. "
 L["auto_close_desc"] = "Cocher pour fermer la fenêtre de vote automatiquement lorsque le Maître de Butin termine la session"
@@ -387,6 +389,8 @@ L["open_the_loot_history_desc"] = "Cliquer pour ouvrir l'historique du butin."
 --[[ L["Opens the synchronizer"] = ""--]] 
 --[[Translation missing --]]
 --[[ L["opt_addButton_desc"] = ""--]] 
+--[[Translation missing --]]
+--[[ L["opt_autoTrade_desc"] = ""--]] 
 --[[Translation missing --]]
 --[[ L["opt_buttonsGroup_desc"] = ""--]] 
 --[[Translation missing --]]

@@ -103,6 +103,8 @@ L["Auto pass BoE"] = "Passar Automaticamente Itens Vinculados ao Equipar"
 --[[ L["Auto Pass Trinkets"] = ""--]] 
 L["Auto Start"] = "Iniciar Automaticamente"
 --[[Translation missing --]]
+--[[ L["Auto Trade"] = ""--]] 
+--[[Translation missing --]]
 --[[ L["auto_award_desc"] = ""--]] 
 --[[Translation missing --]]
 --[[ L["auto_award_to_desc"] = ""--]] 
@@ -544,6 +546,8 @@ L["open"] = "abrir"
 --[[ L["Opens the synchronizer"] = ""--]] 
 --[[Translation missing --]]
 --[[ L["opt_addButton_desc"] = ""--]] 
+--[[Translation missing --]]
+--[[ L["opt_autoTrade_desc"] = ""--]] 
 --[[Translation missing --]]
 --[[ L["opt_buttonsGroup_desc"] = ""--]] 
 --[[Translation missing --]]

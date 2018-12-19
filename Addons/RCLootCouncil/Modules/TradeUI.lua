@@ -3,10 +3,6 @@
 -- @author Potdisc
 -- Create Date : 28/5/2018 16:48:38
 
---[===[@debug@
-if LibDebug then LibDebug() end
---@end-debug@]===]
-
 local addon = LibStub("AceAddon-3.0"):GetAddon("RCLootCouncil")
 local TradeUI = addon:NewModule("RCTradeUI", "AceComm-3.0", "AceEvent-3.0", "AceTimer-3.0")
 addon.TradeUI = TradeUI -- Shorthand for easier access
@@ -140,8 +136,11 @@ function TradeUI:OnEvent_TRADE_SHOW (event, ...)
    local count = self:GetNumAwardedInBagsToTradeWindow()
 
    if count > 0 then
-      -- TODO Make this optionally automatic
-      LibDialog:Spawn("RCLOOTCOUNCIL_TRADE_ADD_ITEM", {count=count})
+      if db.autoTrade then
+         self:AddAwardedInBagsToTradeWindow()
+      else
+         LibDialog:Spawn("RCLOOTCOUNCIL_TRADE_ADD_ITEM", {count=count})
+      end
    end
 end
 

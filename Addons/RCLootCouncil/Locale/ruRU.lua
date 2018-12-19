@@ -117,6 +117,8 @@ L["Auto Award to"] = "Автоматически Вручать"
 --[[ L["Auto Pass Trinkets"] = ""--]] 
 --[[Translation missing --]]
 --[[ L["Auto Start"] = ""--]] 
+--[[Translation missing --]]
+--[[ L["Auto Trade"] = ""--]] 
 L["auto_award_desc"] = "Включить автоматическое распределение"
 L["auto_award_to_desc"] = "Игроки для автоматического распределения. Список игроков для выбора появляется если вы в рейдовой группе."
 --[[Translation missing --]]
@@ -523,6 +525,8 @@ L["open"] = "открыть"
 --[[ L["Opens the synchronizer"] = ""--]] 
 --[[Translation missing --]]
 --[[ L["opt_addButton_desc"] = ""--]] 
+--[[Translation missing --]]
+--[[ L["opt_autoTrade_desc"] = ""--]] 
 --[[Translation missing --]]
 --[[ L["opt_buttonsGroup_desc"] = ""--]] 
 --[[Translation missing --]]

@@ -81,6 +81,8 @@ L["Auto Pass"] = "自动放弃"
 L["Auto pass BoE"] = "自动放弃装绑"
 L["Auto Pass Trinkets"] = "自动放弃饰品"
 L["Auto Start"] = "自动开始"
+--[[Translation missing --]]
+--[[ L["Auto Trade"] = ""--]] 
 L["auto_award_desc"] = "启用自动分配。"
 L["auto_award_to_desc"] = "接受自动分配物品的玩家。当在团队中时，会有一个可选择团队成员的列表。"
 L["auto_close_desc"] = "在战利品分配者结束物品分配时自动关闭投票窗口"
@@ -331,6 +333,8 @@ L["open_the_loot_history_desc"] = "点击打开拾取历史。"
 L["Opens the synchronizer"] = "打开同步界面"
 --[[Translation missing --]]
 --[[ L["opt_addButton_desc"] = ""--]] 
+--[[Translation missing --]]
+--[[ L["opt_autoTrade_desc"] = ""--]] 
 --[[Translation missing --]]
 --[[ L["opt_buttonsGroup_desc"] = ""--]] 
 --[[Translation missing --]]

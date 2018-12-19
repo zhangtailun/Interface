@@ -2,10 +2,6 @@
 -- @author Potdisc
 -- Create Date : 5/24/2012 6:24:55 PM
 
---[===[@debug@
-if LibDebug then LibDebug() end
---@end-debug@]===]
-
 local addon = LibStub("AceAddon-3.0"):GetAddon("RCLootCouncil")
 local L = LibStub("AceLocale-3.0"):GetLocale("RCLootCouncil")
 ------ Options ------
@@ -291,8 +287,14 @@ function addon:OptionsTable()
 								name = L["Frame options"],
 								inline = true,
 								args = {
-									showSpecIcon = {
+									autoTrade = {
 										order = 1,
+										name = L["Auto Trade"],
+										desc = L["opt_autoTrade_desc"],
+										type = "toggle",
+									},
+									showSpecIcon = {
+										order = 2,
 										name = L["Show Spec Icon"],
 										desc = L["show_spec_icon_desc"],
 										type = "toggle",
@@ -437,6 +439,7 @@ function addon:OptionsTable()
 										type = "select",
 										width = "double",
 										values = {
+											[1544515200] = "Patch 8.1.0",
 											[1534154400] = "Patch 8.0.1 (Battle for Azeroth)",
 											[1510225200] = "Patch 7.3.2 (Tier 21)",
 											[1497348000] = "Patch 7.2.5 (Tier 20)",
