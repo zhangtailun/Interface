@@ -1,13 +1,13 @@
 ------------------------------------------------------------------------
-r434 | Zensunim | 2018-12-14 03:25:58 +0000 (Fri, 14 Dec 2018) | 3 lines
+r436 | Zensunim | 2018-12-21 03:39:10 +0000 (Fri, 21 Dec 2018) | 2 lines
 Changed paths:
    M /trunk/GTFO.lua
    M /trunk/GTFO.toc
    M /trunk/GTFO_Fail_BFA.lua
+   M /trunk/GTFO_Spells_BFA.lua
    M /trunk/ReadMe.txt
 
-4.46.11
-* Updated for patch 8.1
+4.46.12
 * Added Battle for Azeroth spells (world)
 ------------------------------------------------------------------------
 
