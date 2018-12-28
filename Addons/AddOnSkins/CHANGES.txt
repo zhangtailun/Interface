@@ -1,28 +1,41 @@
-lightweight tag 8ef56d3862a1977d3b1883c7813b72552c4faf7b 4.07
-Author:	Azilroka <darktemplar9900@yahoo.com>
-Date:	Thu Dec 20 16:16:23 2018 -0600
+Changes since tag 4.07
 
-commit 8ef56d3862a1977d3b1883c7813b72552c4faf7b
+commit 4c4a74b516b88f7a5b494fadae64c0ab63f760f4
 Author: Azilroka <darktemplar9900@yahoo.com>
-Date:   Thu Dec 20 16:16:23 2018 -0600
+Date:   Thu Dec 27 17:56:58 2018 -0600
 
-    4.07
+    Theme & Shadows (WIP)
 
-commit e5445b7ac4114766a873093ef8f0f1b445482646
+commit 8dd006cb42b700018c117cf4707df0b88fb78595
 Author: Azilroka <darktemplar9900@yahoo.com>
-Date:   Thu Dec 20 16:13:12 2018 -0600
+Date:   Wed Dec 26 21:42:32 2018 -0600
 
-    Ace3 Hard Copy
+    Azerite / Allied Races
 
-commit 1a5dd0a539853dff7e7de1bf7cd78e6b719c537d
+commit b59f8e6d70b26374df7d70fd43f52265a87645dc
 Author: Azilroka <darktemplar9900@yahoo.com>
-Date:   Thu Dec 20 16:09:20 2018 -0600
+Date:   Mon Dec 24 12:24:26 2018 -0600
 
-    Ace3 External Attempt 2
+    World Map / Quest
 
-commit 5a9ccaf0df0a92db75b09e54ed7a33f2a4789202
+commit 4e66795af2304813d2639a7fe704b39da9d97366
 Author: Azilroka <darktemplar9900@yahoo.com>
-Date:   Thu Dec 20 16:04:07 2018 -0600
+Date:   Thu Dec 20 19:25:48 2018 -0600
 
-    Ace3 External
+    Ace3 SubModul
+    
+    
+    Added submodule Libs/Ace3
+
+commit 52ed705848cc6b2e313a36ffa8b5717c2a8d3463
+Author: Azilroka <darktemplar9900@yahoo.com>
+Date:   Thu Dec 20 19:20:01 2018 -0600
+
+    Yea...
+
+commit cc0140229bde5ec751dd31d1e811001028a24340
+Author: Azilroka <darktemplar9900@yahoo.com>
+Date:   Thu Dec 20 19:17:49 2018 -0600
+
+    Retry this.. Torhal saved the day?
 
