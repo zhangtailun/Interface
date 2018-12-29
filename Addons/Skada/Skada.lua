@@ -1,4 +1,4 @@
-local Skada = LibStub("AceAddon-3.0"):NewAddon("Skada", "AceTimer-3.0", "LibNotify-1.0")
+﻿local Skada = LibStub("AceAddon-3.0"):NewAddon("Skada", "AceTimer-3.0", "LibNotify-1.0")
 _G.Skada = Skada
 
 local L = LibStub("AceLocale-3.0"):GetLocale("Skada", false)
@@ -885,7 +885,7 @@ function Skada:Report(channel, chantype, report_mode_name, report_set_name, max,
 		if data.id then
 			local label = data.reportlabel or (data.spellid and GetSpellLink(data.spellid)) or data.label
 			if report_mode.metadata and report_mode.metadata.showspots then
-				sendchat(("%2u. %s   %s"):format(nr, label, data.valuetext), channel, chantype)
+				sendchat(("%2u. %s %s   %s"):format(nr, (data.specname and "["..data.specname.."]" or ""), label, data.valuetext), channel, chantype)
 			else
 				sendchat(("%s   %s"):format(label, data.valuetext), channel, chantype)
 			end
@@ -2147,15 +2147,36 @@ end
 function Skada:FormatNumber(number)
 	if number then
 		if self.db.profile.numberformat == 1 then
-			if number > 1000000000 then
-				return ("%02.3fB"):format(number / 1000000000)
-			elseif number > 1000000 then
-				return ("%02.2fM"):format(number / 1000000)
-			elseif number > 9999 then
-				return ("%02.1fK"):format(number / 1000)
-			end
+			if ( GetLocale() == "zhCN" ) then
+				if number >= 1e8 then
+					return     ("%.2f亿"):format(number / 1e8)
+					--return     ("%02.2f亿"):format(number / 1e8)
+				elseif number >= 1e4 then
+					return     ("%.1f万"):format(number / 1e4)
+					--return     ("%02.1f万"):format(number / 1e4)
+				else
+					return 		("%d"):format(number)
+				end
+			elseif ( GetLocale() == "zhTW" ) then
+				if number >= 1e8 then
+					return     ("%.2f億"):format(number / 1e8)
+				elseif number >= 1e4 then
+					return     ("%.1f萬"):format(number / 1e4)
+				else
+					return 		("%d"):format(number)
+				end
+			else
+				if number >= 1e6 then
+					return     ("%02.2fM"):format(number / 1e6)
+				elseif number >= 1e3 then
+					return     ("%02.2fK"):format(number / 1e3)
+				else
+					return 		("%d"):format(number)
+				end
+            end
+		else
+			return math.floor(number)
 		end
-		return math.floor(number)
 	end
 end
 
@@ -2813,6 +2834,7 @@ do
 		if type(SkadaPerCharDB) ~= "table" then SkadaPerCharDB = {} end
 		self.char = SkadaPerCharDB
 		self.char.sets = self.char.sets or {}
+		self.char.cached_specs = self.char.cached_specs or {}
 		LibStub("AceConfigRegistry-3.0"):RegisterOptionsTable("Skada", self.options, true)
 
 		-- Profiles

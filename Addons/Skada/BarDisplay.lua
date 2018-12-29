@@ -11,10 +11,14 @@ local Skada = Skada
 local mod = Skada:NewModule("BarDisplay", "SpecializedLibBars-1.0")
 local libwindow = LibStub("LibWindow-1.1")
 local media = LibStub("LibSharedMedia-3.0")
+local LibGroupInSpecT = LibStub ("LibGroupInSpecT-1.1") 
 
 -- Aliases
 local table_sort = _G.table.sort
 local next, pairs, ipairs, type = next, pairs, ipairs, type
+local GetSpecializationInfoByID = GetSpecializationInfoByID
+local GetSpecializationInfo = GetSpecializationInfo
+local GetSpecialization = GetSpecialization
 
 --
 -- Display implementation.
@@ -24,6 +28,19 @@ local next, pairs, ipairs, type = next, pairs, ipairs, type
 mod.name = L["Bar display"]
 mod.description = L["Bar display is the normal bar window used by most damage meters. It can be extensively styled."]
 Skada:AddDisplaySystem("bar", mod)
+if (LibGroupInSpecT) then
+	function mod:LibGroupInSpecT_UpdateReceived (event, guid, unitid, info)
+		--> update spec
+		if (info.global_spec_id and info.global_spec_id ~= 0) then
+			--if (not mod.class_specs_coords [info.global_spec_id]) then
+				--print ("Skada: Spec Id Invalid:", info.global_spec_id, info.name)
+			--else
+				Skada.char.cached_specs[guid] = info.global_spec_id
+			--end
+		end
+	end
+	LibGroupInSpecT.RegisterCallback (mod, "GroupInSpecT_Update", "LibGroupInSpecT_UpdateReceived")
+end
 
 -- Called when a Skada window starts using this display provider.
 function mod:Create(window)
@@ -252,12 +269,12 @@ function mod:Update(win)
 	end
 
 	-- Find out if we have icons in this update, and if so, adjust accordingly.
-	local hasicon = false
-	for i, data in ipairs(win.dataset) do
-		if (data.icon and not data.ignore) or (data.class and win.db.classicons) or (data.role and win.db.roleicons) then
-			hasicon = true
-		end
-	end
+	local hasicon = win.db.specicons
+	-- for i, data in ipairs(win.dataset) do
+		-- if (data.icon and not data.ignore) or (data.class and win.db.classicons) or (data.role and win.db.roleicons) or (data.spec and win.db.specicons) then
+			-- hasicon = true
+		-- end
+	-- end
 
 	if hasicon and not win.bargroup.showIcon then
 		win.bargroup:ShowIcon()
@@ -342,7 +359,25 @@ function mod:Update(win)
 				else
 					bar.missingclass = nil
 				end
-                
+
+				if win.db.specicons and (not data.spec or (Skada.char.cached_specs[barid] and data.spec and Skada.char.cached_specs[barid] ~= data.spec)) then
+					if Skada.char.cached_specs[barid] then
+						data.spec = Skada.char.cached_specs[barid]
+						local _
+						_, data.specname = GetSpecializationInfoByID(data.spec)
+					elseif barid == UnitGUID("player") then
+						local specid, specname = GetSpecializationInfo(GetSpecialization())
+						Skada.char.cached_specs[barid] = specid
+						data.spec = specid
+						data.specname = specname
+					end
+				end
+
+				if data.spec and win.db.specicons then
+					bar:ShowIcon()
+					bar:SetIcon(select(4, GetSpecializationInfoByID(data.spec)))
+				end
+
 				if data.role and data.role ~= "NONE" and win.db.roleicons then
 					bar:ShowIcon()
                     --bar:SetIconWithCoord("Interface\\LFGFrame\\UI-LFG-ICON-ROLES", GetTexCoordsForRole(data.role))
@@ -817,12 +852,24 @@ function mod:AddDisplayOptions(win, options)
 		         			Skada:ApplySettings()
 			        	end,
 			},
-            
+
+			specicons = {
+				type="toggle",
+				name=L["Always show spec icon"],
+				desc=L["Keeps the player shown last even if there is not enough space."],
+				order=35,
+				get=function() return db.specicons end,
+				set=function() 
+					db.specicons = not db.specicons
+					Skada:ApplySettings()
+				end,
+			},
+
 			spellschoolcolors = {
 			        type="toggle",
 			        name=L["Spell school colors"],
 			        desc=L["Use spell school colors where applicable."],
-			        order=33,
+			        order=34,
 			        get=function() return db.spellschoolcolors end,
 			        set=function()
 			        		db.spellschoolcolors = not db.spellschoolcolors
@@ -846,7 +893,7 @@ function mod:AddDisplayOptions(win, options)
 			        type="toggle",
 			        name=L["Smooth bars"],
 			        desc=L["Animate bar changes smoothly rather than immediately."],
-			        order=34,
+			        order=36,
 			        get=function() return db.smoothing end,
 			        set=function()
 			        		db.smoothing = not db.smoothing
