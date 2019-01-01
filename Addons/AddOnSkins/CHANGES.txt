@@ -1,5 +1,11 @@
 Changes since tag 4.07
 
+commit d39290ceff1be0c4c7fbeffd3d455a7dfdf608de
+Author: Merathilis <neo0608@gmail.com>
+Date:   Fri Dec 28 12:29:40 2018 +0100
+
+    Fix typo.
+
 commit 4c4a74b516b88f7a5b494fadae64c0ab63f760f4
 Author: Azilroka <darktemplar9900@yahoo.com>
 Date:   Thu Dec 27 17:56:58 2018 -0600

@@ -6,7 +6,7 @@ local _G = _G
 -- Lua
 local format, ipairs, max, min, next, pairs, select, tconcat, tonumber, tremove, twipe = format, ipairs, max, min, next, pairs, select, table.concat, tonumber, tremove, table.wipe
 -- WoW
-local Ambiguate, BNGetGameAccountInfoByGUID, C_Timer_After, ChatTypeInfo, GetAchievementLink, GetItemInfo, GetPlayerInfoByGUID, GetTime, IsCharacterFriend, IsGUIDInGroup, IsGuildMember, RAID_CLASS_COLORS = Ambiguate, BNGetGameAccountInfoByGUID, C_Timer.After, ChatTypeInfo, GetAchievementLink, GetItemInfo, GetPlayerInfoByGUID, GetTime, IsCharacterFriend, IsGUIDInGroup, IsGuildMember, RAID_CLASS_COLORS
+local Ambiguate, BNGetGameAccountInfoByGUID, C_Timer_After, ChatTypeInfo, GetAchievementLink, GetItemInfo, GetPlayerInfoByGUID, GetTime, C_FriendList_IsFriend, IsGUIDInGroup, IsGuildMember, RAID_CLASS_COLORS = Ambiguate, BNGetGameAccountInfoByGUID, C_Timer.After, ChatTypeInfo, GetAchievementLink, GetItemInfo, GetPlayerInfoByGUID, GetTime, C_FriendList.IsFriend, IsGUIDInGroup, IsGuildMember, RAID_CLASS_COLORS
 
 -- GLOBALS: NUM_CHAT_WINDOWS
 
@@ -32,7 +32,7 @@ local UTF8Symbols = {
 	["\t"]='',["\n"]='',["\r"]='',[" "]='',
 }
 local RaidAlertTagList = {"%*%*.+%*%*", "EUI[:_]", "|Hspell.+[=>%-]> ", "受伤源自 |Hspell", "已打断.*|Hspell", "→|Hspell", "打断：.+|Hspell", "打断.+>.+<", "<iLvl>", "^%-+$", "<EH>"}
-local QuestReportTagList = {"任务进度提示", "任务完成[%)%-]", "<大脚", "接受任务[%]:%-]", "进度:.+: %d+/%d+", "【爱不易】", "任务.*%[%d+%].+ 已完成!", "%[World Quest Tracker%]", "一起来做世界任务<"}
+local QuestReportTagList = {"任务进度提示", "任务完成[%)%-]", "<大脚", "接受任务[%]:%-]", "进度:.+: %d+/%d+", "【爱不易】", "任务.*%[%d+%].+ 已完成!"}
 local NormalTagList = {"<LFG>"}
 local AggressiveTagList = {"|Hjournal"}
 G.RegexCharList = "[().%%%+%-%*?%[%]$^{}]" -- won't work on regex blackWord, but works on others
@@ -82,8 +82,7 @@ end
 local last, this = {}, {}
 local function strDiff(sA, sB) -- arrays of bytes
 	local len_a, len_b = #sA, #sB
-	twipe(last)
-	twipe(this)
+	local last, this = last, this
 	for j=0, len_b do last[j+1] = j end
 	for i=1, len_a do
 		this[1] = i
@@ -200,6 +199,7 @@ local function ECFfilter(Event,msg,player,flags,IsMyFriend,good)
 
 	--Repeat Filter
 	if filtersStatus[7] and not IsMyFriend then
+		local chatLines = chatLines
 		local chatLinesSize = #chatLines
 		chatLines[chatLinesSize+1] = msgtable
 		for i=1, chatLinesSize do
@@ -217,19 +217,19 @@ end
 local prevLineID, filterResult = 0, false
 local function ECFfilterRecord(self,event,msg,player,_,_,_,flags,_,_,_,_,lineID,guid)
 	-- if it has been worked then use the worked result
-	if lineID == prevLineID then return filterResult end
-	prevLineID = lineID
+	if lineID ~= prevLineID then
+		prevLineID = lineID
 
-	player = Ambiguate(player, "none")
-	local IsMyFriend, good
-	if guid then
-		IsMyFriend = BNGetGameAccountInfoByGUID(guid) or IsCharacterFriend(guid)
-		good = IsMyFriend or IsGuildMember(guid) or IsGUIDInGroup(guid)
+		player = Ambiguate(player, "none")
+		local IsMyFriend, good
+		if guid then
+			IsMyFriend = BNGetGameAccountInfoByGUID(guid) or C_FriendList_IsFriend(guid)
+			good = IsMyFriend or IsGuildMember(guid) or IsGUIDInGroup(guid)
+		end
+		filterResult = ECFfilter(chatChannels[event],msg,player,flags,IsMyFriend,good)
+
+		if filterResult and not good then playerCache[player] = playerCache[player] + 1 end
 	end
-	filterResult = ECFfilter(chatChannels[event],msg,player,flags,IsMyFriend,good)
-
-	if filterResult and not good then playerCache[player] = playerCache[player] + 1 end
-
 	return filterResult
 end
 for event in pairs(chatChannels) do ChatFrame_AddMessageEventFilter(event, ECFfilterRecord) end
