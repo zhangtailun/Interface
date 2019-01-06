@@ -1,5 +1,11 @@
 Changes since tag 4.07
 
+commit f3a46bb172f042aec3ed2ce25c22d9a3409499f5
+Author: Azilroka <darktemplar9900@yahoo.com>
+Date:   Thu Jan 3 22:55:20 2019 -0600
+
+    Order Hall / WorldMap
+
 commit d39290ceff1be0c4c7fbeffd3d455a7dfdf608de
 Author: Merathilis <neo0608@gmail.com>
 Date:   Fri Dec 28 12:29:40 2018 +0100
