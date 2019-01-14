@@ -1,0 +1,17 @@
+## Interface: 80000
+## Title: Details Encounter (plugin)
+## Notes: Plugin for Details
+## RequiredDeps: Details
+## OptionalDeps: Ace3
+## SavedVariablesPerCharacter: EncounterDetailsDB
+
+
+#@no-lib-strip@
+embeds.xml
+#@end-no-lib-strip@
+
+enUS.lua
+ptBR.lua
+frames.lua
+
+Details_EncounterDetails.lua
