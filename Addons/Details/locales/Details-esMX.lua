@@ -1384,8 +1384,6 @@ L["STRING_OPTIONS_SPELL_REMOVE"] = "Eliminar"
 L["STRING_OPTIONS_SPELL_RESET"] = "Restablecer"
 L["STRING_OPTIONS_SPELL_SPELLID"] = "ID de hechizo"
 --[[Translation missing --]]
---[[ L["STRING_OPTIONS_SPELL_SPELLID_DESC"] = ""--]] 
---[[Translation missing --]]
 --[[ L["STRING_OPTIONS_STRETCH"] = ""--]] 
 --[[Translation missing --]]
 --[[ L["STRING_OPTIONS_STRETCH_DESC"] = ""--]] 

@@ -1139,12 +1139,6 @@ L["STRING_OPTIONS_SPELL_NAME"] = "名稱"
 L["STRING_OPTIONS_SPELL_REMOVE"] = "移除"
 L["STRING_OPTIONS_SPELL_RESET"] = "重置"
 L["STRING_OPTIONS_SPELL_SPELLID"] = "法術ID"
-L["STRING_OPTIONS_SPELL_SPELLID_DESC"] = [=[所謂 ID 是一個"魔獸世界"內法術的唯一識別碼。有很多方法可以獲得這個數字:
-
--在玩家詳細信息窗口上, 按住 shift 並停留在法術欄上。
--在 法術ID(Spell Id) 欄位中鍵入法術名稱, 用建議的法術顯示工具提示。
--社區網站, 大多數都有 spellid 的位址連結。例:wowhead
--瀏覽下面的法術緩存:]=]
 --[[Translation missing --]]
 --[[ L["STRING_OPTIONS_STRETCH"] = ""--]] 
 --[[Translation missing --]]
@@ -1527,9 +1521,7 @@ L["STRING_SEGMENT_TRASH"] = "垃圾清理"
 L["STRING_SEGMENTS"] = "片段(記錄)"
 L["STRING_SEGMENTS_LIST_BOSS"] = "首領戰"
 L["STRING_SEGMENTS_LIST_COMBATTIME"] = "戰鬥時間"
-L["STRING_SEGMENTS_LIST_OVERALL"] = [=[整體
-
-]=]
+L["STRING_SEGMENTS_LIST_OVERALL"] = "整體"
 L["STRING_SEGMENTS_LIST_TIMEINCOMBAT"] = "戰鬥時間"
 L["STRING_SEGMENTS_LIST_TOTALTIME"] = "總時間"
 L["STRING_SEGMENTS_LIST_TRASH"] = "垃圾"

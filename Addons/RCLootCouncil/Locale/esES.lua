@@ -241,10 +241,14 @@ L["EQdkp-Plus XML output, tailored for Enjin import."] = "Exportar para EQdkp-Pl
 --[[ L["error_test_as_non_leader"] = ""--]] 
 L["Everyone have voted"] = "Todos han votado"
 L["Export"] = "Exportar"
+--[[Translation missing --]]
+--[[ L["Fake Loot"] = ""--]] 
 L["Following items were registered in the award later list:"] = "Los siguientes objetos no están registrados en la lista de recompensar mas tarde"
 L["Following winners was registered:"] = "El seguimiento de los ganadores fue regristrado"
 L["Frame options"] = "Cuadro de opciones"
 L["Free"] = "Gratis"
+--[[Translation missing --]]
+--[[ L["Full Bags"] = ""--]] 
 L["g1"] = true
 L["g2"] = true
 --[[Translation missing --]]
@@ -289,12 +293,16 @@ L["log_desc"] = "Permite incluir botin en el historial"
 L["Loot announced, waiting for answer"] = "Botin anunciado, esperando respuesta"
 L["Loot Everything"] = "Todo el botin"
 L["Loot History"] = "Hitorial de botin"
+--[[Translation missing --]]
+--[[ L["Loot Status"] = ""--]] 
 L["Loot won:"] = "objetos ganados:"
 L["loot_everything_desc"] = "Activar auto botin de no equipo ( monturas,mascotas,etc)"
 L["loot_history_desc"] = [=[RCLootCouncil registra automaticamente informacion relevante de sesiones.
 Los datos se almacena en "... / SavedVariables/RCLootCouncil.lua".
 
 Nota: Los NO Maestros despojadores pueden guardar solo datos que el el Maestro despojador a mostrado]=]
+--[[Translation missing --]]
+--[[ L["Looted"] = ""--]] 
 --[[Translation missing --]]
 --[[ L["Looted by:"] = ""--]] 
 L["Looting options"] = "Opciones de botin"
@@ -396,6 +404,8 @@ L["Opens the synchronizer"] = "Abrir el sincronizador"
 --[[ L["opt_rejectTrade_Desc"] = ""--]] 
 --[[Translation missing --]]
 --[[ L["opt_rejectTrade_Name"] = ""--]] 
+--[[Translation missing --]]
+--[[ L["Original Owner"] = ""--]] 
 --[[Translation missing --]]
 --[[ L["Out of instance"] = ""--]] 
 --[[Translation missing --]]
@@ -592,6 +602,8 @@ L["Unable to give out loot without the loot window open."] = "Incapaz de dar a c
 L["Unguilded"] = "Sin Hermandad"
 L["Unknown date"] = "Fecha desconocida"
 L["Unknown/Chest"] = "Desconocido "
+--[[Translation missing --]]
+--[[ L["Unlooted"] = ""--]] 
 L["Unvote"] = true
 L["Upper Quality Limit"] = "Limite Superior de Calidad"
 L["upper_quality_limit_desc"] = [=[Seleccionar la calidad mas alta de los objetos a repartir automaticamente (calidad seleccionada incluida)

@@ -254,11 +254,15 @@ L["EQdkp-Plus XML output, tailored for Enjin import."] = "Exporter en EQdkp-Plus
 L["Everyone have voted"] = "Tout le monde a voté"
 L["Export"] = "Exporter"
 --[[Translation missing --]]
+--[[ L["Fake Loot"] = ""--]] 
+--[[Translation missing --]]
 --[[ L["Following items were registered in the award later list:"] = ""--]] 
 L["Following winners was registered:"] = "Les vainqueurs suivants ont été répertoriés :"
 --[[Translation missing --]]
 --[[ L["Frame options"] = ""--]] 
 L["Free"] = "Gratuit"
+--[[Translation missing --]]
+--[[ L["Full Bags"] = ""--]] 
 L["g1"] = true
 L["g2"] = true
 --[[Translation missing --]]
@@ -305,11 +309,15 @@ L["log_desc"] = "Active le répertoriage dans l'historique du butin."
 L["Loot announced, waiting for answer"] = "Butin divulgué, en attente d'une réponse"
 L["Loot Everything"] = "Tout fouiller"
 L["Loot History"] = "Historique du butin"
+--[[Translation missing --]]
+--[[ L["Loot Status"] = ""--]] 
 L["Loot won:"] = "Butin remporté :"
 L["loot_everything_desc"] = "Active la fouille automatique des non-objets (p. ex. les montures, les jetons de sets de tier)"
 L["loot_history_desc"] = [=[RCLootCouncil enregistre automatiquement les informations pertinentes durant les sessions.
 Les données brutes sont enregistrées dans le fichier ".../SavedVariables/RCLootCouncil.lua".
 Remarque : les joueurs autres que le maître du butin peuvent uniquement enregistrer les données qui leur sont envoyées par ce dernier.]=]
+--[[Translation missing --]]
+--[[ L["Looted"] = ""--]] 
 --[[Translation missing --]]
 --[[ L["Looted by:"] = ""--]] 
 L["Looting options"] = "Paramètres de fouille"
@@ -415,6 +423,8 @@ L["open_the_loot_history_desc"] = "Cliquer pour ouvrir l'historique du butin."
 --[[ L["opt_rejectTrade_Desc"] = ""--]] 
 --[[Translation missing --]]
 --[[ L["opt_rejectTrade_Name"] = ""--]] 
+--[[Translation missing --]]
+--[[ L["Original Owner"] = ""--]] 
 --[[Translation missing --]]
 --[[ L["Out of instance"] = ""--]] 
 --[[Translation missing --]]
@@ -617,6 +627,8 @@ L["Unable to give out loot without the loot window open."] = "Impossible d'attri
 L["Unguilded"] = "Sans guilde"
 L["Unknown date"] = "Date inconnue"
 L["Unknown/Chest"] = "Inconnu / Plastron"
+--[[Translation missing --]]
+--[[ L["Unlooted"] = ""--]] 
 L["Unvote"] = "Annuler"
 L["Upper Quality Limit"] = "Seuil supérieur de qualité"
 L["upper_quality_limit_desc"] = [=[Déterminez le seuil supérieur de qualité des objets qui seront automatiquement attribués (cette qualité est comprise).

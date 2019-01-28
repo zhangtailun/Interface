@@ -1115,12 +1115,6 @@ L["STRING_OPTIONS_SPELL_NOTFOUND"] = "Zauber nicht gefunden."
 L["STRING_OPTIONS_SPELL_REMOVE"] = "Entfernen"
 L["STRING_OPTIONS_SPELL_RESET"] = "Zurücksetzen"
 L["STRING_OPTIONS_SPELL_SPELLID"] = "Zauber-ID"
-L["STRING_OPTIONS_SPELL_SPELLID_DESC"] = [=[Eine ID ist eine einzigartige Nummer, um den Zauber in WoW zu identifizieren. Es gibt viele Wege an diese Nummer zu kommen:
-
-- Im Spielerdetail-Fenster durch Gedrückthalten der SHIFT-Taste während der Mauszeiger über der Zauberleiste schwebt.
-- Tippe den Namen in das Zauber-ID-Feld ein und im Tooltip werden Zauber vorgeschlagen.
-- Community-Webseiten - die meisten haben die Zauber-ID in ihrer Webadresse.
-- Indem im unten stehenden Zauber-Cache gesucht wird:]=]
 L["STRING_OPTIONS_STRETCH"] = "Ausweitungsschaltfläche auf der Oberseite"
 L["STRING_OPTIONS_STRETCH_DESC"] = "Platziert die Ausweitungsschaltfläche oberhalb des Fensters."
 L["STRING_OPTIONS_STRETCHTOP"] = "Ausweitungsschaltfläche immer oben"

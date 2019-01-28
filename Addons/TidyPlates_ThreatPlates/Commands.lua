@@ -13,7 +13,7 @@ local function toggleDPS()
 		TP.Print(L["-->>|cffff0000DPS Plates Enabled|r<<--"])
 		TP.Print(L["|cff89F559Threat Plates|r: DPS switch detected, you are now in your |cffff0000dpsing / healing|r role."])
 	end
-	TidyPlatesInternal:ForceUpdate()
+	Addon:ForceUpdate()
 end
 
 local function toggleTANK()
@@ -23,7 +23,7 @@ local function toggleTANK()
 		TP.Print(L["-->>|cff00ff00Tank Plates Enabled|r<<--"])
 		TP.Print(L["|cff89F559Threat Plates|r: Tank switch detected, you are now in your |cff00ff00tanking|r role."])
 	end
-	TidyPlatesInternal:ForceUpdate()
+	Addon:ForceUpdate()
 end
 
 SLASH_TPTPDPS1 = "/tptpdps"
@@ -90,20 +90,22 @@ SlashCmdList["TPTPVERBOSE"] = TPTPVERBOSE
 -- Command: /tptp
 function TidyPlatesThreat:ChatCommand(input)
 	TidyPlatesThreat:OpenOptions()
+end
 
+--function TidyPlatesThreat:ChatCommand(input)
 --	local cmd_list = {}
 --	for w in input:gmatch("%S+") do cmd_list[#cmd_list + 1] = w end
 --
 --	local command = cmd_list[1]
 --	if command == "" then
---		-- do something
+--		TidyPlatesThreat:OpenOptions()
 --	elseif command == "help" then
---		PrintHelp()
+--		--PrintHelp()
 --	else
---		t.Print(L["Unknown option: "] .. input, true)
+--		TP.Print(L["Unknown option: "] .. input, true)
 --		PrintHelp()
 --	end
-end
+--end
 
 -----------------------------------------------------
 -- External

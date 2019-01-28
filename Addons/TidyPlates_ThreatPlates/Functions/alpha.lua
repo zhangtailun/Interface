@@ -13,6 +13,10 @@ local UnitExists = UnitExists
 -- ThreatPlates APIs
 local TidyPlatesThreat = TidyPlatesThreat
 
+---------------------------------------------------------------------------------------------------
+-- Functions handling transparency of nameplates
+---------------------------------------------------------------------------------------------------
+
 local function TransparencySituational(unit)
 	local db = TidyPlatesThreat.db.profile.nameplate
 
@@ -160,6 +164,8 @@ local ALPHA_FUNCTIONS = {
 	["NameOnly-Unique"] = AlphaUniqueNameOnly,
 }
 
-function Addon:SetAlpha(unit)
+function Addon:GetAlpha(unit)
   return ALPHA_FUNCTIONS[unit.style](unit, unit.style)
 end
+
+

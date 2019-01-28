@@ -205,10 +205,14 @@ L["EQdkp-Plus XML output, tailored for Enjin import."] = "EQdkp-Plus XML輸出�
 L["error_test_as_non_leader"] = "你無法在隊伍中以非隊長的身分啟動測試"
 L["Everyone have voted"] = "所有投票成員都已投票"
 L["Export"] = "輸出"
+--[[Translation missing --]]
+--[[ L["Fake Loot"] = ""--]] 
 L["Following items were registered in the award later list:"] = "以下物品已被稍后分配列表登記："
 L["Following winners was registered:"] = "下個贏家已登記："
 L["Frame options"] = "框架選項"
 L["Free"] = "自由拾取"
+--[[Translation missing --]]
+--[[ L["Full Bags"] = ""--]] 
 L["g1"] = "1"
 L["g2"] = "2"
 L["Gave the item to you for distribution."] = "將物品給你分配。"
@@ -245,12 +249,16 @@ L["log_desc"] = "啓用拾取歷史記錄"
 L["Loot announced, waiting for answer"] = "拾取已發送，正在等待回應"
 L["Loot Everything"] = "拾取全部"
 L["Loot History"] = "拾取歷史"
+--[[Translation missing --]]
+--[[ L["Loot Status"] = ""--]] 
 L["Loot won:"] = "獲得裝備:"
 L["loot_everything_desc"] = "啓用自動拾取非裝備物品(坐騎、兌換物)"
 L["loot_history_desc"] = [=[RCLootCouncil 將自動記錄分配相關訊息
 原始數據儲存於".../SavedVariables/RCLootCouncil.lua" 
 
 注意: 非分裝者只能記錄來自分裝者發送的數據]=]
+--[[Translation missing --]]
+--[[ L["Looted"] = ""--]] 
 L["Looted by:"] = "拾取人: "
 L["Looting options"] = "拾取選項"
 L["Lower Quality Limit"] = "最低品質"
@@ -334,6 +342,8 @@ L["opt_deleteName_confirm"] = "你確定你要刪除所有 %s 的紀錄嗎? 刪�
 --[[Translation missing --]]
 --[[ L["opt_rejectTrade_Desc"] = ""--]] 
 L["opt_rejectTrade_Name"] = "允許保留裝備"
+--[[Translation missing --]]
+--[[ L["Original Owner"] = ""--]] 
 L["Out of instance"] = "不在副本內"
 --[[Translation missing --]]
 --[[ L["Patch"] = ""--]] 
@@ -480,6 +490,8 @@ L["Unawarded"] = "未分配"
 L["Unguilded"] = "無公會"
 L["Unknown date"] = "日期不明"
 L["Unknown/Chest"] = "未知"
+--[[Translation missing --]]
+--[[ L["Unlooted"] = ""--]] 
 L["Unvote"] = "未投票"
 L["Upper Quality Limit"] = "最高品質"
 L["upper_quality_limit_desc"] = "選擇自動分配時物品的最高品質"

@@ -211,10 +211,14 @@ L["EQdkp-Plus XML output, tailored for Enjin import."] = "EQdkp-Plus-XML-Ausgabe
 --[[ L["error_test_as_non_leader"] = ""--]] 
 L["Everyone have voted"] = "Jeder hat abgestimmt"
 L["Export"] = "Exportieren"
+--[[Translation missing --]]
+--[[ L["Fake Loot"] = ""--]] 
 L["Following items were registered in the award later list:"] = "Die folgenden Gegenstände wurden in die \"Später vergeben\"-Liste eingetragen:"
 L["Following winners was registered:"] = "Die folgenden Gewinner wurden registriert:"
 L["Frame options"] = "Fenstereinstellungen"
 L["Free"] = "Frei"
+--[[Translation missing --]]
+--[[ L["Full Bags"] = ""--]] 
 L["g1"] = true
 L["g2"] = true
 L["Gave the item to you for distribution."] = "Gegenstand wurde Dir zum Verteilen gegeben."
@@ -251,6 +255,8 @@ L["log_desc"] = "Aktiviert den Beuteverlauf."
 L["Loot announced, waiting for answer"] = "Beute angekündigt, warte auf Antwort"
 L["Loot Everything"] = "Alles plündern"
 L["Loot History"] = "Beuteverlauf"
+--[[Translation missing --]]
+--[[ L["Loot Status"] = ""--]] 
 L["Loot won:"] = "Beute gewann:"
 L["loot_everything_desc"] = "Aktiviert das automatische Plündern von nicht anlegbaren Gegenständen (z.B. Reittiere, Tier-Marken)."
 L["loot_history_desc"] = [=[RCLootCouncil zeichnet automatisch relevante Informationen aus Sitzungen auf.
@@ -258,6 +264,8 @@ Die Rohdaten werden in ".../SavedVariables/RCLootCouncil.lua" gespeichert.
 
 Hinweis: Nicht-Plündermeister können nur Daten speichern, die vom Plündermeister gesendet wurden.
 ]=]
+--[[Translation missing --]]
+--[[ L["Looted"] = ""--]] 
 L["Looted by:"] = "Geplündert von:"
 L["Looting options"] = "Plünderoptionen"
 L["Lower Quality Limit"] = "Untere Qualitätsgrenze"
@@ -345,6 +353,8 @@ L["opt_printCompletedTrade_Name"] = "Handelsnachrichten"
 --[[ L["opt_rejectTrade_Desc"] = ""--]] 
 --[[Translation missing --]]
 --[[ L["opt_rejectTrade_Name"] = ""--]] 
+--[[Translation missing --]]
+--[[ L["Original Owner"] = ""--]] 
 L["Out of instance"] = "Keine Instanz"
 L["Patch"] = true
 L["Personal Loot - Non tradeable"] = "Persönliche Beute – Nicht handelbar"
@@ -495,6 +505,8 @@ L["Unawarded"] = "Nicht zugeteilt"
 L["Unguilded"] = "Gildenlos"
 L["Unknown date"] = "Unbekanntes Datum"
 L["Unknown/Chest"] = "Unbekannt/Brust"
+--[[Translation missing --]]
+--[[ L["Unlooted"] = ""--]] 
 L["Unvote"] = "Abwählen"
 L["Upper Quality Limit"] = "Obere Qualitätsgrenze"
 L["upper_quality_limit_desc"] = [=[Wähle die obere Qualitätsgrenze der Gegenstände, die automatisch vergeben werden (Diese Qualität inbegriffen!).

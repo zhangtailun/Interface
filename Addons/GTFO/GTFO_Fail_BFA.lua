@@ -387,6 +387,13 @@ GTFO.SpellID["267385"] = {
   sound = 3;
 };
 
+GTFO.SpellID["265495"] = {
+  --desc = "Static Orb";
+  sound = 3;
+  test = true;
+};
+
+
 -- ******************
 -- * Waycrest Manor *
 -- ******************
@@ -443,6 +450,24 @@ GTFO.SpellID["265352"] = {
   applicationOnly = true;
   sound = 3;
 };
+
+GTFO.SpellID["288922"] = {
+  --desc = "Call Meteor (Aman)";
+  sound = 3;
+};
+
+GTFO.SpellID["288951"] = {
+  --desc = "Burning (Burninator Mark V)";
+  applicationOnly = true;
+  sound = 3;
+};
+
+GTFO.SpellID["288716"] = {
+  --desc = "Fire Fall (Conflagros)";
+  sound = 3;
+};
+
+
 
 -- ************
 -- * Freehold *
@@ -519,6 +544,11 @@ GTFO.SpellID["258199"] = {
 
 GTFO.SpellID["257902"] = {
   --desc = "Shell Bounce (Ludwig Von Tortollan)";
+  sound = 3;
+};
+
+GTFO.SpellID["258352"] = {
+  --desc = "Grapeshot (Captain Eudora)";
   sound = 3;
 };
 
@@ -748,6 +778,12 @@ GTFO.SpellID["258986"] = {
   sound = 3;
 };
 
+GTFO.SpellID["277072"] = {
+  --desc = "Corrupted Gold (Corrupted Gold)";
+  applicationOnly = true;
+  sound = 3;
+};
+
 -- ***************
 -- * King's Rest *
 -- ***************
@@ -969,5 +1005,105 @@ GTFO.SpellID["267700"] = {
   --desc = "Gaze of G'huun (G'huun)";
   applicationOnly = true;
   sound = 3;
+};
+
+--- *************************
+--- * Battle for Dazar'alor *
+--- *************************
+
+GTFO.SpellID["290045"] = {
+  --desc = "Spear Swipe (Rastari Enforcer)";
+  sound = 3;
+  tankSound = 0;
+};
+
+GTFO.SpellID["283617"] = {
+  --desc = "Wave of Light (Ra'wani Kanae)";
+  applicationOnly = true;
+  sound = 3;
+};
+
+GTFO.SpellID["283651"] = {
+  --desc = "Blinding Faith (Zandalari Crusader)";
+  applicationOnly = true;
+  sound = 3;
+};
+
+GTFO.SpellID["284388"] = {
+  --desc = "Phoenix Strike (Anathos Firecaller)";
+  sound = 3;
+};
+
+GTFO.SpellID["284028"] = {
+  --desc = "Multi-Sided Strike";
+  sound = 3;
+};
+
+GTFO.SpellID["282545"] = {
+  --desc = "Deathly Echo (Grong the Revenant)";
+  sound = 3;
+};
+
+GTFO.SpellID["287556"] = {
+  --desc = "Soul Barrage (Vengeful Shrieker)";
+  applicationOnly = true;
+  sound = 3;
+};
+
+GTFO.SpellID["283609"] = {
+  --desc = "Crush (Yalat's Bulwark)";
+  applicationOnly = true;
+  sound = 3;
+};
+
+GTFO.SpellID["283610"] = {
+  --desc = "Crush (Yalat's Bulwark)";
+  applicationOnly = true;
+  sound = 3;
+};
+
+GTFO.SpellID["286040"] = {
+  --desc = "Gold Burst (Spirit of Gold)";
+  sound = 3;
+};
+
+GTFO.SpellID["283574"] = {
+  --desc = "Volatile Charge (The Hand of In'zashi)";
+  sound = 3;
+};
+
+GTFO.SpellID["283557"] = {
+  --desc = "Volatile Charge (The Hand of In'zashi)";
+  sound = 4;
+  ignoreSelfInflicted = true;
+};
+
+GTFO.SpellID["289238"] = {
+  --desc = "Static Lightning (Echo of Akunda)";
+  sound = 3;
+};
+
+GTFO.SpellID["282444"] = {
+  --desc = "Lacerating Claws (Kimbul's Aspect)";
+  sound = 3;
+  tankSound = 0;
+  applicationOnly = true;
+};
+
+GTFO.SpellID["282411"] = {
+  --desc = "Thundering Storm (Akunda's Aspect)";
+  sound = 3;
+  applicationOnly = true;
+};
+
+GTFO.SpellID["282636"] = {
+  --desc = "Krag'wa's Wrath (Krag'wa)";
+  sound = 3;
+};
+
+GTFO.SpellID["286838"] = {
+  --desc = "Static Orb (Akunda's Aspect)";
+  sound = 3;
+  applicationOnly = true;
 };
 

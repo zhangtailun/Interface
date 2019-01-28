@@ -53,7 +53,7 @@ L["STRING_ATTRIBUTE_HEAL_OVERHEAL"] = "Избыточное исцеление"
 L["STRING_ATTRIBUTE_HEAL_PREVENT"] = "Урона предотвращено"
 L["STRING_ATTRIBUTE_HEAL_TAKEN"] = "Получено лечения"
 L["STRING_ATTRIBUTE_MISC"] = "Разное"
-L["STRING_ATTRIBUTE_MISC_BUFF_UPTIME"] = "время действия баффов"
+L["STRING_ATTRIBUTE_MISC_BUFF_UPTIME"] = "Время действия баффов"
 L["STRING_ATTRIBUTE_MISC_CCBREAK"] = "Сбитие контроля"
 L["STRING_ATTRIBUTE_MISC_DEAD"] = "Смерти"
 L["STRING_ATTRIBUTE_MISC_DEBUFF_UPTIME"] = "Время действия дебаффов"
@@ -1128,13 +1128,6 @@ L["STRING_OPTIONS_SPELL_NOTFOUND"] = "Заклинание не найдено."
 L["STRING_OPTIONS_SPELL_REMOVE"] = "Удалить"
 L["STRING_OPTIONS_SPELL_RESET"] = "Сбросить"
 L["STRING_OPTIONS_SPELL_SPELLID"] = "ID заклинания"
-L["STRING_OPTIONS_SPELL_SPELLID_DESC"] = [=[ID - это уникальный номер для идентификации заклинаний в World of Warcraft.
-Есть много способов, чтобы получить эти числа:
-
-- В окне Details игрока, удерживайте клавишу Shift, а после наведите на полосы заклинаний.
-- Введите название заклинания в поле Id Заклинание, появиться подсказка с предложенными заклинаниями.
-- Веб-сайты сообщества большинство из которых имеют id заклинания в адресной ссылке.
-- Просмотр кэша заклинаний ниже:]=]
 L["STRING_OPTIONS_STRETCH"] = "Кнопка растягивания сверху"
 L["STRING_OPTIONS_STRETCH_DESC"] = "Расположить кнопку растягивания в верхней части окна."
 L["STRING_OPTIONS_STRETCHTOP"] = "Кнопка растягивать всегда поверх всех"
@@ -1674,7 +1667,7 @@ L["STRING_WELCOME_75"] = "Кириллица"
 L["STRING_WELCOME_76"] = "Китай"
 L["STRING_WELCOME_77"] = "Корея"
 L["STRING_WELCOME_78"] = "Тайвань"
-L["STRING_WELCOME_79"] = "Создать 2-рое окно"
+L["STRING_WELCOME_79"] = "Создать второе окно"
 L["STRING_WINDOW_NOTFOUND"] = "Окно не найдено."
 L["STRING_WINDOW_NUMBER"] = "номер окна"
 L["STRING_WINDOW1ATACH_DESC"] = "Чтобы создать группу окон, перетащите окно #2 рядом с окном #1."

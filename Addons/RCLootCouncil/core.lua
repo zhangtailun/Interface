@@ -114,9 +114,9 @@ function RCLootCouncil:OnInitialize()
 	self.verCheckDisplayed = false -- Have we shown a "out-of-date"?
 	self.moduleVerCheckDisplayed = {} -- Have we shown a "out-of-date" for a module? The key of the table is the baseName of the module.
 
-	self.EJLastestInstanceID = 1031 -- UPDATE this whenever we change test data.
+	self.EJLastestInstanceID = 1176 -- UPDATE this whenever we change test data.
 									-- The lastest raid instance Enouncter Journal id.
-									-- Uldir
+									-- Battle of Dazar'alor
 									-- HOWTO get this number: Open the instance we want in the Adventure Journal. Use command '/dump EJ_GetInstanceInfo()'
 									-- The 8th return value is sth like "|cff66bbff|Hjournal:0:946:14|h[Antorus, the Burning Throne]|h|r"
 									-- The number at the position of the above 946 is what we want.
@@ -433,7 +433,6 @@ function RCLootCouncil:OnEnable()
 	self:RegisterEvent("PLAYER_REGEN_ENABLED", "LeaveCombat")
 	self:RegisterEvent("ENCOUNTER_START", "OnEvent")
 	self:RegisterEvent("ENCOUNTER_END", 	"OnEvent")
-	self:RegisterEvent("LOOT_OPENED",		"OnEvent")
 	self:RegisterEvent("LOOT_SLOT_CLEARED", "OnEvent")
 	self:RegisterEvent("LOOT_CLOSED",		"OnEvent")
 	self:RegisterEvent("LOOT_READY", "OnEvent")
@@ -765,9 +764,9 @@ function RCLootCouncil:SendCommand(target, command, ...)
 
 	if target == "group" then
 		if IsInRaid() then -- Raid
-			self:SendCommMessage("RCLootCouncil", toSend, IsPartyLFG() and "INSTANCE_CHAT" or "RAID")
+			self:SendCommMessage("RCLootCouncil", toSend, self.Utils:IsInNonInstance() and "INSTANCE_CHAT" or "RAID")
 		elseif IsInGroup() then -- Party
-			self:SendCommMessage("RCLootCouncil", toSend, IsPartyLFG() and "INSTANCE_CHAT" or "PARTY")
+			self:SendCommMessage("RCLootCouncil", toSend, self.Utils:IsInNonInstance() and "INSTANCE_CHAT" or "PARTY")
 		else--if self.testMode then -- Alone (testing)
 			self:SendCommMessage("RCLootCouncil", toSend, "WHISPER", self.playerName)
 		end
@@ -788,7 +787,7 @@ function RCLootCouncil:SendCommand(target, command, ...)
 					-- See "RCLootCouncil:HandleXRealmComms()" for more info
 					toSend = self:Serialize("xrealm", {target, command, ...})
 					if GetNumGroupMembers() > 0 then -- We're in a group
-						self:SendCommMessage("RCLootCouncil", toSend, IsPartyLFG() and "INSTANCE_CHAT" or "RAID")
+						self:SendCommMessage("RCLootCouncil", toSend, self.Utils:IsInNonInstance() and "INSTANCE_CHAT" or "RAID")
 					else -- We're not, probably a guild verTest
 						self:SendCommMessage("RCLootCouncil", toSend, "GUILD")
 					end
@@ -1067,19 +1066,19 @@ function RCLootCouncil:OnCommReceived(prefix, serializedMsg, distri, sender)
 			elseif command == "looted" then
 				local guid = unpack(data)
 				if not guid then return self:Debug("no guid in looted comm", guid, sender) end
-				if not self.lootStatus[guid] then self.lootStatus[guid] = {candidates = {}, fake = {}, num = 0} end
+				if not self.lootStatus[guid] then self.lootStatus[guid] = {candidates = {}, num = 0} end
 				self.lootStatus[guid].num = self.lootStatus[guid].num + 1
-				self.lootStatus[guid].candidates[self:UnitName(sender)] = true
+				self.lootStatus[guid].candidates[self:UnitName(sender)] = {status = "looted"}
 				if self:IsCouncil(self.playerName) then -- Only councilmen has the voting frame
 					self:GetActiveModule("votingframe"):UpdateLootStatus()
 				end
 
-			elseif command == "fakeLoot" then
+			elseif command == "fakeLoot" or command == "fullbags" then
 				local link, guid = unpack(data)
-				if not guid then return self:Debug("no guid in fakeLoot comm", guid, sender) end
-				if not self.lootStatus[guid] then self.lootStatus[guid] = {candidates = {}, fake = {}, num = 0} end
+				if not guid then return self:Debug(format("no guid in %s comm", command), guid, sender) end
+				if not self.lootStatus[guid] then self.lootStatus[guid] = {candidates = {}, num = 0} end
 				self.lootStatus[guid].num = self.lootStatus[guid].num + 1
-				self.lootStatus[guid].fake[self:UnitName(sender)] = link
+				self.lootStatus[guid].candidates[self:UnitName(sender)] = {status = command, item = link}
 				if self:IsCouncil(self.playerName) then
 					self:GetActiveModule("votingframe"):UpdateLootStatus()
 				end
@@ -1248,6 +1247,7 @@ function RCLootCouncil:Test(num, fullTest, trinketTest)
 	end
 
 	if fullTest then -- Add items from encounter journal which includes items from different difficulties.
+		testItems = {}
 		LoadAddOn("Blizzard_EncounterJournal")
 		local cached = true
 		local difficulties = {14, 15, 16} -- Normal, Heroic, Mythic
@@ -1300,6 +1300,10 @@ function RCLootCouncil:Test(num, fullTest, trinketTest)
 	self:CallModule("masterlooter")
 	self:GetActiveModule("masterlooter"):NewML(self.masterLooter)
 	self:GetActiveModule("masterlooter"):Test(items)
+
+	self:ScheduleTimer(function()
+		self:SendCommand("group", "looted", 1234)
+	end, 5)
 end
 
 local interface_options_old_cancel = InterfaceOptionsFrameCancel:GetScript("OnClick")
@@ -1946,54 +1950,16 @@ function RCLootCouncil:OnEvent(event, ...)
 		self.bossName = select(2, ...) -- Extract encounter name
 		wipe(self.nonTradeables)
 
-	elseif event == "LOOT_OPENED" then
-		self:Debug("Event:", event, ...)
-		-- if not IsInInstance() then return end -- Don't do anything out of instances
-		-- -- self:Debug("GetUnitName:", GetUnitName("target"))
-		-- -- self:Debug("UnitGUID:", UnitGUID("target"))
-		-- if select(1, ...) ~= "scheduled" and self.LootOpenScheduled then return end -- When this function is scheduled to run again, but LOOT_OPENDED event fires, return.
-		-- self.LootOpenScheduled = false
-		-- wipe(self.lootSlotInfo)
-		-- if GetNumLootItems() <= 0 then return end-- In case when function rerun, loot window is closed.
-		--
-		-- self.lootOpen = true
-		-- for i = 1,  GetNumLootItems() do
-		-- 	if LootSlotHasItem(i) then
-		-- 		local texture, name, quantity, _, quality, _, isQuestItem = GetLootSlotInfo(i)
-		-- 		if texture then
-		-- 			local link = GetLootSlotLink(i)
-		-- 			local isCraftingReagent
-		-- 			if link then  -- Link is not present on coins
-		-- 				 isCraftingReagent = select(17, GetItemInfo(link))
-		-- 			end
-		-- 			if not (isQuestItem or isCraftingReagent) then -- Ignore quest and crafting items
-		-- 				self:Debug("Adding to self.lootSlotInfo",i,link, quality)
-		-- 				self.lootSlotInfo[i] = {
-		-- 					name = name,
-		-- 					link = link, -- This could be nil, if the item is money.
-		-- 					quantity = quantity,
-		-- 					quality = quality,
-		-- 					guid = self.Utils:ExtractCreatureID((GetLootSourceInfo(i))), -- Boss GUID
-		-- 					boss = (GetUnitName("target")),
-		-- 				}
-		-- 			end
-		-- 		else -- It's possible that item in the loot window is uncached. Retry in the next frame.
-		-- 			self:Debug("Loot uncached when the loot window is opened. Retry in the next frame.", link)
-		-- 			self.LootOpenScheduled = true
-		-- 			-- Must offer special argument as 2nd argument to indicate this is run from scheduler.
-		-- 			return self:ScheduleTimer("OnEvent", 0, "LOOT_OPENED", "scheduled")
-		-- 		end
-		-- 	end
-		-- end
-		-- if self.isMasterLooter then
-		-- 	self:GetActiveModule("masterlooter"):OnLootOpen()
-		-- end
 	elseif event == "LOOT_CLOSED" then
 		if not IsInInstance() then return end -- Don't do anything out of instances
 		self:Debug("Event:", event, ...)
 		local i = 0
 		for k, info in pairs(self.lootSlotInfo) do
 			if not info.isLooted and info.guid and info.link then
+				-- Check if we have room in bags
+				if self.Utils:GetNumFreeBagSlots() == 0 then
+					return self:SendCommand("group", "fullbags", info.link, info.guid)
+				end
 				if info.autoloot then -- We've looted the item without getting LOOT_SLOT_CLEARED, properly due to FastLoot addons
 					return self:OnEvent("LOOT_SLOT_CLEARED", k), self:OnEvent("LOOT_CLOSED")
 				end
@@ -2059,9 +2025,9 @@ function RCLootCouncil:OnEvent(event, ...)
 					end
 				else -- It's possible that item in the loot window is uncached. Retry in the next frame.
 					self:Debug("Loot uncached when the loot window is opened. Retry in the next frame.", name)
-					self.LootOpenScheduled = true
 					-- Must offer special argument as 2nd argument to indicate this is run from scheduler.
-					return self:ScheduleTimer("OnEvent", 0, "LOOT_OPENED", "scheduled")
+					-- REVIEW: 20/12-18: This actually hasn't been used for a long while - removing "scheduled" arg
+					return self:ScheduleTimer("OnEvent", 0, "LOOT_READY")
 				end
 			end
 		end

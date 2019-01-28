@@ -513,10 +513,8 @@ L["STRING_OPTIONS_BG_ALL_ALLY_DESC"] = [=[활성화하면 창이 그룹 모드�
 
 |cFFFFFF00중요|r: 다음 전투부터 적용됩니다.]=]
 L["STRING_OPTIONS_BG_ANCHOR"] = "전장:"
---[[Translation missing --]]
---[[ L["STRING_OPTIONS_BG_UNIQUE_SEGMENT"] = ""--]] 
---[[Translation missing --]]
---[[ L["STRING_OPTIONS_BG_UNIQUE_SEGMENT_DESC"] = ""--]] 
+L["STRING_OPTIONS_BG_UNIQUE_SEGMENT"] = "고유 세그먼트"
+L["STRING_OPTIONS_BG_UNIQUE_SEGMENT_DESC"] = "한 세그먼트는 전장 시작 부분에 만들어지고 끝날 때까지 지속됩니다."
 L["STRING_OPTIONS_CAURAS"] = "오라 수집"
 L["STRING_OPTIONS_CAURAS_DESC"] = [=[수집 허용:
 
@@ -540,8 +538,7 @@ L["STRING_OPTIONS_CENERGY_DESC"] = [=[수집 허용:
 - |cFFFFFF00룬 마력 생성|r]=]
 L["STRING_OPTIONS_CHANGE_CLASSCOLORS"] = "직업 색상 수정"
 L["STRING_OPTIONS_CHANGE_CLASSCOLORS_DESC"] = "직업을 위한 새로운 색상을 선택합니다."
---[[Translation missing --]]
---[[ L["STRING_OPTIONS_CHANGECOLOR"] = ""--]] 
+L["STRING_OPTIONS_CHANGECOLOR"] = "색상 변경"
 L["STRING_OPTIONS_CHANGELOG"] = "버전 노트"
 L["STRING_OPTIONS_CHART_ADD"] = "데이터 추가"
 L["STRING_OPTIONS_CHART_ADD2"] = "추가"
@@ -1101,8 +1098,7 @@ L["STRING_OPTIONS_SKIN_ELVUI_BUTTON3_DESC"] = [=[툴팁 수정:
 L["STRING_OPTIONS_SKIN_EXTRA_OPTIONS_ANCHOR"] = "스킨 옵션:"
 L["STRING_OPTIONS_SKIN_LOADED"] = "스킨을 불러왔습니다."
 L["STRING_OPTIONS_SKIN_PRESETS_ANCHOR"] = "스킨 저장:"
---[[Translation missing --]]
---[[ L["STRING_OPTIONS_SKIN_PRESETSCONFIG_ANCHOR"] = ""--]] 
+L["STRING_OPTIONS_SKIN_PRESETSCONFIG_ANCHOR"] = "저장된 사용자 정의 스킨 관리:"
 L["STRING_OPTIONS_SKIN_REMOVED"] = "스킨이 삭제되었습니다."
 L["STRING_OPTIONS_SKIN_RESET_TOOLTIP"] = "툴팁 테두리 초기화"
 L["STRING_OPTIONS_SKIN_RESET_TOOLTIP_DESC"] = "툴팁 테두리 색상과 무늬를 기본값으로 되돌립니다."
@@ -1125,12 +1121,6 @@ L["STRING_OPTIONS_SPELL_NOTFOUND"] = "주문을 찾을 수 없습니다."
 L["STRING_OPTIONS_SPELL_REMOVE"] = "삭제"
 L["STRING_OPTIONS_SPELL_RESET"] = "초기화"
 L["STRING_OPTIONS_SPELL_SPELLID"] = "주문 ID"
-L["STRING_OPTIONS_SPELL_SPELLID_DESC"] = [=[ID는 월드 오브 워크래프트 내에서 주문을 식별하기 위한 고유 숫자입니다. 숫자를 알아내는 여러가지 방법입니다:
-
-- 플레이어 상세 내역 창에서 주문 바 위에 마우스 커서를 올리고 쉬프트 키를 누릅니다.
-- 주문Id 입력창에 주문 이름을 입력하면 입력한 주문의 툴팁이 표시됩니다.
-- 대부분의 커뮤니티 웹사이트 링크 주소에 주문ID가 있습니다.
-- 아래의 주문 캐쉬에서 찾아봅니다:]=]
 L["STRING_OPTIONS_STRETCH"] = "상단 면에 늘리기 버튼 배치"
 L["STRING_OPTIONS_STRETCH_DESC"] = "창의 상단에 늘리기 버튼을 배치합니다."
 L["STRING_OPTIONS_STRETCHTOP"] = "늘리기 버튼 항상 위에"
@@ -1570,8 +1560,7 @@ L["STRING_UNLOCK"] = [=[이 버튼으로
 창 그룹 해제]=]
 L["STRING_UNLOCK_WINDOW"] = "잠금해제"
 L["STRING_UPTADING"] = "갱신 중"
---[[Translation missing --]]
---[[ L["STRING_VERSION_AVAILABLE"] = ""--]] 
+L["STRING_VERSION_AVAILABLE"] = "Twitch App 또는 Curse 웹 사이트에서 새로운 버전을 다운로드 할 수 있습니다."
 L["STRING_VERSION_UPDATE"] = "새 버전: 변경 내용을 보려면 클릭하세요"
 L["STRING_VOIDZONE_TOOLTIP"] = "피해와 시간"
 L["STRING_WAITPLUGIN"] = [=[플러그인
@@ -1666,20 +1655,13 @@ L["STRING_WELCOME_7"] = "순위를 매길때 쓰입니다, 이 방법은 모든 
 L["STRING_WELCOME_70"] = "제목 바 설정"
 L["STRING_WELCOME_71"] = "바 설정"
 L["STRING_WELCOME_72"] = "창 설정"
---[[Translation missing --]]
---[[ L["STRING_WELCOME_73"] = ""--]] 
---[[Translation missing --]]
---[[ L["STRING_WELCOME_74"] = ""--]] 
---[[Translation missing --]]
---[[ L["STRING_WELCOME_75"] = ""--]] 
---[[Translation missing --]]
---[[ L["STRING_WELCOME_76"] = ""--]] 
---[[Translation missing --]]
---[[ L["STRING_WELCOME_77"] = ""--]] 
---[[Translation missing --]]
---[[ L["STRING_WELCOME_78"] = ""--]] 
---[[Translation missing --]]
---[[ L["STRING_WELCOME_79"] = ""--]] 
+L["STRING_WELCOME_73"] = "알파벳 또는 지역 선택:"
+L["STRING_WELCOME_74"] = "라틴 알파벳"
+L["STRING_WELCOME_75"] = "키릴문자 알파벳"
+L["STRING_WELCOME_76"] = "중국"
+L["STRING_WELCOME_77"] = "한국"
+L["STRING_WELCOME_78"] = "대만"
+L["STRING_WELCOME_79"] = "두번째 창 만들기"
 L["STRING_WINDOW_NOTFOUND"] = "창을 찾을 수 없습니다."
 L["STRING_WINDOW_NUMBER"] = "창 번호"
 L["STRING_WINDOW1ATACH_DESC"] = "창 그룹을 만들려면 창 #2를 창 #1 가까이 드래그하세요."

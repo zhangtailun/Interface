@@ -77,7 +77,7 @@ L["STRING_CHANNEL_PRINT"] = "观察者"
 L["STRING_CHANNEL_RAID"] = "团队"
 L["STRING_CHANNEL_SAY"] = "说"
 L["STRING_CHANNEL_WHISPER"] = "密语"
-L["STRING_CHANNEL_WHISPER_TARGET_COOLDOWN"] = "Whisper Cooldown Target"
+L["STRING_CHANNEL_WHISPER_TARGET_COOLDOWN"] = "密语CD目标"
 L["STRING_CHANNEL_YELL"] = "喊"
 L["STRING_CLICK_REPORT_LINE1"] = "|cFFFFCC22点击|r: |cFFFFEE00报告|r"
 L["STRING_CLICK_REPORT_LINE2"] = "|cFFFFCC22Shift+点击|r: |cFFFFEE00窗口模式|r"
@@ -299,7 +299,7 @@ L["STRING_KEYBIND_WINDOW_CONTROL"] = "窗口控制"
 L["STRING_KEYBIND_WINDOW_REPORT"] = "将报告数据显示在窗口 #%s。"
 L["STRING_KEYBIND_WINDOW_REPORT_HEADER"] = "报告数据"
 L["STRING_KILLED"] = "已击杀"
-L["STRING_LAST_COOLDOWN"] = "last cooldown used"
+L["STRING_LAST_COOLDOWN"] = "使用的最后CD"
 L["STRING_LEFT"] = "左"
 L["STRING_LEFT_CLICK_SHARE"] = "左键点击报告。"
 L["STRING_LEFT_TO_RIGHT"] = "从左往右"
@@ -360,25 +360,25 @@ L["STRING_MODE_PLUGINS"] = "插件"
 L["STRING_MODE_RAID"] = "插件: 团队"
 L["STRING_MODE_SELF"] = "插件: 单刷"
 L["STRING_MORE_INFO"] = "详情请见右箱。"
-L["STRING_MULTISTRIKE"] = "Multistrike"
-L["STRING_MULTISTRIKE_HITS"] = "Multistrike Hits"
+L["STRING_MULTISTRIKE"] = "溅射"
+L["STRING_MULTISTRIKE_HITS"] = "溅射命中"
 L["STRING_MUSIC_DETAILS_ROBERTOCARLOS"] = [=[There's no use trying to forget
 For a long time in your life I will live
 Details as small of us]=]
 L["STRING_NEWROW"] = "等待刷新..."
 L["STRING_NEWS_REINSTALL"] = "更新后发现问题? 尝试 '/details reinstall' 命令."
 L["STRING_NEWS_TITLE"] = "最近更新"
-L["STRING_NO"] = "No"
+L["STRING_NO"] = "否"
 L["STRING_NO_DATA"] = "数据已经被清除"
-L["STRING_NO_SPELL"] = "no spell has been used"
+L["STRING_NO_SPELL"] = "没有法术可用"
 L["STRING_NO_TARGET"] = "没有找到目标."
 L["STRING_NO_TARGET_BOX"] = "没有目标可用"
 L["STRING_NOCLOSED_INSTANCES"] = [=[没有关闭的窗口，
 点击打开一个新的。]=]
-L["STRING_NOLAST_COOLDOWN"] = "no cooldown used"
+L["STRING_NOLAST_COOLDOWN"] = "没有CD可用"
 L["STRING_NOMORE_INSTANCES"] = [=[到达最大窗口数量
 通过选项面板改变限制。]=]
-L["STRING_NORMAL_HITS"] = "Normal Hits"
+L["STRING_NORMAL_HITS"] = "普通攻击"
 L["STRING_NUMERALSYSTEM"] = "数字显示"
 L["STRING_NUMERALSYSTEM_ARABIC_MYRIAD_EASTASIA"] = "用千和万来显示数值"
 L["STRING_NUMERALSYSTEM_ARABIC_WESTERN"] = "西方"
@@ -390,14 +390,14 @@ L["STRING_OPTIONS_3D_LALPHA_DESC"] = [=[在较低的模型调整透明度。
 
 |cFFFFFF00重要|r: 一些模型忽略透明度。]=]
 L["STRING_OPTIONS_3D_LANCHOR"] = "低 3D 模型:"
-L["STRING_OPTIONS_3D_LENABLED_DESC"] = "Enabled or Disable the usage of a 3d model frame behind the bars."
+L["STRING_OPTIONS_3D_LENABLED_DESC"] = "启用或禁用计量条后面的3D模型框架"
 L["STRING_OPTIONS_3D_LSELECT_DESC"] = "选择哪个模型将被用于在较低的模型栏。"
 L["STRING_OPTIONS_3D_SELECT"] = "选择模型"
 L["STRING_OPTIONS_3D_UALPHA_DESC"] = [=[在更高模型上调整透明度。
 
 |cFFFFFF00重要|r: 一些模型忽略透明度。]=]
 L["STRING_OPTIONS_3D_UANCHOR"] = "较高 3D 模型:"
-L["STRING_OPTIONS_3D_UENABLED_DESC"] = "Enabled or Disable the usage of a 3d model frame above the bars."
+L["STRING_OPTIONS_3D_UENABLED_DESC"] = "启用或禁用计量条后面的3D模型框架"
 L["STRING_OPTIONS_3D_USELECT_DESC"] = "选择哪个模型将被用于在较高的模型栏。"
 L["STRING_OPTIONS_ADVANCED"] = "进阶"
 L["STRING_OPTIONS_ALPHAMOD_ANCHOR"] = "自动隐藏:"
@@ -415,7 +415,7 @@ L["STRING_OPTIONS_ATTRIBUTE_TEXT"] = "标题文本设置"
 L["STRING_OPTIONS_ATTRIBUTE_TEXT_DESC"] = "这些选项控制窗口的标题文本。"
 L["STRING_OPTIONS_AUTO_SWITCH"] = "所有角色 |cFFFFAA00(战斗中)|r"
 L["STRING_OPTIONS_AUTO_SWITCH_COMBAT"] = "|cFFFFAA00(战斗中)|r"
-L["STRING_OPTIONS_AUTO_SWITCH_DAMAGER_DESC"] = "When in damager specialization, this window show the selected attribute or plugin."
+L["STRING_OPTIONS_AUTO_SWITCH_DAMAGER_DESC"] = "在输出专用模式中，此窗口显示所选属性或插件"
 L["STRING_OPTIONS_AUTO_SWITCH_DESC"] = [=[当你进入战斗，此窗口显示选择的属性或插件。
 
 |cFFFFFF00重要|r: 为每个角色选择的个体属性覆盖这里所选择的属性。]=]
@@ -440,7 +440,7 @@ L["STRING_OPTIONS_BAR_COLORBYCLASS"] = "使用职业颜色"
 L["STRING_OPTIONS_BAR_COLORBYCLASS_DESC"] = "当启用时，该纹理始终使用玩家的职业颜色。"
 L["STRING_OPTIONS_BAR_FOLLOWING"] = "总是显示我"
 L["STRING_OPTIONS_BAR_FOLLOWING_ANCHOR"] = "玩家计量条:"
-L["STRING_OPTIONS_BAR_FOLLOWING_DESC"] = "When enabled, your bar will always be shown even when you aren't at the top ranked players."
+L["STRING_OPTIONS_BAR_FOLLOWING_DESC"] = "启用后，即使排名靠前中没有你，也会始终显示你的计量条"
 L["STRING_OPTIONS_BAR_GROW"] = "计量条增长方向"
 L["STRING_OPTIONS_BAR_GROW_DESC"] = "计量条从窗口顶部或底部增长。"
 L["STRING_OPTIONS_BAR_HEIGHT"] = "高度"
@@ -497,7 +497,7 @@ L["STRING_OPTIONS_BARS_CUSTOM_TEXTURE_DESC"] = [=[
 L["STRING_OPTIONS_BARS_DESC"] = "这些选项控制计量条的外观。"
 L["STRING_OPTIONS_BARSORT"] = "排序顺序"
 L["STRING_OPTIONS_BARSORT_DESC"] = "根据升序或降序排序"
-L["STRING_OPTIONS_BARSTART"] = "Bar Start After Icon"
+L["STRING_OPTIONS_BARSTART"] = "图标后开启计量条"
 L["STRING_OPTIONS_BARSTART_DESC"] = [=[禁用时顶部纹理开始在图标的左边而不是右边
 
 使用带有透明区域的图标包时，这是非常有用的。]=]
@@ -538,7 +538,7 @@ L["STRING_OPTIONS_CHANGELOG"] = "版本说明"
 L["STRING_OPTIONS_CHART_ADD"] = "添加数据"
 L["STRING_OPTIONS_CHART_ADD2"] = "添加"
 L["STRING_OPTIONS_CHART_ADDAUTHOR"] = "作者: "
-L["STRING_OPTIONS_CHART_ADDCODE"] = "Code: "
+L["STRING_OPTIONS_CHART_ADDCODE"] = "代码: "
 L["STRING_OPTIONS_CHART_ADDICON"] = "图标: "
 L["STRING_OPTIONS_CHART_ADDNAME"] = "名字: "
 L["STRING_OPTIONS_CHART_ADDVERSION"] = "版本: "
@@ -573,11 +573,11 @@ L["STRING_OPTIONS_CHEAL_DESC"] = [=[启用捕获：
 L["STRING_OPTIONS_CLASSCOLOR_MODIFY"] = "修改职业颜色"
 L["STRING_OPTIONS_CLASSCOLOR_RESET"] = "右键重置"
 L["STRING_OPTIONS_CLEANUP"] = "自动清除片段"
-L["STRING_OPTIONS_CLEANUP_DESC"] = "When enabled, trash cleanup segments are removed automatically after two others segments."
+L["STRING_OPTIONS_CLEANUP_DESC"] = "启用后,只会保留两个分段，其他分段会自动清理"
 L["STRING_OPTIONS_CLICK_TO_OPEN_MENUS"] = "点击打开菜单"
 L["STRING_OPTIONS_CLICK_TO_OPEN_MENUS_DESC"] = "鼠标悬浮在标题栏按钮上时不再显示菜单，点击打开菜单。"
 L["STRING_OPTIONS_CLOUD"] = "云捕获"
-L["STRING_OPTIONS_CLOUD_DESC"] = "When enabled, the data of disabled collectors are collected within others raid members."
+L["STRING_OPTIONS_CLOUD_DESC"] = "启用后，将在其他团队成员中收集已禁用收集器的数据"
 L["STRING_OPTIONS_CMISC"] = "采集杂项"
 L["STRING_OPTIONS_CMISC_DESC"] = [=[启用捕获：
 
@@ -586,10 +586,10 @@ L["STRING_OPTIONS_CMISC_DESC"] = [=[启用捕获：
 - |cFFFFFF00打断|r
 - |cFFFFFF00复生|r
 - |cFFFFFF00死亡|r]=]
-L["STRING_OPTIONS_COLORANDALPHA"] = "Color & Alpha"
+L["STRING_OPTIONS_COLORANDALPHA"] = "颜色 & Alpha"
 L["STRING_OPTIONS_COLORFIXED"] = "修正颜色"
 L["STRING_OPTIONS_COMBAT_ALPHA"] = "当"
-L["STRING_OPTIONS_COMBAT_ALPHA_1"] = "None"
+L["STRING_OPTIONS_COMBAT_ALPHA_1"] = "无"
 L["STRING_OPTIONS_COMBAT_ALPHA_2"] = "战斗中"
 L["STRING_OPTIONS_COMBAT_ALPHA_3"] = "脱离战斗"
 L["STRING_OPTIONS_COMBAT_ALPHA_4"] = "当退出队伍"
@@ -600,21 +600,21 @@ L["STRING_OPTIONS_COMBAT_ALPHA_DESC"] = [=[选择怎样的战斗影响窗口透�
 
 |cFFFFFF00没变化|r: 不修改透明度。
 
-|cFFFFFF00当在战斗|r: When your character enter in a combat, the alpha chosen is applied on the window.
+|cFFFFFF00当在战斗|r: 当角色进入战斗时，所选的alpha将应用于窗口
 
-|cFFFFFF00脱离战斗|r: The alpha is applied whenever your character isn't in combat.
+|cFFFFFF00脱离战斗|r: 只要角色不在战斗中，就会应用alpha.
 
-|cFFFFFF00当退出队伍|r: When you aren't in party or a raid group, the window assumes the selected alpha.
+|cFFFFFF00当退出队伍|r: 当您不在队伍或团队中时，该窗口将采用所选的alpha.
 
-|cFFFFFF00重要|r: This option overwrite the alpha determined by Auto Transparency feature.]=]
+|cFFFFFF00重要|r: 此选项会覆盖由“自动透明度”功能决定的Alpha.]=]
 L["STRING_OPTIONS_COMBATTWEEKS"] = "战斗微调"
 L["STRING_OPTIONS_COMBATTWEEKS_DESC"] = "设定Details!如何调整一些战斗数据的细节。"
-L["STRING_OPTIONS_CONFIRM_ERASE"] = "Do you want erase data?"
-L["STRING_OPTIONS_CUSTOMSPELL_ADD"] = "Add Spell"
-L["STRING_OPTIONS_CUSTOMSPELLTITLE"] = "Edit Spells Settings"
-L["STRING_OPTIONS_CUSTOMSPELLTITLE_DESC"] = "This panel alows you modify the name and icon of spells."
-L["STRING_OPTIONS_DATABROKER"] = "Data Broker:"
-L["STRING_OPTIONS_DATABROKER_TEXT"] = "Text"
+L["STRING_OPTIONS_CONFIRM_ERASE"] = "要删除数据吗?"
+L["STRING_OPTIONS_CUSTOMSPELL_ADD"] = "添加法术"
+L["STRING_OPTIONS_CUSTOMSPELLTITLE"] = "编辑法术设置"
+L["STRING_OPTIONS_CUSTOMSPELLTITLE_DESC"] = "此面板允许修改法术的名称和图标"
+L["STRING_OPTIONS_DATABROKER"] = "数据代理:"
+L["STRING_OPTIONS_DATABROKER_TEXT"] = "文本"
 L["STRING_OPTIONS_DATABROKER_TEXT_ADD1"] = "玩家造成伤害"
 L["STRING_OPTIONS_DATABROKER_TEXT_ADD2"] = "玩家有效的Dps"
 L["STRING_OPTIONS_DATABROKER_TEXT_ADD3"] = "伤害定位"
@@ -624,23 +624,27 @@ L["STRING_OPTIONS_DATABROKER_TEXT_ADD6"] = "玩家有效的Hps"
 L["STRING_OPTIONS_DATABROKER_TEXT_ADD7"] = "治疗定位"
 L["STRING_OPTIONS_DATABROKER_TEXT_ADD8"] = "治疗差异"
 L["STRING_OPTIONS_DATABROKER_TEXT_ADD9"] = "战斗时长"
-L["STRING_OPTIONS_DATABROKER_TEXT1_DESC"] = [=[|cFFFFFF00{dmg}|r: player damage done.
+L["STRING_OPTIONS_DATABROKER_TEXT1_DESC"] = [=[|cFFFFFF00{dmg}|r: 玩家伤害输出
 
-|cFFFFFF00{dps}|r: player effective damage per second.
+|cFFFFFF00{dps}|r: 玩家每秒有效伤害
 
-|cFFFFFF00{dpos}|r: rank position between members of the raid or party group on damage.
+|cFFFFFF00{rdps}|r: 团队每秒有效伤害
 
-|cFFFFFF00{ddiff}|r: damage difference between you and the first place.
+|cFFFFFF00{dpos}|r: 在团队或小队成员之间对伤害进行排名
 
-|cFFFFFF00{heal}|r: player healing done.
+|cFFFFFF00{ddiff}|r: 你和第一名之间的伤害差异
 
-|cFFFFFF00{hps}|r: player effective healing per second.
+|cFFFFFF00{heal}|r: 玩家治疗量
 
-|cFFFFFF00{hpos}|r: rank position between members of the raid or party group on healing.
+|cFFFFFF00{hps}|r: 玩家每秒有效治疗
 
-|cFFFFFF00{hdiff}|r: healing difference between you and the first place.
+|cFFFFFF00{rhps}|r: 团队每秒有效治疗.
 
-|cFFFFFF00{time}|r: fight elapsed time.]=]
+|cFFFFFF00{hpos}|r: 在团队或小队成员之间对治疗进行排名
+
+|cFFFFFF00{hdiff}|r: 你和第一名之间的治疗差异
+
+|cFFFFFF00{time}|r: 战斗时间]=]
 L["STRING_OPTIONS_DATACHARTTITLE"] = "创建定时数据的图表"
 L["STRING_OPTIONS_DATACHARTTITLE_DESC"] = "该面板使您能够创建定制的数据捕获的图表制作。"
 L["STRING_OPTIONS_DATACOLLECT_ANCHOR"] = "数据类型:"
@@ -659,7 +663,7 @@ L["STRING_OPTIONS_DISABLE_GROUPS_DESC"] = "启用后，一个窗口靠近另一�
 L["STRING_OPTIONS_DISABLE_LOCK_RESIZE"] = "禁用缩放按钮"
 L["STRING_OPTIONS_DISABLE_LOCK_RESIZE_DESC"] = "当你鼠标停留在视窗时，缩放与锁定/解锁以及解散按钮不会出现。"
 L["STRING_OPTIONS_DISABLE_RESET"] = "禁用复位按钮"
-L["STRING_OPTIONS_DISABLE_RESET_DESC"] = "When enabled, is necessary use the tooltip menu from reset button instead of just click on it."
+L["STRING_OPTIONS_DISABLE_RESET_DESC"] = "启用后，必须使用重置按钮中的提示菜单而不是单击它"
 L["STRING_OPTIONS_DISABLE_STRETCH_BUTTON"] = "禁用拉伸按钮"
 L["STRING_OPTIONS_DISABLE_STRETCH_BUTTON_DESC"] = "启用后将不会显示拉伸按钮。"
 L["STRING_OPTIONS_DISABLED_RESET"] = "通过这个按钮复位当前是被禁用的，在提示菜单上选择。"
@@ -699,8 +703,8 @@ L["STRING_OPTIONS_HOTCORNER_DESC"] = "显示或隐藏在Hotcorner面板上的按
 L["STRING_OPTIONS_HOTCORNER_QUICK_CLICK"] = "启用快速点击"
 L["STRING_OPTIONS_HOTCORNER_QUICK_CLICK_DESC"] = [=[启用或禁用Hotcorners快速点击功能。
 
-Quick button is localized at the further top left pixel, moving your mouse all the way to there, activities the top left hot corner and if clicked an action is performed.]=]
-L["STRING_OPTIONS_HOTCORNER_QUICK_CLICK_FUNC"] = "Quick Click On Click"
+快速按钮位于更左上角的像素处，将鼠标一直移动到那里，激活左上角的Hotcorners，如果点击则执行操作]=]
+L["STRING_OPTIONS_HOTCORNER_QUICK_CLICK_FUNC"] = "在快速点击上点击"
 L["STRING_OPTIONS_HOTCORNER_QUICK_CLICK_FUNC_DESC"] = "选择做什么当Hotcorner的快速按钮被点击时"
 L["STRING_OPTIONS_IGNORENICKNAME"] = "忽略昵称"
 L["STRING_OPTIONS_IGNORENICKNAME_DESC"] = "当启用时，公会成员设置的昵称被忽略，并显示他们的角色的名字。"
@@ -716,7 +720,7 @@ L["STRING_OPTIONS_INSTANCE_BACKDROP_DESC"] = [=[选择使用此窗口的背景�
 L["STRING_OPTIONS_INSTANCE_COLOR"] = "窗口颜色"
 L["STRING_OPTIONS_INSTANCE_COLOR_DESC"] = [=[改变这个窗口的颜色和透明度。
 
-|cFFFFFF00重要|r: the alpha chosen here are overwritten with |cFFFFFF00Auto Transparency|r values when enabled.
+|cFFFFFF00重要|r: 启用时，此处选择的Alpha将被|cFFFFFF00自动透明度|r值覆盖
 
 |cFFFFFF00重要|r: 选择窗口颜色覆盖任何颜色定制的状态栏。]=]
 L["STRING_OPTIONS_INSTANCE_CURRENT"] = "自动切换到当前"
@@ -730,15 +734,15 @@ L["STRING_OPTIONS_INSTANCE_STATUSBAR_ANCHOR"] = "状态栏:"
 L["STRING_OPTIONS_INSTANCE_STATUSBARCOLOR"] = "颜色和透明度"
 L["STRING_OPTIONS_INSTANCE_STATUSBARCOLOR_DESC"] = [=[选择状态栏使用的颜色。
 
-|cFFFFFF00重要|r: this option overwrite the color and transparency chosen over Window Color.]=]
+|cFFFFFF00重要|r: 此选项会覆盖通过“窗口颜色”选择的颜色和透明度]=]
 L["STRING_OPTIONS_INSTANCE_STRATA"] = "层的阶层"
-L["STRING_OPTIONS_INSTANCE_STRATA_DESC"] = [=[Selects the layer height that the frame will be placed on.
+L["STRING_OPTIONS_INSTANCE_STRATA_DESC"] = [=[选择要放置框架的图层高度
 
-Low layer is the default and makes the window stay behind of the most interface panels.
+低层是默认设置，使窗口留在大多数界面面板的后面
 
-Using high layer the window might stay in front of the major others panels.
+使用高层窗口可能会停留在其他主要面板的前面
 
-When changing the layer height you may find some conflict with others panels, overlapping each other.]=]
+更改图层高度时，可能会与其他面板发生冲突，彼此重叠]=]
 L["STRING_OPTIONS_INSTANCES"] = "窗口:"
 L["STRING_OPTIONS_INTERFACEDIT"] = "接口编辑模式"
 L["STRING_OPTIONS_LEFT_MENU_ANCHOR"] = "菜单设置:"
@@ -758,19 +762,19 @@ L["STRING_OPTIONS_MAXSEGMENTS_DESC"] = [=[这个选项控制你想要保持多�
 L["STRING_OPTIONS_MENU_ALPHA"] = "鼠标交互:"
 L["STRING_OPTIONS_MENU_ALPHAENABLED_DESC"] = [=[当启用时，透明度时自动改变当悬停或离开窗口时。
 
-|cFFFFFF00重要|r: This settings overwrites the alpha selected on Window Color option under Window Settings section.]=]
+|cFFFFFF00重要|r: 此设置将覆盖“窗口设置”部分下“窗口颜色”选项上选择的Alpha]=]
 L["STRING_OPTIONS_MENU_ALPHAENTER"] = "将鼠标悬停在"
-L["STRING_OPTIONS_MENU_ALPHAENTER_DESC"] = "When you have the mouse over the window, the transparency changes to this value."
+L["STRING_OPTIONS_MENU_ALPHAENTER_DESC"] = "将鼠标悬停在窗口上时，透明度将更改为此值"
 L["STRING_OPTIONS_MENU_ALPHALEAVE"] = "没有互动"
-L["STRING_OPTIONS_MENU_ALPHALEAVE_DESC"] = "When you don't have the mouse over the window, the transparency changes to this value."
+L["STRING_OPTIONS_MENU_ALPHALEAVE_DESC"] = "当没有将鼠标悬停在窗口上时，透明度将更改为此值"
 L["STRING_OPTIONS_MENU_ALPHAWARNING"] = "鼠标交互被启用，透明度可能不会受到影响。"
 L["STRING_OPTIONS_MENU_ANCHOR"] = "菜单锚点侧"
-L["STRING_OPTIONS_MENU_ANCHOR_DESC"] = "Change if the left menu is attached within left side of window or in the right side."
-L["STRING_OPTIONS_MENU_ATTRIBUTE_ANCHORX"] = "Position X"
+L["STRING_OPTIONS_MENU_ANCHOR_DESC"] = "选中后，按钮将附加到窗口的右侧"
+L["STRING_OPTIONS_MENU_ATTRIBUTE_ANCHORX"] = "X坐标位置"
 L["STRING_OPTIONS_MENU_ATTRIBUTE_ANCHORX_DESC"] = "调节X轴属性文字的位置。"
-L["STRING_OPTIONS_MENU_ATTRIBUTE_ANCHORY"] = "Position Y"
+L["STRING_OPTIONS_MENU_ATTRIBUTE_ANCHORY"] = "Y坐标位置"
 L["STRING_OPTIONS_MENU_ATTRIBUTE_ANCHORY_DESC"] = "调节Y轴属性文字的位置。"
-L["STRING_OPTIONS_MENU_ATTRIBUTE_ENABLED_DESC"] = "Active show the display's name currently shown in the window."
+L["STRING_OPTIONS_MENU_ATTRIBUTE_ENABLED_DESC"] = "激活显示当前显示在窗口中的显示名称"
 L["STRING_OPTIONS_MENU_ATTRIBUTE_ENCOUNTERTIMER"] = "交叠计时器"
 L["STRING_OPTIONS_MENU_ATTRIBUTE_ENCOUNTERTIMER_DESC"] = "启用时，始终在文本左侧显示秒表计数器。"
 L["STRING_OPTIONS_MENU_ATTRIBUTE_FONT"] = "文字字体"
@@ -783,7 +787,7 @@ L["STRING_OPTIONS_MENU_ATTRIBUTE_TEXTCOLOR_DESC"] = "更改文字颜色属性。
 L["STRING_OPTIONS_MENU_ATTRIBUTE_TEXTSIZE"] = "文字大小"
 L["STRING_OPTIONS_MENU_ATTRIBUTE_TEXTSIZE_DESC"] = "调整文字大小属性"
 L["STRING_OPTIONS_MENU_ATTRIBUTESETTINGS_ANCHOR"] = "设置:"
-L["STRING_OPTIONS_MENU_AUTOHIDE_DESC"] = "When enabled the menu automatically hides it self when the mouse leaves the window and shows up when you are interacting with it again."
+L["STRING_OPTIONS_MENU_AUTOHIDE_DESC"] = "启用后，当鼠标离开窗口时，菜单会自动隐藏，并在再次与其进行交互时显示"
 L["STRING_OPTIONS_MENU_AUTOHIDE_LEFT"] = "自动隐藏菜单"
 L["STRING_OPTIONS_MENU_BUTTONSSIZE_DESC"] = "选择按钮大小. 这也改变了插件添加的按钮。"
 L["STRING_OPTIONS_MENU_FONT_FACE"] = "菜单文本字体"
@@ -847,7 +851,7 @@ L["STRING_OPTIONS_OVERALL_RAIDBOSS_DESC"] = "地下城首领片段被添加到�
 L["STRING_OPTIONS_OVERALL_RAIDCLEAN"] = "团队副本小怪"
 L["STRING_OPTIONS_OVERALL_RAIDCLEAN_DESC"] = "地下城清理小怪片段被添加到总体数据。"
 L["STRING_OPTIONS_PANIMODE"] = "应急模式"
-L["STRING_OPTIONS_PANIMODE_DESC"] = "When enabled and you got dropped from the game (by a disconnect, for instance) and you are fighting against a boss encounter, all segments are erased, this make your logoff process faster."
+L["STRING_OPTIONS_PANIMODE_DESC"] = "如果启用并且掉线（例如，通过断开连接）并且正在BOSS战斗中，则所有段都将被删除，这会使注销过程更快"
 L["STRING_OPTIONS_PDW_ANCHOR"] = "玩家详细信息窗口:"
 L["STRING_OPTIONS_PDW_SKIN_DESC"] = "更改玩家详细信息窗口的皮肤"
 L["STRING_OPTIONS_PERCENT_TYPE"] = "比例类型"
@@ -867,11 +871,11 @@ L["STRING_OPTIONS_PERFORMANCE_ERASEWORLD"] = "自动清除世界分段"
 L["STRING_OPTIONS_PERFORMANCE_ERASEWORLD_DESC"] = "自动清除野外战斗的分段"
 L["STRING_OPTIONS_PERFORMANCE_MYTHIC"] = "史诗"
 L["STRING_OPTIONS_PERFORMANCE_PROFILE_LOAD"] = "性能简介改为： "
-L["STRING_OPTIONS_PERFORMANCE_RAID15"] = "Raid 10-15"
-L["STRING_OPTIONS_PERFORMANCE_RAID30"] = "Raid 16-30"
-L["STRING_OPTIONS_PERFORMANCE_RF"] = "Raid 搜索"
+L["STRING_OPTIONS_PERFORMANCE_RAID15"] = "副本 10-15"
+L["STRING_OPTIONS_PERFORMANCE_RAID30"] = "副本 16-30"
+L["STRING_OPTIONS_PERFORMANCE_RF"] = "副本搜索"
 L["STRING_OPTIONS_PERFORMANCE_TYPES"] = "类型"
-L["STRING_OPTIONS_PERFORMANCE_TYPES_DESC"] = "This is the types of raid where different options can automatically change."
+L["STRING_OPTIONS_PERFORMANCE_TYPES_DESC"] = "这是副本类型，其中不同的选项可以自动更改"
 L["STRING_OPTIONS_PERFORMANCE1"] = "性能调整"
 L["STRING_OPTIONS_PERFORMANCE1_DESC"] = "这些选项可以帮助节省一些CPU使用率。"
 L["STRING_OPTIONS_PERFORMANCECAPTURES"] = "数据采集"
@@ -883,16 +887,16 @@ L["STRING_OPTIONS_PLUGINS"] = "插件"
 L["STRING_OPTIONS_PLUGINS_AUTHOR"] = "作者"
 L["STRING_OPTIONS_PLUGINS_NAME"] = "名字"
 L["STRING_OPTIONS_PLUGINS_OPTIONS"] = "选项"
-L["STRING_OPTIONS_PLUGINS_RAID_ANCHOR"] = "Raid 插件"
-L["STRING_OPTIONS_PLUGINS_SOLO_ANCHOR"] = "Solo 插件"
+L["STRING_OPTIONS_PLUGINS_RAID_ANCHOR"] = "副本插件"
+L["STRING_OPTIONS_PLUGINS_SOLO_ANCHOR"] = "单刷插件"
 L["STRING_OPTIONS_PLUGINS_TOOLBAR_ANCHOR"] = "工具栏插件"
 L["STRING_OPTIONS_PLUGINS_VERSION"] = "版本"
 L["STRING_OPTIONS_PRESETNONAME"] = "提供一个名称的预设。"
-L["STRING_OPTIONS_PRESETTOOLD"] = "This preset is too old and cannot be loaded at this version of Details!."
+L["STRING_OPTIONS_PRESETTOOLD"] = "此预设太旧无法在此版本的Details中加载"
 L["STRING_OPTIONS_PROFILE_COPYOKEY"] = "配置复制成功"
 L["STRING_OPTIONS_PROFILE_FIELDEMPTY"] = "名称字段为空。"
 L["STRING_OPTIONS_PROFILE_GLOBAL"] = "选择一个配置应用到全部角色。"
-L["STRING_OPTIONS_PROFILE_LOADED"] = "Profile loaded:"
+L["STRING_OPTIONS_PROFILE_LOADED"] = "配置文件已加载:"
 L["STRING_OPTIONS_PROFILE_NOTCREATED"] = "配置不能创建"
 L["STRING_OPTIONS_PROFILE_OVERWRITTEN"] = "你已经给这个角色选择了一个特定的配置。"
 L["STRING_OPTIONS_PROFILE_POSSIZE"] = "保存大小和位置"
@@ -920,36 +924,36 @@ L["STRING_OPTIONS_PS_ABBREVIATE"] = "数字格式"
 L["STRING_OPTIONS_PS_ABBREVIATE_COMMA"] = "逗号"
 L["STRING_OPTIONS_PS_ABBREVIATE_DESC"] = [=[选择缩写方法。
 
-|cFFFFFF00ToK I|r:
+|cFFFFFF00精确到K I|r:
 520600 = 520.6K
 19530000 = 19.53M
 
-|cFFFFFF00ToK II|r:
+|cFFFFFF00精确到K II|r:
 520600 = 520K
 19530000 = 19.53M
 
-|cFFFFFF00ToM I|r:
+|cFFFFFF00To精确到KM I|r:
 520600 = 520.6K
 19530000 = 19M
 
-|cFFFFFF00Comma|r:
+|cFFFFFF00逗点|r:
 19530000 = 19.530.000
 
-|cFFFFFF00Lower|r and |cFFFFFF00Upper|r: are references to 'K' and 'M' letters if lowercase or uppercase.]=]
-L["STRING_OPTIONS_PS_ABBREVIATE_NONE"] = "None"
-L["STRING_OPTIONS_PS_ABBREVIATE_TOK"] = "ToK I Upper"
-L["STRING_OPTIONS_PS_ABBREVIATE_TOK0"] = "ToM I Upper"
-L["STRING_OPTIONS_PS_ABBREVIATE_TOK0MIN"] = "ToM I Lower"
-L["STRING_OPTIONS_PS_ABBREVIATE_TOK2"] = "ToK II Upper"
-L["STRING_OPTIONS_PS_ABBREVIATE_TOK2MIN"] = "ToK II Lower"
-L["STRING_OPTIONS_PS_ABBREVIATE_TOKMIN"] = "ToK I Lower"
+|cFFFFFF00小写|r and |cFFFFFF00大写|r: 指的是字母'K'和'M']=]
+L["STRING_OPTIONS_PS_ABBREVIATE_NONE"] = "无"
+L["STRING_OPTIONS_PS_ABBREVIATE_TOK"] = "精确到K I 大写"
+L["STRING_OPTIONS_PS_ABBREVIATE_TOK0"] = "精确到M I 大写"
+L["STRING_OPTIONS_PS_ABBREVIATE_TOK0MIN"] = "精确到M I 小写"
+L["STRING_OPTIONS_PS_ABBREVIATE_TOK2"] = "精确到K II 大写"
+L["STRING_OPTIONS_PS_ABBREVIATE_TOK2MIN"] = "精确到K II 小写"
+L["STRING_OPTIONS_PS_ABBREVIATE_TOKMIN"] = "精确到K I 小写"
 L["STRING_OPTIONS_PVPFRAGS"] = "仅PVP击杀"
 L["STRING_OPTIONS_PVPFRAGS_DESC"] = "启用时, 只在|cFFFFFF00造成伤害 > 击杀|r 标签显示被击杀的敌人数目。"
-L["STRING_OPTIONS_REALMNAME"] = "Remove Realm Name"
-L["STRING_OPTIONS_REALMNAME_DESC"] = [=[When enabled, the character realm name isn't displayed.
+L["STRING_OPTIONS_REALMNAME"] = "移除服务器名字"
+L["STRING_OPTIONS_REALMNAME_DESC"] = [=[当启动角色后不显示服务器名字
 
-|cFFFFFF00Disabled|r: Charles-Netherwing
-|cFFFFFF00Enabled|r: Charles]=]
+|cFFFFFF00禁用|r: 萌丶汉丶纸-燃烧之刃
+|cFFFFFF00启用|r: 萌丶汉丶纸]=]
 L["STRING_OPTIONS_REPORT_ANCHOR"] = "报告:"
 L["STRING_OPTIONS_REPORT_HEALLINKS"] = "有益法术链接"
 L["STRING_OPTIONS_REPORT_HEALLINKS_DESC"] = [=[当发送一份报告，并启用该选项, |cFF55FF55有益|r 法术报告与法术的链接，而不是它的名字。
@@ -957,9 +961,9 @@ L["STRING_OPTIONS_REPORT_HEALLINKS_DESC"] = [=[当发送一份报告，并启用
 |cFFFF5555有害|r 法术报告由默认链接.]=]
 L["STRING_OPTIONS_REPORT_SCHEMA"] = "格式化"
 L["STRING_OPTIONS_REPORT_SCHEMA_DESC"] = "选择聊天频道链接文本的文本格式。"
-L["STRING_OPTIONS_REPORT_SCHEMA1"] = "Total / Per Second / Percent"
-L["STRING_OPTIONS_REPORT_SCHEMA2"] = "Percent / Per Second / Total"
-L["STRING_OPTIONS_REPORT_SCHEMA3"] = "Percent / Total / Per Second"
+L["STRING_OPTIONS_REPORT_SCHEMA1"] = "总计 / 每秒 / 百分比"
+L["STRING_OPTIONS_REPORT_SCHEMA2"] = "百分比 / 每秒 / 总计"
+L["STRING_OPTIONS_REPORT_SCHEMA3"] = "百分比 / 总计 / 每秒"
 L["STRING_OPTIONS_RESET_TO_DEFAULT"] = "重置成默认"
 L["STRING_OPTIONS_ROW_SETTING_ANCHOR"] = "一般:"
 L["STRING_OPTIONS_ROWADV_TITLE"] = "行高级设置"
@@ -983,14 +987,14 @@ L["STRING_OPTIONS_RT_COOLDOWNS_SELECT_DESC"] = "选择被忽略的冷却时间"
 L["STRING_OPTIONS_RT_DEATH_MSG"] = "Details! %s's 死亡"
 L["STRING_OPTIONS_RT_DEATHS_ANCHOR"] = "通报死亡:"
 L["STRING_OPTIONS_RT_DEATHS_FIRST"] = "仅第一次"
-L["STRING_OPTIONS_RT_DEATHS_FIRST_DESC"] = "Make it only annouce the first X deaths during the encounter."
+L["STRING_OPTIONS_RT_DEATHS_FIRST_DESC"] = "只通报战斗中的第一次X死亡"
 L["STRING_OPTIONS_RT_DEATHS_HITS"] = "点击量"
 L["STRING_OPTIONS_RT_DEATHS_HITS_DESC"] = "当通报死亡，显示有多少点击率。"
 L["STRING_OPTIONS_RT_DEATHS_ONOFF_DESC"] = "当团队成员死亡，将其发送到RAID通道是什么杀死该玩家。"
 L["STRING_OPTIONS_RT_DEATHS_WHERE"] = "副本"
 L["STRING_OPTIONS_RT_DEATHS_WHERE_DESC"] = [=[选择在哪里通报死亡。
 
-|cFFFFFF00重要|r for raids /raid channel is used, /p while in dungeons.
+|cFFFFFF00重要|r 当/raid频道存在使用副本频道，在地下城时使用/p
 
 如果 |cFFFFFF00观察者|r 被选中, 死亡仅仅显示在你的频道。]=]
 L["STRING_OPTIONS_RT_DEATHS_WHERE1"] = "团队 & 地下城"
@@ -1058,7 +1062,7 @@ L["STRING_OPTIONS_SCROLLBAR_DESC"] = [=[启用或禁用滚动条。
 L["STRING_OPTIONS_SEGMENTSSAVE"] = "存储片段"
 L["STRING_OPTIONS_SEGMENTSSAVE_DESC"] = [=[这些选项控制你有多少片段想保存 在游戏sesions之间。
 
-High values may increase the time your character takes to logoff.
+较高的值可能会增加角色注销所需的时间
 
 如果您极少使用最后一天的数据, 强烈建议你设置此选择在 |cFFFFFF001|r。]=]
 L["STRING_OPTIONS_SENDFEEDBACK"] = "反馈"
@@ -1097,7 +1101,7 @@ L["STRING_OPTIONS_SKIN_RESET_TOOLTIP_DESC"] = "设置提示的边框颜色和纹
 L["STRING_OPTIONS_SKIN_SELECT"] = "选择一个皮肤"
 L["STRING_OPTIONS_SKIN_SELECT_ANCHOR"] = "皮肤选择："
 L["STRING_OPTIONS_SOCIAL"] = "社会"
-L["STRING_OPTIONS_SOCIAL_DESC"] = "Tell how you want to be known in your guild enviorement."
+L["STRING_OPTIONS_SOCIAL_DESC"] = "告诉你如何在你的公会环境中被知道"
 L["STRING_OPTIONS_SPELL_ADD"] = "添加"
 L["STRING_OPTIONS_SPELL_ADDICON"] = "新图标: "
 L["STRING_OPTIONS_SPELL_ADDNAME"] = "新名字: "
@@ -1113,12 +1117,6 @@ L["STRING_OPTIONS_SPELL_NOTFOUND"] = "法术没有找到。"
 L["STRING_OPTIONS_SPELL_REMOVE"] = "删除"
 L["STRING_OPTIONS_SPELL_RESET"] = "重置"
 L["STRING_OPTIONS_SPELL_SPELLID"] = "法术 ID"
-L["STRING_OPTIONS_SPELL_SPELLID_DESC"] = [=[A ID is a unique number to identify the spell inside World of Warcraft. There is many ways to get the number:
-
-- On the Player Details Window, hold shift while hover over spells bars.
-- Type the spell name in the SpellId field, a tooltip is shown with suggested spells.
-- Community web sites, most of them have the spellid on the address link.
-- Browsing the spell cache below:]=]
 L["STRING_OPTIONS_STRETCH"] = "拉伸按钮锚点"
 L["STRING_OPTIONS_STRETCH_DESC"] = [=[交替拉伸按钮的位置。
 
@@ -1126,9 +1124,9 @@ L["STRING_OPTIONS_STRETCH_DESC"] = [=[交替拉伸按钮的位置。
 
 |cFFFFFF00底部|r: 抓取放置在底部中心。]=]
 L["STRING_OPTIONS_STRETCHTOP"] = "拉伸按钮始终在顶部"
-L["STRING_OPTIONS_STRETCHTOP_DESC"] = [=[The stretch button will be placed on the FULLSCREEN strata and always stay higher than the others frames.
+L["STRING_OPTIONS_STRETCHTOP_DESC"] = [=[拉伸按钮将放置在FULLSCREEN底层上，并始终保持高于其他框架
 
-|cFFFFFF00Important|r: Moving the grab for a high layer, it might stay in front of others frames like backpacks, use only if you really need.]=]
+|cFFFFFF00重要|r: 将抓取器移动到高层，它可能会留在其他框架前面，如背包，只有在你真正需要的时候使用]=]
 L["STRING_OPTIONS_SWITCH_ANCHOR"] = "开关:"
 L["STRING_OPTIONS_SWITCHINFO"] = "|cFFF79F81 左边禁用|r  |cFF81BEF7 右边禁用|r"
 L["STRING_OPTIONS_TABEMB_ANCHOR"] = "已嵌入聊天标签"
@@ -1160,13 +1158,13 @@ L["STRING_OPTIONS_TEXT_SHOW_BRACKET_DESC"] = "选择哪个字符是用来打开�
 L["STRING_OPTIONS_TEXT_SHOW_PERCENT"] = "显示百分比"
 L["STRING_OPTIONS_TEXT_SHOW_PERCENT_DESC"] = "显示的百分比。"
 L["STRING_OPTIONS_TEXT_SHOW_PS"] = "每秒显示"
-L["STRING_OPTIONS_TEXT_SHOW_PS_DESC"] = "S显示每秒伤害和每秒治疗效果。"
+L["STRING_OPTIONS_TEXT_SHOW_PS_DESC"] = "显示每秒伤害和每秒治疗效果。"
 L["STRING_OPTIONS_TEXT_SHOW_SEPARATOR"] = "分隔符"
-L["STRING_OPTIONS_TEXT_SHOW_SEPARATOR_DESC"] = "Choose which character is used to separate the per second amount from percent amount."
+L["STRING_OPTIONS_TEXT_SHOW_SEPARATOR_DESC"] = "选择用于将每秒数值与百分比数值分开的字符"
 L["STRING_OPTIONS_TEXT_SHOW_TOTAL"] = "显示总的"
 L["STRING_OPTIONS_TEXT_SHOW_TOTAL_DESC"] = [=[显示角色完成的总的数据。
 
-例如: total damage, total heal received.]=]
+例如:总伤害，总收到的治疗]=]
 L["STRING_OPTIONS_TEXT_SIZE"] = "文本大小"
 L["STRING_OPTIONS_TEXT_SIZE_DESC"] = "同时改变左和右的文本的大小。"
 L["STRING_OPTIONS_TEXT_TEXTUREL_ANCHOR"] = "较低的纹理："
@@ -1176,15 +1174,15 @@ L["STRING_OPTIONS_TEXTEDITOR_CANCEL_TOOLTIP"] = "完成编辑并忽略代码中�
 L["STRING_OPTIONS_TEXTEDITOR_COLOR_TOOLTIP"] = "选择文本，然后单击颜色按钮来更改所选文本的颜色。"
 L["STRING_OPTIONS_TEXTEDITOR_COMMA"] = "逗号"
 L["STRING_OPTIONS_TEXTEDITOR_COMMA_TOOLTIP"] = [=[添加一个函数来用逗号分隔格式的数字。
-例如: 1000000 to 1.000.000.]=]
+例如: 1000000 到 1.000.000.]=]
 L["STRING_OPTIONS_TEXTEDITOR_DATA"] = "[数据 %s]"
-L["STRING_OPTIONS_TEXTEDITOR_DATA_TOOLTIP"] = [=[Add a data feed:
+L["STRING_OPTIONS_TEXTEDITOR_DATA_TOOLTIP"] = [=[添加数据源:
 
-|cFFFFFF00Data 1|r: normaly represents the total done by the actor or the position number.
+|cFFFFFF00数据 1|r: Normaly表示参与者完成的总数或位置编号
 
-|cFFFFFF00Data 2|r: in most cases represents the DPS, HPS or player's name.
+|cFFFFFF00数据 2|r: 在大多数情况下，代表DPS，HPS或玩家的名字
 
-|cFFFFFF00Data 3|r: represents the percent done by the actor, spec or faction icon.]=]
+|cFFFFFF00数据 3|r: 表示参与者、规范或图标完成的百分比]=]
 L["STRING_OPTIONS_TEXTEDITOR_DONE"] = "完成"
 L["STRING_OPTIONS_TEXTEDITOR_DONE_TOOLTIP"] = "完成编辑并保存代码。"
 L["STRING_OPTIONS_TEXTEDITOR_FUNC"] = "函数"
@@ -1192,170 +1190,170 @@ L["STRING_OPTIONS_TEXTEDITOR_FUNC_TOOLTIP"] = [=[添加一个空函数。
 函数必须总是返回一个数字。]=]
 L["STRING_OPTIONS_TEXTEDITOR_RESET"] = "重置"
 L["STRING_OPTIONS_TEXTEDITOR_RESET_TOOLTIP"] = "清除所有的代码，并添加默认的代码。"
-L["STRING_OPTIONS_TEXTEDITOR_TOK"] = "ToK"
+L["STRING_OPTIONS_TEXTEDITOR_TOK"] = "数值到K"
 L["STRING_OPTIONS_TEXTEDITOR_TOK_TOOLTIP"] = [=[添加一个函数来格式化数字的值。
-例如: 1500000 to 1.5kk.]=]
+例如: 1500000 到 1.5kk.]=]
 L["STRING_OPTIONS_TIMEMEASURE"] = "时间测量"
-L["STRING_OPTIONS_TIMEMEASURE_DESC"] = [=[|cFFFFFF00Activity|r: the timer of each raid member is put on hold if his activity is ceased and back again to count when is resumed, common way of measure Dps and Hps.
+L["STRING_OPTIONS_TIMEMEASURE_DESC"] = [=[|cFFFFFF00活动|r: 如果活动停止，每个团队成员的计时器将被暂停，并且当恢复时，每个团队成员的计时器将再次计数，常用的测量方法Dps和Hps
 
-|cFFFFFF00Effective|r: used on rankings, this method uses the elapsed combat time for measure the Dps and Hps of all raid members.]=]
+|cFFFFFF00有效|r: 用于排名，此方法使用经过的战斗时间来测量所有团队成员的Dps和Hps]=]
 L["STRING_OPTIONS_TOOLBAR_SETTINGS"] = "左边的菜单设置"
 L["STRING_OPTIONS_TOOLBAR_SETTINGS_DESC"] = "这些选项更改在窗口顶部的主菜单。"
 L["STRING_OPTIONS_TOOLBARSIDE"] = "工具栏锚点"
-L["STRING_OPTIONS_TOOLBARSIDE_DESC"] = [=[Places the toolbar (a.k.a title bar) on the top or bottom side of window.
+L["STRING_OPTIONS_TOOLBARSIDE_DESC"] = [=[将工具栏（a.k.a标题栏）放在窗口的顶部或底部.
 
-|cFFFFFF00Important|r: when alternating the position, title text won't change, check out |cFFFFFF00Title Bar: Text|r section for more options.]=]
+|cFFFFFF00重要|r: 当交替位置时，标题文本不会改变，请查看|cFFFFFF00标题栏：文本|r部分以获取更多选项]=]
 L["STRING_OPTIONS_TOOLS_ANCHOR"] = "工具:"
 L["STRING_OPTIONS_TOOLTIP_ANCHOR"] = "设置:"
 L["STRING_OPTIONS_TOOLTIP_ANCHORTEXTS"] = "文本:"
 L["STRING_OPTIONS_TOOLTIPS_ABBREVIATION"] = "缩写类型"
 L["STRING_OPTIONS_TOOLTIPS_ABBREVIATION_DESC"] = "选择提示上显示的号码是如何被格式化。"
 L["STRING_OPTIONS_TOOLTIPS_ANCHOR_ATTACH"] = "提示侧"
-L["STRING_OPTIONS_TOOLTIPS_ANCHOR_ATTACH_DESC"] = "Which side of tooltip is used to fit with the anchor attach side."
+L["STRING_OPTIONS_TOOLTIPS_ANCHOR_ATTACH_DESC"] = "提示的哪一侧用于与锚固件侧配合"
 L["STRING_OPTIONS_TOOLTIPS_ANCHOR_BORDER"] = "边框:"
 L["STRING_OPTIONS_TOOLTIPS_ANCHOR_POINT"] = "锚点:"
 L["STRING_OPTIONS_TOOLTIPS_ANCHOR_RELATIVE"] = "锚点侧"
-L["STRING_OPTIONS_TOOLTIPS_ANCHOR_RELATIVE_DESC"] = "Which side of the anchor the tooltip will be placed."
-L["STRING_OPTIONS_TOOLTIPS_ANCHOR_TEXT"] = "Tooltip Anchor"
-L["STRING_OPTIONS_TOOLTIPS_ANCHOR_TEXT_DESC"] = "right click to lock."
+L["STRING_OPTIONS_TOOLTIPS_ANCHOR_RELATIVE_DESC"] = "工具提示将放置在锚点的哪一侧"
+L["STRING_OPTIONS_TOOLTIPS_ANCHOR_TEXT"] = "提示锚点"
+L["STRING_OPTIONS_TOOLTIPS_ANCHOR_TEXT_DESC"] = "右键锁定"
 L["STRING_OPTIONS_TOOLTIPS_ANCHOR_TO"] = "锚点"
-L["STRING_OPTIONS_TOOLTIPS_ANCHOR_TO_CHOOSE"] = "Move Anchor Point"
-L["STRING_OPTIONS_TOOLTIPS_ANCHOR_TO_CHOOSE_DESC"] = "Move the anchor position when Anchor is set to |cFFFFFF00Point on Screen|r."
-L["STRING_OPTIONS_TOOLTIPS_ANCHOR_TO_DESC"] = "Tooltips attaches on the hovered row or on a chosen point in the game screen."
+L["STRING_OPTIONS_TOOLTIPS_ANCHOR_TO_CHOOSE"] = "移动锚点"
+L["STRING_OPTIONS_TOOLTIPS_ANCHOR_TO_CHOOSE_DESC"] = "当“锚点”设置为|cFFFFFF00“屏幕上的点”|r时，移动锚点位置"
+L["STRING_OPTIONS_TOOLTIPS_ANCHOR_TO_DESC"] = "提示附加在悬停行或游戏屏幕中的选定点上"
 L["STRING_OPTIONS_TOOLTIPS_ANCHOR_TO1"] = "窗口行"
-L["STRING_OPTIONS_TOOLTIPS_ANCHOR_TO2"] = "Point on Screen"
+L["STRING_OPTIONS_TOOLTIPS_ANCHOR_TO2"] = "屏幕上的点"
 L["STRING_OPTIONS_TOOLTIPS_ANCHORCOLOR"] = "标题"
 L["STRING_OPTIONS_TOOLTIPS_BACKGROUNDCOLOR"] = "背景颜色"
-L["STRING_OPTIONS_TOOLTIPS_BACKGROUNDCOLOR_DESC"] = "Choose the color used on the background."
-L["STRING_OPTIONS_TOOLTIPS_BORDER_COLOR_DESC"] = "Change the border color."
-L["STRING_OPTIONS_TOOLTIPS_BORDER_SIZE_DESC"] = "Change the border size."
-L["STRING_OPTIONS_TOOLTIPS_BORDER_TEXTURE_DESC"] = "Modify the border texture file."
-L["STRING_OPTIONS_TOOLTIPS_FONTCOLOR"] = "Text Color"
-L["STRING_OPTIONS_TOOLTIPS_FONTCOLOR_DESC"] = "Change the color used on tooltip texts."
-L["STRING_OPTIONS_TOOLTIPS_FONTFACE"] = "Text Font"
-L["STRING_OPTIONS_TOOLTIPS_FONTFACE_DESC"] = "Choose the font used on tooltip texts."
-L["STRING_OPTIONS_TOOLTIPS_FONTSHADOW_DESC"] = "Enable or disable the shadow in the text."
-L["STRING_OPTIONS_TOOLTIPS_FONTSIZE"] = "Text Size"
-L["STRING_OPTIONS_TOOLTIPS_FONTSIZE_DESC"] = "Increase or decrease the size of tooltip texts"
+L["STRING_OPTIONS_TOOLTIPS_BACKGROUNDCOLOR_DESC"] = "选择背景上使用的颜色"
+L["STRING_OPTIONS_TOOLTIPS_BORDER_COLOR_DESC"] = "更改边框颜色"
+L["STRING_OPTIONS_TOOLTIPS_BORDER_SIZE_DESC"] = "更改边框大小"
+L["STRING_OPTIONS_TOOLTIPS_BORDER_TEXTURE_DESC"] = "修改边框纹理文件"
+L["STRING_OPTIONS_TOOLTIPS_FONTCOLOR"] = "文字颜色"
+L["STRING_OPTIONS_TOOLTIPS_FONTCOLOR_DESC"] = "更改提示文本上使用的颜色"
+L["STRING_OPTIONS_TOOLTIPS_FONTFACE"] = "文字字体"
+L["STRING_OPTIONS_TOOLTIPS_FONTFACE_DESC"] = "选择提示文本上使用的字体"
+L["STRING_OPTIONS_TOOLTIPS_FONTSHADOW_DESC"] = "启用或禁用文本中的阴影"
+L["STRING_OPTIONS_TOOLTIPS_FONTSIZE"] = "字体大小"
+L["STRING_OPTIONS_TOOLTIPS_FONTSIZE_DESC"] = "增加或减少提示文本的大小"
 L["STRING_OPTIONS_TOOLTIPS_IGNORESUBWALLPAPER"] = "子菜单壁纸"
 L["STRING_OPTIONS_TOOLTIPS_IGNORESUBWALLPAPER_DESC"] = "启用后一些菜单将会使用它们自己的子菜单壁纸。"
-L["STRING_OPTIONS_TOOLTIPS_MAXIMIZE"] = "Maximize Method"
-L["STRING_OPTIONS_TOOLTIPS_MAXIMIZE_DESC"] = [=[Select the method used to expand the information shown on the tooltip.
+L["STRING_OPTIONS_TOOLTIPS_MAXIMIZE"] = "提示最大化方法"
+L["STRING_OPTIONS_TOOLTIPS_MAXIMIZE_DESC"] = [=[选择用于展开提示中显示的信息的方法.
 
-|cFFFFFF00 On Control Keys|r: tooltip box is expanded when Shift, Ctrl or Alt keys is pressed.
+|cFFFFFF00 在控制键上|r: 按下Shift，Ctrl或Alt键时，提示框会展开
 
-|cFFFFFF00 Always Maximized|r: the tooltip always show all information without any amount limitations.
+|cFFFFFF00 始终最大化|r: 工具提示始终显示所有信息，没有任何数量限制
 
-|cFFFFFF00 Only Shift Block|r: the first block on the tooltip is always expanded by default.
+|cFFFFFF00 只有Shift块|r: 默认情况下提示上的第一个块始终展开
 
-|cFFFFFF00 Only Ctrl Block|r: the second block is always expanded by default.
+|cFFFFFF00 只有Ctrl块|r: 默认情况下第二个块始终展开
 
-|cFFFFFF00 Only Alt Block|r: the third block is always expanded by default.]=]
-L["STRING_OPTIONS_TOOLTIPS_MAXIMIZE1"] = "On Shift Ctrl Alt"
-L["STRING_OPTIONS_TOOLTIPS_MAXIMIZE2"] = "Always Maximized"
-L["STRING_OPTIONS_TOOLTIPS_MAXIMIZE3"] = "Only Shift Block"
-L["STRING_OPTIONS_TOOLTIPS_MAXIMIZE4"] = "Only Ctrl Block"
-L["STRING_OPTIONS_TOOLTIPS_MAXIMIZE5"] = "Only Alt Block"
+|cFFFFFF00 只有Alt块|r: 默认情况下第三个块始终展开]=]
+L["STRING_OPTIONS_TOOLTIPS_MAXIMIZE1"] = "在控制键上"
+L["STRING_OPTIONS_TOOLTIPS_MAXIMIZE2"] = "始终最大化"
+L["STRING_OPTIONS_TOOLTIPS_MAXIMIZE3"] = "只有Shift块"
+L["STRING_OPTIONS_TOOLTIPS_MAXIMIZE4"] = "只有Ctrl块"
+L["STRING_OPTIONS_TOOLTIPS_MAXIMIZE5"] = "只有Alt块"
 L["STRING_OPTIONS_TOOLTIPS_MENU_WALLP"] = "编辑选单外观"
 L["STRING_OPTIONS_TOOLTIPS_MENU_WALLP_DESC"] = "修改标题栏菜单背景图的缩放比例。"
-L["STRING_OPTIONS_TOOLTIPS_OFFSETX"] = "Distance X"
-L["STRING_OPTIONS_TOOLTIPS_OFFSETX_DESC"] = "How far horizontally the tooltip is placed from its anchor."
-L["STRING_OPTIONS_TOOLTIPS_OFFSETY"] = "Distance Y"
-L["STRING_OPTIONS_TOOLTIPS_OFFSETY_DESC"] = "How far vertically the tooltip is placed from its anchor."
-L["STRING_OPTIONS_TOOLTIPS_SHOWAMT"] = "Show Amount"
-L["STRING_OPTIONS_TOOLTIPS_SHOWAMT_DESC"] = "Shows a number indicating how many spells, targets and pets have in the tooltip."
+L["STRING_OPTIONS_TOOLTIPS_OFFSETX"] = "距离 X"
+L["STRING_OPTIONS_TOOLTIPS_OFFSETX_DESC"] = "提示从其锚点水平放置距离"
+L["STRING_OPTIONS_TOOLTIPS_OFFSETY"] = "距离 Y"
+L["STRING_OPTIONS_TOOLTIPS_OFFSETY_DESC"] = "提示从其锚点垂直放置距离"
+L["STRING_OPTIONS_TOOLTIPS_SHOWAMT"] = "显示数量"
+L["STRING_OPTIONS_TOOLTIPS_SHOWAMT_DESC"] = "显示一个数字，表示提示中有多少法术，目标和宠物"
 L["STRING_OPTIONS_TOOLTIPS_TITLE"] = "工具提示"
 L["STRING_OPTIONS_TOOLTIPS_TITLE_DESC"] = "这些选项用来调整工具提示的外观。"
-L["STRING_OPTIONS_TOTALBAR_ANCHOR"] = "Total Bar:"
+L["STRING_OPTIONS_TOTALBAR_ANCHOR"] = "总体计量条:"
 L["STRING_OPTIONS_TRASH_SUPPRESSION"] = "垃圾回收"
 L["STRING_OPTIONS_TRASH_SUPPRESSION_DESC"] = "|cFFFFFF00X|r 秒后，自动切换到显示可回收分段（|cFFFFFF00只在遭遇首领并失败后|r）。"
 L["STRING_OPTIONS_WALLPAPER_ALPHA"] = "Alpha:"
-L["STRING_OPTIONS_WALLPAPER_ANCHOR"] = "Wallpaper Selection:"
-L["STRING_OPTIONS_WALLPAPER_BLUE"] = "Blue:"
-L["STRING_OPTIONS_WALLPAPER_CBOTTOM"] = "Crop (|cFFC0C0C0bottom|r):"
-L["STRING_OPTIONS_WALLPAPER_CLEFT"] = "Crop (|cFFC0C0C0left|r):"
-L["STRING_OPTIONS_WALLPAPER_CRIGHT"] = "Crop (|cFFC0C0C0right|r):"
-L["STRING_OPTIONS_WALLPAPER_CTOP"] = "Crop (|cFFC0C0C0top|r):"
+L["STRING_OPTIONS_WALLPAPER_ANCHOR"] = "壁纸选择:"
+L["STRING_OPTIONS_WALLPAPER_BLUE"] = "蓝:"
+L["STRING_OPTIONS_WALLPAPER_CBOTTOM"] = "裁剪 (|cFFC0C0C0底部|r):"
+L["STRING_OPTIONS_WALLPAPER_CLEFT"] = "裁剪 (|cFFC0C0C0左|r):"
+L["STRING_OPTIONS_WALLPAPER_CRIGHT"] = "裁剪 (|cFFC0C0C0右|r):"
+L["STRING_OPTIONS_WALLPAPER_CTOP"] = "裁剪 (|cFFC0C0C0顶部|r):"
 L["STRING_OPTIONS_WALLPAPER_FILE"] = "文件:"
-L["STRING_OPTIONS_WALLPAPER_GREEN"] = "Green:"
+L["STRING_OPTIONS_WALLPAPER_GREEN"] = "绿:"
 L["STRING_OPTIONS_WALLPAPER_LOAD"] = "加载图片"
-L["STRING_OPTIONS_WALLPAPER_LOAD_DESC"] = "Select a image from your hard drive to use as wallpaper."
-L["STRING_OPTIONS_WALLPAPER_LOAD_EXCLAMATION"] = [=[The image needs:
+L["STRING_OPTIONS_WALLPAPER_LOAD_DESC"] = "从硬盘驱动器中选择要用作壁纸的图片"
+L["STRING_OPTIONS_WALLPAPER_LOAD_EXCLAMATION"] = [=[图片需要:
 
-- To be in Truevision TGA format (.tga extension).
-- Be inside WOW/Interface/ root folder.
-- The size must be 256 x 256 pixels.
-- The game must be closed before paste the file.]=]
+- 采用Truevision TGA格式（.tga扩展名）
+- 在WOW / Interface / root文件夹中
+- 大小必须为256 x 256像素
+- 在粘贴文件之前必须关闭游戏]=]
 L["STRING_OPTIONS_WALLPAPER_LOAD_FILENAME"] = "文件名称:"
-L["STRING_OPTIONS_WALLPAPER_LOAD_FILENAME_DESC"] = "Insert only the name of the file, excluding path and extension."
+L["STRING_OPTIONS_WALLPAPER_LOAD_FILENAME_DESC"] = "仅插入文件名，不包括路径和扩展名"
 L["STRING_OPTIONS_WALLPAPER_LOAD_OKEY"] = "加载"
 L["STRING_OPTIONS_WALLPAPER_LOAD_TITLE"] = "从电脑:"
 L["STRING_OPTIONS_WALLPAPER_LOAD_TROUBLESHOOT"] = "排查"
-L["STRING_OPTIONS_WALLPAPER_LOAD_TROUBLESHOOT_TEXT"] = [=[If the wallpaper got full green color:
+L["STRING_OPTIONS_WALLPAPER_LOAD_TROUBLESHOOT_TEXT"] = [=[如果壁纸得到了全绿色:
 
-- Restarted the wow client.
-- Make sure the image have 256 width and 256 height.
-- Check if the image is in .TGA format and make sure it's saved with 32 bits/pixel.
-- Is inside Interface folder, for example: C:/Program Files/World of Warcraft/Interface/]=]
-L["STRING_OPTIONS_WALLPAPER_RED"] = "Red:"
+- 重启了魔兽客户端
+- 确保图像宽度为256，高度为256
+- 检查图像是否为.TGA格式，并确保以32位/像素保存
+- 在Interface文件夹中，例如: C:/Program Files/World of Warcraft/Interface/]=]
+L["STRING_OPTIONS_WALLPAPER_RED"] = "红:"
 L["STRING_OPTIONS_WC_ANCHOR"] = "快速窗口控制 (#%s):"
 L["STRING_OPTIONS_WC_BOOKMARK"] = "管理书签"
 L["STRING_OPTIONS_WC_BOOKMARK_DESC"] = "打开书签的配置面板。"
 L["STRING_OPTIONS_WC_CLOSE"] = "关闭"
-L["STRING_OPTIONS_WC_CLOSE_DESC"] = [=[Close the current editing window.
+L["STRING_OPTIONS_WC_CLOSE_DESC"] = [=[关闭当前编辑窗口
 
-When closed, the window is considered inactive and can be reopened at any time using the Window Control menu.
+关闭时，窗口被视为非活动状态，可以使用“窗口控制”菜单随时重新打开
 
-|cFFFFFF00Important:|r for completely remove a window go to miscellaneous section.]=]
+|cFFFFFF00重要:|r 要完全删除窗口，请转到其他部分]=]
 L["STRING_OPTIONS_WC_CREATE"] = "创建窗口"
 L["STRING_OPTIONS_WC_CREATE_DESC"] = "创建一个新的窗口。"
 L["STRING_OPTIONS_WC_LOCK"] = "锁定"
-L["STRING_OPTIONS_WC_LOCK_DESC"] = [=[Lock or Unlock the window.
+L["STRING_OPTIONS_WC_LOCK_DESC"] = [=[锁定或解锁窗口
 
-When locked, the window can not be moved.]=]
+锁定时，窗口无法移动]=]
 L["STRING_OPTIONS_WC_REOPEN"] = "重新打开"
 L["STRING_OPTIONS_WC_UNLOCK"] = "解锁"
 L["STRING_OPTIONS_WC_UNSNAP"] = "取消组合"
 L["STRING_OPTIONS_WC_UNSNAP_DESC"] = "从窗口群组中删除此窗口"
-L["STRING_OPTIONS_WHEEL_SPEED"] = "Wheel Speed"
-L["STRING_OPTIONS_WHEEL_SPEED_DESC"] = "Changes how fast the scroll goes when rolling the mouse wheel over a window."
+L["STRING_OPTIONS_WHEEL_SPEED"] = "轮速"
+L["STRING_OPTIONS_WHEEL_SPEED_DESC"] = "更改在窗口上滚动鼠标滚轮时滚动的速度"
 L["STRING_OPTIONS_WINDOW"] = "选项面板"
 L["STRING_OPTIONS_WINDOW_ANCHOR_ANCHORS"] = "锚点:"
 L["STRING_OPTIONS_WINDOW_IGNOREMASSTOGGLE"] = "忽略品质切换"
-L["STRING_OPTIONS_WINDOW_IGNOREMASSTOGGLE_DESC"] = "When enabled, this window is not affected when hiding, showing or toggling all windows."
+L["STRING_OPTIONS_WINDOW_IGNOREMASSTOGGLE_DESC"] = "启用后，隐藏，显示或切换所有窗口时，此窗口不受影响"
 L["STRING_OPTIONS_WINDOW_SCALE"] = "尺度"
-L["STRING_OPTIONS_WINDOW_SCALE_DESC"] = [=[Adjust the scale of the window.
+L["STRING_OPTIONS_WINDOW_SCALE_DESC"] = [=[调整窗口的比例
 
-|cFFFFFF00Tip|r: right click to type the value.
+|cFFFFFF00贴士|r: 右键单击以键入值
 
-|cFFFFFF00Current|r: %s]=]
+|cFFFFFF00当前|r: %s]=]
 L["STRING_OPTIONS_WINDOW_TITLE"] = "窗口设置"
 L["STRING_OPTIONS_WINDOW_TITLE_DESC"] = "这些选项控制选择窗口的窗口外观。"
 L["STRING_OPTIONS_WINDOWSPEED"] = "更新间隔"
-L["STRING_OPTIONS_WINDOWSPEED_DESC"] = [=[Time interval between each update.
+L["STRING_OPTIONS_WINDOWSPEED_DESC"] = [=[每次更新之间的时间间隔
 
-|cFFFFFF000.05|r: real time update.
+|cFFFFFF000.05|r: 实时更新
 
-|cFFFFFF000.3|r: update about 3 times each second.
+|cFFFFFF000.3|r: 每秒更新约3次
 
-|cFFFFFF003.0|r: update once every 3 seconds.]=]
+|cFFFFFF003.0|r: 每3秒更新一次]=]
 L["STRING_OPTIONS_WP"] = "墙纸设置"
 L["STRING_OPTIONS_WP_ALIGN"] = "对齐"
-L["STRING_OPTIONS_WP_ALIGN_DESC"] = [=[How the wallpaper will align within the window.
+L["STRING_OPTIONS_WP_ALIGN_DESC"] = [=[壁纸如何在窗口内对齐
 
-- |cFFFFFF00Fill|r: auto resize and align with all corners.
+- |cFFFFFF00平铺|r: 自动调整大小并与所有角落对齐
 
-- |cFFFFFF00Center|r: doesn`t resize and align with the center of the window.
+- |cFFFFFF00居中|r: 没有调整大小并与窗口中心对齐
 
--|cFFFFFF00Stretch|r: auto resize on vertical or horizontal and align with left-right or top-bottom sides.
+-|cFFFFFF00伸展|r: 自动调整垂直或水平尺寸，并与左右或上下边对齐
 
--|cFFFFFF00Four Corners|r: align with specified corner, no auto resize is made.]=]
+-|cFFFFFF00四角|r: 与指定的角对齐，不进行自动调整大小]=]
 L["STRING_OPTIONS_WP_DESC"] = "这些选项控制窗口的壁纸。"
 L["STRING_OPTIONS_WP_EDIT"] = "编辑图像"
 L["STRING_OPTIONS_WP_EDIT_DESC"] = "打开图像编辑器来改变所选图像的某些方面。"
 L["STRING_OPTIONS_WP_ENABLE_DESC"] = "显示墙纸。"
 L["STRING_OPTIONS_WP_GROUP"] = "类别"
-L["STRING_OPTIONS_WP_GROUP_DESC"] = "Select the image group."
+L["STRING_OPTIONS_WP_GROUP_DESC"] = "选择图片组"
 L["STRING_OPTIONS_WP_GROUP2"] = "壁纸"
 L["STRING_OPTIONS_WP_GROUP2_DESC"] = "这将被用作墙纸的图像。"
 L["STRING_OPTIONSMENU_AUTOMATIC"] = "窗口：自动"
@@ -1394,7 +1392,7 @@ L["STRING_PETS"] = "宠物"
 L["STRING_PLAYER_DETAILS"] = "玩家详情"
 L["STRING_PLAYERS"] = "玩家"
 L["STRING_PLEASE_WAIT"] = "请稍候"
-L["STRING_PLUGIN_CLEAN"] = "None"
+L["STRING_PLUGIN_CLEAN"] = "无"
 L["STRING_PLUGIN_CLOCKNAME"] = "遭遇时间"
 L["STRING_PLUGIN_CLOCKTYPE"] = "时钟类型"
 L["STRING_PLUGIN_DURABILITY"] = "耐久力"
@@ -1404,11 +1402,11 @@ L["STRING_PLUGIN_LATENCY"] = "延迟"
 L["STRING_PLUGIN_MINSEC"] = "分钟 & 秒"
 L["STRING_PLUGIN_NAMEALREADYTAKEN"] = "Details! 无法安装插件，因为名称已被占用"
 L["STRING_PLUGIN_PATTRIBUTENAME"] = "属性"
-L["STRING_PLUGIN_PDPSNAME"] = "Raid Dps"
+L["STRING_PLUGIN_PDPSNAME"] = "团队 Dps"
 L["STRING_PLUGIN_PSEGMENTNAME"] = "片段"
 L["STRING_PLUGIN_SECONLY"] = "只需几秒钟"
 L["STRING_PLUGIN_SEGMENTTYPE"] = "片段类型"
-L["STRING_PLUGIN_SEGMENTTYPE_1"] = "Fight #X"
+L["STRING_PLUGIN_SEGMENTTYPE_1"] = "战斗 #X"
 L["STRING_PLUGIN_SEGMENTTYPE_2"] = "地下城名称"
 L["STRING_PLUGIN_SEGMENTTYPE_3"] = "地下城名称加片段"
 L["STRING_PLUGIN_THREATNAME"] = "我的威胁"
@@ -1419,19 +1417,19 @@ L["STRING_PLUGIN_TOOLTIP_RIGHTBUTTON"] = "选择另外一个插件"
 L["STRING_PLUGINOPTIONS_ABBREVIATE"] = "简略"
 L["STRING_PLUGINOPTIONS_COMMA"] = "逗号"
 L["STRING_PLUGINOPTIONS_FONTFACE"] = "选字体"
-L["STRING_PLUGINOPTIONS_NOFORMAT"] = "None"
+L["STRING_PLUGINOPTIONS_NOFORMAT"] = "无"
 L["STRING_PLUGINOPTIONS_TEXTALIGN"] = "文本对齐"
-L["STRING_PLUGINOPTIONS_TEXTALIGN_X"] = "Text Align X"
-L["STRING_PLUGINOPTIONS_TEXTALIGN_Y"] = "Text Align Y"
+L["STRING_PLUGINOPTIONS_TEXTALIGN_X"] = "文字对齐 X"
+L["STRING_PLUGINOPTIONS_TEXTALIGN_Y"] = "文字对齐 Y"
 L["STRING_PLUGINOPTIONS_TEXTCOLOR"] = "文本颜色"
 L["STRING_PLUGINOPTIONS_TEXTSIZE"] = "字体大小"
 L["STRING_PLUGINOPTIONS_TEXTSTYLE"] = "文本样式"
 L["STRING_QUERY_INSPECT"] = "获取天赋和装备等级。"
 L["STRING_QUERY_INSPECT_FAIL1"] = "在战斗中无法查询。"
 L["STRING_QUERY_INSPECT_REFRESH"] = "需要刷新"
-L["STRING_RAID_WIDE"] = "[*] raid wide cooldown"
+L["STRING_RAID_WIDE"] = "[*] 团队CD"
 L["STRING_RAIDCHECK_PLUGIN_DESC"] = "当在一个团队副本中时，在Details!的标题栏上会出现一个图标显示合剂，食物，药水的使用。"
-L["STRING_RAIDCHECK_PLUGIN_NAME"] = "Raid 检查"
+L["STRING_RAIDCHECK_PLUGIN_NAME"] = "团队检查"
 L["STRING_REPORT"] = "到"
 L["STRING_REPORT_BUTTON_TOOLTIP"] = "点击打开报告对话框"
 L["STRING_REPORT_FIGHT"] = "战斗"
@@ -1519,7 +1517,7 @@ L["STRING_SLASH_RESET_ALIAS1"] = "清除"
 L["STRING_SLASH_RESET_DESC"] = "清除所有片段"
 L["STRING_SLASH_SHOW"] = "显示"
 L["STRING_SLASH_SHOW_ALIAS1"] = "打开"
-L["STRING_SLASH_SHOWHIDETOGGLE_DESC"] = "all windows if <window number> isn't passed."
+L["STRING_SLASH_SHOWHIDETOGGLE_DESC"] = "如果<窗口编号>未通过，则为所有窗口"
 L["STRING_SLASH_TOGGLE"] = "切换"
 L["STRING_SLASH_WIPE"] = "团灭"
 L["STRING_SLASH_WIPECONFIG"] = "重新安装"
@@ -1552,8 +1550,8 @@ L["STRING_TUTORIAL_FULLY_DELETE_WINDOW"] = "你关闭了一个窗口，你可以
 L["STRING_TUTORIAL_OVERALL1"] = "调整设置面板的总体数据设置 > PvE/PvP"
 L["STRING_UNKNOW"] = "未知"
 L["STRING_UNKNOWSPELL"] = "未知法术"
-L["STRING_UNLOCK"] = [=[Ungroup windows
- in this button]=]
+L["STRING_UNLOCK"] = [=[取消组合窗口
+在这个按钮]=]
 L["STRING_UNLOCK_WINDOW"] = "解锁"
 L["STRING_UPTADING"] = "更新中"
 L["STRING_VERSION_AVAILABLE"] = "有新版本可用，请从 Twitch 或 Curse 上下载。"
@@ -1561,8 +1559,8 @@ L["STRING_VERSION_UPDATE"] = "新版本：有什么改变？ 点击这里"
 L["STRING_VOIDZONE_TOOLTIP"] = "伤害和时间:"
 L["STRING_WAITPLUGIN"] = [=[等待
 插件]=]
-L["STRING_WAVE"] = "wave"
-L["STRING_WELCOME_1"] = [=[|cFFFFFFFFWelcome to Details! 快速安装向导
+L["STRING_WAVE"] = "波"
+L["STRING_WELCOME_1"] = [=[|cFFFFFFFF欢迎使用Details! 快速安装向导
 
 |r本指南将帮助你一些重要的配置。
 您可以在任何时候跳过这只是点击“跳过”按钮。]=]
@@ -1598,9 +1596,9 @@ L["STRING_WELCOME_32"] = "使用界面：群组窗口"
 L["STRING_WELCOME_34"] = "使用接口：扩展工具提示"
 L["STRING_WELCOME_36"] = "使用界面：插件"
 L["STRING_WELCOME_38"] = "准备好去 Raid!"
-L["STRING_WELCOME_39"] = [=[Thank you for choosing Details!
+L["STRING_WELCOME_39"] = [=[感谢选择 Details!
 
-Feel free to always send feedbacks and bug reports to us.]=]
+随时向我们发送反馈和错误报告]=]
 L["STRING_WELCOME_4"] = "活动时间： "
 L["STRING_WELCOME_41"] = "接口和存储器性能："
 L["STRING_WELCOME_42"] = "快速外观设置"
@@ -1629,15 +1627,13 @@ L["STRING_WELCOME_66"] = [=[拖动一个窗口邻近另一个窗口来创建一�
 L["STRING_WELCOME_67"] = [=[按shift扩大玩家的提示来显示使用的所有法术。
 
 Ctrl键是目标，Alt键是宠物。]=]
-L["STRING_WELCOME_68"] = [=[Details! is infested by
-a plague called 'Plugins'.
+L["STRING_WELCOME_68"] = [=[Details! 被称为“插件”的瘟疫感染
 
-They are everywhere and
-helps you with many tasks.
+它们无处不在，帮助您完成许多任务
 
-Examples are: threat meter, dps analysis, encounter summary, charts creation, and more.]=]
+例如: 仇恨监视, DPS分析, 战斗总结, 图标创建等]=]
 L["STRING_WELCOME_69"] = "跳过"
-L["STRING_WELCOME_7"] = "用于排名，这种方法使用经过实战的时间度量的RAID所有成员的DPS和HPS。"
+L["STRING_WELCOME_7"] = "用于排名，这种方法使用经过实战的时间度量的团队所有成员的DPS和HPS"
 L["STRING_WELCOME_70"] = "标题栏设置"
 L["STRING_WELCOME_71"] = "条列设置"
 L["STRING_WELCOME_72"] = "视窗设置"
@@ -1655,5 +1651,5 @@ L["STRING_WIPE_ALERT"] = "团长命令：清除数据！"
 L["STRING_WIPE_ERROR1"] = "已经发送了一个清除指令。"
 L["STRING_WIPE_ERROR2"] = "不在团队中。"
 L["STRING_WIPE_ERROR3"] = "无法停止遇敌。"
-L["STRING_YES"] = "YES"
+L["STRING_YES"] = "是"
 

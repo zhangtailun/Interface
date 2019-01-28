@@ -1126,12 +1126,6 @@ L["STRING_OPTIONS_SPELL_NOTFOUND"] = "Spell not found."
 L["STRING_OPTIONS_SPELL_REMOVE"] = "Remove"
 L["STRING_OPTIONS_SPELL_RESET"] = "Reset"
 L["STRING_OPTIONS_SPELL_SPELLID"] = "Spell ID"
-L["STRING_OPTIONS_SPELL_SPELLID_DESC"] = [=[An ID is a unique number to identify the spell inside World of Warcraft. There are many ways to get the number:
-
-- On the Player Details Window, hold shift while hovering over spell bars.
-- Type the spell name in the SpellId field, a tooltip is shown with suggested spells.
-- Community web sites, most of them have the spellid on the address link.
-- Browsing the spell cache below:]=]
 L["STRING_OPTIONS_STRETCH"] = "Stretch Button on Top Side"
 L["STRING_OPTIONS_STRETCH_DESC"] = "Places the stretch button at the top of the window."
 L["STRING_OPTIONS_STRETCHTOP"] = "Stretch Button Always On Top"
@@ -1404,7 +1398,7 @@ L["STRING_PARRY"] = "Parry"
 L["STRING_PERCENTAGE"] = "Percentage"
 L["STRING_PET"] = "Pet"
 L["STRING_PETS"] = "Pets"
-L["STRING_PLAYER_DETAILS"] = "Player Details!"
+L["STRING_PLAYER_DETAILS"] = "Player Details! Breakdown"
 L["STRING_PLAYERS"] = "Players"
 L["STRING_PLEASE_WAIT"] = "Please wait"
 L["STRING_PLUGIN_CLEAN"] = "None"

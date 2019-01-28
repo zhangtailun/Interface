@@ -1,5 +1,41 @@
-changeset:   764:e68d261c6a61
+changeset:   770:86af40120d52
 tag:         tip
+user:        Tercioo
+date:        Fri Jan 25 16:00:17 2019 -0200
+summary:     - Fixed Player Details! Breakdown window not opening for new installs.
+
+
+changeset:   769:d028abffce39
+user:        Tercioo
+date:        Wed Jan 23 16:20:12 2019 -0200
+summary:     - Major clean up on plugins that lost support on 8.0.
+
+
+changeset:   768:d2824170ed79
+user:        Tercioo
+date:        Tue Jan 22 14:28:29 2019 -0200
+summary:     - Encounter updates and framework fixes.
+
+
+changeset:   767:4c16cb3cefc2
+user:        Tercioo
+date:        Tue Jan 22 09:39:01 2019 -0200
+summary:     - Framework update for mage polymorph fixes.
+
+
+changeset:   766:b47964a7f9ff
+user:        Tercioo
+date:        Sun Jan 20 20:14:24 2019 -0200
+summary:     - Improvements on the Encounter Breakdown plugin.
+
+
+changeset:   765:4badbe30d64f
+user:        Tercioo
+date:        Sun Jan 20 00:22:22 2019 -0200
+summary:     - Battle for Dazaralor update.
+
+
+changeset:   764:e68d261c6a61
 user:        Tercioo
 date:        Mon Dec 31 11:06:00 2018 -0200
 summary:     - Fixed Event Tracker tool broken on 8.1 patch.

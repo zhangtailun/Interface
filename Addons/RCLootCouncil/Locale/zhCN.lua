@@ -216,10 +216,14 @@ L["EQdkp-Plus XML output, tailored for Enjin import."] = "EQdkp-Plus XML导出�
 --[[ L["error_test_as_non_leader"] = ""--]] 
 L["Everyone have voted"] = "所有人都已投票"
 L["Export"] = "导出"
+--[[Translation missing --]]
+--[[ L["Fake Loot"] = ""--]] 
 L["Following items were registered in the award later list:"] = "以下物品已被稍后分配列表登记："
 L["Following winners was registered:"] = "以下获胜者已被登记："
 L["Frame options"] = "框架选项"
 L["Free"] = "自由支配"
+--[[Translation missing --]]
+--[[ L["Full Bags"] = ""--]] 
 L["g1"] = true
 L["g2"] = true
 L["Gave the item to you for distribution."] = "将物品给你分配。"
@@ -257,6 +261,8 @@ L["log_desc"] = "启用以在拾取历史中记录"
 L["Loot announced, waiting for answer"] = "拾取已通告，等待回应"
 L["Loot Everything"] = "全部拾取"
 L["Loot History"] = "拾取历史"
+--[[Translation missing --]]
+--[[ L["Loot Status"] = ""--]] 
 L["Loot won:"] = "赢得的拾取："
 L["loot_everything_desc"] = "开启自动拾取非装备类物品(例如坐骑，套装兑换物)"
 L["loot_history_desc"] = [=[RCLootCouncil 将自动记录分配相关信息。
@@ -264,6 +270,8 @@ L["loot_history_desc"] = [=[RCLootCouncil 将自动记录分配相关信息。
 
 注意: 非物品分配者只会储存来自物品分配者发送的数据。
 ]=]
+--[[Translation missing --]]
+--[[ L["Looted"] = ""--]] 
 --[[Translation missing --]]
 --[[ L["Looted by:"] = ""--]] 
 L["Looting options"] = "拾取选项"
@@ -359,6 +367,8 @@ L["Opens the synchronizer"] = "打开同步界面"
 --[[ L["opt_rejectTrade_Desc"] = ""--]] 
 --[[Translation missing --]]
 --[[ L["opt_rejectTrade_Name"] = ""--]] 
+--[[Translation missing --]]
+--[[ L["Original Owner"] = ""--]] 
 --[[Translation missing --]]
 --[[ L["Out of instance"] = ""--]] 
 --[[Translation missing --]]
@@ -521,6 +531,8 @@ L["Unawarded"] = "未分配"
 L["Unguilded"] = "无公会"
 L["Unknown date"] = "未知日期"
 L["Unknown/Chest"] = "未知/箱子"
+--[[Translation missing --]]
+--[[ L["Unlooted"] = ""--]] 
 L["Unvote"] = "取消投票"
 L["Upper Quality Limit"] = "品质上限"
 L["upper_quality_limit_desc"] = [=[选择自动分配时物品的品质上限 (含此品质！).

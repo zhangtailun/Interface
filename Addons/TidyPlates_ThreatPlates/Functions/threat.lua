@@ -3,10 +3,13 @@
 ---------------------------------------------------------------------------------------------------
 local ADDON_NAME, Addon = ...
 
+-- Lua APIs
+local string, strsplit = string, strsplit
+
 -- WoW APIs
 local UnitThreatSituation, UnitGroupRolesAssigned, UnitIsUnit = UnitThreatSituation, UnitGroupRolesAssigned, UnitIsUnit
-local InCombatLockdown, IsInInstance, UnitReaction, GetUnitClassification = InCombatLockdown, IsInInstance, UnitReaction, GetUnitClassification
-local UnitReaction, UnitIsTapDenied, UnitLevel, UnitClassification, UnitName = UnitReaction, UnitIsTapDenied, UnitLevel, UnitClassification, UnitName
+local InCombatLockdown, IsInInstance = InCombatLockdown, IsInInstance
+local UnitReaction, UnitIsTapDenied, UnitGUID = UnitReaction, UnitIsTapDenied, UnitGUID
 
 -- ThreatPlates APIs
 local TidyPlatesThreat = TidyPlatesThreat
@@ -22,6 +25,8 @@ local CLASSIFICATION_MAPPING = {
   ["trivial"] = "Minus",
 }
 
+local CreatureCache = {}
+
 ---------------------------------------------------------------------------------------------------
 -- @return    Returns if the unit is tanked by another tank or pet (not by the player character,
 --            not by a dps)
@@ -29,6 +34,26 @@ local CLASSIFICATION_MAPPING = {
 -- @docu      Function is mostly called in combat situations with the character being the tank
 --            (i.e., style == "tank")
 ---------------------------------------------------------------------------------------------------
+
+-- Black Ox Statue of monks is: Creature with id 61146
+-- Treants of druids is: Creature with id 103822
+local function IsOffTankCreature(unitid)
+  local guid = UnitGUID(unitid)
+
+  if not guid then return false end
+
+  local is_off_tank = CreatureCache[guid]
+  if is_off_tank == nil then
+    --local unit_type, server_id, instance_id, zone_uid, id, spawn_uid = string.match(guid, '^([^-]+)%-0%-([0-9A-F]+)%-([0-9A-F]+)%-([0-9A-F]+)%-([0-9A-F]+)%-([0-9A-F]+)$')
+    --local unit_type, zero, server_id, instance_id, zone_uid, npc_id, spawn_uid = strsplit("-", guid)
+    local unit_type, _,  _, _, _, npc_id, _ = strsplit("-", guid)
+    is_off_tank = (("61146" == npc_id or "103822" == npc_id) and "Creature" == unit_type)
+    CreatureCache[guid] = is_off_tank
+  end
+
+  return is_off_tank
+end
+
 function Addon:UnitIsOffTanked(unit)
   local unitid = unit.unitid
 
@@ -38,7 +63,8 @@ function Addon:UnitIsOffTanked(unit)
   end
 
   local target_of_unit = unitid .. "target"
-  return UnitIsUnit(target_of_unit, "pet") or ("TANK" == UnitGroupRolesAssigned(target_of_unit))
+
+  return ("TANK" == UnitGroupRolesAssigned(target_of_unit)) or UnitIsUnit(target_of_unit, "pet") or IsOffTankCreature(target_of_unit)
 end
 
 ---------------------------------------------------------------------------------------------------

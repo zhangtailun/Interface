@@ -1,3 +1,41 @@
+﻿﻿------------------------------------------------------
+9.1.1
+------------------------------------------------------
+* Fixed a Lua error with Combo Points widget resulting from a wrong migration of combo point widget settings [Comment #1764].
+* Fixed a Lua error that occurred when switching profiles because of a wrong widget initialization.
+* Removed a debug print message from Arena widget [Comment #1765].
+
+﻿------------------------------------------------------
+9.1.0
+------------------------------------------------------
+* Combo Points widget now has different styles (Squares, Orbs, Blizzard) and colors combo points depending on the current number of combo points [Issue #145, Comment #843, Comment #927, Comment #1028, Comment #1029, #1723, Issue #217, E-Mail Requests].
+* Blizzard's display for special resources (e.g., combo points) on targets is now hidden by default at login time. To enable it again, see in General - Blizzard Settings - Personal Nameplate [Comment #1681].
+* Extended the combo points widget to also show Death Knight runes including cooldown timers [Comment #989, #1240, #1252, #1558].
+* Added an option to reduce the transparency of occluded units (see General - Transparency - Occluded Units) [#Comment #1312, #1437, #1477, E-Mail-Request].
+* Added new filter options for auras for friendly buffs (Mine) and enemy unlimited buffs (e.g. only show in combat or in instances).
+* Added an option to status text to show absorbs text (amount and/or percentage) [PM].
+* Added an option to Auras widget to show tooltips when hovering above auras [Comment #1362].
+* Added an option to disable Threat Plates for neutral and enemy nameplates and keep Blizzard default nameplates for these units [Comment #701, #1390, #1459, #1718].
+* Added an option for fading in newly shown nameplates.
+* Added keybindings to toggle headline view for friendly, neutral, and enemy units.
+* Added a feature to switch nameplate mode of friendly nameplates also to healthbar view when entering combat [Comment #1254, #1411] - Thanks to sslebedev for implementing.
+* Added support for OmniCC cooldown text to Auras widget.
+* Added the option to use Blizzard elite/rare icons as indicator for elite/rare units [#Comment 579] - Thanks to sslebedev for implementing.
+* Updated the Arena widget to hide unit names and show arena numbers (with customizable font) instead [Comment #710, #1656, #1565, #1590].
+* Changed how "Show Unlimited Buffs" in the Auras widget works: settings for unlimited buffs are applied after aura filtering, so the cannot overwrite filters.
+* Changed interrupt information on target castbar to show interrupt information on all units, not only on the current target [PM].
+* Enhanced the Quest widget to show the quest progress on quest target units [Comment #797] - Thanks to Kungfumoo for implementing this.
+* Optimized code for widgets that are only displayed on the target unit (Combo Points, Resource).
+* Changed default settings for Auras and Combo Points widget for better, non-overlapping positioning.
+* Changed default setting for castbar offset to no offset (0/0).
+* Monk's Black Ox Statue and Druid's Force of Nature Treants arenow correctly recognized as off-tank [Issue #270, Comment #1318, #1420, E-Mail, PR #85]  - Thanks to dlwyatt for implementing.
+* Fixed a bug with nameplate layering where nameplates where shown above unit frames [Comment #1086, #1124, Issue #215].
+* Fixed a bug where changes to text alignment (e.g., for name or status text) were not applied until the text was changed.
+* Fixed a bug where Warning Glow for Threat Only ignored the setting "Only on Attacked Units" for tapped and disconnected units.
+* Fixed a performance issue in Quest widget.
+* Fixed a bug with interrupted message on castbar where the interruptor's name was not colored in class color and the realm information was not removed when not in a group [Comment #1727].
+* Updated localization for enUS, deDE and zhTW (Traditional Chinese, thanks to gaspy10).
+
 ﻿------------------------------------------------------
 9.0.20
 ------------------------------------------------------
@@ -9,7 +47,7 @@
 * Aura for Imprison (Demon Hunter) is now correctly recognized as crowd-control auras when the PvP talent Detainment was selected [Comment #1602].
 * Auras for Sin and Punishment (Priest) and Unstable Affliction silence effect (Warlock) are now correctly recognized as crowd-control auras.
 
-------------------------------------------------------
+﻿------------------------------------------------------
 9.0.18
 ------------------------------------------------------
 * All auras for Demon Hunter, Rogues, Hunter, Death Knight, Paladin, Priest, Shaman, Monk, and Druid are now correctly recognized as crowd-control auras [Comment #1560, #1556, #1541].
@@ -103,6 +141,11 @@
 9.0.5
 ------------------------------------------------------
 * Updated localization Simplified Chinese (zhCN, big thanks to y123ao6).
+
+------------------------------------------------------
+9.1.0-Alpha1
+------------------------------------------------------
+* Re-worked the Combo Points widget [Issue #...].
 
 ------------------------------------------------------
 9.0.4

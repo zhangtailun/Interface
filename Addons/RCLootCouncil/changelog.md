@@ -1,3 +1,32 @@
+### v2.9.6
+---
+* **Loot Status**  
+* Added a new indicator for when candidates fail to loot items due to full bags.
+* This is considered the same as "fake loot" for all intents and purposes.
+
+
+* **Tests**
+* `/rc ftest` now only uses items from the newest raid.
+* A `looted` message is now sent on all tests so that people can see the "Loot Status" in action.
+
+
+* **Loot History**
+* Added the owner of an item to the Loot History.
+* The owner has also been added to .csv and .tsv exports.
+* Note: Only items awarded after this release has their owners tracked.
+
+* Declined manual rolls is now displayed in the voting frame (#329).
+
+* Added trinkets from Battle of Dazar'Alor to the autopass list.
+
+###### Bugfixes
+* *Fixed "Not in raid" spam in Battlegrounds (#380).*
+
+###### Dev
+* Changed parameters in ml_core `TrackAndLogLoot`.
+* Updated fields in `history_table` in said function, along with `RCMLLootHistorySend` message.
+
+
 ### v2.9.5
 ---
 * Updated .toc for patch 8.1
@@ -23,7 +52,6 @@
 ---
 ###### Bugfixes
 * *Fixed issue with loot frame disappearing after rolling for just one item. (#377)*
-
 
 
 ### v2.9.3

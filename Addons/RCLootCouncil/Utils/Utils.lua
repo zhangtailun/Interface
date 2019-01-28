@@ -95,3 +95,21 @@ function Utils:ConvertDateToString(day, month, year)
 	end
 	return text;
 end
+
+--- Returns the number of available spaces in the players bags
+function Utils:GetNumFreeBagSlots()
+   local result = 0
+   for i = 1, _G.NUM_BAG_SLOTS do
+      result = result + (GetContainerNumFreeSlots(i))
+   end
+   return result
+end
+
+function Utils:IsInNonInstance()
+   local instance_type = select(2, IsInInstance())
+   if IsPartyLFG() or instance_type == "pvp" or instance_type == "arena" then
+      return true
+   else
+      return false
+   end
+end

@@ -1795,8 +1795,6 @@ L["STRING_MINITUTORIAL_OPTIONS_PANEL6"] = "Selezionare qui che finestra che si d
 --[[Translation missing --]]
 --[[ L["STRING_OPTIONS_SPELL_SPELLID"] = ""--]] 
 --[[Translation missing --]]
---[[ L["STRING_OPTIONS_SPELL_SPELLID_DESC"] = ""--]] 
---[[Translation missing --]]
 --[[ L["STRING_OPTIONS_STRETCH"] = ""--]] 
 --[[Translation missing --]]
 --[[ L["STRING_OPTIONS_STRETCH_DESC"] = ""--]] 
