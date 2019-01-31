@@ -691,11 +691,11 @@ GTFO.SpellID["285479"] = {
   sound = 1;
 };
 
-GTFO.SpellID["284472"] = {
-  --desc = "Deadly Hex (Yalat's Bulwark)";
+GTFO.SpellID["284470"] = {
+  --desc = "Hex of Lethargy (Opulence)";
+  sound = 2;
+  minimumDamage = 1;
   test = true;
-  sound = 2; 
-  damageMinimum = 1;
 };
 
 GTFO.SpellID["287074"] = {
@@ -707,5 +707,25 @@ GTFO.SpellID["285894"] = {
   --desc = "Wild Maul (Gonk's Aspect)";
   sound = 1;
   tankSound = 0;
+};
+
+GTFO.SpellID["290448"] = {
+  --desc = "Seal of Purification (King Rhast)";
+  sound = 1;
+};
+
+GTFO.SpellID["286680"] = {
+  --desc = "Roiling Tides";
+  sound = 1;
+};
+
+GTFO.SpellID["284369"] = {
+  --desc = "Sea Storm";
+  sound = 1;
+};
+
+GTFO.SpellID["288051"] = {
+  --desc = "Dragon's Breath (Ma'ra Grimfang)";
+  sound = 1;
 };
 

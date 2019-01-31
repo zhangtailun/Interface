@@ -1,5 +1,17 @@
-changeset:   770:86af40120d52
+changeset:   772:242d660dd3af
 tag:         tip
+user:        Tercioo
+date:        Wed Jan 30 17:35:46 2019 -0200
+summary:     - Added encounter ID for Grong horde version inside the parser encounter rules.
+
+
+changeset:   771:a22e9ea2e6b9
+user:        Tercioo
+date:        Wed Jan 30 14:36:09 2019 -0200
+summary:     - Fixed Player Details Breakdown window not opening for new instalations.
+
+
+changeset:   770:86af40120d52
 user:        Tercioo
 date:        Fri Jan 25 16:00:17 2019 -0200
 summary:     - Fixed Player Details! Breakdown window not opening for new installs.
