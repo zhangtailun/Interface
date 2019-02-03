@@ -1392,3 +1392,6 @@ Change Log:
 
 4.46.16
 * Added BFA spells for Battle of Dazar'alor
+
+4.46.17
+* Added BFA spells for Battle of Dazar'alor

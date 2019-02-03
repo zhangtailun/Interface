@@ -1,5 +1,5 @@
 ------------------------------------------------------------------------
-r444 | Zensunim | 2019-01-31 07:45:48 +0000 (Thu, 31 Jan 2019) | 2 lines
+r446 | Zensunim | 2019-02-03 06:51:42 +0000 (Sun, 03 Feb 2019) | 2 lines
 Changed paths:
    M /trunk/GTFO.lua
    M /trunk/GTFO.toc
@@ -7,7 +7,7 @@ Changed paths:
    M /trunk/GTFO_Spells_BFA.lua
    M /trunk/ReadMe.txt
 
-4.46.16
+4.46.17
 * Added BFA spells for Battle of Dazar'alor
 ------------------------------------------------------------------------
 
