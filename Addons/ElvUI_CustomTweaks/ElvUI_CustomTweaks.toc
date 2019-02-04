@@ -1,7 +1,7 @@
-## Interface: 80000
+## Interface: 80100
 ## Author: Blazeflack
 ## Credit: Azilroka, Benik
-## Version: 1.38
+## Version: 1.39
 ## Title: |cff1784d1ElvUI|r |cff4beb2cCustomTweaks|r
 ## Notes: A collection of various tweaks to ElvUI, requested by the users.
 ## RequiredDeps: ElvUI
