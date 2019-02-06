@@ -4,9 +4,9 @@ local C, L, G = unpack(ecf)
 
 local _G = _G
 -- Lua
-local format, ipairs, max, min, next, pairs, select, tconcat, tonumber, tremove = format, ipairs, max, min, next, pairs, select, table.concat, tonumber, tremove
+local format, ipairs, max, min, next, pairs, tconcat, tonumber, tremove = format, ipairs, max, min, next, pairs, table.concat, tonumber, tremove
 -- WoW
-local Ambiguate, BNGetGameAccountInfoByGUID, C_Timer_After, ChatTypeInfo, GetAchievementLink, GetItemInfo, GetPlayerInfoByGUID, GetTime, C_FriendList_IsFriend, IsGUIDInGroup, IsGuildMember, RAID_CLASS_COLORS = Ambiguate, BNGetGameAccountInfoByGUID, C_Timer.After, ChatTypeInfo, GetAchievementLink, GetItemInfo, GetPlayerInfoByGUID, GetTime, C_FriendList.IsFriend, IsGUIDInGroup, IsGuildMember, RAID_CLASS_COLORS
+local Ambiguate, BNGetGameAccountInfoByGUID, C_Item_GetItemQualityByID, C_Timer_After, ChatTypeInfo, GetAchievementLink, GetPlayerInfoByGUID, GetTime, C_FriendList_IsFriend, IsGUIDInGroup, IsGuildMember, RAID_CLASS_COLORS = Ambiguate, BNGetGameAccountInfoByGUID, C_Item.GetItemQualityByID, C_Timer.After, ChatTypeInfo, GetAchievementLink, GetPlayerInfoByGUID, GetTime, C_FriendList.IsFriend, IsGUIDInGroup, IsGuildMember, RAID_CLASS_COLORS
 
 -- GLOBALS: NUM_CHAT_WINDOWS
 
@@ -31,10 +31,8 @@ local UTF8Symbols = {
 	['#']='',['&']='',[';']='',[':']='',['~']='',['\\']='',['=']='',
 	["\t"]='',["\n"]='',["\r"]='',[" "]='',
 }
-local RaidAlertTagList = {"%*%*.+%*%*", "EUI[:_]", "|Hspell.+[=>%-]> ", "受伤源自 |Hspell", "已打断.*|Hspell", "→|Hspell", "打断：.+|Hspell", "打断.+>.+<", "<iLvl>", "^%-+$", "<EH>"}
+local RaidAlertTagList = {"%*%*.+%*%*", "EUI[:_]", "PS 死亡:", "|Hspell.+[=>%-]> ", "受伤源自 |Hspell", "已打断.*|Hspell", "→|Hspell", "打断：.+|Hspell", "打断.+>.+<", "<iLvl>", "^%-+$", "<EH>"}
 local QuestReportTagList = {"任务进度提示", "任务完成[%)%-]", "<大脚", "接受任务[%]:%-]", "进度:.+: %d+/%d+", "【爱不易】", "任务.*%[%d+%].+ 已完成!"}
-local NormalTagList = {"<LFG>"}
-local AggressiveTagList = {"|Hjournal"}
 G.RegexCharList = "[().%%%+%-%*?%[%]$^{}]" -- won't work on regex blackWord, but works on others
 
 -- utf8 functions are taken and modified from utf8replace from @Phanx @Pastamancer
@@ -152,9 +150,7 @@ local function ECFfilter(Event,msg,player,flags,IsMyFriend,good)
 	-- AggressiveFilter: Filter AggressiveTags, currently only journal link
 	if filtersStatus[1] and not IsMyFriend then
 		if annoying >= 0.25 and oriLen >= 30 then return true end
-		for _,tag in ipairs(AggressiveTagList) do
-			if msg:find(tag) then return true end
-		end
+		if msg:find("|Hjournal") then return true end
 	end
 
 	-- DND and auto-reply
@@ -186,9 +182,7 @@ local function ECFfilter(Event,msg,player,flags,IsMyFriend,good)
 
 	-- Fk LFG
 	if filtersStatus[6] then
-		for _,tag in ipairs(NormalTagList) do
-			if msg:find(tag) then return true end
-		end
+		if msg:find("<LFG>") then return true end
 	end
 
 	--Repeat Filter
@@ -256,6 +250,7 @@ local function monsterFilter(self,_,msg)
 	if MSLPos > 7 then MSLPos = MSLPos - 7 end
 end
 ChatFrame_AddMessageEventFilter("CHAT_MSG_MONSTER_SAY", monsterFilter)
+ChatFrame_AddMessageEventFilter("CHAT_MSG_MONSTER_EMOTE", monsterFilter)
 
 --SystemMessage
 local SystemFilterTag = {
@@ -326,7 +321,7 @@ local function lootItemFilter(self,_,msg)
 	local itemID = tonumber(msg:match("|Hitem:(%d+)"))
 	if not itemID then return end -- pet cages don't have 'item'
 	if C.db.lootItemFilterList[itemID] then return true end
-	if select(3,GetItemInfo(itemID)) < C.db.lootQualityMin then return true end
+	if C_Item_GetItemQualityByID(itemID) < C.db.lootQualityMin then return true end
 end
 ChatFrame_AddMessageEventFilter("CHAT_MSG_LOOT", lootItemFilter)
 
