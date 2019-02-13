@@ -214,12 +214,16 @@ L["Enter your note:"] = "输入你的备注："
 L["EQdkp-Plus XML output, tailored for Enjin import."] = "EQdkp-Plus XML导出，适用 Enjin。"
 --[[Translation missing --]]
 --[[ L["error_test_as_non_leader"] = ""--]] 
+--[[Translation missing --]]
+--[[ L["Everybody is up to date."] = ""--]] 
 L["Everyone have voted"] = "所有人都已投票"
 L["Export"] = "导出"
 --[[Translation missing --]]
 --[[ L["Fake Loot"] = ""--]] 
 L["Following items were registered in the award later list:"] = "以下物品已被稍后分配列表登记："
 L["Following winners was registered:"] = "以下获胜者已被登记："
+--[[Translation missing --]]
+--[[ L["Found the following outdated versions"] = ""--]] 
 L["Frame options"] = "框架选项"
 L["Free"] = "自由支配"
 --[[Translation missing --]]

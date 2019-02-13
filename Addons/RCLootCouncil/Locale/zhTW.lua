@@ -203,12 +203,16 @@ L["enable_timeout_desc"] = "點選啟動拾取視窗超時功能"
 L["Enter your note:"] = "輸入你的筆記："
 L["EQdkp-Plus XML output, tailored for Enjin import."] = "EQdkp-Plus XML輸出，適用於Enjin輸入。"
 L["error_test_as_non_leader"] = "你無法在隊伍中以非隊長的身分啟動測試"
+--[[Translation missing --]]
+--[[ L["Everybody is up to date."] = ""--]] 
 L["Everyone have voted"] = "所有投票成員都已投票"
 L["Export"] = "輸出"
 --[[Translation missing --]]
 --[[ L["Fake Loot"] = ""--]] 
 L["Following items were registered in the award later list:"] = "以下物品已被稍后分配列表登記："
 L["Following winners was registered:"] = "下個贏家已登記："
+--[[Translation missing --]]
+--[[ L["Found the following outdated versions"] = ""--]] 
 L["Frame options"] = "框架選項"
 L["Free"] = "自由拾取"
 --[[Translation missing --]]

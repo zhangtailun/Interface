@@ -96,7 +96,9 @@ f:SetScript("OnEvent", function(self)
 		if castbar then
 			hooksecurefunc(castbar, "PostCastStart", PostCastChannelStart)
 			hooksecurefunc(castbar, "PostCastInterruptible", PostCastInterruptible)
-			hooksecurefunc(castbar, "PostChannelStart", PostCastChannelStart)
+			if tonumber(E.version) <= 10.87 then
+				hooksecurefunc(castbar, "PostChannelStart", PostCastChannelStart)
+			end
 		end
 	end
 
@@ -105,7 +107,9 @@ f:SetScript("OnEvent", function(self)
 		if castbar then
 			hooksecurefunc(castbar, "PostCastStart", PostCastChannelStart)
 			hooksecurefunc(castbar, "PostCastInterruptible", PostCastInterruptible)
-			hooksecurefunc(castbar, "PostChannelStart", PostCastChannelStart)
+			if tonumber(E.version) <= 10.87 then
+				hooksecurefunc(castbar, "PostChannelStart", PostCastChannelStart)
+			end
 		end
 	end
 
@@ -114,7 +118,9 @@ f:SetScript("OnEvent", function(self)
 		if castbar then
 			hooksecurefunc(castbar, "PostCastStart", PostCastChannelStart)
 			hooksecurefunc(castbar, "PostCastInterruptible", PostCastInterruptible)
-			hooksecurefunc(castbar, "PostChannelStart", PostCastChannelStart)
+			if tonumber(E.version) <= 10.87 then
+				hooksecurefunc(castbar, "PostChannelStart", PostCastChannelStart)
+			end
 		end
 	end
 end)

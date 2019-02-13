@@ -251,6 +251,8 @@ L["Enter your note:"] = "Saisissez votre note"
 L["EQdkp-Plus XML output, tailored for Enjin import."] = "Exporter en EQdkp-Plus XML, adapté pour être importé sur Enjin."
 --[[Translation missing --]]
 --[[ L["error_test_as_non_leader"] = ""--]] 
+--[[Translation missing --]]
+--[[ L["Everybody is up to date."] = ""--]] 
 L["Everyone have voted"] = "Tout le monde a voté"
 L["Export"] = "Exporter"
 --[[Translation missing --]]
@@ -258,6 +260,8 @@ L["Export"] = "Exporter"
 --[[Translation missing --]]
 --[[ L["Following items were registered in the award later list:"] = ""--]] 
 L["Following winners was registered:"] = "Les vainqueurs suivants ont été répertoriés :"
+--[[Translation missing --]]
+--[[ L["Found the following outdated versions"] = ""--]] 
 --[[Translation missing --]]
 --[[ L["Frame options"] = ""--]] 
 L["Free"] = "Gratuit"

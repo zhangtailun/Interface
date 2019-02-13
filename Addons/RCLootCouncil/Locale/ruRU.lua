@@ -333,6 +333,8 @@ L["enable_loot_history_desc"] = "Включает ведение истории.
 --[[Translation missing --]]
 --[[ L["error_test_as_non_leader"] = ""--]] 
 --[[Translation missing --]]
+--[[ L["Everybody is up to date."] = ""--]] 
+--[[Translation missing --]]
 --[[ L["Everyone have voted"] = ""--]] 
 --[[Translation missing --]]
 --[[ L["Export"] = ""--]] 
@@ -342,6 +344,8 @@ L["enable_loot_history_desc"] = "Включает ведение истории.
 --[[ L["Following items were registered in the award later list:"] = ""--]] 
 --[[Translation missing --]]
 --[[ L["Following winners was registered:"] = ""--]] 
+--[[Translation missing --]]
+--[[ L["Found the following outdated versions"] = ""--]] 
 --[[Translation missing --]]
 --[[ L["Frame options"] = ""--]] 
 L["Free"] = "Бесплатно"

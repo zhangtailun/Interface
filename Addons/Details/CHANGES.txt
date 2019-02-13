@@ -1,5 +1,11 @@
-changeset:   772:242d660dd3af
+changeset:   773:3b328f956efe
 tag:         tip
+user:        Tercioo
+date:        Sat Feb 09 14:05:24 2019 -0200
+summary:     - Custom display 'My Spells' now get the player role from the current spec the character is using.
+
+
+changeset:   772:242d660dd3af
 user:        Tercioo
 date:        Wed Jan 30 17:35:46 2019 -0200
 summary:     - Added encounter ID for Grong horde version inside the parser encounter rules.
