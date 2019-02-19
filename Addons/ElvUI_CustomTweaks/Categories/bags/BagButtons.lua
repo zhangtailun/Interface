@@ -83,59 +83,40 @@ local function CreateContainerButtons(self, name, isBank)
 		f.sortButtonOld = CreateFrame("Button", name..'SortButtonOld', f);
 		f.sortButtonOld:Point('TOP', f, 'TOP', 29, -4)
 		f.sortButtonOld:Size(55, 10)
-		f.sortButtonOld:SetTemplate('Default', true)
-		f.sortButtonOld.backdropTexture:SetVertexColor(unpack(buttonColor))
+		f.sortButtonOld:SetTemplate('Default', true, true)
+		f.sortButtonOld:SetBackdropColor(unpack(buttonColor))
 		f.sortButtonOld:SetScript("OnEnter", BagItemAutoSortButton:GetScript("OnEnter"))
-		f.sortButtonOld:SetScript('OnClick', function()
-			if f.holderFrame:IsShown() then
-				B:CommandDecorator(B.SortBags, 'bank')();
-			else
-				SortReagentBankBags()
-			end
-		end)
+		f.sortButtonOld:SetScript('OnClick', f.sortButton:GetScript("OnClick"))
 
 		--Purchase Bags Button
 		f.purchaseBagButtonOld = CreateFrame('Button', name..'PurchaseButtonOld', f.holderFrame)
 		f.purchaseBagButtonOld:Point('RIGHT', f.sortButtonOld, 'LEFT', -3, 0)
 		f.purchaseBagButtonOld:Size(55, 10)
-		f.purchaseBagButtonOld:SetTemplate('Default', true)
-		f.purchaseBagButtonOld.backdropTexture:SetVertexColor(unpack(buttonColor))
+		f.purchaseBagButtonOld:SetTemplate('Default', true, true)
+		f.purchaseBagButtonOld:SetBackdropColor(unpack(buttonColor))
 		f.purchaseBagButtonOld.ttText = L['Purchase Bags']
 		f.purchaseBagButtonOld:SetScript("OnEnter", B.Tooltip_Show)
 		f.purchaseBagButtonOld:SetScript("OnLeave", B.Tooltip_Hide)
-		f.purchaseBagButtonOld:SetScript("OnClick", function()
-			local _, full = GetNumBankSlots()
-			if not full then
-				E:StaticPopup_Show("BUY_BANK_SLOT")
-			else
-				E:StaticPopup_Show("CANNOT_BUY_BANK_SLOT")
-			end
-		end)
+		f.purchaseBagButtonOld:SetScript("OnClick", f.purchaseBagButton:GetScript("OnClick"))
 
 		--Toggle Bags Button
 		f.bagsButtonOld = CreateFrame("Button", name..'BagsButtonOld', f.holderFrame);
 		f.bagsButtonOld:Point('RIGHT', f.purchaseBagButtonOld, 'LEFT', -3, 0)
 		f.bagsButtonOld:Size(55, 10)
-		f.bagsButtonOld:SetTemplate('Default', true)
-		f.bagsButtonOld.backdropTexture:SetVertexColor(unpack(buttonColor))
+		f.bagsButtonOld:SetTemplate('Default', true, true)
+		f.bagsButtonOld:SetBackdropColor(unpack(buttonColor))
 		f.bagsButtonOld.ttText = L['Toggle Bags'];
+		f.bagsButtonOld.ttText2 = format("|cffFFFFFF%s|r", L["Right Click the bag icon to assign a type of item to this bag."])
 		f.bagsButtonOld:SetScript("OnEnter", B.Tooltip_Show)
 		f.bagsButtonOld:SetScript("OnLeave", B.Tooltip_Hide)
-		f.bagsButtonOld:SetScript('OnClick', function()
-		local numSlots, full = GetNumBankSlots()
-			if numSlots >= 1 then
-				ToggleFrame(f.ContainerHolder)
-			else
-				E:StaticPopup_Show("NO_BANK_BAGS")
-			end
-		end)
+		f.bagsButtonOld:SetScript('OnClick', f.bagsButton:GetScript("OnClick"))
 
 		--Reagent Toggle Button
 		f.reagentToggleOld = CreateFrame("Button", name..'ReagentButtonOld', f);
 		f.reagentToggleOld:Point('LEFT', f.sortButtonOld, 'RIGHT', 3, 0)
 		f.reagentToggleOld:Size(55, 10)
-		f.reagentToggleOld:SetTemplate('Default', true)
-		f.reagentToggleOld.backdropTexture:SetVertexColor(unpack(buttonColor))
+		f.reagentToggleOld:SetTemplate('Default', true, true)
+		f.reagentToggleOld:SetBackdropColor(unpack(buttonColor))
 		f.reagentToggleOld.ttText = L['Show/Hide Reagents'];
 		f.reagentToggleOld:SetScript("OnEnter", B.Tooltip_Show)
 		f.reagentToggleOld:SetScript("OnLeave", B.Tooltip_Hide)
@@ -222,8 +203,8 @@ local function CreateContainerButtons(self, name, isBank)
 		f.stackButtonOld = CreateFrame('Button', name..'StackButtonOld', f.holderFrame)
 		f.stackButtonOld:Point('LEFT', f.sortButtonOld, 'RIGHT', 3, 0)
 		f.stackButtonOld:Size(55, 10)
-		f.stackButtonOld:SetTemplate('Default', true)
-		f.stackButtonOld.backdropTexture:SetVertexColor(unpack(buttonColor))
+		f.stackButtonOld:SetTemplate('Default', true, true)
+		f.stackButtonOld:SetBackdropColor(unpack(buttonColor))
 		f.stackButtonOld.ttText = L['Stack Items In Bank']
 		f.stackButtonOld.ttText2 = L['Hold Shift:']
 		f.stackButtonOld.ttText2desc = L['Stack Items To Bags']
@@ -241,35 +222,32 @@ local function CreateContainerButtons(self, name, isBank)
 		f.depositButtonOld = CreateFrame("Button", name..'DepositButtonOld', f.reagentFrame);
 		f.depositButtonOld:Point("RIGHT", f.sortButtonOld, "LEFT", -3, 0)
 		f.depositButtonOld:Size(55, 10)
-		f.depositButtonOld:SetTemplate('Default', true)
-		f.depositButtonOld.backdropTexture:SetVertexColor(unpack(buttonColor))
+		f.depositButtonOld:SetTemplate('Default', true, true)
+		f.depositButtonOld:SetBackdropColor(unpack(buttonColor))
 		f.depositButtonOld.ttText = L['Deposit Reagents']
 		f.depositButtonOld:SetScript("OnEnter", B.Tooltip_Show)
 		f.depositButtonOld:SetScript("OnLeave", B.Tooltip_Hide)
-		f.depositButtonOld:SetScript('OnClick', function()
-			PlaySound(IG_MAINMENU_OPTION);
-			DepositReagentBank()
-		end)
+		f.depositButtonOld:SetScript('OnClick', f.depositButton:GetScript("OnClick"))
 	else
 		--Vendor Button
 		f.vendorGraysButtonOld = CreateFrame('Button', nil, f)
 		f.vendorGraysButtonOld:Point('TOP', f, 'TOP', 0, -4)
 		f.vendorGraysButtonOld:Size(55, 10)
-		f.vendorGraysButtonOld:SetTemplate('Default', true)
-		f.vendorGraysButtonOld.backdropTexture:SetVertexColor(unpack(buttonColor))
+		f.vendorGraysButtonOld:SetTemplate('Default', true, true)
+		f.vendorGraysButtonOld:SetBackdropColor(unpack(buttonColor))
 		f.vendorGraysButtonOld.ttText = L['Vendor Grays']
 		f.vendorGraysButtonOld:SetScript("OnEnter", B.Tooltip_Show)
 		f.vendorGraysButtonOld:SetScript("OnLeave", B.Tooltip_Hide)
-		f.vendorGraysButtonOld:SetScript('OnClick', function() B:VendorGrayCheck(); end)
+		f.vendorGraysButtonOld:SetScript('OnClick', B.VendorGrayCheck)
 
 		--Sort Button
 		f.sortButtonOld = CreateFrame('Button', nil, f)
 		f.sortButtonOld:Point('LEFT', f.vendorGraysButtonOld, 'RIGHT', 3, 0)
 		f.sortButtonOld:Size(55, 10)
-		f.sortButtonOld:SetTemplate('Default', true)
-		f.sortButtonOld.backdropTexture:SetVertexColor(unpack(buttonColor))
+		f.sortButtonOld:SetTemplate('Default', true, true)
+		f.sortButtonOld:SetBackdropColor(unpack(buttonColor))
 		f.sortButtonOld:SetScript("OnEnter", BagItemAutoSortButton:GetScript("OnEnter"))
-		f.sortButtonOld:SetScript('OnClick', function() B:CommandDecorator(B.SortBags, 'bags')(); end)
+		f.sortButtonOld:SetScript('OnClick', f.sortButton:GetScript("OnClick"))
 
 		--Stack/Transfer Button Icon
 		f.stackButton = CreateFrame("Button", name..'StackButton', f.holderFrame);
@@ -300,8 +278,8 @@ local function CreateContainerButtons(self, name, isBank)
 		f.stackButtonOld = CreateFrame('Button', nil, f)
 		f.stackButtonOld:Point('LEFT', f.sortButtonOld, 'RIGHT', 3, 0)
 		f.stackButtonOld:Size(55, 10)
-		f.stackButtonOld:SetTemplate('Default', true)
-		f.stackButtonOld.backdropTexture:SetVertexColor(unpack(buttonColor))
+		f.stackButtonOld:SetTemplate('Default', true, true)
+		f.stackButtonOld:SetBackdropColor(unpack(buttonColor))
 		f.stackButtonOld.ttText = L['Stack Items In Bags']
 		f.stackButtonOld.ttText2 = L['Hold Shift:']
 		f.stackButtonOld.ttText2desc = L['Stack Items To Bank']
@@ -319,12 +297,13 @@ local function CreateContainerButtons(self, name, isBank)
 		f.bagsButtonOld = CreateFrame('Button', nil, f)
 		f.bagsButtonOld:Point('RIGHT', f.vendorGraysButtonOld, 'LEFT', -3, 0)
 		f.bagsButtonOld:Size(55, 10)
-		f.bagsButtonOld:SetTemplate('Default', true)
-		f.bagsButtonOld.backdropTexture:SetVertexColor(unpack(buttonColor))
+		f.bagsButtonOld:SetTemplate('Default', true, true)
+		f.bagsButtonOld:SetBackdropColor(unpack(buttonColor))
 		f.bagsButtonOld.ttText = L['Toggle Bags']
+		f.bagsButtonOld.ttText2 = format("|cffFFFFFF%s|r", L["Right Click the bag icon to assign a type of item to this bag."])
 		f.bagsButtonOld:SetScript("OnEnter", B.Tooltip_Show)
 		f.bagsButtonOld:SetScript("OnLeave", B.Tooltip_Hide)
-		f.bagsButtonOld:SetScript('OnClick', function() ToggleFrame(f.ContainerHolder) end)
+		f.bagsButtonOld:SetScript('OnClick', f.bagsButton:GetScript("OnClick"))
 	end
 
 	CT:SetBagButtonStylePosition(isBank)
@@ -431,29 +410,15 @@ function CT:SetButtonColors(isBank)
 	end
 	if not f then return; end
 
-	f.sortButtonOld.backdropTexture.SetVertexColor = nil
-	f.stackButtonOld.backdropTexture.SetVertexColor = nil
-	f.bagsButtonOld.backdropTexture.SetVertexColor = nil
-	f.sortButtonOld.backdropTexture:SetVertexColor(unpack(buttonColor))
-	f.stackButtonOld.backdropTexture:SetVertexColor(unpack(buttonColor))
-	f.bagsButtonOld.backdropTexture:SetVertexColor(unpack(buttonColor))
-	f.sortButtonOld.backdropTexture.SetVertexColor = E.noop
-	f.stackButtonOld.backdropTexture.SetVertexColor = E.noop
-	f.bagsButtonOld.backdropTexture.SetVertexColor = E.noop
+	f.sortButtonOld:SetBackdropColor(unpack(buttonColor))
+	f.stackButtonOld:SetBackdropColor(unpack(buttonColor))
+	f.bagsButtonOld:SetBackdropColor(unpack(buttonColor))
 	
 	if isBank then
-		f.purchaseBagButtonOld.backdropTexture.SetVertexColor = nil
-		f.reagentToggleOld.backdropTexture.SetVertexColor = nil
-		f.depositButtonOld.backdropTexture.SetVertexColor = nil
-		f.purchaseBagButtonOld.backdropTexture:SetVertexColor(unpack(buttonColor))
-		f.reagentToggleOld.backdropTexture:SetVertexColor(unpack(buttonColor))
-		f.depositButtonOld.backdropTexture:SetVertexColor(unpack(buttonColor))
-		f.purchaseBagButtonOld.backdropTexture.SetVertexColor = E.noop
-		f.reagentToggleOld.backdropTexture.SetVertexColor = E.noop
-		f.depositButtonOld.backdropTexture.SetVertexColor = E.noop
+		f.purchaseBagButtonOld:SetBackdropColor(unpack(buttonColor))
+		f.reagentToggleOld:SetBackdropColor(unpack(buttonColor))
+		f.depositButtonOld:SetBackdropColor(unpack(buttonColor))
 	else
-		f.vendorGraysButtonOld.backdropTexture.SetVertexColor = nil
-		f.vendorGraysButtonOld.backdropTexture:SetVertexColor(unpack(buttonColor))
-		f.vendorGraysButtonOld.backdropTexture.SetVertexColor = E.noop
+		f.vendorGraysButtonOld:SetBackdropColor(unpack(buttonColor))
 	end
 end

@@ -44,7 +44,7 @@ end
 CT.Configs["CastbarCustomBackdrop"] = ConfigTable
 if not isEnabled then return; end
 
-local function PostCastChannelStart(self, unit)
+local function PostCastChannelStart(self)
 	local db = self:GetParent().db
 	if not db or not db.castbar then return; end
 
@@ -55,11 +55,6 @@ local function PostCastChannelStart(self, unit)
 		self.bg:SetColorTexture(r, g, b)
 	else
 		if self.backdrop then
-			if self.backdrop.backdropTexture then
-				self.backdrop.backdropTexture:SetVertexColor(r, g, b)
-				self.backdrop.backdropTexture:SetAlpha(a)
-			end
-			r, g, b = self.backdrop:GetBackdropColor()
 			self.backdrop:SetBackdropColor(r, g, b, a)
 		end
 	end
@@ -75,11 +70,6 @@ local function PostCastInterruptible(self, unit)
 		self.bg:SetColorTexture(r, g, b)
 	else
 		if self.backdrop then
-			if self.backdrop.backdropTexture then
-				self.backdrop.backdropTexture:SetVertexColor(r, g, b)
-				self.backdrop.backdropTexture:SetAlpha(a)
-			end
-			r, g, b = self.backdrop:GetBackdropColor()
 			self.backdrop:SetBackdropColor(r, g, b, a)
 		end
 	end
@@ -96,7 +86,7 @@ f:SetScript("OnEvent", function(self)
 		if castbar then
 			hooksecurefunc(castbar, "PostCastStart", PostCastChannelStart)
 			hooksecurefunc(castbar, "PostCastInterruptible", PostCastInterruptible)
-			if tonumber(E.version) <= 10.87 then
+			if castbar.PostChannelStart then
 				hooksecurefunc(castbar, "PostChannelStart", PostCastChannelStart)
 			end
 		end
@@ -107,7 +97,7 @@ f:SetScript("OnEvent", function(self)
 		if castbar then
 			hooksecurefunc(castbar, "PostCastStart", PostCastChannelStart)
 			hooksecurefunc(castbar, "PostCastInterruptible", PostCastInterruptible)
-			if tonumber(E.version) <= 10.87 then
+			if castbar.PostChannelStart then
 				hooksecurefunc(castbar, "PostChannelStart", PostCastChannelStart)
 			end
 		end
@@ -118,7 +108,7 @@ f:SetScript("OnEvent", function(self)
 		if castbar then
 			hooksecurefunc(castbar, "PostCastStart", PostCastChannelStart)
 			hooksecurefunc(castbar, "PostCastInterruptible", PostCastInterruptible)
-			if tonumber(E.version) <= 10.87 then
+			if castbar.PostChannelStart then
 				hooksecurefunc(castbar, "PostChannelStart", PostCastChannelStart)
 			end
 		end

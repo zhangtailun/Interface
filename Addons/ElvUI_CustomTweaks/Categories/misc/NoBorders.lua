@@ -9,42 +9,36 @@ local RAID_CLASS_COLORS = RAID_CLASS_COLORS
 
 --Code taken from ElvUI
 local backdropr, backdropg, backdropb, backdropa, borderr, borderg, borderb = 0, 0, 0, 1, 0, 0, 0
-local function GetTemplate(t)
+local function GetTemplate(t, isUnitFrameElement)
 	backdropa = 1
-	if t == "ClassColor" then
-		borderr, borderg, borderb = RAID_CLASS_COLORS[E.myclass].r, RAID_CLASS_COLORS[E.myclass].g, RAID_CLASS_COLORS[E.myclass].b
-		if t ~= "Transparent" then
-			backdropr, backdropg, backdropb = unpack(E["media"].backdropcolor)
-		else
-			backdropr, backdropg, backdropb, backdropa = unpack(E["media"].backdropfadecolor)
-		end
-	elseif t == "Transparent" then
-		borderr, borderg, borderb = unpack(E["media"].bordercolor)
-		backdropr, backdropg, backdropb, backdropa = unpack(E["media"].backdropfadecolor)
+
+	if t == 'ClassColor' then
+		local color = CUSTOM_CLASS_COLORS and CUSTOM_CLASS_COLORS[E.myclass] or RAID_CLASS_COLORS[E.myclass]
+		borderr, borderg, borderb = color.r, color.g, color.b
+		backdropr, backdropg, backdropb = unpack(E.media.backdropcolor)
+	elseif t == 'Transparent' then
+		borderr, borderg, borderb = unpack(isUnitFrameElement and E.media.unitframeBorderColor or E.media.bordercolor)
+		backdropr, backdropg, backdropb, backdropa = unpack(E.media.backdropfadecolor)
 	else
-		borderr, borderg, borderb = unpack(E["media"].bordercolor)
-		backdropr, backdropg, backdropb = unpack(E["media"].backdropcolor)
+		borderr, borderg, borderb = unpack(isUnitFrameElement and E.media.unitframeBorderColor or E.media.bordercolor)
+		backdropr, backdropg, backdropb = unpack(E.media.backdropcolor)
 	end
 end
 
 --Code taken from ElvUI and modified to remove borders
-local function SetTemplate(f, t, glossTex, ignoreUpdates)
-	GetTemplate(t)
+local function SetTemplate(f, t, glossTex, ignoreUpdates, forcePixelMode, isUnitFrameElement)
+	GetTemplate(t, isUnitFrameElement)
 
 	f:SetBackdrop({
-	  bgFile = E["media"].blankTex,
-	  edgeFile = nil,
-	  tile = false, tileSize = 0, edgeSize = 0,
-	  insets = { left = 0, right = 0, top = 0, bottom = 0}
+		bgFile = glossTex and (type(glossTex) == 'string' and glossTex or E.media.glossTex) or E.media.blankTex,
+		edgeFile = nil,
+		tile = false, tileSize = 0, edgeSize = 0,
+		insets = {left = 0, right = 0, top = 0, bottom = 0}
 	})
 
-	if not f.backdropTexture and t ~= 'Transparent' then
-		local backdropTexture = f:CreateTexture(nil, "BORDER")
-		backdropTexture:SetDrawLayer("BACKGROUND", 1)
-		f.backdropTexture = backdropTexture
-	elseif t == 'Transparent' then
+	if t ~= 'NoBackdrop' then
 		f:SetBackdropColor(backdropr, backdropg, backdropb, backdropa)
-		if not E.private.general.pixelPerfect then
+		if not E.PixelMode then
 			if f.iborder then
 				f.iborder:SetBackdropBorderColor(0, 0, 0, 0)
 			end
@@ -52,19 +46,6 @@ local function SetTemplate(f, t, glossTex, ignoreUpdates)
 				f.oborder:SetBackdropBorderColor(0, 0, 0, 0)
 			end
 		end
-	end
-
-	if f.backdropTexture then
-		f:SetBackdropColor(0, 0, 0, 0)
-		f.backdropTexture:SetVertexColor(backdropr, backdropg, backdropb)
-		f.backdropTexture:SetAlpha(backdropa)
-		if glossTex then
-			f.backdropTexture:SetTexture(E["media"].glossTex)
-		else
-			f.backdropTexture:SetTexture(E["media"].blankTex)
-		end
-
-		f.backdropTexture:SetInside(f)
 	end
 
 	f:SetBackdropBorderColor(0, 0, 0, 0)
