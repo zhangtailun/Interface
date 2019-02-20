@@ -38,7 +38,7 @@ local function SetTemplate(f, t, glossTex, ignoreUpdates, forcePixelMode, isUnit
 
 	if t ~= 'NoBackdrop' then
 		f:SetBackdropColor(backdropr, backdropg, backdropb, backdropa)
-		if not E.PixelMode then
+		if not E.PixelMode and not f.forcePixelMode then
 			if f.iborder then
 				f.iborder:SetBackdropBorderColor(0, 0, 0, 0)
 			end
@@ -47,8 +47,12 @@ local function SetTemplate(f, t, glossTex, ignoreUpdates, forcePixelMode, isUnit
 			end
 		end
 	end
-
+	f.ignoreBorderColors = true
 	f:SetBackdropBorderColor(0, 0, 0, 0)
+	
+	if isUnitFrameElement then
+		f:SetBackdropColor(0,0,0,0)
+	end
 end
 
 --Code taken from ElvUI

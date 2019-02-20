@@ -1,5 +1,11 @@
-changeset:   773:3b328f956efe
+changeset:   774:d9a02815778e
 tag:         tip
+user:        Tercioo
+date:        Tue Feb 19 21:56:21 2019 -0300
+summary:     - Fixed an issue where some options combinations was making the window unlock after /reload.
+
+
+changeset:   773:3b328f956efe
 user:        Tercioo
 date:        Sat Feb 09 14:05:24 2019 -0200
 summary:     - Custom display 'My Spells' now get the player role from the current spec the character is using.
