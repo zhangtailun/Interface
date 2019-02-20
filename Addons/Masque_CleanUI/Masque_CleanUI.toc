@@ -1,0 +1,8 @@
+## Interface: 80100
+## Title: Masque_CleanUI
+## Author: Seharad
+## Version: 8.1.0
+## Notes: Masque Skin for the CleanUI look and feel
+## Dependencies: Masque
+
+Masque_CleanUI.lua
