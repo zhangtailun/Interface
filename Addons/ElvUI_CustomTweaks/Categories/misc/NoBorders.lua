@@ -50,7 +50,7 @@ local function SetTemplate(f, t, glossTex, ignoreUpdates, forcePixelMode, isUnit
 	f.ignoreBorderColors = true
 	f:SetBackdropBorderColor(0, 0, 0, 0)
 	
-	if isUnitFrameElement then
+	if isUnitFrameElement and t ~= "Transparent" then
 		f:SetBackdropColor(0,0,0,0)
 	end
 end

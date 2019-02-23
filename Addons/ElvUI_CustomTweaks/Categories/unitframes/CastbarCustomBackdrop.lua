@@ -55,6 +55,11 @@ local function PostCastChannelStart(self)
 		self.bg:SetColorTexture(r, g, b)
 	else
 		if self.backdrop then
+			if self.backdrop.backdropTexture then
+				self.backdrop.backdropTexture:SetVertexColor(r, g, b)
+				self.backdrop.backdropTexture:SetAlpha(a)
+				r, g, b = self.backdrop:GetBackdropColor()
+			end
 			self.backdrop:SetBackdropColor(r, g, b, a)
 		end
 	end
@@ -70,6 +75,11 @@ local function PostCastInterruptible(self, unit)
 		self.bg:SetColorTexture(r, g, b)
 	else
 		if self.backdrop then
+			if self.backdrop.backdropTexture then
+				self.backdrop.backdropTexture:SetVertexColor(r, g, b)
+				self.backdrop.backdropTexture:SetAlpha(a)
+				r, g, b = self.backdrop:GetBackdropColor()
+			end
 			self.backdrop:SetBackdropColor(r, g, b, a)
 		end
 	end
