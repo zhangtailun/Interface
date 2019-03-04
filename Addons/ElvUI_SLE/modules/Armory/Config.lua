@@ -232,7 +232,7 @@ local function LoadArmoryConfigTable()
 			order = 2,
 			desc = '',
 			get = function() return E.db.sle.Armory.Character.Enable end,
-			set = function(_, value) E.db.sle.Armory.Character.Enable = value; KF.Modules.CharacterArmory() M:ToggleItemLevelInfo() end
+			set = function(_, value) E.db.sle.Armory.Character.Enable = value; KF.Modules.CharacterArmory() M:ToggleItemLevelInfo(); PaperDollFrame_UpdateStats() end
 		}
 		
 		local SelectedCABG
@@ -402,7 +402,7 @@ local function LoadArmoryConfigTable()
 									type = 'range',
 									name = L["Font Size"],
 									order = 2,
-									min = 6,max = 22,step = 1,
+									min = 10,max = 22,step = 1,
 								},
 								outline = {
 									type = 'select',
@@ -432,7 +432,7 @@ local function LoadArmoryConfigTable()
 									type = 'range',
 									name = L["Font Size"],
 									order = 2,
-									min = 6,max = 22,step = 1,
+									min = 10,max = 22,step = 1,
 								},
 								outline = {
 									type = 'select',
@@ -462,7 +462,7 @@ local function LoadArmoryConfigTable()
 									type = 'range',
 									name = L["Font Size"],
 									order = 2,
-									min = 6,max = 22,step = 1,
+									min = 10,max = 22,step = 1,
 								},
 								outline = {
 									type = 'select',

@@ -42,6 +42,8 @@ L["Announce Awards"] = "通知分配"
 L["Announce Considerations"] = "通知考慮的物品"
 L["announce_&i_desc"] = "|cfffcd400 &i|r: 物品連結"
 L["announce_&l_desc"] = "|cfffcd400 &l|r: 物品等級"
+--[[Translation missing --]]
+--[[ L["announce_&m_desc"] = ""--]] 
 L["announce_&n_desc"] = "|cfffcd400 &n|r: 擲骰結果，如果有的話。"
 L["announce_&o_desc"] = "|cfffcd400 &o|r: 裝備擁有人， 如果適用。"
 L["announce_&p_desc"] = "|cfffcd400 &p|r: 獲得物品的玩家名稱"

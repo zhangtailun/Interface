@@ -321,11 +321,11 @@ function CA:ResetAllStats()
 		[4] = {
 			categoryFrame = CA:CreateStatCategory("DefenceCategory", DEFENSE),
 			stats = {
-				[1] = { stat = "ARMOR", option = true, roles =  { "TANK" } },
+				[1] = { stat = "ARMOR", option = true, },
 				[2] = { stat = "AVOIDANCE", option = true, hideAt = 0 },
 				[3] = { stat = "DODGE", option = true,},
 				[4] = { stat = "PARRY", option = true, hideAt = 0, },
-				[5] = { stat = "BLOCK", option = true, hideAt = 0, roles = {"TANK"} },
+				[5] = { stat = "BLOCK", option = true, hideAt = 0, },
 				[6] = { stat = "STAGGER", hideAt = 0, roles = {"TANK"}, classes = {"MONK"} },
 			},
 		},
@@ -338,7 +338,6 @@ function CA:ToggleStats()
 end
 
 function CA:PaperDollFrame_UpdateStats()
-	if not CA:IsShown() then return end
 	totalShown = 0
 	local total, equipped = T.GetAverageItemLevel()
 	if E.db.sle.Armory.Character.Stats.IlvlFull then
@@ -439,7 +438,7 @@ function CA:PaperDollFrame_UpdateStats()
 	end
 	-- release the current stat frame
 	_G["CharacterStatsPane"].statsFramePool:Release(statFrame);
-	if totalShown > 14 then
+	if totalShown > 26 - E.db.sle.Armory.Character.Stats.ItemLevel.size then
 		CA.Scrollbar:Show()
 	else
 		CA.Scrollbar:Hide()
@@ -489,7 +488,7 @@ CharacterStatsPane.ClassBackground:SetPoint("CENTER")
 -- Enable mousewheel scrolling
 CA.ScrollFrame:EnableMouseWheel(true)
 CA.ScrollFrame:SetScript("OnMouseWheel", function(self, delta)
-	if totalShown > 14 then
+	if totalShown > 26 - E.db.sle.Armory.Character.Stats.ItemLevel.size then
 		CA.Scrollbar:SetMinMaxValues(1, 45)  
 	else
 		CA.Scrollbar:SetMinMaxValues(1, 1) 

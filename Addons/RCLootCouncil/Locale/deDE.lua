@@ -44,6 +44,8 @@ L["Announce Awards"] = "Vergaben ankündigen"
 L["Announce Considerations"] = "Betrachtungen ankündigen"
 L["announce_&i_desc"] = "|cfffcd400 &i|r: Link zum Gegenstand. "
 L["announce_&l_desc"] = "|cfffcd400 &l|r: Gegenstandsstufe. "
+--[[Translation missing --]]
+--[[ L["announce_&m_desc"] = ""--]] 
 L["announce_&n_desc"] = "|cfffcd400 &n|r: Beim Erhalt würfeln. "
 L["announce_&o_desc"] = "|cfffcd400 &o|r: Gegenstandsbesitzer, falls anwendbar."
 L["announce_&p_desc"] = "|cfffcd400 &p|r: Name des Spielers, der die Beute bekommen hat. "

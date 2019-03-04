@@ -50,6 +50,8 @@ L["Announce Considerations"] = "Annoncer les objets en examen"
 --[[Translation missing --]]
 --[[ L["announce_&l_desc"] = ""--]] 
 --[[Translation missing --]]
+--[[ L["announce_&m_desc"] = ""--]] 
+--[[Translation missing --]]
 --[[ L["announce_&n_desc"] = ""--]] 
 --[[Translation missing --]]
 --[[ L["announce_&o_desc"] = ""--]] 

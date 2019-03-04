@@ -44,6 +44,8 @@ L["Announce Awards"] = "通告分配"
 L["Announce Considerations"] = "通告考虑的物品"
 L["announce_&i_desc"] = "|cfffcd400 &i|r: 物品链接。"
 L["announce_&l_desc"] = "|cfffcd400 &l|r: 物品等级。"
+--[[Translation missing --]]
+--[[ L["announce_&m_desc"] = ""--]] 
 L["announce_&n_desc"] = "|cfffcd400 &n|r: 掷骰结果，如果有的话。"
 --[[Translation missing --]]
 --[[ L["announce_&o_desc"] = ""--]] 

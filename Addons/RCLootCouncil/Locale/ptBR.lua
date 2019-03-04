@@ -55,6 +55,8 @@ L["Announce Considerations"] = "Anunciar Considerações"
 --[[Translation missing --]]
 --[[ L["announce_&l_desc"] = ""--]] 
 --[[Translation missing --]]
+--[[ L["announce_&m_desc"] = ""--]] 
+--[[Translation missing --]]
 --[[ L["announce_&n_desc"] = ""--]] 
 --[[Translation missing --]]
 --[[ L["announce_&o_desc"] = ""--]] 
