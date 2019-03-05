@@ -24,7 +24,6 @@ L["Skada: Modes"] = true
 L["Skada: Fights"] = true
 
 -- Options
-L["Always show spec icon"] = true
 L["Disabled Modules"] = true
 L["This change requires a UI reload. Are you sure?"] = true
 L["Tick the modules you want to disable."] = true

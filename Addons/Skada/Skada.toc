@@ -1,5 +1,5 @@
-## Interface: 80100
-## Title: Skada - Mod
+## Interface: 80000
+## Title: Skada
 ## Notes: Modular damage meter.
 ## Notes-koKR: 데미지 미터 모듈입니다.
 ## Notes-zhTW: 模組化的傷害統計。

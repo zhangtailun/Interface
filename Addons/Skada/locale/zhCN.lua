@@ -2,7 +2,6 @@ local L = LibStub("AceLocale-3.0"):NewLocale("Skada", "zhCN", false)
 
 if not L then return end
 
-L["Always show spec icon"] = "总是显示专精图标"
 L["%s dies"] = "%s次死亡"
 L["%s on %s removed by %s"] = "%s 在 %s 被 %s 移除"
 L["%s on %s removed by %s's %s"] = "%s 在 %s 被 %s 的 %s 移除"
