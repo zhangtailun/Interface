@@ -224,6 +224,16 @@ local function DEBUG_PRINT_UNIT(unit, full_info)
     DEBUG("  Reaction = ", UnitReaction("player", unit.unitid))
     local r, g, b, a = UnitSelectionColor(unit.unitid, true)
     DEBUG("  SelectionColor: r =", ceil(r * 255), ", g =", ceil(g * 255), ", b =", ceil(b * 255), ", a =", ceil(a * 255))
+		DEBUG("  Threat ---------------------------------")
+		DEBUG("    UnitAffectingCombat = ", UnitAffectingCombat(unit.unitid))
+		DEBUG("    Addon:OnThreatTable = ", Addon:OnThreatTable(unit))
+		DEBUG("    UnitThreatSituation = ", UnitThreatSituation("player", unit.unitid))
+		DEBUG("    Target Unit = ", UnitExists(unit.unitid .. "target"))
+		if unit.style == "unique" then
+			DEBUG("    GetThreatSituation(Unique) = ", Addon.GetThreatSituation(unit, unit.style, TidyPlatesThreat.db.profile.threat.toggle.OffTank))
+		else
+			DEBUG("    GetThreatSituation = ", Addon.GetThreatSituation(unit, Addon:GetThreatStyle(unit), TidyPlatesThreat.db.profile.threat.toggle.OffTank))
+		end
   else
     DEBUG("  <no unit id>")
   end
@@ -263,15 +273,10 @@ end
 -- With TidyPlates:
 --ThreatPlates.FixUpdateUnitCondition = FixUpdateUnitCondition
 
-ThreatPlates.DEBUG = function(...) end
-ThreatPlates.DEBUG_PRINT_TABLE = function(...) end
-ThreatPlates.DEBUG_PRINT_UNIT = function(...) end
-ThreatPlates.DEBUG_PRINT_TARGET = function(...) end
-ThreatPlates.DEBUG_AURA_LIST = function(...) end
---ThreatPlates.DEBUG = DEBUG
---ThreatPlates.DEBUG_PRINT_TABLE = DEBUG_PRINT_TABLE
---ThreatPlates.DEBUG_PRINT_UNIT = DEBUG_PRINT_UNIT
---ThreatPlates.DEBUG_PRINT_TARGET = DEBUG_PRINT_TARGET
---ThreatPlates.DEBUG_AURA_LIST = DEBUG_AURA_LIST
+ThreatPlates.DEBUG = DEBUG
+ThreatPlates.DEBUG_PRINT_TABLE = DEBUG_PRINT_TABLE
+ThreatPlates.DEBUG_PRINT_UNIT = DEBUG_PRINT_UNIT
+ThreatPlates.DEBUG_PRINT_TARGET = DEBUG_PRINT_TARGET
+ThreatPlates.DEBUG_AURA_LIST = DEBUG_AURA_LIST
 
 

@@ -4,8 +4,8 @@ local ThreatPlates = Addon.ThreatPlates
 ---------------------------------------------------------------------------------------------------
 -- Imported functions and constants
 ---------------------------------------------------------------------------------------------------
-local InCombatLockdown = InCombatLockdown
-local UnitIsConnected = UnitIsConnected
+local InCombatLockdown, IsInInstance = InCombatLockdown, IsInInstance
+local UnitIsConnected, UnitAffectingCombat = UnitIsConnected, UnitAffectingCombat
 
 -- ThreatPlates APIs
 local TidyPlatesThreat = TidyPlatesThreat
@@ -17,19 +17,18 @@ local function ShowThreatGlow(unit)
   local db = TidyPlatesThreat.db.profile
 
   if db.ShowThreatGlowOnAttackedUnitsOnly then
-    return Addon:OnThreatTable(unit)
+    if IsInInstance() and db.threat.UseHeuristicInInstances then
+      return UnitAffectingCombat(unit.unitid)
+    else
+      return Addon:OnThreatTable(unit)
+    end
   else
-    return true
+    return UnitAffectingCombat(unit.unitid)
   end
 end
 
 function Addon:SetThreatColor(unit)
   local color
-
---  if not unit.unitid then
---    return c.r, c.g, c.b, c.a -- transparent color
---  end
---
 
   local db = TidyPlatesThreat.db.profile
   if not UnitIsConnected(unit.unitid) and ShowThreatGlow(unit) then
@@ -46,7 +45,14 @@ function Addon:SetThreatColor(unit)
       end
     end
 
-    if style == "dps" or style == "tank" or (style == "normal" and InCombatLockdown()) then
+    -- Split this up into two if-parts, otherweise there is an inconsistency between
+    -- healthbar color and threat glow at the beginning of a combat when the player
+    -- is already in combat, but not yet on the mob's threat table for a sec or so.
+    if db.threat.ON and db.threat.useHPColor then
+      if style == "dps" or style == "tank" then
+        color = Addon:GetThreatColor(unit, style, db.ShowThreatGlowOnAttackedUnitsOnly)
+      end
+    elseif (style == "normal" and InCombatLockdown()) then
       color = Addon:GetThreatColor(unit, style, db.ShowThreatGlowOnAttackedUnitsOnly)
     end
   end
