@@ -266,7 +266,6 @@ L["Remember"] = "기억하기"
 L["Remember positions of frames after moving them."] = "프레임을 이동하고 난 뒤 위치를 기억합니다."
 L["Pet Battles skinning"] = true
 L["Make some elements of pet battles movable via toggle anchors."] = "true"
-L["Vehicle Seat Scale"] = "탈것 좌석 크기"
 
 --Chat
 L["Reported by %s"] = true
@@ -511,7 +510,7 @@ L["Roll based on level."] = true
 L["This will auto-roll if you are above the given level if: You cannot equip the item being rolled on, or the iLevel of your equipped item is higher than the item being rolled on or you have an heirloom equipped in that slot"] = true
 L["Level to start auto-rolling from"] = true
 L["Loot Announcer"] = true
-L["AUTOANNOUNCE_DESC"] = "When enabled, will automatically announce the loot when the loot window opens.\n\n|cffFF0000Note:|r Raid Lead, Assist, & Master Looter Only."
+-- L["AUTOANNOUNCE_DESC"] = "When enabled, will automatically announce the loot when the loot window opens.\n\n|cffFF0000Note:|r Raid Lead, Assist, & Master Looter Only."
 L["Auto Announce"] = true
 L["Manual Override"] = true
 L["Sets the button for manual override."] = true
@@ -829,10 +828,13 @@ L["RAID_NH"] = "밤요"
 L["RAID_TOV"] = "용시"
 L["RAID_EN"] = "에악"
 L["RAID_ANTO"] = "안토"
+L["RAID_DAZALOR"] = "BfDA"
+L["RAID_STORMCRUS"] = "SC"
 L["Raid Progression"] = "레이드 진도"
 L["Show raid experience of character in tooltip (requires holding shift)."] = "툴팁에 캐릭터의 공격대 경험을 표시합니다.(쉬프트 누르고 있을 때)"
 L["Name Style"] = "이름 스타일"
 L["Difficulty Style"] = "난이도 스타일"
+L["Short"] = true
 
 --UI Buttons
 L["S&L UI Buttons"] = "S&L UI 버튼"

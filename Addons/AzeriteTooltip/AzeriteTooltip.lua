@@ -159,8 +159,8 @@ function AzeriteTooltip:OnEnable()
     self:SecureHookScript(GameTooltip, 'OnTooltipSetItem', 'OnTooltipSetItem')
     self:SecureHookScript(ItemRefTooltip, 'OnTooltipSetItem', 'OnTooltipSetItem')
     self:SecureHookScript(ShoppingTooltip1, 'OnTooltipSetItem', 'OnTooltipSetItem')
-    self:SecureHookScript(WorldMapTooltip, 'OnTooltipSetItem', 'OnTooltipSetItem')
-    self:SecureHookScript(WorldMapCompareTooltip1, 'OnTooltipSetItem', 'OnTooltipSetItem')
+    --self:SecureHookScript(WorldMapTooltip, 'OnTooltipSetItem', 'OnTooltipSetItem')
+    --self:SecureHookScript(WorldMapCompareTooltip1, 'OnTooltipSetItem', 'OnTooltipSetItem')
     self:SecureHookScript(EmbeddedItemTooltip, 'OnTooltipSetItem', 'OnTooltipSetItem')    
 end
 
@@ -285,6 +285,7 @@ function AzeriteTooltip:RemovePowerText(tooltip, powerName)
 	for i = 7, tooltip:NumLines() do
 		if textLeft then
 			local enchanted = strsplit("%d", ENCHANTED_TOOLTIP_LINE)
+			local use = strsplit("%d", ITEM_SPELL_TRIGGER_ONUSE)			 
 			local line = textLeft[i]		
 			local text = line:GetText()
 			local r, g, b = line:GetTextColor()
@@ -303,7 +304,7 @@ function AzeriteTooltip:RemovePowerText(tooltip, powerName)
 				elseif (newText and newPowerName and newText:match(newPowerName)) then
        				line:SetText("")
 				end
-				if ( r < 0.1 and g > 0.9 and b < 0.1 and not text:find(">") and not text:find(ITEM_SPELL_TRIGGER_ONEQUIP) and not text:find(enchanted) ) then
+				if ( r < 0.1 and g > 0.9 and b < 0.1 and not text:find(">") and not text:find(ITEM_SPELL_TRIGGER_ONEQUIP) and not text:find(enchanted) and not text:find(use) ) then
 					line:SetText("")
 				end
 			end
@@ -550,8 +551,11 @@ end
 function AzeriteTooltip:SetPaperDollAzerite(self)
     local button = self
     local id = self:GetID();
+    local textureName = GetInventoryItemTexture("player", id);
 
-    if (id == 1 or id == 3 or id == 5) and self.hasItem then
+    local hasItem = textureName ~= nil;
+
+    if (id == 1 or id == 3 or id == 5) and hasItem then
 
 	    local azeriteEmpoweredItemLocation = ItemLocation:CreateFromEquipmentSlot(id)
 

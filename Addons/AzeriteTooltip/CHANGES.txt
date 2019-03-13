@@ -1,10 +1,10 @@
-lightweight tag dfeb63a679b0367e951028979096200c3b8955c9 2.0.3
+lightweight tag d5eb69634441e37c1f328edb52c0144aaaf56b1c 2.0.5
 Author:	Jokair9 <37122137+Tomsize@users.noreply.github.com>
-Date:	Sat Jan 26 06:02:41 2019 +0100
+Date:	Wed Mar 13 08:44:22 2019 +0100
 
-commit dfeb63a679b0367e951028979096200c3b8955c9
+commit d5eb69634441e37c1f328edb52c0144aaaf56b1c
 Author: Jokair9 <37122137+Tomsize@users.noreply.github.com>
-Date:   Sat Jan 26 06:02:41 2019 +0100
+Date:   Wed Mar 13 08:44:22 2019 +0100
 
-    fix bagnon icons not hiding if not enabled
+    Fix for PaperDollButton
 

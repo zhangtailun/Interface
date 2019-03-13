@@ -42,12 +42,5 @@ function UpdateMaxLines()
 		local frame = _G[frameName]
 		frame:SetMaxLines(E.db.CustomTweaks.ChatMaxLines.MaxLines)
 	end
-
-	--Re-display chat history since it was all cleared when calling :SetMaxLines
-	if E.db.chat.chatHistory then
-		CH.SoundPlayed = true;
-		CH:DisplayChatHistory()
-		CH.SoundPlayed = nil;
-	end
 end
 hooksecurefunc(CH, "Initialize", UpdateMaxLines)

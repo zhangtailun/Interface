@@ -81,7 +81,7 @@ L["Allow |cff9482c9Shadow & Light|r to change some of ElvUI's options limits."] 
 L["Cyrillics Support"] = true
 L["SLE_CYR_DESC"] = [[If you happen to occasionally (or constantly) use Russian alphabet (Cyrillics) for your messages
 and always forget to switch input language afterward when entering slash commands then these options will help you.
-They enable a set of ElvUI's commands to be usable even with wrong input.
+They enable a set of ElvUI's commands to be usable even with wrong input. Always active on Ru locale.
 ]]
 L["Commands"] = true
 L["SLE_CYR_COM_DESC"] = [[Allows the usage of these common commands with ru input:
@@ -282,7 +282,6 @@ L["Remember"] = true
 L["Remember positions of frames after moving them."] = true
 L["Pet Battles skinning"] = true
 L["Make some elements of pet battles movable via toggle anchors."] = true
-L["Vehicle Seat Scale"] = true
 
 --Chat
 L["Reported by %s"] = true
@@ -527,7 +526,7 @@ L["Roll based on level."] = true
 L["This will auto-roll if you are above the given level if: You cannot equip the item being rolled on, or the iLevel of your equipped item is higher than the item being rolled on or you have an heirloom equipped in that slot"] = true
 L["Level to start auto-rolling from"] = true
 L["Loot Announcer"] = true
-L["AUTOANNOUNCE_DESC"] = "When enabled, will automatically announce the loot when the loot window opens.\n\n|cffFF0000Note:|r Raid Lead, Assist, & Master Looter Only."
+-- L["AUTOANNOUNCE_DESC"] = "When enabled, will automatically announce the loot when the loot window opens.\n\n|cffFF0000Note:|r Raid Lead, Assist, & Master Looter Only."
 L["Auto Announce"] = true
 L["Manual Override"] = true
 L["Sets the button for manual override."] = true
@@ -845,10 +844,13 @@ L["RAID_NH"] = "NH"
 L["RAID_TOV"] = "ToV"
 L["RAID_EN"] = "EN"
 L["RAID_ANTO"] = "ATBT"
+L["RAID_DAZALOR"] = "BfDA"
+L["RAID_STORMCRUS"] = "SC"
 L["Raid Progression"] = true
 L["Show raid experience of character in tooltip (requires holding shift)."] = true
 L["Name Style"] = true
 L["Difficulty Style"] = true
+L["Short"] = true
 
 --UI Buttons
 L["S&L UI Buttons"] = true
@@ -988,6 +990,7 @@ L["ELVUI_SLE_DONORS"] = [[Andre Edwards
 Anthony Ross
 Chun Kim
 Cyntia McCarthy
+Joe Quarles
 Jonathan Sweet
 Katherine Clarkson
 Nicholas Caldecutt
