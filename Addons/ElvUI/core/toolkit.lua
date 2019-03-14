@@ -47,14 +47,11 @@ local function customSetBackdrop(frame, giveBorder, bgFile, edgeSize, insetLeft,
 	frame.pixelBorders.RIGHT:SetWidth(edgeSize)
 end
 
-local function customSetBackdropColor(frame, r, g, b, a, skip)
-	if skip == 'ElvUI' then return end
-
-	if frame.pixelBorders then
+local function customBackdropColor(frame, r, g, b, a, skip)
+	if frame.pixelBorders and skip ~= 'ElvUI' then
 		frame.pixelBorders.CENTER:SetVertexColor(r, g, b, a)
+		frame:SetBackdropColor(r, g, b, 0, 'ElvUI')
 	end
-
-	frame:SetBackdropColor(r, g, b, 0, 'ElvUI')
 end
 
 local function customBackdropBorderColor(frame, r, g, b, a)
@@ -101,7 +98,7 @@ local function buildPixelBorders(frame, noSecureHook)
 	end
 
 	if not noSecureHook then
-		hooksecurefunc(frame, "SetBackdropColor", customSetBackdropColor)
+		hooksecurefunc(frame, "SetBackdropColor", customBackdropColor)
 		hooksecurefunc(frame, "SetBackdropBorderColor", customBackdropBorderColor)
 	end
 end
@@ -192,13 +189,13 @@ local function SetTemplate(f, t, glossTex, ignoreUpdates, forcePixelMode, isUnit
 	if t == 'NoBackdrop' then
 		customSetBackdrop(f)
 	else
-		customSetBackdrop(f, true, glossTex and (type(glossTex) == 'string' and glossTex or E.media.glossTex) or E.media.blankTex, E.mult)
+		customSetBackdrop(f, true, glossTex and (type(glossTex) == 'string' and glossTex or E.media.glossTex) or E.media.blankTex, (not E.twoPixelsPlease and E.mult) or E.mult*2)
 
 		if not f.ignoreBackdropColors then
 			if t == 'Transparent' then
-				customSetBackdropColor(f, backdropr, backdropg, backdropb, backdropa)
+				customBackdropColor(f, backdropr, backdropg, backdropb, backdropa)
 			else
-				customSetBackdropColor(f, backdropr, backdropg, backdropb)
+				customBackdropColor(f, backdropr, backdropg, backdropb)
 			end
 		end
 
