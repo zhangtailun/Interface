@@ -25,16 +25,23 @@ local function GetTemplate(t, isUnitFrameElement)
 	end
 end
 
---Code taken from ElvUI and modified to remove borders
-local function SetTemplate(f, t, glossTex, ignoreUpdates, forcePixelMode, isUnitFrameElement)
-	GetTemplate(t, isUnitFrameElement)
+local BackdropBorders = {"TOPLEFT", "TOPRIGHT", "BOTTOMLEFT", "BOTTOMRIGHT", "TOP", "BOTTOM", "LEFT", "RIGHT"}
+local function customBackdropColor(frame, r, g, b, a)
+	if frame.pixelBorders then
+		frame.pixelBorders.CENTER:SetVertexColor(r, g, b, 0)
+	end
+end
+local function customBackdropBorderColor(frame, r, g, b, a)
+	if frame.pixelBorders then
+		for _, v in pairs(BackdropBorders) do
+			frame.pixelBorders[v]:SetColorTexture(r or 0, g or 0, b or 0, 0)
+		end
+	end
+end
 
-	f:SetBackdrop({
-		bgFile = glossTex and (type(glossTex) == 'string' and glossTex or E.media.glossTex) or E.media.blankTex,
-		edgeFile = nil,
-		tile = false, tileSize = 0, edgeSize = 0,
-		insets = {left = 0, right = 0, top = 0, bottom = 0}
-	})
+--Code taken from ElvUI and modified to remove borders
+local function CustomSetTemplate(f, t, glossTex, ignoreUpdates, forcePixelMode, isUnitFrameElement)
+	GetTemplate(t, isUnitFrameElement)
 
 	if t ~= 'NoBackdrop' then
 		f:SetBackdropColor(backdropr, backdropg, backdropb, backdropa)
@@ -47,19 +54,22 @@ local function SetTemplate(f, t, glossTex, ignoreUpdates, forcePixelMode, isUnit
 			end
 		end
 	end
-	f.ignoreBorderColors = true
+
 	f:SetBackdropBorderColor(0, 0, 0, 0)
+	f.ignoreBorderColors = true
 	
 	if isUnitFrameElement and t ~= "Transparent" then
 		f:SetBackdropColor(0,0,0,0)
 	end
+
+	hooksecurefunc(f, "SetBackdropBorderColor", customBackdropBorderColor)
 end
 
 --Code taken from ElvUI
 local function addapi(object)
 	if not object.isCTHooked then
 		local mt = getmetatable(object).__index
-		hooksecurefunc(mt, "SetTemplate", SetTemplate)
+		hooksecurefunc(mt, "SetTemplate", CustomSetTemplate)
 		object.isCTHooked = true
 	end
 end
