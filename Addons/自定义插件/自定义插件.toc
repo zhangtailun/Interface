@@ -1,0 +1,7 @@
+﻿## Interface: 80000
+## Title:自定义插件
+## Notes:自定义插件
+## Author:轮胎哥
+
+
+自定义插件.lua
