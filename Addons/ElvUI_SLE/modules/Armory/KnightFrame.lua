@@ -1,4 +1,4 @@
-local SLE, T, E, L, V, P, G = unpack(select(2, ...))
+﻿local SLE, T, E, L, V, P, G = unpack(select(2, ...))
 --GLOBALS: SLE_ArmoryDB
 local _
 local _G = _G

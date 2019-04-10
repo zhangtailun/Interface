@@ -1,4 +1,4 @@
-local SLE, T, E, L, V, P, G = unpack(select(2, ...))
+﻿local SLE, T, E, L, V, P, G = unpack(select(2, ...))
 local AFK = E:GetModule("AFK")
 local S = SLE:NewModule("Screensaver", 'AceHook-3.0', 'AceEvent-3.0')
 S.Animations = {}

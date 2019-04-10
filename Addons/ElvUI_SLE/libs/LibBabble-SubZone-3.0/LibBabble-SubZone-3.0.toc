@@ -1,4 +1,4 @@
-## Interface: 60000
+﻿## Interface: 60000
 ## LoadOnDemand: 1
 ## Title: Lib: Babble-SubZone-3.0
 ## Notes: A library to help with localization of in-game subzone names.

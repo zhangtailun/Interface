@@ -1,4 +1,4 @@
-local SLE, T, E, L, V, P, G = unpack(select(2, ...))
+﻿local SLE, T, E, L, V, P, G = unpack(select(2, ...))
 local C = SLE:GetModule("Chat")
 local _G = _G
 local function configTable()
@@ -35,7 +35,7 @@ local function configTable()
 				type = "range",
 				min = 50, max = 500, step = 1,
 				get = function(info) return E.private.sle.chat.chatHistory.size end,
-				set = function(info, value) E.private.sle.chat.chatHistory.size = value; end
+				set = function(info, value) E.private.sle.chat.chatHistory.size = value; C:HistorySizeCHanged() end
 			},
 			infos = {
 				order = 4,

@@ -1,4 +1,4 @@
-local SLE, T, E, L, V, P, G = unpack(select(2, ...))
+﻿local SLE, T, E, L, V, P, G = unpack(select(2, ...))
 local Sk = SLE:GetModule("Skins")
 local S = E:GetModule('Skins')
 --GLOBALS: CreateFrame, hooksecurefunc, ChatFontSmall, UIParent, INVSLOT_FIRST_EQUIPPED, INVSLOT_LAST_EQUIPPED

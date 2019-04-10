@@ -1,4 +1,4 @@
-local SLE, T, E, L, V, P, G = unpack(select(2, ...))
+﻿local SLE, T, E, L, V, P, G = unpack(select(2, ...))
 local B = LibStub("LibBabble-SubZone-3.0")
 local BL = B:GetLookupTable()
 local S = E:GetModule("Skins")

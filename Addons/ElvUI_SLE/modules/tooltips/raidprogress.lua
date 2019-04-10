@@ -1,4 +1,4 @@
-local SLE, T, E, L, V, P, G = unpack(select(2, ...))
+﻿local SLE, T, E, L, V, P, G = unpack(select(2, ...))
 local RP = SLE:NewModule("RaidProgress", "AceHook-3.0", "AceEvent-3.0")
 local TT = E:GetModule('Tooltip');
 --GLOBALS: hooksecurefunc, AchievementFrame_DisplayComparison

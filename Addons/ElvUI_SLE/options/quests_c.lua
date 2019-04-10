@@ -1,4 +1,4 @@
-local SLE, T, E, L, V, P, G = unpack(select(2, ...))
+﻿local SLE, T, E, L, V, P, G = unpack(select(2, ...))
 local Q = SLE:GetModule("Quests")
 local DEFAULT, MINIMIZE, HIDE = DEFAULT, MINIMIZE, HIDE
 local QUESTS_LABEL = QUESTS_LABEL

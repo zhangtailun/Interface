@@ -1,5 +1,5 @@
 ## Interface: 70300
-## Version: v3.521
+## Version: @project-version@
 
 ## Title: Lib: Realm Info
 ## Notes: Library to provide information about realms.

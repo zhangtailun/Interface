@@ -123,6 +123,21 @@ local function SkinScenarioButtons()
 	block.GlowTexture.AlphaAnim.Play = dummy
 end
 
+--Challengemode/M+
+-- local function Scenario_ChallengeMode_ShowBlock(timerID, elapsedTime, timeLimit)
+local function SkinChallengeModeBlock(timerID, elapsedTime, timeLimit)
+	local object = ScenarioChallengeModeBlock
+	if not E.private.sle.skins.objectiveTracker.scenarioBG then
+		for i = 1, object:GetNumRegions() do
+			local region = select(i, object:GetRegions())
+			if region and region:IsObjectType('Texture') then --and region:IsObjectType(which) then
+				-- print(type(region), region:GetAtlas())
+				if region:GetAtlas() == "ChallengeMode-Timer" then region:SetAlpha(0) end
+			end
+		end
+	end
+end
+
 -- Proving grounds
 local function SkinProvingGroundButtons()
 	local block = ScenarioProvingGroundsBlock
@@ -201,6 +216,7 @@ local function ObjectiveReskin()
 		hooksecurefunc(_G["DEFAULT_OBJECTIVE_TRACKER_MODULE"], "AddTimerBar", SkinTimerBar)
 		hooksecurefunc(_G["SCENARIO_CONTENT_TRACKER_MODULE"], "Update", SkinScenarioButtons)
 		hooksecurefunc("ScenarioBlocksFrame_OnLoad", SkinScenarioButtons)
+		hooksecurefunc("Scenario_ChallengeMode_ShowBlock", SkinChallengeModeBlock)
 		-- Another ProgressBar in the ObjectiveTracker counting as Scenario (e.g. Legion Pre-Event)
 		hooksecurefunc(SCENARIO_TRACKER_MODULE, "AddProgressBar", function(self, block, line, criteriaIndex)
 			local progressBar = self.usedProgressBars[block] and self.usedProgressBars[block][line];

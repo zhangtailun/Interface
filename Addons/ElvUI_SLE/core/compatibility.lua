@@ -1,4 +1,4 @@
-local SLE, T, E, L, V, P, G = unpack(select(2, ...))
+﻿local SLE, T, E, L, V, P, G = unpack(select(2, ...))
 
 local GetAddOnEnableState = GetAddOnEnableState
 --Check if some stuff happens to be enable

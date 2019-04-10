@@ -1,4 +1,4 @@
-local SLE, T, E, L, V, P, G = unpack(select(2, ...))
+﻿local SLE, T, E, L, V, P, G = unpack(select(2, ...))
 local M = SLE:GetModule("Misc")
 local SETTINGS = SETTINGS
 local LFG_LIST_LEGACY = LFG_LIST_LEGACY

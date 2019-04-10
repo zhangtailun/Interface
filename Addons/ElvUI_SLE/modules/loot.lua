@@ -1,4 +1,4 @@
-local SLE, T, E, L, V, P, G = unpack(select(2, ...))
+﻿local SLE, T, E, L, V, P, G = unpack(select(2, ...))
 local LT = SLE:NewModule('Loot','AceHook-3.0', 'AceEvent-3.0')
 local M = E:GetModule('Misc')
 --GLOBALS: hooksecurefunc, ChatFrame_AddMessageEventFilter, ChatFrame_RemoveMessageEventFilter, UIParent

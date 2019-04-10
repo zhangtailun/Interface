@@ -1,4 +1,4 @@
-local SLE, T, E, L, V, P, G = unpack(select(2, ...))
+﻿local SLE, T, E, L, V, P, G = unpack(select(2, ...))
 local EM = SLE:NewModule('EquipManager', 'AceHook-3.0', 'AceEvent-3.0')
 local GetRealZoneText = GetRealZoneText
 EM.Processing = false

@@ -1,4 +1,4 @@
- --[[
+﻿ --[[
 $Id: LibBabble-SubZone-3.0_zhCN.lua 170 2014-10-18 13:24:28Z arith $
 Name: LibBabble-SubZone-3.0
 Revision: $Rev: 170 $

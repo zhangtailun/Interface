@@ -25,19 +25,14 @@ local function GetTemplate(t, isUnitFrameElement)
 	end
 end
 
-local BackdropBorders = {"TOPLEFT", "TOPRIGHT", "BOTTOMLEFT", "BOTTOMRIGHT", "TOP", "BOTTOM", "LEFT", "RIGHT"}
-local function customBackdropColor(frame, r, g, b, a)
+local function CustomSetBackdropBorderColor(self, frame, ...)
 	if frame.pixelBorders then
-		frame.pixelBorders.CENTER:SetVertexColor(r, g, b, 0)
-	end
-end
-local function customBackdropBorderColor(frame, r, g, b, a)
-	if frame.pixelBorders then
-		for _, v in pairs(BackdropBorders) do
-			frame.pixelBorders[v]:SetColorTexture(r or 0, g or 0, b or 0, 0)
+		for _, v in pairs(E.PixelBorders) do
+			frame.pixelBorders[v]:SetVertexColor(0,0,0,0)
 		end
 	end
 end
+hooksecurefunc(E, "SetBackdropBorderColor", CustomSetBackdropBorderColor)
 
 --Code taken from ElvUI and modified to remove borders
 local function CustomSetTemplate(f, t, glossTex, ignoreUpdates, forcePixelMode, isUnitFrameElement)
@@ -61,8 +56,6 @@ local function CustomSetTemplate(f, t, glossTex, ignoreUpdates, forcePixelMode, 
 	if isUnitFrameElement and t ~= "Transparent" then
 		f:SetBackdropColor(0,0,0,0)
 	end
-
-	hooksecurefunc(f, "SetBackdropBorderColor", customBackdropBorderColor)
 end
 
 --Code taken from ElvUI
@@ -77,8 +70,6 @@ end
 local handled = {["Frame"] = true}
 local object = CreateFrame("Frame")
 addapi(object)
-addapi(object:CreateTexture())
-addapi(object:CreateFontString())
 
 object = EnumerateFrames()
 while object do

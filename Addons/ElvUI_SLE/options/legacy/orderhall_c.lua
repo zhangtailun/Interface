@@ -1,4 +1,4 @@
-local SLE, T, E, L, V, P, G = unpack(select(2, ...))
+﻿local SLE, T, E, L, V, P, G = unpack(select(2, ...))
 local GARRISON_LOCATION_TOOLTIP = GARRISON_LOCATION_TOOLTIP
 local EXPANSION_NAME5 = EXPANSION_NAME5
 local HallName = _G["ORDER_HALL_"..E.myclass]

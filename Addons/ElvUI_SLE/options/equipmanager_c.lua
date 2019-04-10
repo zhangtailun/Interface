@@ -1,4 +1,4 @@
-local SLE, T, E, L, V, P, G = unpack(select(2, ...)) 
+﻿local SLE, T, E, L, V, P, G = unpack(select(2, ...)) 
 local EM = SLE:GetModule('EquipManager')
 local NONE = NONE
 local PAPERDOLL_EQUIPMENTMANAGER = PAPERDOLL_EQUIPMENTMANAGER

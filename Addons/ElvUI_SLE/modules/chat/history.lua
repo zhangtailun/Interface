@@ -1,4 +1,4 @@
-local SLE, T, E, L, V, P, G = unpack(select(2, ...))
+﻿local SLE, T, E, L, V, P, G = unpack(select(2, ...))
 local C = SLE:GetModule("Chat")
 local CH = E:GetModule("Chat")
 local _G = _G
@@ -47,6 +47,13 @@ function C:ClearUnusedHistory()
 				T.tremove(_G["ElvCharacterDB"].ChatHistoryLog, i)
 			end
 		end
+	end
+end
+
+function C:HistorySizeCHanged()
+	local data = _G["ElvCharacterDB"].ChatHistoryLog
+	while #data >= E.private.sle.chat.chatHistory.size do
+		T.tremove(data, 1)
 	end
 end
 
@@ -147,7 +154,7 @@ function C:HystoryOverwrite()
 			temp[i] = T.select(i, ...) or false
 		end
 
-		if #temp > 0 then
+		if #temp > 0 and not CH:MessageIsProtected(temp[1]) then
 			temp[50] = event
 			temp[51] = T.time()
 
@@ -161,7 +168,7 @@ function C:HystoryOverwrite()
 				T.tremove(data, 1)
 			end
 		end
-		temp = nil -- Destory!
+		-- temp = nil -- Destory!
 	end
 end
 
@@ -176,7 +183,7 @@ function C:InitHistory()
 				end
 			end
 			T.tinsert(_G["ElvCharacterDB"].ChatEditHistory, #(_G["ElvCharacterDB"].ChatEditHistory) + 1, line)
-			if #(_G["ElvCharacterDB"].ChatEditHistory) > C.db.editboxhistory then
+			if #(_G["ElvCharacterDB"].ChatEditHistory) > E.db.sle.chat.editboxhistory then
 				T.tremove(_G["ElvCharacterDB"].ChatEditHistory, 1)
 			end
 		end

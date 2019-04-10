@@ -1,4 +1,4 @@
-local SLE, T, E, L, V, P, G = unpack(select(2, ...))  
+﻿local SLE, T, E, L, V, P, G = unpack(select(2, ...))  
 local DTP = SLE:NewModule('Datatexts', 'AceHook-3.0', 'AceEvent-3.0');
 local DT, MM = SLE:GetElvModules("DataTexts", "Minimap");
 --GLOBALS: ElvDB, hooksecurefunc

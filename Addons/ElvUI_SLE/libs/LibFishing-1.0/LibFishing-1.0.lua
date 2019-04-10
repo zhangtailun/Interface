@@ -1,4 +1,4 @@
---[[
+﻿--[[
 Name: LibFishing-1.0
 Maintainers: Sutorix <sutorix@hotmail.com>
 Description: A library with fishing support routines used by Fishing Buddy, Fishing Ace and FB_Broker.

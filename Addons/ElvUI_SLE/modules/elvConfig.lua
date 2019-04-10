@@ -1,4 +1,4 @@
-local SLE, T, E, L, V, P, G = unpack(select(2, ...))
+﻿local SLE, T, E, L, V, P, G = unpack(select(2, ...))
 local EC = SLE:NewModule("ElvConfig", "AceEvent-3.0")
 
 --Module to allow changing default ElvUI settings limits

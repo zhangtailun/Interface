@@ -1,4 +1,4 @@
-local SLE, T, E, L, V, P, G = unpack(select(2, ...))
+﻿local SLE, T, E, L, V, P, G = unpack(select(2, ...))
 local BNET_CLIENT_WOW = BNET_CLIENT_WOW
 local BNSendGameData = BNSendGameData
 local C_ChatInfo_SendAddonMessage = C_ChatInfo.SendAddonMessage

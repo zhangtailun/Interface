@@ -1,4 +1,4 @@
-local SLE, T, E, L, V, P, G = unpack(select(2, ...))
+﻿local SLE, T, E, L, V, P, G = unpack(select(2, ...))
 local PVP = PVP
 local HONORABLE_KILLS = HONORABLE_KILLS
 local RANK = RANK

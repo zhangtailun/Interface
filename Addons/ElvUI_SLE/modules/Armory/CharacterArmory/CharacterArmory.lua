@@ -1,4 +1,4 @@
-if select(2, GetAddOnInfo('ElvUI_KnightFrame')) and IsAddOnLoaded('ElvUI_KnightFrame') then return end
+﻿if select(2, GetAddOnInfo('ElvUI_KnightFrame')) and IsAddOnLoaded('ElvUI_KnightFrame') then return end
 
 local _G = _G
 local SLE, T, E, L, V, P, G = unpack(select(2, ...))
@@ -532,6 +532,8 @@ function CA:Setup_CharacterArmory()
 		
 		SlotIDList[Slot.ID] = SlotName
 		self[SlotName] = Slot
+
+		if T.IsAddOnLoaded("Outfitter") then _G["OutfitterEnable"..SlotName]:SetFrameLevel(7) end
 	end
 	
 	-- _G["GameTooltip"] for counting gem sockets and getting enchant effects

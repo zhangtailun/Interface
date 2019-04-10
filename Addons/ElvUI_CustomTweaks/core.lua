@@ -42,7 +42,6 @@ local Tweaks = {
 	},
 	["Unitframe"] = {
 		{"AuraIconSpacing", L["Allows you to set a spacing between individual aura icons for the units you choose."]},
-		{"AuraIconText", L["Allows you to position the unitframe aura duration and stack text or hide it."]},
 		{"CastbarCustomBackdrop", L["Allows you to use a custom castbar backdrop color."]},
 		{"CastbarText", L["Allows you to position and change color and alpha of castbar text."]},
 		{"PowerBarTexture", L["Allows you to use a separate texture for unitframe power bars."]},
@@ -57,7 +56,6 @@ local Authors = {
 	{"Blazeflack", {
 		"AFKPetModel",
 		"AuraIconSpacing",
-		"AuraIconText",
 		"BagButtons",
 		"BagsTextFormat",
 		"CastbarCustomBackdrop",
