@@ -146,6 +146,10 @@ end
 --	elseif command == "migrate" then
 --		Addon.MigrateDatabase(cmd_list[2])
 --		--		--PrintHelp()
+--	elseif command == "dbm1" then
+--		DBM.Nameplate:Show(true, UnitGUID("target"), 255824, nil, nil, nil, true, {0.5, 0, 0.55, 0.75})
+--	elseif command == "dbm2" then
+--		DBM.Nameplate:Hide(true, UnitGUID("target"), 255824, nil, nil, nil, true, {0.5, 0, 0.55, 0.75})
 ----	else
 ----		TP.Print(L["Unknown option: "] .. input, true)
 ----		PrintHelp()

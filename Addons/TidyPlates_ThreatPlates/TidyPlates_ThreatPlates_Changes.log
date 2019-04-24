@@ -1,7 +1,26 @@
-﻿﻿------------------------------------------------------
+﻿------------------------------------------------------
+9.1.7
+------------------------------------------------------
+* Fixed a Lua error in the Boss Mods widget when used together with MoveAnything [Comment #1951, #1956].
+
+------------------------------------------------------
+9.1.6
+------------------------------------------------------
+* Fixed a Lua error that occured when migrating deprecated settings of the Combo Points widget [Comment #1956].
+* Adjusted Threat Plates' general nameplate settings to be in line with the corresponding WoW settings.
+
+------------------------------------------------------
+9.1.5
+------------------------------------------------------
+* Added the option to hide unlimited duration buffs on enemy units again to allow for a more fine-grained configuration with black- and whitelist filtering [Comment #1820].
+* Added an option to Auras widget to show Magic buffs on enemy units [PM].
+* Added an option to the Boss Mods widget to show tracking lines between player and active nameplate auras.
+* Improved offtank detection of the threat system (thanks to cremor for reporting the issue and helping fixing it) [Issue #331].
+
+﻿------------------------------------------------------
 9.1.4
 ------------------------------------------------------
-* Added an option to Auras widget to highlight auras that can be stolen or purged [PR #100, Comment #1707, Issue #338].
+* Added an option to Auras widget to highlight auras that can be stolen or purged [PR #100, Comment #1707, #1251, #1405, Issue #338].
 * Added some new mobs that can detect stealth to the Stealth widget.
 * Fixed a bug with Warning Glow for Threat not working when threat system as enabled, but threat coloring was disabled [Comment #1888].
 

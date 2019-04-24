@@ -1395,3 +1395,8 @@ Change Log:
 
 4.46.17
 * Added BFA spells for Battle of Dazar'alor
+
+4.47
+* Re-enabled sound channel support UI dropdown (hopefully Blizzard finally fixed their taint issues)
+* Added BFA spells for Crucible of Storms
+

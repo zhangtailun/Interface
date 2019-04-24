@@ -2189,7 +2189,7 @@ local function CreateBossModsWidgetOptions()
           },
           Layout = {
             name = L["Layout"],
-            order = pos,
+            order = 20,
             type = "group",
             inline = true,
             args = {
@@ -2199,10 +2199,35 @@ local function CreateBossModsWidgetOptions()
           } ,
         },
       },
-      Placement = GetPlacementEntryWidget(20, "BossModsWidget", true),
+      TrackingLine = {
+        name = L["Tracking Line"],
+        type = "group",
+        order = 20,
+        inline = true,
+        args = {
+          Show = {
+            name = L["Enable"],
+            order = 1,
+            type = "toggle",
+            desc = L["Show tracking lines between player and an active nameplate aura."],
+            arg = { "BossModsWidget", "ShowTrackingLine" },
+          },
+          Thickness = {
+            name = L["Thickness"],
+            type = "range",
+            order = 20,
+            step = 1,
+            min = 1,
+            max = 20,
+            isPercent = false,
+            arg = { "BossModsWidget", "TrackingLineThickness" },
+          },
+        },
+      },
+      Placement = GetPlacementEntryWidget(30, "BossModsWidget", true),
       Config = {
         name = L["Configuration Mode"],
-        order = 30,
+        order = 40,
         type = "group",
         inline = true,
         args = {
@@ -2839,9 +2864,10 @@ local function CreateAurasWidgetOptions()
                 desc = L["Show all buffs on enemy units."],
                 set = function(info, val)
                   local db = db.AuraWidget.Buffs
-                  if db.ShowOnEnemyNPCs or db.ShowDispellable then
+                  if val and not db.ShowAllEnemy then
                     db.ShowOnEnemyNPCs = false
                     db.ShowDispellable = false
+                    db.ShowMagic = false
                     SetValueWidget(info, val)
                   end
                 end,
@@ -2855,7 +2881,7 @@ local function CreateAurasWidgetOptions()
                 desc = L["Show all buffs on NPCs."],
                 set = function(info, val)
                   local db = db.AuraWidget.Buffs
-                  db.ShowAllEnemy = not (val or db.ShowDispellable)
+                  db.ShowAllEnemy = not (val or db.ShowDispellable or db.ShowMagic)
                   SetValueWidget(info, val)
                 end,
                 arg = { "AuraWidget", "Buffs", "ShowOnEnemyNPCs" },
@@ -2868,21 +2894,43 @@ local function CreateAurasWidgetOptions()
                 desc = L["Show buffs that you can dispell."],
                 set = function(info, val)
                   local db = db.AuraWidget.Buffs
-                  db.ShowAllEnemy = not (val or db.ShowOnEnemyNPCs)
+                  db.ShowAllEnemy = not (db.ShowOnEnemyNPCs or val or db.ShowMagic)
                   SetValueWidget(info, val)
                 end,
                 arg = { "AuraWidget", "Buffs", "ShowDispellable" },
                 disabled = function() return not db.AuraWidget.Buffs.ShowEnemy end
               },
-              Header = { type = "header", order = 70, name = "Show Unlimited Buffs", },
-              Always = {
-                name = L["Always"],
-                order = 80,
+              Magics = {
+                name = L["Magic"],
+                order = 60,
                 type = "toggle",
-                desc = L["Always show buffs with unlimited duration."],
+                desc = L["Show buffs of dispell type Magic."],
                 set = function(info, val)
                   local db = db.AuraWidget.Buffs
-                  if db.ShowUnlimitedInCombat or db.ShowUnlimitedInInstances or db.ShowUnlimitedOnBosses then
+                  db.ShowAllEnemy = not (db.ShowOnEnemyNPCs or db.ShowDispellable or val)
+                  SetValueWidget(info, val)
+                end,
+                arg = { "AuraWidget", "Buffs", "ShowMagic" },
+                disabled = function() return not db.AuraWidget.Buffs.ShowEnemy end
+              },
+              Header2 = { type = "header", order = 200, name = L["Unlimited Duration"], },
+              UnlimitedDuration = {
+                name = L["Disable"],
+                order = 210,
+                type = "toggle",
+                desc = L["Do not show buffs with umlimited duration."],
+                arg = { "AuraWidget", "Buffs", "HideUnlimitedDuration" },
+                disabled = function() return not db.AuraWidget.Buffs.ShowEnemy end
+              },
+              Spacer1 = GetSpacerEntry(220),
+              Always = {
+                name = L["Show Always"],
+                order = 230,
+                type = "toggle",
+                desc = L["Show buffs with unlimited duration in all situations (e.g., in and out of combat)."],
+                set = function(info, val)
+                  local db = db.AuraWidget.Buffs
+                  if val and not db.ShowUnlimitedAlways then
                     db.ShowUnlimitedInCombat = false
                     db.ShowUnlimitedInInstances = false
                     db.ShowUnlimitedOnBosses = false
@@ -2894,7 +2942,7 @@ local function CreateAurasWidgetOptions()
               },
               InCombat = {
                 name = L["In Combat"],
-                order = 90,
+                order = 240,
                 type = "toggle",
                 desc = L["Show unlimited buffs in combat."],
                 set = function(info, val)
@@ -2907,7 +2955,7 @@ local function CreateAurasWidgetOptions()
               },
               InInstances = {
                 name = L["In Instances"],
-                order = 100,
+                order = 250,
                 type = "toggle",
                 desc = L["Show unlimited buffs in instances (e.g., dungeons or raids)."],
                 set = function(info, val)
@@ -2920,7 +2968,7 @@ local function CreateAurasWidgetOptions()
               },
               OnBosses = {
                 name = L["On Bosses & Rares"],
-                order = 110,
+                order = 260,
                 type = "toggle",
                 desc = L["Show unlimited buffs on bosses and rares."],
                 set = function(info, val)
@@ -3474,15 +3522,42 @@ local function CreateVisibilitySettings()
         args = {
           Description = GetDescriptionEntry(L["These options allow you to control which nameplates are visible within the game field while you play."]),
           Spacer0 = GetSpacerEntry(1),
-          AllUnits = { name = L["Enable Nameplates"], order = 10, type = "toggle", arg = "nameplateShowAll" },
-          AllUnitsDesc = { name = L["Show all nameplates (CTRL-V)."], order = 15, type = "description", width = "double", },
-          Spacer1 = { type = "description", name = "", order = 19, },
-          AllFriendly = { name = L["Enable Friendly"], order = 20, type = "toggle", arg = "nameplateShowFriends" },
-          AllFriendlyDesc = { name = L["Show friendly nameplates (SHIFT-V)."], order = 25, type = "description", width = "double", },
-          Spacer2 = { type = "description", name = "", order = 29, },
-          AllHostile = { name = L["Enable Enemy"], order = 30, type = "toggle", arg = "nameplateShowEnemies" },
-          AllHostileDesc = { name = L["Show enemy nameplates (ALT-V)."], order = 35, type = "description", width = "double", },
-          Header = { type = "header", order = 40, name = "", },
+          AllPlates = {
+            name = L["Always Show Nameplates"],
+            desc = L["Show nameplates at all times."],
+            type = "toggle",
+            order = 10,
+            width = "full",
+            arg = "nameplateShowAll"
+          },
+          AllUnits = {
+            name = L["Show All Nameplates (Friendly and Enemy Units) (CTRL-V)"],
+            order = 20,
+            type = "toggle",
+            width = "full",
+            set = function(info, value)
+              Addon.CVars:OverwriteProtected("nameplateShowFriends", (value and 1) or 0)
+              Addon.CVars:OverwriteProtected("nameplateShowEnemies", (value and 1) or 0)
+            end,
+            get = function(info)
+              return GetCVarBool("nameplateShowFriends") and GetCVarBool("nameplateShowEnemies")
+            end,
+          },
+          AllFriendly = {
+            name = L["Show Friendly Nameplates (SHIFT-V)"],
+            type = "toggle",
+            order = 30,
+            width = "full",
+            arg = "nameplateShowFriends"
+          },
+          AllHostile = {
+            name = L["Show Enemy Nameplates (ALT-V)"],
+            order = 40,
+            type = "toggle",
+            width = "full",
+            arg = "nameplateShowEnemies"
+          },
+          Header = { type = "header", order = 45, name = "", },
           ShowBlizzardFriendlyNameplates = {
             name = L["Show Blizzard Nameplates for Friendly Units"],
             order = 50,

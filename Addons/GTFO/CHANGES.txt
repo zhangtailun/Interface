@@ -1,13 +1,15 @@
 ------------------------------------------------------------------------
-r446 | Zensunim | 2019-02-03 06:51:42 +0000 (Sun, 03 Feb 2019) | 2 lines
+r448 | Zensunim | 2019-04-16 23:56:11 +0000 (Tue, 16 Apr 2019) | 3 lines
 Changed paths:
    M /trunk/GTFO.lua
    M /trunk/GTFO.toc
    M /trunk/GTFO_Fail_BFA.lua
    M /trunk/GTFO_Spells_BFA.lua
+   M /trunk/GTFO_Spells_Special.lua
    M /trunk/ReadMe.txt
 
-4.46.17
-* Added BFA spells for Battle of Dazar'alor
+4.47
+* Re-enabled sound channel support UI dropdown (hopefully Blizzard finally fixed their taint issues)
+* Added BFA spells for Crucible of Storms
 ------------------------------------------------------------------------
 

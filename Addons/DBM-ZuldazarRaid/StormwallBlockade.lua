@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(2337, "DBM-ZuldazarRaid", 3, 1176)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 18475 $"):sub(12, -3))
+mod:SetRevision("20190420174733")
 mod:SetCreatureID(146251, 146253, 146256)--Sister Katherine 146251, Brother Joseph 146253, Laminaria 146256
 mod:SetEncounterID(2280)
 --mod:DisableESCombatDetection()
@@ -107,7 +107,7 @@ local countdownSeaSwell					= mod:NewCountdown(20.6, 285118, true, 3, 3)
 --local countdownFelstormBarrage			= mod:NewCountdown("AltTwo32", 244000, nil, nil, 3)
 
 mod:AddNamePlateOption("NPAuraOnKepWrapping", 285382)
-mod:AddSetIconOption("SetIconWail", 285350, true)
+mod:AddSetIconOption("SetIconWail", 285350, true, false, {1, 2, 3})
 mod:AddRangeFrameOption(5, 285118)
 mod:AddInfoFrameOption(284760, true)
 
@@ -158,7 +158,7 @@ do
 end
 
 --Needs to be run on pull and teleports (either player changing sides or boss)
-local function delayedSisterUpdate(self, first)
+local function delayedSisterUpdate(self, reschedule)
 	self:Unschedule(delayedSisterUpdate)
 	if self:CheckBossDistance(146251, true) then--Sister Katherine
 		timerCracklingLightningCD:SetFade(false)
@@ -170,12 +170,12 @@ local function delayedSisterUpdate(self, first)
 		timerElecShroudCD:SetFade(true)
 	end
 	--Secondary scan (only runs on translocate)
-	if first then
-		self:Schedule(2, delayedSisterUpdate, self)
+	if reschedule and reschedule < 4 then
+		self:Schedule(2, delayedSisterUpdate, self, reschedule+1)
 	end
 end
 
-local function delayedBrotherUpdate(self, first)
+local function delayedBrotherUpdate(self, reschedule)
 	self:Unschedule(delayedBrotherUpdate)
 	if self:CheckBossDistance(146253, true) then--Brother Joseph
 		timerSeaStormCD:SetFade(false)
@@ -187,8 +187,8 @@ local function delayedBrotherUpdate(self, first)
 		timerTidalShroudCD:SetFade(true)
 	end
 	--Secondary scan (only runs on translocate)
-	if first then
-		self:Schedule(2, delayedBrotherUpdate, self)
+	if reschedule and reschedule < 4 then
+		self:Schedule(2, delayedBrotherUpdate, self, reschedule+1)
 	end
 end
 
@@ -229,8 +229,8 @@ function mod:OnCombatStart(delay)
 		DBM.InfoFrame:SetHeader(OVERVIEW)
 		DBM.InfoFrame:Show(8, "function", updateInfoFrame, false, false)
 	end
-	self:Schedule(0.5, delayedSisterUpdate, self, true)--Update timers couple seconds into pull
-	self:Schedule(0.5, delayedBrotherUpdate, self, true)--Update timers couple seconds into pull
+	self:Schedule(0.5, delayedSisterUpdate, self, 1)--Update timers couple seconds into pull
+	self:Schedule(0.5, delayedBrotherUpdate, self, 1)--Update timers couple seconds into pull
 end
 
 function mod:OnCombatEnd()
@@ -290,7 +290,7 @@ function mod:SPELL_CAST_START(args)
 			timerCracklingLightningCD:Start(14)
 			timerVoltaicFlashCD:Start(17)
 			timerElecShroudCD:Start(36.4)
-			self:Schedule(3, delayedSisterUpdate, self, true)
+			self:Schedule(3, delayedSisterUpdate, self, 1)
 		else--Brother
 			timerSeaStormCD:Stop()
 			timerSeasTemptationCD:Stop()
@@ -300,7 +300,7 @@ function mod:SPELL_CAST_START(args)
 			timerSeaStormCD:Start(12.1)
 			timerSeasTemptationCD:Start(26.7, self.vb.sirenCount+1)--Even less sure about this one
 			timerTidalShroudCD:Start(37.7)
-			self:Schedule(3, delayedBrotherUpdate, self, true)
+			self:Schedule(3, delayedBrotherUpdate, self, 1)
 		end
 	elseif spellId == 284383 then
 		self.vb.sirenCount = self.vb.sirenCount + 1
@@ -434,11 +434,14 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif spellId == 285350 or spellId == 285426 then
 		if args:IsPlayer() then
 			specWarnStormsWail:Show(freezingTidePod)
-			local timer = self:IsEasy() and 13 or 10
-			specWarnStormsWail:Schedule(timer-4.5, DBM_CORE_BACK)
 			specWarnStormsWail:Play("targetyou")
 			yellStormsWail:Yell()
-			yellStormsWailFades:Countdown(timer)
+			local spellName, _, _, _, _, expireTime = DBM:UnitDebuff("player", spellId)
+			if expireTime then
+				local remaining = expireTime-GetTime()
+				specWarnStormsWail:Schedule(remaining-4.5, DBM_CORE_BACK)
+				yellStormsWailFades:Countdown(remaining)
+			end
 		else
 			warnStormsWail:Show(args.destName)
 		end

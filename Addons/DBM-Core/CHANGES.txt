@@ -1,0 +1,175 @@
+lightweight tag 5ab2f7e64d771badf9b7f2befc4f24c90b844d33 8.1.19
+Author:	MysticalOS <mysticalosx@gmail.com>
+Date:	Mon Apr 22 01:39:27 2019 -0400
+
+commit 5ab2f7e64d771badf9b7f2befc4f24c90b844d33
+Author: MysticalOS <mysticalosx@gmail.com>
+Date:   Mon Apr 22 01:39:27 2019 -0400
+
+    Prep A release Version
+
+commit 9a154415ba62fc4aec081032261c5b324de03d64
+Author: MysticalOS <mysticalosx@gmail.com>
+Date:   Sun Apr 21 20:08:58 2019 -0400
+
+    Redid infoframe on Cabal to include more things
+    Added personal stacks of power warnings to cabal
+    cleaned up old commented tank stuff, I doubt it's coming back
+
+commit abfcc389be760d5081ac06bb1b98e8d9bbe95795
+Author: MysticalOS <mysticalosx@gmail.com>
+Date:   Sat Apr 20 23:38:40 2019 -0400
+
+    Restore GetRaidUnitId's ability to check boss names, since some legacy mods set icons that way and the old DBM core GetRaidUnitId function did support boss names at one time
+
+commit 3e6ce104348d68965eae3e6141b6f1ee9bab1a91
+Author: MysticalOS <mysticalosx@gmail.com>
+Date:   Sat Apr 20 22:58:52 2019 -0400
+
+    Fix lua error
+
+commit 1064e994e83078649b85f38457742adec0abc4c5
+Author: MysticalOS <mysticalosx@gmail.com>
+Date:   Sat Apr 20 17:26:57 2019 -0400
+
+    Sync and hotfix revisions
+
+commit 4a3a8c11b5744c9aa984b797a7be0f438d71f572
+Author: MysticalOS <mysticalosx@gmail.com>
+Date:   Sat Apr 20 17:23:26 2019 -0400
+
+    Added timer sub cats to uunat
+    Updated Unstable Resonance yells to also yell if you're relic holder with player name in red
+    Added additional announces for picking up relics to uunat
+
+commit dccfc1daeb90c8624d15a6f0f3d00688ea949c97
+Author: MysticalOS <mysticalosx@gmail.com>
+Date:   Sat Apr 20 13:47:33 2019 -0400
+
+    GUI will now show icons used for EACH icon option right next to the option (in addition to the top of mod still showing all icons used in total by the encounter), when supported by the mod.
+
+commit 53ad6c685956d68cf07f61e7931640bf1daacf3b
+Author: MysticalOS <mysticalosx@gmail.com>
+Date:   Sat Apr 20 00:13:00 2019 -0400
+
+    Added a lot of short text names to timer text (especially to uunat) (remember if you prefer full spell names you can turn short text off in timer options)
+    Made torment icons off by default since the visual circles are already pretty obvious, option is still there if you wish to re-enable
+    Added counts to remaining abilities that were missing them (had forgotten one of nzoth gifts and tank abilities)
+    Changed some counts to reset on phase change on uunat, but I'm actually still up in air on that and may make it a user option for counts to persist or reset.
+    Added berserk timers form public WCL wipes (at least from normal, unconfirmed how LFR/mythic will look next week. Likely we'll see longer/no berserk on LFR and shorter on on mythic)
+
+commit 019c24f084764ecb8d4855ed1b647d4fe9ea889a
+Author: MysticalOS <mysticalosx@gmail.com>
+Date:   Fri Apr 19 16:15:26 2019 -0400
+
+    Swap order of Crucible and Zuldazar on mod sort list
+
+commit 8d7689f62ecd983820eaf560561d1e885a40682b
+Author: MysticalOS <mysticalosx@gmail.com>
+Date:   Thu Apr 18 22:34:22 2019 -0400
+
+    Fixed mod name for Crucible in addon list
+    Changed icons used by Restless and uunat again for compat reasons
+    Added count to undying guardians on uunat
+    Added tracking on infoframe to show how long relics have been on ground after they've been dropped on uunat
+    Enabled Umbrel Absorb remaining on infoframe when present on uunat, in addition to announcing it applied/faded
+    Removed boss power tracking for real this time, last time I removed it I must not have actually hit save. it's redundant, we have a timer for his special and infoframe needs to focus on stuff timers don't.
+    Reverted last timer edit since the information provided by user wasn't actually useful enough to figure out where that 0.9 second difference is, it could have been a phase change timer too.
+    Put a limit of 5 icons tops for torment, to ensure it'll never cross over add icons on uunat
+
+commit 3e0184a9d215071a76359c33f860560207546f66
+Author: MysticalOS <mysticalosx@gmail.com>
+Date:   Thu Apr 18 19:25:17 2019 -0400
+
+    Added nameplates back to scanformobs function
+
+commit 21c35e4d5ec5638c4082dc8c88503aae1b8537d5
+Author: MysticalOS <mysticalosx@gmail.com>
+Date:   Thu Apr 18 16:01:09 2019 -0400
+
+    Timer tweak
+
+commit f284331b66eeb7c0c232b188672ed8cef5b0bba7
+Author: MysticalOS <mysticalosx@gmail.com>
+Date:   Thu Apr 18 14:26:35 2019 -0400
+
+    Fix invalid spellId in dark herald, causing the timers for both cerebral assault and dark herald to be hosed on Restless Cabal
+
+commit a08f9814ba654fc1dd4908f647f24271cf2a7bf9
+Author: MysticalOS <mysticalosx@gmail.com>
+Date:   Thu Apr 18 11:42:39 2019 -0400
+
+    Fix on pull lua error on stormwall blockade
+
+commit fe8c83bfc80b943c0a29609241b10482587f6481
+Author: MysticalOS <mysticalosx@gmail.com>
+Date:   Thu Apr 18 01:23:18 2019 -0400
+
+    KR Update
+
+commit 28702b62f13d023c0372940215cfd3cf4f82fc5a
+Author: MysticalOS <mysticalosx@gmail.com>
+Date:   Thu Apr 18 01:20:53 2019 -0400
+
+    Do this one while at it
+
+commit 37d2997251da99f635d40de8f88f172980e9af63
+Author: MysticalOS <mysticalosx@gmail.com>
+Date:   Thu Apr 18 01:13:09 2019 -0400
+
+    pull debuff remaining directly from debuff on volatile charge instead of hard coding to try and fix issue with countdown text being slow (even though it had right number). if this still doesn't fix problem, then it has to be a problem with scheduler (although I cannot find one and most other countdowns using same scheduler work fine)
+
+commit b2a716519af56b997c3ef82321fa8c539b2d6f19
+Author: MysticalOS <mysticalosx@gmail.com>
+Date:   Wed Apr 17 22:48:08 2019 -0400
+
+    Temp localized name for live
+
+commit 595c109502baa8874d2090d253d612533735a2b3
+Author: MysticalOS <mysticalosx@gmail.com>
+Date:   Wed Apr 17 21:44:16 2019 -0400
+
+    Fix toc file load path
+
+commit d0acb26dea2373e06c365364545fb196618394a1
+Author: MysticalOS <mysticalosx@gmail.com>
+Date:   Wed Apr 17 21:37:09 2019 -0400
+
+    Mods for first two bosses of Mechagon
+
+commit 07c47a60e07127fa624f12c9f1a68c85419cb1c2
+Author: MysticalOS <mysticalosx@gmail.com>
+Date:   Wed Apr 17 20:47:27 2019 -0400
+
+    Add load/combat templates for new 8.2 zones. No timers/warnings yet
+
+commit c2d6ff2bbf4afa8c97decbd779ac992e15b0b7bc
+Author: MysticalOS <mysticalosx@gmail.com>
+Date:   Wed Apr 17 16:09:45 2019 -0400
+
+    Icon usage tweaks for compat reasons
+
+commit 1190a8ce0598b070257bd4936f71acb895238e27
+Author: MysticalOS <mysticalosx@gmail.com>
+Date:   Wed Apr 17 13:58:35 2019 -0400
+
+    Change horde grong id to try and fix boss health reporting
+
+commit a069c4d6f6d6d355a725839c476bb0ac0d4dcc7f
+Author: MysticalOS <mysticalosx@gmail.com>
+Date:   Wed Apr 17 01:05:24 2019 -0400
+
+    Fixed bug that caused absorb infoframe on Cabal to show absorb amount instead of absorb percent.
+    Fixed bug that caused interrupt warnings/icons not to show at all on adds fo Cabal
+    Fixed bug where interrupt helper icons would not vanish on Uunat after each cast, causing them all to pile up.
+    Fixed bug where special warning for piercing would show "unknown" instead of count, as intended, on uunat.
+    Fixed bug where infoframe would never show on Uunat.
+    Fixed a bug were undying guardian timer was too long in stage 3 uunat
+    Fixed a regression from DBM 8.1.18 where the timer for eyez of N'zoth (maddening) was accidentally deleted on Uunat
+
+commit cafad3db9a392b8787faa42bc97927c0063069db
+Author: MysticalOS <mysticalosx@gmail.com>
+Date:   Tue Apr 16 20:55:18 2019 -0400
+
+    Increment alpha version
+
