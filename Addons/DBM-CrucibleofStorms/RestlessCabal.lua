@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(2328, "DBM-CrucibleofStorms", nil, 1177)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision("2019042423928")
+mod:SetRevision("20190501155514")
 mod:SetCreatureID(146497, 146495)--146497 Zaxasj, 146495 Fa'thuul
 mod:SetEncounterID(2269)
 mod:SetZone()
@@ -21,6 +21,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_AURA_REFRESH 282384 282386 283524",
 	"SPELL_AURA_REMOVED 282741 282742 282386 282561 282432 282741 282621 282566",
 	"SPELL_INTERRUPT",
+	"SPELL_SUMMON 282515",
 --	"SPELL_PERIODIC_DAMAGE 287876",
 --	"SPELL_PERIODIC_MISSED 287876",
 	"UNIT_DIED",
@@ -52,7 +53,6 @@ local warnCrushingDoubt					= mod:NewTargetAnnounce(282432, 2)
 
 --Relics of Power
 local specWarnUmbralShell				= mod:NewSpecialWarningTargetChange(282741, "Dps", nil, nil, 1, 2)
---local specWarnCustodyoftheDeep			= mod:NewSpecialWarningMoveTo(284772, false, nil, 2, 1, 2)--optional?
 local specWarnStormofAnnihilation		= mod:NewSpecialWarningSpell(286755, nil, nil, nil, 2, 2)
 local specWarnPowerOverwhelming			= mod:NewSpecialWarningTarget(282914, nil, nil, nil, 3)--A wipe basically
 --Zaxasj the Speaker
@@ -79,6 +79,7 @@ local specWarnGTFO						= mod:NewSpecialWarningGTFO(287876, nil, nil, nil, 1, 8)
 local timerAbyssalCollapse				= mod:NewCastTimer(20, 282886, nil, nil, nil, 2, nil, DBM_CORE_DEADLY_ICON)
 local timerStormofAnnihilation			= mod:NewCastTimer(15, 286755, 196871, nil, nil, 2, nil, DBM_CORE_HEALER_ICON)--Short text "Storm"
 local timerPact							= mod:NewCastSourceTimer(12, 282675, nil, nil, nil, 2, nil, DBM_CORE_IMPORTANT_ICON)
+local timerVisageActive					= mod:NewBuffActiveTimer(60, 282515, nil, nil, nil, 1)
 --Zaxasj the Speaker
 mod:AddTimerLine(DBM:EJ_GetSectionInfo(18974))
 local timerCerebralAssaultCD			= mod:NewCDCountTimer(31.5, 282589, nil, nil, nil, 3)
@@ -194,7 +195,7 @@ function mod:OnCombatStart(delay)
 	timerVoidCrashCD:Start(13-delay)--SUCCESS
 	timerCrushingDoubtCD:Start(18.1-delay, 1)
 	countdownCrushingDoubt:Start(18.1-delay)
-	berserkTimer:Start(self:IsMythic() and 510 or 780-delay)--Mythic and normal berserks verified. LFR still unknown if bererks at 13 min.
+	berserkTimer:Start(self:IsMythic() and 570 or 780-delay)--Mythic and normal berserks verified. LFR still unknown if bererks at 13 min.
 	if self.Options.NPAuraOnPresence or self.Options.NPAuraOnWitness then
 		DBM:FireEvent("BossMod_EnableHostileNameplates")
 	end
@@ -311,8 +312,6 @@ function mod:SPELL_CAST_SUCCESS(args)
 		warnVoidCrash:Show()
 		timerVoidCrashCD:Start()
 	elseif spellId == 283066 then
-		--specWarnCustodyoftheDeep:Show(DBM_CORE_SHIELD)
-		--specWarnCustodyoftheDeep:Play("moveboss")
 		self.vb.shieldCount = self.vb.shieldCount + 1
 		warnCustodyoftheDeep:Show(self.vb.shieldCount)
 		timerAbyssalCollapse:Start()
@@ -344,10 +343,13 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif spellId == 283524 or spellId == 282386 then
 		if args:IsPlayer() then
 			if spellId == 282386 then--Heroic/Mythic
-				specWarnAphoticBlast:Show()
-				specWarnAphoticBlast:Play("targetyou")
+				local amount = args.amount or 1
+				if amount == 1 then
+					specWarnAphoticBlast:Show()
+					specWarnAphoticBlast:Play("targetyou")
+				end
 				yellAphoticBlast:Cancel()
-				yellAphoticBlast:Countdown(20)
+				yellAphoticBlast:Countdown(30)
 			end
 			if self.Options.RangeFrame then
 				DBM.RangeCheck:Show(6)
@@ -469,6 +471,17 @@ function mod:SPELL_INTERRUPT(args)
 	end
 end
 
+function mod:SPELL_SUMMON(args)
+	local spellId = args.spellId
+	if spellId == 282515 then
+		local timer = self:IsMythic() and 120 or self:IsHeroic() and 90
+		if timer then
+			timerVisageActive:Start(timer, args.destGUID)
+		end
+	end
+end
+
+
 --[[
 function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId, spellName)
 	if spellId == 287876 and destGUID == UnitGUID("player") and self:AntiSpam(4, 2) then
@@ -486,6 +499,7 @@ function mod:UNIT_DIED(args)
 		if self.Options.NPAuraOnEcho then
 			DBM.Nameplate:Hide(true, args.destGUID)
 		end
+		timerVisageActive:Stop(args.destGUID)
 	elseif cid == 145053 then--Eldritch Abomination
 		castsPerGUID[args.destGUID] = nil
 		if self.Options.NPAuraOnWitness then

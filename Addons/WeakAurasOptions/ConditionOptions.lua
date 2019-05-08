@@ -222,6 +222,7 @@ local function addControlsForChange(args, order, data, conditionVariable, condit
     desc = descIfSubset(data, conditions[i].changes[j]),
     order = order,
     values = valuesForProperty,
+    control = "WeakAurasTwoColumnDropdown",
     get = function()
       local property = conditions[i].changes[j].property;
       return property and allProperties.propertyToIndex[property];
@@ -657,7 +658,7 @@ local function addControlsForChange(args, order, data, conditionVariable, condit
     local function customHidden()
       local message = type(conditions[i].changes[j].value) == "table" and conditions[i].changes[j].value.message;
       if (not message) then return true; end
-      return not WeakAuras.ContainsPlaceHolders(message, "c");
+      return not WeakAuras.ContainsCustomPlaceHolder(message);
     end
 
     args["condition" .. i .. "value" .. j .. "custom"] = {
@@ -1268,11 +1269,46 @@ local function addControlsForCondition(args, order, data, conditionVariable, con
     return;
   end
 
+  local collapsed = false;
+  if data.controlledChildren then
+    for id, reference in pairs(conditions[i].check.references) do
+      local index = reference.conditionIndex;
+      if WeakAuras.IsCollapsed(id, "condition", index, false) then
+        collapsed = true;
+        break;
+      end
+    end
+  else
+    collapsed = WeakAuras.IsCollapsed(data.id, "condition", i, false);
+  end
+
+  args["condition" .. i .. "collapse"] = {
+    type = "execute",
+    name = "",
+    order = order,
+    width = 0.15,
+    func = function()
+      if data.controlledChildren then
+        for id, reference in pairs(conditions[i].check.references) do
+          local index = reference.conditionIndex
+          WeakAuras.SetCollapsed(id, "condition", index, not collapsed);
+        end
+      else
+        WeakAuras.SetCollapsed(data.id, "condition", i, not collapsed);
+      end
+      WeakAuras.ReloadTriggerOptions(data);
+    end,
+    image = collapsed and "Interface\\AddOns\\WeakAuras\\Media\\Textures\\expand" or "Interface\\AddOns\\WeakAuras\\Media\\Textures\\collapse" ,
+    imageWidth = 18,
+    imageHeight = 18
+  };
+  order = order + 1;
+
   args["condition" .. i .. "header"] = {
     type = "description",
     name = L["Condition %i"]:format(i),
     order = order,
-    width = WeakAuras.doubleWidth - 0.45,
+    width = WeakAuras.doubleWidth - 0.6,
     fontSize = "large"
   };
   order = order + 1;
@@ -1400,6 +1436,10 @@ local function addControlsForCondition(args, order, data, conditionVariable, con
     imageHeight = 24
   };
   order = order + 1;
+
+  if collapsed then
+    return order;
+  end
 
   order = addControlsForIfLine(args, order, data, conditionVariable, conditions, i, {}, conditionTemplates, conditionTemplateWithoutCombinations, allProperties);
 
@@ -1620,7 +1660,12 @@ local function buildAllPotentialProperies(data, category)
     tinsert(allProperties.indexToProperty, k);
   end
   table.sort(allProperties.indexToProperty, function(a, b)
-    return allProperties.propertyMap[a].display <  allProperties.propertyMap[b].display
+    local av = allProperties.propertyMap[a].display
+    av = type(av) == "table" and av[1] or av
+
+    local bv = allProperties.propertyMap[b].display
+    bv = type(bv) == "table" and bv[1] or bv
+    return av < bv
   end);
 
   allProperties.propertyToIndex = {};
@@ -1912,6 +1957,7 @@ function WeakAuras.GetConditionOptions(data, args, conditionVariable, startorder
           aura[conditionVariable][#aura[conditionVariable]].changes = {};
           aura[conditionVariable][#aura[conditionVariable]].changes[1] = {}
           aura[conditionVariable][#aura[conditionVariable]].category = category;
+          WeakAuras.SetCollapsed(id, "condition", #aura[conditionVariable], false);
           WeakAuras.Add(aura);
         end
         WeakAuras.ReloadTriggerOptions(data);
@@ -1921,6 +1967,7 @@ function WeakAuras.GetConditionOptions(data, args, conditionVariable, startorder
         conditions[#conditions].changes = {};
         conditions[#conditions].changes[1] = {}
         conditions[#conditions].category = category;
+        WeakAuras.SetCollapsed(data.id, "condition", #conditions, false);
         WeakAuras.Add(data);
         WeakAuras.ReloadTriggerOptions(data);
       end

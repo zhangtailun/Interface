@@ -1,4 +1,22 @@
-﻿--各种参数设置
+﻿-- 取消显示头像的伤害和治疗数字
+--PlayerHitIndicator:SetText(nil) 
+--PlayerHitIndicator.SetText = function() end 
+
+--PetHitIndicator:SetText(nil) 
+--PetHitIndicator.SetText = function() end
+
+--连击点设置
+--CastingBarFrame:ClearAllPoints()
+--CastingBarFrame:SetPoint("CENTER",UIParent,"CENTER",0,-100)
+--CastingBarFrame.SetPoint = function() end
+--CastingBarFrame:SetScale("1.2")
+--ComboPointPlayerFrame.Background:Hide()
+--ComboPointPlayerFrame:ClearAllPoints() 
+--ComboPointPlayerFrame:SetPoint("TOP", CastingBarFrame, "BOTTOM", 0, 0) 
+--ComboPointPlayerFrame.SetPoint = function() end
+--ComboPointPlayerFrame:SetScale(1.5)
+
+--各种参数设置
 local function defaultcvar()
    --名條堆疊的水平百分比，預設是0.8 
    --SetCVar("nameplateOverlapH",  0.5) 
@@ -28,7 +46,7 @@ local function defaultcvar()
    --顯示名條的最遠距離：legion預設是60，以前是40；60太遠了，容易干擾畫面。建議遠程職業設定為你的最遠射程+5碼 
    --SetCVar("nameplateMaxDistance", 55)
    --障礙物後的名條透名度，預設0.4、隔著牆、柱子後面、樓上樓下等等 
-   SetCVar("nameplateOccludedAlphaMult", 0)
+   --SetCVar("nameplateOccludedAlphaMult", 0)
 end 
 
 local frame = CreateFrame("FRAME", "defaultcvar") 
