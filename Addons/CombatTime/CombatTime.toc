@@ -1,0 +1,13 @@
+## Interface: 70100
+## Title: CombatTime
+## Description: Simple, light-weight, LDB-enabled timer that tracks how long you spend in combat
+## Notes: Simple, light-weight, LDB-enabled timer that tracks how long you spend in combat
+## Author: oscarucb
+## Credits: Portions modified from James Whitehead II, Rick Roe, and the Blizzard Stopwatch code
+## Version: 2.5.4
+## SavedVariablesPerCharacter: CombatTimeSettings
+## LoadManagers: AddonLoader
+## X-LoadOn-Always: delayed
+
+CombatTime.lua
+CombatTime.xml

@@ -750,6 +750,14 @@ GTFO.SpellID["288808"] = {
   test = true;
 };
 
+GTFO.SpellID["285075"] = {
+  --desc = "Freezing Tidepool (Stormwall Blockade)";
+  sound = 1;
+  tankSound = 2;
+  test = true;
+};
+
+
 --- **********************
 --- * Crucible of Storms *
 --- **********************
@@ -765,3 +773,5 @@ GTFO.SpellID["287876"] = {
   --desc = "Gift of N'Zoth: Obscurity (Uu'nat)";
   sound = 1;
 };
+
+

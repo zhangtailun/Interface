@@ -496,13 +496,13 @@ Example:
 
 |cFFFFFF00Escape Sequences|r: 用它來改變顏色或加入材質。搜尋“UI跳脫序列”('UI escape sequences')以獲取更多資訊。
 指令必是英文Lua語法,如套用{資料1},UI是看不明,必須使用{data1},請參考文字列編緝器格式]=]
-L["STRING_OPTIONS_BARS"] = "計量列表一般設定"
+L["STRING_OPTIONS_BARS"] = "計量條一般設定"
 L["STRING_OPTIONS_BARS_CUSTOM_TEXTURE"] = "自訂材質檔案"
 L["STRING_OPTIONS_BARS_CUSTOM_TEXTURE_DESC"] = [=[
 |cFFFFFF00重要|r： 圖片必須為256x32像素。]=]
 L["STRING_OPTIONS_BARS_DESC"] = "這些選項設定計量條外觀"
-L["STRING_OPTIONS_BARSORT"] = "計量列表排序"
-L["STRING_OPTIONS_BARSORT_DESC"] = "遞增或是遞減計量列表排序。"
+L["STRING_OPTIONS_BARSORT"] = "計量條排序"
+L["STRING_OPTIONS_BARSORT_DESC"] = "遞增或是遞減計量條排序。"
 L["STRING_OPTIONS_BARSTART"] = "計量條在圖示之後"
 L["STRING_OPTIONS_BARSTART_DESC"] = [=[讓頂部材質一開始出現在圖標的左邊而不是右邊
 使用帶有透明區域的圖標集時，這是非常有用的]=]
@@ -659,7 +659,7 @@ L["STRING_OPTIONS_DEATHLIMIT_DESC"] = [=[設定死亡顯示的事件數量。
 L["STRING_OPTIONS_DEATHLOG_MINHEALING"] = "死亡日誌最小治療"
 L["STRING_OPTIONS_DEATHLOG_MINHEALING_DESC"] = [=[死亡日誌在這個閾值下不會顯示治療。
 
-|cFFFFFF00提示|r:按右鍵可手動輸入值。]=]
+|cFFFFFF00提示|r：按右鍵可手動輸入此值。]=]
 L["STRING_OPTIONS_DESATURATE_MENU"] = "降低飽和度"
 L["STRING_OPTIONS_DESATURATE_MENU_DESC"] = "啟用這個選項，所有工具列上的選單圖標會變成黑跟白"
 L["STRING_OPTIONS_DISABLE_ALLDISPLAYSWINDOW"] = "禁用'全部顯示'選單"
@@ -967,10 +967,11 @@ L["STRING_OPTIONS_PS_ABBREVIATE_NONE"] = "沒有"
 --[[ L["STRING_OPTIONS_PS_ABBREVIATE_TOKMIN"] = ""--]] 
 L["STRING_OPTIONS_PVPFRAGS"] = "僅 PvP 蓄意傷害"
 L["STRING_OPTIONS_PVPFRAGS_DESC"] = "當啟用, 只有殺死敵對玩家計數時從 |cFFFFFF00傷害 > 蓄意傷害|r 顯示。"
---[[Translation missing --]]
---[[ L["STRING_OPTIONS_REALMNAME"] = ""--]] 
---[[Translation missing --]]
---[[ L["STRING_OPTIONS_REALMNAME_DESC"] = ""--]] 
+L["STRING_OPTIONS_REALMNAME"] = "移除伺服器名"
+L["STRING_OPTIONS_REALMNAME_DESC"] = [=[如果開啟，將不會顯示角色的伺服器名。
+
+|cFFFFFF00關閉|r: Charles-Netherwing
+|cFFFFFF00開啟|r: Charles]=]
 L["STRING_OPTIONS_REPORT_ANCHOR"] = "報告"
 L["STRING_OPTIONS_REPORT_HEALLINKS"] = "有用的法術連結"
 L["STRING_OPTIONS_REPORT_HEALLINKS_DESC"] = [=[發送報告並啟用此選項時,|cFF55FF55有幫助|r法術是用法術鏈結來報告的，而不是它的名字。
@@ -1082,8 +1083,7 @@ L["STRING_OPTIONS_SEGMENTSSAVE_DESC"] = [=[要在遊戲期間保存多少段(記
 L["STRING_OPTIONS_SENDFEEDBACK"] = "回饋"
 L["STRING_OPTIONS_SHOW_SIDEBARS"] = "顯示邊框"
 L["STRING_OPTIONS_SHOW_SIDEBARS_DESC"] = "顯示或隱藏視窗邊框。"
---[[Translation missing --]]
---[[ L["STRING_OPTIONS_SHOW_STATUSBAR"] = ""--]] 
+L["STRING_OPTIONS_SHOW_STATUSBAR"] = "顯示狀態條"
 --[[Translation missing --]]
 --[[ L["STRING_OPTIONS_SHOW_STATUSBAR_DESC"] = ""--]] 
 --[[Translation missing --]]
@@ -1114,15 +1114,13 @@ L["STRING_OPTIONS_SKIN_ELVUI_BUTTON3_DESC"] = [=[修改工具提示:
 L["STRING_OPTIONS_SKIN_EXTRA_OPTIONS_ANCHOR"] = "外觀選項:"
 L["STRING_OPTIONS_SKIN_LOADED"] = "外觀成功加載。"
 L["STRING_OPTIONS_SKIN_PRESETS_ANCHOR"] = "保存外觀:"
---[[Translation missing --]]
---[[ L["STRING_OPTIONS_SKIN_PRESETSCONFIG_ANCHOR"] = ""--]] 
+L["STRING_OPTIONS_SKIN_PRESETSCONFIG_ANCHOR"] = "管理已保存的皮膚:"
 L["STRING_OPTIONS_SKIN_REMOVED"] = "刪除外觀"
 L["STRING_OPTIONS_SKIN_RESET_TOOLTIP"] = "重置提示邊框"
 L["STRING_OPTIONS_SKIN_RESET_TOOLTIP_DESC"] = "將提示邊框顏色和紋理設置為默認值。"
 L["STRING_OPTIONS_SKIN_SELECT"] = "選擇一個外觀"
 L["STRING_OPTIONS_SKIN_SELECT_ANCHOR"] = "外觀選擇:"
---[[Translation missing --]]
---[[ L["STRING_OPTIONS_SOCIAL"] = ""--]] 
+L["STRING_OPTIONS_SOCIAL"] = "社交"
 --[[Translation missing --]]
 --[[ L["STRING_OPTIONS_SOCIAL_DESC"] = ""--]] 
 L["STRING_OPTIONS_SPELL_ADD"] = "添加"
