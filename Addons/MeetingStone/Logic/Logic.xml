@@ -4,7 +4,7 @@
   <Script file="Activities.lua" />
   <Script file="App.lua" />
   <Script file="AppSupport.lua" />
-  <Script file="AppWhisper.lua" />
   <Script file="Recent.lua" />
   <Script file="CombatStat.lua" />
+  <Script file="LfgService.lua" />
 </Ui>

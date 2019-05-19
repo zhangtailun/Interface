@@ -13,11 +13,15 @@ function CombatStat:OnInitialize()
     self.groupUnits = {}
     self.data = Profile:GetCombatData()
 
-    -- self:Debug()
+    if IsAddOnLoaded('!!!!!tdDevTools') then
+        self:Debug()
+    end
 end
 
 function CombatStat:OnEnable()
-    self:RegisterEvent('COMBAT_LOG_EVENT_UNFILTERED')
+    self:RegisterEvent('COMBAT_LOG_EVENT_UNFILTERED', function()
+        self:COMBAT_LOG_EVENT_UNFILTERED('COMBAT_LOG_EVENT_UNFILTERED', CombatLogGetCurrentEventInfo())
+    end)
     self:RegisterEvent('UNIT_PET')
     self:RegisterEvent('GROUP_ROSTER_UPDATE', 'UpdateGroupUnits')
 
@@ -117,7 +121,7 @@ function CombatStat:SWING_DAMAGE(timestamp, srcGuid, srcFlags, destGuid, destFla
         return
     end
 
-    if self:IsUnitSelf(srcGuid) then
+    if srcGuid ~= destGuid and self:IsUnitSelf(srcGuid) then
         return self:Touch('dd', amount)
     end
     if self:IsUnitSelf(destGuid) and not self:IsUnitPet(destGuid) then
@@ -137,8 +141,28 @@ function CombatStat:SPELL_HEAL(timestamp, srcGuid, srcFlags, destGuid, destFlags
     if bit.band(srcFlags, COMBATLOG_OBJECT_CONTROL_PLAYER) ~= 0 and bit.band(srcFlags, destFlags, COMBATLOG_OBJECT_REACTION_MASK) ~= 0 then
         local amount = amount - overhealing
         if amount > 0 then
+            
             return self:Touch('hd', amount)
         end
+    end
+end
+
+function CombatStat:SPELL_ABSORBED(timestamp, srcGuid, srcFlags, destGuid, destFlags, ...)
+    local chk = ...
+    local spellId, spellName, spellSchool, aGuid, aName, aFlags, aRaidFlags, amount, _
+
+    if type(chk) == 'number' then
+        _, _, _, aGuid, aName, aFlags, aRaidFlags, spellId, spellName, spellSchool, amount = ...
+    else
+        aGuid, aName, aFlags, aRaidFlags, spellId, spellName, spellSchool, amount = ...
+    end
+
+    if spellId == 20711 or spellId == 115069 or spellId == 157533 then
+        return
+    end
+
+    if amount then
+        self:SPELL_HEAL(timestamp, aGuid, aFlags, destGuid, destFlags, spellId, spellName, spellSchool, amount, 0, 0)
     end
 end
 
@@ -212,6 +236,7 @@ function CombatStat:Debug()
     local f = CreateFrame('Frame', nil, UIParent) do
         f:SetPoint('LEFT')
         f:SetSize(200, 400)
+        movehelper(f)
 
         local bg = f:CreateTexture(nil, 'BACKGROUND') do
             bg:SetColorTexture(0,0,0,0.3)
@@ -264,31 +289,33 @@ function CombatStat:Debug()
         end)
     end
 
-    hooksecurefunc(CombatStat, 'Reset', function()
-        healingData = {}
-        healingNames = {}
-    end)
+    -- hooksecurefunc(CombatStat, 'Reset', function()
+    --     healingData = {}
+    --     healingNames = {}
+    -- end)
 
-    function CombatStat:SPELL_HEAL(timestamp, srcGuid, srcFlags, destGuid, destFlags, spellId, spellName, _, amount, overhealing, absorbed)
-        if not self:IsUnitSelf(srcGuid) then
-            return
-        end
+    -- function CombatStat:SPELL_HEAL(timestamp, srcGuid, srcFlags, destGuid, destFlags, spellId, spellName, _, amount, overhealing, absorbed)
+    --     if not self:IsUnitSelf(srcGuid) then
+    --         return
+    --     end
 
-        if bit.band(srcFlags, COMBATLOG_OBJECT_CONTROL_PLAYER) ~= 0 and bit.band(srcFlags, destFlags, COMBATLOG_OBJECT_REACTION_MASK) ~= 0 then
-            local amount = amount - overhealing
-            if amount > 0 then
+    --     if bit.band(srcFlags, COMBATLOG_OBJECT_CONTROL_PLAYER) ~= 0 and bit.band(srcFlags, destFlags, COMBATLOG_OBJECT_REACTION_MASK) ~= 0 then
+    --         local amount = amount - overhealing
+    --         if amount > 0 then
 
-                if not healingData[spellName] then
-                    healingData[spellName] = amount
-                    table.insert(healingNames, spellName)
-                    table.sort(healingNames)
-                else
-                    healingData[spellName] = healingData[spellName] + amount
-                end
+    --             if not healingData[spellName] then
+    --                 healingData[spellName] = amount
+    --                 table.insert(healingNames, spellName)
+    --                 table.sort(healingNames)
+    --             else
+    --                 healingData[spellName] = healingData[spellName] + amount
+    --             end
 
-                return self:Touch('hd', amount)
-            end
-        end
-    end
-    CombatStat.SPELL_PERIODIC_HEAL = CombatStat.SPELL_HEAL
+    --             debug(srcGuid, srcFlags, destGuid, destFlags, amount, overhealing)
+
+    --             return self:Touch('hd', amount)
+    --         end
+    --     end
+    -- end
+    -- CombatStat.SPELL_PERIODIC_HEAL = CombatStat.SPELL_HEAL
 end

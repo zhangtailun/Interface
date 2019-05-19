@@ -34,14 +34,15 @@ local function isCategoryValid(categoryId)
     return validCategorys[categoryId]
 end
 
-local function MakeActivityMenuTable(activityId, baseFilter, customId, ...)
+local function MakeActivityMenuTable(activityId, baseFilter, customId, menuType)
     local fullName, _, categoryId, groupId, _, filters = C_LFGList.GetActivityInfo(activityId)
 
     if customId then
         fullName = ACTIVITY_CUSTOM_NAMES[customId]
     end
 
-    local data      = {}
+    local data = {}
+
     data.text       = fullName
     data.fullName   = fullName
     data.categoryId = categoryId
@@ -51,16 +52,16 @@ local function MakeActivityMenuTable(activityId, baseFilter, customId, ...)
     data.filters    = filters
     data.baseFilter = baseFilter
     data.value      = GetActivityCode(activityId, customId, categoryId, groupId)
-
-    data.tooltipTitle, data.tooltipText = ...
-    data.tooltipOnButton = select('#', ...) > 0 or nil
+    if menuType == ACTIVITY_FILTER_BROWSE then
+        data.full = C_LFGList.GetCategoryInfo(categoryId)
+    end
 
     currentCodeCache[data.value] = data
     return data
 end
 
-local function MakeCustomActivityMenuTable(activityId, baseFilter, customId)
-    local data = MakeActivityMenuTable(activityId, baseFilter, customId)
+local function MakeCustomActivityMenuTable(activityId, baseFilter, customId, menuType)
+    local data = MakeActivityMenuTable(activityId, baseFilter, customId, menuType)
 
     local customData = ACTIVITY_CUSTOM_DATA.A[activityId]
     if customData and not customId then
@@ -68,7 +69,7 @@ local function MakeCustomActivityMenuTable(activityId, baseFilter, customId)
         data.hasArrow  = true
 
         for _, id in ipairs(customData) do
-            tinsert(data.menuTable, MakeActivityMenuTable(activityId, baseFilter, id))
+            tinsert(data.menuTable, MakeActivityMenuTable(activityId, baseFilter, id, menuType))
         end
     end
     return data
@@ -89,8 +90,11 @@ local function MakeGroupMenuTable(categoryId, groupId, baseFilter, menuType)
     data.categoryId = categoryId
     data.groupId = groupId
     data.baseFilter = baseFilter
-    data.notClickable = categoryId == 1 or not isClickable(menuType)
+    -- data.notClickable = categoryId == 1 or not isClickable(menuType)
+    data.notClickable = true
     data.value = not data.notClickable and GetActivityCode(nil, nil, categoryId, groupId)
+    data.tooltipTitle = L['请选择具体副本难度']
+    data.tooltipOnButton = true
 
     if data.value then
         currentCodeCache[data.value] = data
@@ -100,7 +104,7 @@ local function MakeGroupMenuTable(categoryId, groupId, baseFilter, menuType)
     local shownActivities = {}
 
     for _, activityId in ipairs(C_LFGList.GetAvailableActivities(categoryId, groupId)) do
-        tinsert(menuTable, MakeCustomActivityMenuTable(activityId, baseFilter))
+        tinsert(menuTable, MakeCustomActivityMenuTable(activityId, baseFilter, nil, menuType))
         shownActivities[activityId] = true
     end
 
@@ -109,7 +113,7 @@ local function MakeGroupMenuTable(categoryId, groupId, baseFilter, menuType)
         for _, id in ipairs(customData) do
             local activityId = ACTIVITY_CUSTOM_IDS[id]
             if activityId and shownActivities[activityId] then
-                tinsert(menuTable, MakeActivityMenuTable(activityId, baseFilter, id))
+                tinsert(menuTable, MakeActivityMenuTable(activityId, baseFilter, id, menuType))
             end
         end
     end
@@ -137,7 +141,7 @@ local function MakeVersionMenuTable(categoryId, versionId, baseFilter, menuType)
 
     for _, activityId in ipairs(C_LFGList.GetAvailableActivities(categoryId)) do
         if CATEGORY[versionId].activities[activityId] and select(4, C_LFGList.GetActivityInfo(activityId)) == 0 then
-            tinsert(menuTable, MakeCustomActivityMenuTable(activityId, baseFilter))
+            tinsert(menuTable, MakeCustomActivityMenuTable(activityId, baseFilter, nil, menuType))
         end
     end
 
@@ -168,26 +172,29 @@ local function MakeCategoryMenuTable(categoryId, baseFilter, menuType)
 
     if categoryId == 2 or categoryId == 3 then
         -- for i = #MAX_PLAYER_LEVEL_TABLE, 0, -1 do
-        for i = 6, 0, -1 do
+        for i = 7, 0, -1 do
             local versionMenu = MakeVersionMenuTable(categoryId, i, baseFilter, menuType)
             if versionMenu then
                 tinsert(menuTable, versionMenu)
             end
         end
     elseif autoChoose and categoryId ~= 6 then
-        return MakeCustomActivityMenuTable(C_LFGList.GetAvailableActivities(categoryId)[1], baseFilter)
+        return MakeCustomActivityMenuTable(C_LFGList.GetAvailableActivities(categoryId)[1], baseFilter, nil, menuType)
     else
         local list = C_LFGList.GetAvailableActivityGroups(categoryId)
-        local s, e, step = 1, #list, 1
-        if categoryId == 1 then
-            s, e, step = e, s, -1
-        end
-        for i = s, e, step do
-            tinsert(menuTable, MakeGroupMenuTable(categoryId, list[i], baseFilter, menuType))
+        local count = #list
+        if count > 1 then
+            local s, e, step = 1, count, 1
+            if categoryId == 1 then
+                s, e, step = e, s, -1
+            end
+            for i = s, e, step do
+                tinsert(menuTable, MakeGroupMenuTable(categoryId, list[i], baseFilter, menuType))
+            end
         end
         for _, activityId in ipairs(C_LFGList.GetAvailableActivities(categoryId)) do
-            if select(4, C_LFGList.GetActivityInfo(activityId)) == 0 then
-                tinsert(menuTable, MakeCustomActivityMenuTable(activityId, baseFilter))
+            if select(4, C_LFGList.GetActivityInfo(activityId)) == 0 or count == 1 then
+                tinsert(menuTable, MakeCustomActivityMenuTable(activityId, baseFilter, nil, menuType))
             end
         end
     end
@@ -240,9 +247,7 @@ local function MakeMenuTable(list, baseFilter, menuType)
     list = list or {}
 
     for _, categoryId in ipairs(C_LFGList.GetAvailableCategories(baseFilter)) do
-        if makedCategorys[categoryId] then
-
-        else
+        if not makedCategorys[categoryId] then
             local packed = FindPacked(categoryId)
             if packed then
                 tinsert(list, MakePackedCategoryMenuTable(packed, baseFilter, menuType))
@@ -273,38 +278,38 @@ function GetActivitesMenuTable(menuType)
         })
     end
 
-    if UnitLevel('player') >= 70 then
-        if menuType == ACTIVITY_FILTER_CREATE then
-            tinsert(list, {
-                text         = L['单刷'],
-                notClickable = true,
-                hasArrow     = true,
-                menuTable    = {
-                    MakeActivityMenuTable(
-                        ACTIVITY_CUSTOM_IDS[SOLO_HIDDEN_CUSTOM_ID],
-                        LE_LFG_LIST_FILTER_PVP,
-                        SOLO_HIDDEN_CUSTOM_ID,
-                        ACTIVITY_CUSTOM_NAMES[SOLO_HIDDEN_CUSTOM_ID],
-                        L['单刷开团，不会被其他玩家干扰。']
-                    ),
-                    MakeActivityMenuTable(
-                        ACTIVITY_CUSTOM_IDS[SOLO_VISIBLE_CUSTOM_ID],
-                        LE_LFG_LIST_FILTER_PVE,
-                        SOLO_VISIBLE_CUSTOM_ID,
-                        ACTIVITY_CUSTOM_NAMES[SOLO_VISIBLE_CUSTOM_ID],
-                        L['这个活动可以被玩家搜索到。']
-                    )
-                }
-            })
-        elseif menuType == ACTIVITY_FILTER_BROWSE then
-            tinsert(list, MakeActivityMenuTable(
-                ACTIVITY_CUSTOM_IDS[SOLO_VISIBLE_CUSTOM_ID],
-                LE_LFG_LIST_FILTER_PVP,
-                SOLO_VISIBLE_CUSTOM_ID,
-                ACTIVITY_CUSTOM_NAMES[SOLO_VISIBLE_CUSTOM_ID]
-            ))
-        end
-    end
+    -- if UnitLevel('player') >= 70 then
+    --     if menuType == ACTIVITY_FILTER_CREATE then
+    --         tinsert(list, {
+    --             text         = L['单刷'],
+    --             notClickable = true,
+    --             hasArrow     = true,
+    --             menuTable    = {
+    --                 MakeActivityMenuTable(
+    --                     ACTIVITY_CUSTOM_IDS[SOLO_HIDDEN_CUSTOM_ID],
+    --                     LE_LFG_LIST_FILTER_PVP,
+    --                     SOLO_HIDDEN_CUSTOM_ID,
+    --                     ACTIVITY_CUSTOM_NAMES[SOLO_HIDDEN_CUSTOM_ID],
+    --                     L['单刷开团，不会被其他玩家干扰。']
+    --                 ),
+    --                 MakeActivityMenuTable(
+    --                     ACTIVITY_CUSTOM_IDS[SOLO_VISIBLE_CUSTOM_ID],
+    --                     LE_LFG_LIST_FILTER_PVE,
+    --                     SOLO_VISIBLE_CUSTOM_ID,
+    --                     ACTIVITY_CUSTOM_NAMES[SOLO_VISIBLE_CUSTOM_ID],
+    --                     L['这个活动可以被玩家搜索到。']
+    --                 )
+    --             }
+    --         })
+    --     elseif menuType == ACTIVITY_FILTER_BROWSE then
+    --         tinsert(list, MakeActivityMenuTable(
+    --             ACTIVITY_CUSTOM_IDS[SOLO_VISIBLE_CUSTOM_ID],
+    --             LE_LFG_LIST_FILTER_PVP,
+    --             SOLO_VISIBLE_CUSTOM_ID,
+    --             ACTIVITY_CUSTOM_NAMES[SOLO_VISIBLE_CUSTOM_ID]
+    --         ))
+    --     end
+    -- end
     return list
 end
 
@@ -325,6 +330,7 @@ function RefreshHistoryMenuTable(menuType)
                 baseFilter = data.baseFilter,
                 value      = data.value,
                 text       = data.text,
+                full       = C_LFGList.GetCategoryInfo(data.categoryId),
                 fullName   = data.fullName,
             })
         end

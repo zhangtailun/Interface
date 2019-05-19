@@ -53,17 +53,45 @@ function GetPlayerItemLevel(isPvP)
     end
 end
 
-DecodeCommetData = memorize.multirets(function(comment)
+-- DecodeCommetData = memorize.multirets(function(comment)
+--     if not comment or comment == '' then
+--         return nil
+--     end
+--     local summary, data = comment:match('^(.*)%((^1^.+^^)%)$')
+--     if data then
+--         if data:match('%^[ZBbTt][^^]') then
+--             return false
+--         end
+--         -- olddata = data
+--         -- data = data:gsub('%^([^%dSNFfTtBbZ^])', '\126\125%1')
+--         -- if olddata ~= data then
+--         --     print(data, olddata)
+--         -- end
+--         return true, summary, AceSerializer:Deserialize(data)
+--     else
+--         return false, comment
+--     end
+-- end)
+
+function DecodeCommetData(comment)
     if not comment or comment == '' then
-        return nil
+        return true, ''
     end
     local summary, data = comment:match('^(.*)%((^1^.+^^)%)$')
-    if data then
-        return summary, AceSerializer:Deserialize(data)
-    else
-        return comment
+    if not data then
+        return true, comment
     end
-end)
+
+    local proto = ActivityProto:New()
+    local ok, valid = proto:Deserialize(data)
+    if not valid then
+        return false
+    end
+    if not ok then
+        return true, comment
+    end
+    return true, summary, proto
+end
 
 function CompressNumber(n)
     n = tonumber(n)
@@ -88,7 +116,7 @@ function CodeCommentData(activity)
         GetAddonSource(),
         GetPlayerFullName(),
         GetPlayerSavedInstance(customId),
-        format('%s-%s-%s', activity:GetModeText(), activity:GetLootText(), activity:GetName()),
+        nil,
         CompressNumber(activity:IsUseHonorLevel() and UnitHonorLevel('player') or nil)
     ))
     return data
@@ -113,7 +141,7 @@ function GetSafeSummaryLength(activityId, customId, mode, loot)
         format('%s-%s-%s', GetModeName(mode), GetLootName(loot), GetActivityName(activityId, customId)),
         CompressNumber(IsUseHonorLevel(activityId) and UnitHonorLevel('player') or nil)
     ))
-    return MAX_SUMMARY_LETTERS - strlenutf8(data)
+    return min(MAX_MEETINGSTONE_SUMMARY_LETTERS, MAX_SUMMARY_LETTERS - strlenutf8(data))
 end
 
 function GetPlayerFullName()
@@ -427,10 +455,15 @@ function ListToMap(list)
     return map
 end
 
-function CheckMode(mode)
-    return mode ~= 0 and rawget(ACTIVITY_MODE_NAMES, mode)
-end
-
-function CheckLoot(loot)
-    return loot ~= 0 and rawget(ACTIVITY_LOOT_NAMES, loot)
-end
+GetAutoCompleteItem = setmetatable({}, {__index = function(t, activityId)
+    local name, shortName, category, group, iLevel, filters, minLevel, maxMembers, displayType = C_LFGList.GetActivityInfo(activityId)
+    t[activityId] = {
+        name       = name,
+        order      = 0xffff - (ACTIVITY_ORDER.A[activityId] or ACTIVITY_ORDER.G[group] or 0),
+        activityId = activityId,
+        code       = GetActivityCode(activityId, nil, category, group),
+    }
+    return t[activityId]
+end, __call = function(t, activityId)
+    return t[activityId]
+end})

@@ -1,13 +1,24 @@
 ------------------------------------------------------------------------
-r450 | Zensunim | 2019-05-12 21:28:51 +0000 (Sun, 12 May 2019) | 3 lines
+r452 | Zensunim | 2019-05-17 04:42:28 +0000 (Fri, 17 May 2019) | 4 lines
 Changed paths:
    M /trunk/GTFO.lua
    M /trunk/GTFO.toc
+   M /trunk/GTFO_Fail_BFA.lua
    M /trunk/GTFO_Spells_BFA.lua
+   A /trunk/Libs
+   A /trunk/Libs/LibStub
+   A /trunk/Libs/LibStub/LibStub.lua
+   A /trunk/Libs/LibUIDropDownMenu
+   A /trunk/Libs/LibUIDropDownMenu/LibEasyMenu.lua
+   A /trunk/Libs/LibUIDropDownMenu/LibUIDropDownMenu.lua
+   A /trunk/Libs/LibUIDropDownMenu/LibUIDropDownMenu.xml
+   A /trunk/Libs/LibUIDropDownMenu/LibUIDropDownMenuTemplates.lua
+   A /trunk/Libs/LibUIDropDownMenu/LibUIDropDownMenuTemplates.xml
    M /trunk/ReadMe.txt
 
-4.47.1
+4.48
+* WoW Classic support
+* Implemented LibStub and LibUIDropDownMenu instead of Blizzard's UI dropdown
 * Added BFA spells for Battle of Dazar'alor
-
 ------------------------------------------------------------------------
 

@@ -77,9 +77,9 @@ function AppFollowPanel:OnInitialize()
             button:SetData(data)
         end)
 
-        FollowList:SetCallback('OnItemClick', function(FollowList, button, data)
-            ChatFrame_SendTell(ChatTargetSystemToApp(data.name))
-        end)
+        -- FollowList:SetCallback('OnItemClick', function(FollowList, button, data)
+        --     ChatFrame_SendTell(ChatTargetSystemToApp(data.name))
+        -- end)
 
         FollowList:SetCallback('OnRefresh', function(FollowList)
             local empty = FollowList:GetShownCount() == 0
@@ -152,12 +152,12 @@ function AppFollowPanel:ToggleFollowMenu(button, data)
             text = data.name,
             isTitle = true,
         },
-        {
-            text = L['密语'],
-            func = function()
-                ChatFrame_SendTell(ChatTargetSystemToApp(data.name))
-            end
-        },
+        -- {
+        --     text = L['密语'],
+        --     func = function()
+        --         ChatFrame_SendTell(ChatTargetSystemToApp(data.name))
+        --     end
+        -- },
         {
             text = L['关注'],
             func = function()

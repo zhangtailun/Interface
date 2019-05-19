@@ -6,9 +6,7 @@ BrowsePanel = Addon:NewModule(CreateFrame('Frame'), 'BrowsePanel', 'AceEvent-3.0
 function BrowsePanel:OnInitialize()
     MainPanel:RegisterPanel(L['查找活动'], self, 5, 100)
 
-    self.activityHash = {}
-    self.activityList = {}
-    self.bossFilter = {}
+    self.filters = {}
 
     local ActivityList = GUI:GetClass('DataGridView'):New(self) do
         ActivityList:SetAllPoints(self)
@@ -18,7 +16,7 @@ function BrowsePanel:OnInitialize()
         ActivityList:SetItemClass(Addon:GetClass('BrowseItem'))
         ActivityList:SetSelectMode('RADIO')
         ActivityList:SetScrollStep(9)
-        ActivityList:SetItemList(self.activityList)
+        ActivityList:SetItemList(LfgService:GetActivityList())
         ActivityList:SetSortHandler(function(activity)
             return activity:BaseSortHandler()
         end)
@@ -45,6 +43,21 @@ function BrowsePanel:OnInitialize()
                     end
                 end,
                 sortHandler = ActivityList:GetSortHandler(),
+            },
+            {
+                key = 'Title',
+                text = L['活动标题'],
+                style = 'LEFT',
+                width = 170,
+                showHandler = function(activity)
+                    if activity:IsUnusable() then
+                        return activity:GetSummary(), GRAY_FONT_COLOR.r, GRAY_FONT_COLOR.g, GRAY_FONT_COLOR.b
+                    elseif activity:IsAnyFriend() then
+                        return activity:GetSummary(), BATTLENET_FONT_COLOR.r, BATTLENET_FONT_COLOR.g, BATTLENET_FONT_COLOR.b
+                    else
+                        return activity:GetSummary(), NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b
+                    end
+                end
             },
             {
                 key = 'ActivityName',
@@ -75,38 +88,38 @@ function BrowsePanel:OnInitialize()
                     end
                 end
             },
-            {
-                key = 'ActivityLoot',
-                text = L['拾取'],
-                style = 'LEFT',
-                width = 50,
-                showHandler = function(activity)
-                    if activity:IsUnusable() then
-                        return activity:GetLootShortText(), GRAY_FONT_COLOR.r, GRAY_FONT_COLOR.g, GRAY_FONT_COLOR.b
-                    else
-                        return activity:GetLootShortText()
-                    end
-                end,
-                sortHandler = function(activity)
-                    return activity:GetLoot()
-                end
-            },
-            {
-                key = 'ActivityMode',
-                text = L['形式'],
-                style = 'LEFT',
-                width = 50,
-                showHandler = function(activity)
-                    if activity:IsUnusable() then
-                        return activity:GetModeText(), GRAY_FONT_COLOR.r, GRAY_FONT_COLOR.g, GRAY_FONT_COLOR.b
-                    else
-                        return activity:GetModeText()
-                    end
-                end,
-                sortHandler = function(activity)
-                    return activity:GetMode()
-                end,
-            },
+            -- {
+            --     key = 'ActivityLoot',
+            --     text = L['拾取'],
+            --     style = 'LEFT',
+            --     width = 50,
+            --     showHandler = function(activity)
+            --         if activity:IsUnusable() then
+            --             return activity:GetLootShortText(), GRAY_FONT_COLOR.r, GRAY_FONT_COLOR.g, GRAY_FONT_COLOR.b
+            --         else
+            --             return activity:GetLootShortText()
+            --         end
+            --     end,
+            --     sortHandler = function(activity)
+            --         return activity:GetLoot()
+            --     end
+            -- },
+            -- {
+            --     key = 'ActivityMode',
+            --     text = L['形式'],
+            --     style = 'LEFT',
+            --     width = 50,
+            --     showHandler = function(activity)
+            --         if activity:IsUnusable() then
+            --             return activity:GetModeText(), GRAY_FONT_COLOR.r, GRAY_FONT_COLOR.g, GRAY_FONT_COLOR.b
+            --         else
+            --             return activity:GetModeText()
+            --         end
+            --     end,
+            --     sortHandler = function(activity)
+            --         return activity:GetMode()
+            --     end,
+            -- },
             {
                 key = 'MemberRole',
                 text = L['成员'],
@@ -115,26 +128,32 @@ function BrowsePanel:OnInitialize()
                 formatHandler = function(grid, activity)
                     grid:SetActivity(activity)
                 end,
-            },
-            {
-                key = 'Level',
-                text = L['等级'],
-                width = 60,
-                textHandler = function(activity)
-                    local minLevel = activity:GetMinLevel()
-                    local maxLevel = activity:GetMaxLevel()
-                    local isMax = maxLevel >= MAX_PLAYER_LEVEL
-                    local isMin = minLevel <= 1
-
-                    if isMax and isMin then
-                        return NONE, GRAY_FONT_COLOR.r, GRAY_FONT_COLOR.g, GRAY_FONT_COLOR.b
-                    else
-                        local text = minLevel == maxLevel and minLevel or isMax and '≥' .. minLevel or minLevel .. '-' .. maxLevel
-                        local color = activity:IsUnusable() and GRAY_FONT_COLOR or activity:IsLevelValid() and GREEN_FONT_COLOR or RED_FONT_COLOR
-                        return text, color.r, color.g, color.b
-                    end
+                sortHandler = function(activity)
+                    return activity:GetMaxMembers() - activity:GetNumMembers()
                 end
             },
+            -- {
+            --     key = 'Level',
+            --     text = L['等级'],
+            --     width = 60,
+            --     textHandler = function(activity)
+            --         local minLevel = activity:GetMinLevel()
+            --         local maxLevel = activity:GetMaxLevel()
+            --         local isMax = maxLevel >= MAX_PLAYER_LEVEL
+            --         local isMin = minLevel <= 1
+
+            --         if isMax and isMin then
+            --             return NONE, GRAY_FONT_COLOR.r, GRAY_FONT_COLOR.g, GRAY_FONT_COLOR.b
+            --         else
+            --             local text = minLevel == maxLevel and minLevel or isMax and '≥' .. minLevel or minLevel .. '-' .. maxLevel
+            --             local color = activity:IsUnusable() and GRAY_FONT_COLOR or activity:IsLevelValid() and GREEN_FONT_COLOR or RED_FONT_COLOR
+            --             return text, color.r, color.g, color.b
+            --         end
+            --     end,
+            --     sortHandler = function(activity)
+            --         return 0xFFFF - activity:GetMinLevel()
+            --     end
+            -- },
             {
                 key = 'ItemLeave',
                 text = L['要求'],
@@ -146,7 +165,7 @@ function BrowsePanel:OnInitialize()
                             return NONE, GRAY_FONT_COLOR.r, GRAY_FONT_COLOR.g, GRAY_FONT_COLOR.b
                         else
                             local color = activity:IsUnusable() and GRAY_FONT_COLOR or activity:IsPvPRatingValid() and GREEN_FONT_COLOR or RED_FONT_COLOR
-                            return pvpRating, color.r, color.g, color.b
+                            return floor(pvpRating), color.r, color.g, color.b
                         end
                     else
                         local itemLevel = activity:GetItemLevel()
@@ -154,9 +173,12 @@ function BrowsePanel:OnInitialize()
                             return NONE, GRAY_FONT_COLOR.r, GRAY_FONT_COLOR.g, GRAY_FONT_COLOR.b
                         else
                             local color = activity:IsUnusable() and GRAY_FONT_COLOR or activity:IsItemLevelValid() and GREEN_FONT_COLOR or RED_FONT_COLOR
-                            return itemLevel, color.r, color.g, color.b
+                            return floor(itemLevel), color.r, color.g, color.b
                         end
                     end
+                end,
+                sortHandler = function(activity)
+                    return 0xFFFF - activity:GetItemLevel()
                 end
             },
             {
@@ -168,12 +190,12 @@ function BrowsePanel:OnInitialize()
                     if activity:IsUnusable() then
                         return activity:GetLeaderShort(), GRAY_FONT_COLOR.r, GRAY_FONT_COLOR.g, GRAY_FONT_COLOR.b
                     else
-                        return activity:GetLeaderShortText(), NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b
+                        return activity:GetLeaderShortText(), HIGHLIGHT_FONT_COLOR.r, HIGHLIGHT_FONT_COLOR.g, HIGHLIGHT_FONT_COLOR.b
                     end
                 end,
             },
             {
-                key = 'Title',
+                key = 'Summary',
                 text = L['说明'],
                 width = 170,
                 class = Addon:GetClass('SummaryGrid'),
@@ -192,6 +214,8 @@ function BrowsePanel:OnInitialize()
         end)
         ActivityList:SetCallback('OnSelectChanged', function(_, _, activity)
             self:UpdateSignUpButton(activity)
+
+
         end)
         ActivityList:SetCallback('OnRefresh', function(ActivityList)
             local shownCount = ActivityList:GetShownCount()
@@ -200,7 +224,7 @@ function BrowsePanel:OnInitialize()
             else
                 self.NoResultBlocker:SetPoint('TOP')
             end
-            self.ActivityTotals:SetFormattedText(L['活动总数：%d/%d'], ActivityList:GetItemCount(), #self.activityList)
+            self.ActivityTotals:SetFormattedText(L['活动总数：%d/%d'], ActivityList:GetItemCount(), LfgService:GetActivityCount())
         end)
         ActivityList:SetCallback('OnItemEnter', function(_, _, activity)
             MainPanel:OpenActivityTooltip(activity)
@@ -287,197 +311,120 @@ function BrowsePanel:OnInitialize()
         ActivityDropdown:SetDefaultValue(0)
         ActivityDropdown:SetDefaultText(L['请选择活动类型'])
         ActivityDropdown:SetCallback('OnSelectChanged', function(_, data, ...)
-            
+            if not self:InSet() then
+                
+                if data.activityId then
+                    C_LFGList.SetSearchToActivity(data.activityId)
+                else
+                    C_LFGList.ClearSearchTextFields()
+                end
+            end
             self:StartSet()
-            self:UpdateModeDropdown(data.categoryId)
-            self:UpdateBossFilter(data.activityId, data.customId)
-            self:ClearSearchProfile()
+            self.ActivityDropdown:SetValue(GetActivityCode(nil, nil, data.categoryId))
             self:EndSet()
         end)
     end
 
-    local function RefreshFilter()
-        self.ActivityList:SetFilterText(self.SearchInput:GetText():lower(), self.bossFilter, Profile:GetSetting('spamWord'))
-    end
-
-    local ModeLabel = self:CreateFontString(nil, 'ARTWORK', 'GameFontHighlight') do
-        ModeLabel:SetPoint('LEFT', ActivityLabel, 'LEFT', ActivityDropdown:GetWidth() + 10, 0)
-        ModeLabel:SetText(L['活动形式'])
-    end
-
-    local ModeDropdown = GUI:GetClass('Dropdown'):New(self) do
-        ModeDropdown:SetPoint('TOPLEFT', ModeLabel, 'BOTTOMLEFT', 0, -5)
-        ModeDropdown:SetSize(120, 26)
-        ModeDropdown:SetText(L['全部'])
-        ModeDropdown:SetDefaultValue(0)
-        ModeDropdown:SetDefaultText(L['全部'])
-        ModeDropdown:SetCallback('OnSelectChanged', function()
-            self:ClearSearchProfile()
-            self:DoSearch()
-        end)
-    end
-
-    local LootLabel = self:CreateFontString(nil, 'ARTWORK', 'GameFontHighlight') do
-        LootLabel:SetPoint('LEFT', ModeLabel, 'LEFT', ModeDropdown:GetWidth() + 10, 0)
-        LootLabel:SetText(L['拾取方式'])
-    end
-
-    local LootDropdown = GUI:GetClass('Dropdown'):New(self) do
-        LootDropdown:SetPoint('TOPLEFT', LootLabel, 'BOTTOMLEFT', 0, -5)
-        LootDropdown:SetSize(120, 26)
-        LootDropdown:SetText(L['全部'])
-        LootDropdown:SetDefaultValue(0)
-        LootDropdown:SetDefaultText(L['全部'])
-        LootDropdown:SetMenuTable(ACTIVITY_LOOT_MENUTABLE_WITHALL)
-        LootDropdown:SetCallback('OnSelectChanged', function()
-            self:ClearSearchProfile()
-            self:DoSearch()
-        end)
-    end
-
-    local SearchLabel = self:CreateFontString(nil, 'ARTWORK', 'GameFontHighlight') do
-        SearchLabel:SetPoint('LEFT', LootLabel, 'LEFT', ModeDropdown:GetWidth() + 10, 0)
-        SearchLabel:SetText(L['搜索'])
-    end
-
-    local SearchInput = GUI:GetClass('SearchBox'):New(self) do
-        SearchInput:SetSize(180, 15)
-        SearchInput:SetPoint('TOPLEFT', SearchLabel, 'BOTTOMLEFT', 10, -10)
-        SearchInput:SetPrompt(L['搜索说明或团长'])
-        SearchInput:EnableAutoComplete(true)
-        SearchInput:EnableAutoCompleteFilter(false)
-        SearchInput:SetCallback('OnTextChanged', RefreshFilter)
-        SearchInput:SetCallback('OnEditFocusLost', function(SearchInput)
-            local text = SearchInput:GetText()
-            if text ~= '' then
-                Profile:SaveSearchInputHistory(self.ActivityDropdown:GetItem().value, text)
-            end
-        end)
-        SearchInput:SetCallback('OnEditFocusGained', function(SearchInput)
-            SearchInput:SetAutoCompleteList(Profile:GetSearchInputHistory(ActivityDropdown:GetItem().value))
-        end)
-    end
-
-    local AdvFilterPanel = CreateFrame('Frame', nil, self) do
+    local AdvFilterPanel = CreateFrame('Frame', nil, self, 'SimplePanelTemplate') do
         GUI:Embed(AdvFilterPanel, 'Refresh')
-        AdvFilterPanel:SetSize(200, 340)
-        AdvFilterPanel:SetPoint('TOPLEFT', MainPanel, 'TOPRIGHT', -5, -30)
+        AdvFilterPanel:SetSize(200, 320)
+        AdvFilterPanel:SetPoint('TOPLEFT', MainPanel, 'TOPRIGHT', -2, -30)
         AdvFilterPanel:SetFrameLevel(ActivityList:GetFrameLevel()+5)
         AdvFilterPanel:EnableMouse(true)
-        AdvFilterPanel:SetBackdrop{
-            edgeFile = [[Interface\DialogFrame\UI-DialogBox-Border]],
-            edgeSize = 16,
-        }
         AdvFilterPanel:Hide()
-        AdvFilterPanel:HookScript('OnShow', function()
-            self.AdvButton:SetNormalTexture([[Interface\Buttons\UI-SpellbookIcon-PrevPage-Up]])
-            self.AdvButton:SetPushedTexture([[Interface\Buttons\UI-SpellbookIcon-PrevPage-Down]])
-            self.AdvButton:SetDisabledTexture([[Interface\Buttons\UI-SpellbookIcon-PrevPage-Disabled]])
-        end)
-        AdvFilterPanel:HookScript('OnHide', function()
-            self.AdvButton:SetNormalTexture([[Interface\Buttons\UI-SpellbookIcon-NextPage-Up]])
-            self.AdvButton:SetPushedTexture([[Interface\Buttons\UI-SpellbookIcon-NextPage-Down]])
-            self.AdvButton:SetDisabledTexture([[Interface\Buttons\UI-SpellbookIcon-NextPage-Disabled]])
-        end)
 
         local closeButton = CreateFrame('Button', nil, AdvFilterPanel, 'UIPanelCloseButton') do
-            closeButton:SetPoint('TOPRIGHT', -3, -5)
+            closeButton:SetPoint('TOPRIGHT', 0, -1)
         end
 
-        local bg = AdvFilterPanel:CreateTexture(nil, 'BACKGROUND') do
-            bg:SetPoint('TOPLEFT', 2, -2)
-            bg:SetPoint('BOTTOMRIGHT', -2, 2)
-            bg:SetTexture([[Interface\FrameGeneral\UI-Background-Rock]])
-        end
-    end
-
-    local BossFilter = GUI:GetClass('ScrollFrame'):New(AdvFilterPanel) do
-        local Border = CreateFrame('Frame', nil, AdvFilterPanel, 'InsetFrameTemplate') do
-            Border:SetPoint('TOPLEFT', 10, -40)
-            Border:SetPoint('TOPRIGHT', -10, -40)
-            Border:SetHeight(200)
-            BossFilter:SetParent(Border)
-        end
-
-        local Label = Border:CreateFontString(nil, 'ARTWORK', 'GameFontNormal') do
-            Label:SetPoint('BOTTOMLEFT', Border, 'TOPLEFT', 0, 5)
-            Label:SetText(L['首领过滤'])
-        end
-
-        local Help = GUI:GetClass('TitleButton'):New(Border) do
-            Help:SetPoint('LEFT', Label, 'RIGHT', 10, 0)
-            Help:SetTexture([[Interface\FriendsFrame\InformationIcon]])
-            Help:SetTooltip(
-                L['首领帮助'],
-                GRAY_FONT_COLOR_CODE .. L['忽略'] .. '|r',
-                GREEN_FONT_COLOR_CODE .. L['未击杀'] .. '|r',
-                RED_FONT_COLOR_CODE .. L['已击杀'] .. '|r'
-            )
-        end
-
-        local ScrollChild = CreateFrame('Frame', nil, BossFilter) do
-            ScrollChild:SetSize(1, 1)
-            ScrollChild:SetPoint('TOPLEFT')
-            BossFilter:SetScrollChild(ScrollChild)
-        end
-
-        BossFilter.buttons = setmetatable({}, {__index = function(buttons, i)
-            local button = BossCheckBox:New(ScrollChild)
-            button:SetSize(22, 22)
-            button:SetPoint('TOPLEFT', ScrollChild, 'TOPLEFT', 5, -(i-1)*22)
-            button:SetCallback('OnCheckChanged', function(button)
-                self:ClearSearchProfile()
-                self.bossFilter[button:GetText()] = button:GetChecked()
-                RefreshFilter()
-            end)
-            buttons[i] = button
-            return button
-        end})
-
-        BossFilter:SetPoint('TOPLEFT', 5, -5)
-        BossFilter:SetPoint('BOTTOMRIGHT', -5, 5)
-    end
-
-    local SearchProfileDropdown = GUI:GetClass('Dropdown'):New(AdvFilterPanel) do
-        SearchProfileDropdown:SetPoint('TOPLEFT', BossFilter, 'BOTTOMLEFT', -5, -40)
-        SearchProfileDropdown:SetPoint('TOPRIGHT', BossFilter, 'BOTTOMRIGHT', 5, -40)
-        SearchProfileDropdown:SetHeight(26)
-        SearchProfileDropdown:SetMaxItem(20)
-        SearchProfileDropdown:SetCallback('OnSelectChanged', function(_, data)
-            self.lockProfile = true
-            self.DeleteButton:Enable()
-            self:QuickSearch(data.code, data.mode, data.loot)
-            self.lockProfile = nil
-        end)
-
-        local FilterProfileLabel = SearchProfileDropdown:CreateFontString(nil, 'ARTWORK', 'GameFontNormal') do
-            FilterProfileLabel:SetPoint('BOTTOMLEFT', SearchProfileDropdown, 'TOPLEFT', 0, 5)
-            FilterProfileLabel:SetText(L['过滤配置'])
+        local Label = AdvFilterPanel:CreateFontString(nil, 'ARTWORK', 'GameFontNormal') do
+            Label:SetPoint('TOPLEFT', 5, -10)
+            Label:SetText(L['高级过滤'])
         end
     end
 
-    local SaveButton = CreateFrame('Button', nil, AdvFilterPanel, 'UIPanelButtonTemplate') do
-        SaveButton:SetPoint('TOPLEFT', SearchProfileDropdown, 'BOTTOMLEFT', 0, -3)
-        SaveButton:SetPoint('TOPRIGHT', SearchProfileDropdown, 'BOTTOM', 0, -3)
-        SaveButton:SetHeight(22)
-        SaveButton:SetText(SAVE)
-        SaveButton:SetScript('OnClick', function()
-            self:SaveSearchProfile()
+    local filters = {
+        {
+            key = 'ItemLevel',
+            text = L['装备等级'],
+            min = 0,
+            max = 500,
+            step = 10,
+        },
+        {
+            key = 'BossKilled',
+            text = L['Boss击杀数量'],
+            min = 0,
+            max = 15,
+            step = 1,
+        },
+        {
+            key = 'Age',
+            text = L['活动创建时长'],
+            min = 0,
+            max = 1440,
+            step = 10,
+        },
+        {
+            key = 'Members',
+            text = L['队伍人数'],
+            min = 0,
+            max = 40,
+            step = 1,
+        },
+    }
+
+    local function RefreshFilter()
+        local item = self.ActivityDropdown:GetItem()
+        if not self.inUpdateFilters and item and item.categoryId then
+            
+            Profile:SetFilters(item.categoryId, self:GetFilters())
+        end
+    end
+
+    for i, v in ipairs(filters) do
+        local Box = Addon:GetClass('FilterBox'):New(AdvFilterPanel.Inset)
+        Box.Check:SetText(v.text)
+        Box.MinBox:SetMinMaxValues(v.min, v.max)
+        Box.MaxBox:SetMinMaxValues(v.min, v.max)
+        Box.MinBox:SetValueStep(v.step)
+        Box.MaxBox:SetValueStep(v.step)
+        Box.key = v.key
+        Box:SetCallback('OnChanged', RefreshFilter)
+
+        if i == 1 then
+            Box:SetPoint('TOPLEFT', 10, -10)
+            Box:SetPoint('TOPRIGHT', -10, -10)
+        else
+            Box:SetPoint('TOPLEFT', self.filters[i-1], 'BOTTOMLEFT')
+            Box:SetPoint('TOPRIGHT', self.filters[i-1], 'BOTTOMRIGHT')
+        end
+
+        table.insert(self.filters, Box)
+    end
+
+    local ResetFilterButton = CreateFrame('Button', nil, AdvFilterPanel, 'UIPanelButtonTemplate') do
+        ResetFilterButton:SetSize(80, 22)
+        ResetFilterButton:SetPoint('BOTTOMRIGHT', AdvFilterPanel, 'BOTTOM', 0, 3)
+        ResetFilterButton:SetText(RESET)
+        ResetFilterButton:SetScript('OnClick', function()
+            for i, box in ipairs(self.filters) do
+                box:Clear()
+            end
         end)
     end
 
-    local DeleteButton = CreateFrame('Button', nil, AdvFilterPanel, 'UIPanelButtonTemplate') do
-        DeleteButton:SetPoint('TOPLEFT', SearchProfileDropdown, 'BOTTOM', 0, -3)
-        DeleteButton:SetPoint('TOPRIGHT', SearchProfileDropdown, 'BOTTOMRIGHT', 0, -3)
-        DeleteButton:SetHeight(22)
-        DeleteButton:SetText(DELETE)
-        DeleteButton:SetScript('OnClick', function()
-            self:DeleteSearchProfile()
+    local RefreshFilterButton = CreateFrame('Button', nil, AdvFilterPanel, 'UIPanelButtonTemplate') do
+        RefreshFilterButton:SetSize(80, 22)
+        RefreshFilterButton:SetPoint('BOTTOMLEFT', AdvFilterPanel, 'BOTTOM', 0, 3)
+        RefreshFilterButton:SetText(REFRESH)
+        RefreshFilterButton:SetScript('OnClick', function()
+            self:DoSearch()
         end)
     end
 
     local RefreshButton = Addon:GetClass('RefreshButton'):New(self) do
-        RefreshButton:SetPoint('TOPRIGHT', MainPanel, 'TOPRIGHT', -40, -38)
+        RefreshButton:SetPoint('TOPRIGHT', MainPanel, 'TOPRIGHT', -90, -38)
         RefreshButton:SetTooltip(LFG_LIST_SEARCH_AGAIN)
         RefreshButton:SetScript('OnClick', function()
             self:DoSearch()
@@ -494,16 +441,16 @@ function BrowsePanel:OnInitialize()
         end
     end
 
-    local AdvButton = CreateFrame('Button', nil, self) do
+    local AdvButton = CreateFrame('Button', nil, self, 'UIMenuButtonStretchTemplate') do
         GUI:Embed(AdvButton, 'Tooltip')
         AdvButton:SetTooltipAnchor('ANCHOR_RIGHT')
         AdvButton:SetTooltip(L['高级过滤'])
-        AdvButton:SetNormalTexture([[Interface\Buttons\UI-SpellbookIcon-NextPage-Up]])
-        AdvButton:SetPushedTexture([[Interface\Buttons\UI-SpellbookIcon-NextPage-Down]])
-        AdvButton:SetDisabledTexture([[Interface\Buttons\UI-SpellbookIcon-NextPage-Disabled]])
-        AdvButton:SetHighlightTexture([[Interface\Buttons\UI-Common-MouseHilight]], 'ADD')
-        AdvButton:SetSize(32, 32)
+        AdvButton:SetSize(83, 31)
         AdvButton:SetPoint('LEFT', RefreshButton, 'RIGHT', 0, 0)
+        AdvButton:SetText(L['高级过滤'])
+        AdvButton:SetNormalFontObject('GameFontNormal')
+        AdvButton:SetHighlightFontObject('GameFontHighlight')
+        AdvButton:SetDisabledFontObject('GameFontDisable')
 
         if Profile:IsProfileKeyNew('advShine', 60200.09) then
             local Shine = GUI:GetClass('ShineWidget'):New(AdvButton) do
@@ -565,243 +512,265 @@ function BrowsePanel:OnInitialize()
         IconSummary:SetScript('OnLeave', GameTooltip_Hide)
     end
 
-    local SpamWord = GUI:GetClass('CheckBox'):New(self) do
-        SpamWord:SetPoint('BOTTOMRIGHT', MainPanel, -230, 5)
-        SpamWord:SetText(L['关键字过滤'])
-        SpamWord:SetScript('OnClick', function(SpamWord)
-            Profile:SetSetting('spamWord', not not SpamWord:GetChecked())
-            RefreshFilter()
-        end)
+    local FilterButton
+    if not NO_SCAN_WORD then
+        FilterButton = CreateFrame('Button', nil, self) do
+            FilterButton:SetNormalFontObject('GameFontNormalSmall')
+            FilterButton:SetHighlightFontObject('GameFontHighlightSmall')
+            FilterButton:SetSize(70, 22)
+            FilterButton:SetPoint('BOTTOMRIGHT', MainPanel, -140, 3)
+            FilterButton:SetText(L['过滤器'])
+            FilterButton:RegisterForClicks('anyUp')
+            FilterButton:SetScript('OnClick', function()
+                self:OnFilterButtonClicked()
+            end)
+        end
     end
 
-    local HelpPlate = {
-        FramePos = { x = -10,          y = 85 },
-        FrameSize = { width = 1030, height = 425 },
-        {
-            ButtonPos = { x = 330,   y = -5 },
-            HighLightBox = { x = 60, y = -5, width = 640, height = 55 },
-            ToolTipDir = 'DOWN',
-            ToolTipText = L.BrowseHelpFilter,
-        },  -- 过滤器
-        {
-            ButtonPos = { x = 715, y = -5 },
-            HighLightBox = { x = 705, y = -5, width = 120, height = 55 },
-            ToolTipDir = 'DOWN',
-            ToolTipText = L.BrowseHelpRefresh,
-        },  -- 刷新
-        {
-            ButtonPos = { x = 370,  y = -190 },
-            HighLightBox = { x = 5, y = -65, width = 820, height = 328 },
-            ToolTipDir = 'RIGHT',
-            ToolTipText = L.BrowseHelpList,
-        },  -- 活动列表
-        {
-            ButtonPos = { x = 180,  y = -389 },
-            HighLightBox = { x = 5, y = -397, width = 220, height = 28 },
-            ToolTipDir = 'UP',
-            ToolTipText = L.BrowseHelpMisc,
-        },  --
-        {
-            ButtonPos = { x = 300,  y = -389 },
-            HighLightBox = { x = 300, y = -397, width = 200, height = 28 },
-            ToolTipDir = 'UP',
-            ToolTipText = L.BrowseHelpApply,
-        },  -- 申请
-        {
-            ButtonPos = { x = 720,  y = -389 },
-            HighLightBox = { x = 705, y = -397, width = 120, height = 28 },
-            ToolTipDir = 'UP',
-            ToolTipText = L.BrowseHelpStatus,
-        },  -- 状态
-        {
-            ButtonPos = { x = 570,  y = -389 },
-            HighLightBox = { x = 570, y = -397, width = 130, height = 28 },
-            ToolTipDir = 'UP',
-            ToolTipText = L.BrowseHelpSpamWord,
-        },  -- 关键字
-        {
-            ButtonPos = { x = 900, y = -45 },
-            HighLightBox = { x = 830, y = -15, width = 200, height = 240 },
-            ToolTipDir = 'DOWN',
-            ToolTipText = L.BrowseHelpBossFilter,
-        },
-        {
-            ButtonPos = { x = 900, y = -290 },
-            HighLightBox = { x = 830, y = -260, width = 200, height = 90 },
-            ToolTipDir = 'DOWN',
-            ToolTipText = L.BrowseHelpSearchProfile,
-        }
-    }
+    -- local HelpPlate = {
+    --     FramePos = { x = -10,          y = 85 },
+    --     FrameSize = { width = 1030, height = 425 },
+    --     {
+    --         ButtonPos = { x = 330,   y = -5 },
+    --         HighLightBox = { x = 60, y = -5, width = 640, height = 55 },
+    --         ToolTipDir = 'DOWN',
+    --         ToolTipText = L.BrowseHelpFilter,
+    --     },  -- 过滤器
+    --     {
+    --         ButtonPos = { x = 715, y = -5 },
+    --         HighLightBox = { x = 705, y = -5, width = 120, height = 55 },
+    --         ToolTipDir = 'DOWN',
+    --         ToolTipText = L.BrowseHelpRefresh,
+    --     },  -- 刷新
+    --     {
+    --         ButtonPos = { x = 370,  y = -190 },
+    --         HighLightBox = { x = 5, y = -65, width = 820, height = 328 },
+    --         ToolTipDir = 'RIGHT',
+    --         ToolTipText = L.BrowseHelpList,
+    --     },  -- 活动列表
+    --     {
+    --         ButtonPos = { x = 180,  y = -389 },
+    --         HighLightBox = { x = 5, y = -397, width = 220, height = 28 },
+    --         ToolTipDir = 'UP',
+    --         ToolTipText = L.BrowseHelpMisc,
+    --     },  --
+    --     {
+    --         ButtonPos = { x = 300,  y = -389 },
+    --         HighLightBox = { x = 300, y = -397, width = 200, height = 28 },
+    --         ToolTipDir = 'UP',
+    --         ToolTipText = L.BrowseHelpApply,
+    --     },  -- 申请
+    --     {
+    --         ButtonPos = { x = 720,  y = -389 },
+    --         HighLightBox = { x = 705, y = -397, width = 120, height = 28 },
+    --         ToolTipDir = 'UP',
+    --         ToolTipText = L.BrowseHelpStatus,
+    --     },  -- 状态
+    --     {
+    --         ButtonPos = { x = 570,  y = -389 },
+    --         HighLightBox = { x = 570, y = -397, width = 130, height = 28 },
+    --         ToolTipDir = 'UP',
+    --         ToolTipText = L.BrowseHelpSpamWord,
+    --     },  -- 关键字
+    --     {
+    --         ButtonPos = { x = 900, y = -45 },
+    --         HighLightBox = { x = 830, y = -15, width = 200, height = 240 },
+    --         ToolTipDir = 'DOWN',
+    --         ToolTipText = L.BrowseHelpBossFilter,
+    --     },
+    --     {
+    --         ButtonPos = { x = 900, y = -290 },
+    --         HighLightBox = { x = 830, y = -260, width = 200, height = 90 },
+    --         ToolTipDir = 'DOWN',
+    --         ToolTipText = L.BrowseHelpSearchProfile,
+    --     }
+    -- }
 
-    MainPanel:AddHelpButton(self, HelpPlate, function(shown)
-        if shown then
-            self.AdvFilterPanel:Show()
-        end
-    end)
+    -- MainPanel:AddHelpButton(self, HelpPlate, function(shown)
+    --     if shown then
+    --         self.AdvFilterPanel:Show()
+    --     end
+    -- end)
 
-    self.ActivityList = ActivityList
-    self.ActivityDropdown = ActivityDropdown
-    self.SignUpButton = SignUpButton
-    self.SearchingBlocker = SearchingBlocker
-    self.NoResultBlocker = NoResultBlocker
-    self.SearchInput = SearchInput
-    self.LootDropdown = LootDropdown
-    self.ModeDropdown = ModeDropdown
-    self.ActivityTotals = ActivityTotals
-    self.RefreshButton = RefreshButton
-    self.AdvFilterPanel = AdvFilterPanel
-    self.BossFilter = BossFilter
-    self.AdvButton = AdvButton
-    self.SpamWord = SpamWord
+    local SearchBox = LFGListFrame.SearchPanel.SearchBox
+
+    local AutoCompleteFrame = GUI:GetClass('AutoCompleteFrame'):New(self) do
+        AutoCompleteFrame:Hide()
+        AutoCompleteFrame:SetPoint('TOPLEFT', SearchBox, 'BOTTOMLEFT', 5, 0)
+        AutoCompleteFrame:SetPoint('TOPRIGHT', SearchBox, 'BOTTOMRIGHT', -10, 0)
+        AutoCompleteFrame:SetHeight(1)
+        AutoCompleteFrame:SetColumnCount(1)
+        AutoCompleteFrame:SetRowCount(10)
+        AutoCompleteFrame:SetScrollStep(9)
+        AutoCompleteFrame:SetSelectMode('RADIO')
+        AutoCompleteFrame:SetCallback('OnItemFormatted', function(_, button, item)
+            button:SetText(item.name)
+        end)
+        AutoCompleteFrame:SetCallback('OnItemClick', function(AutoCompleteFrame, _, item)
+            
+            self.ActivityDropdown:SetValue(item.code)
+            self.SearchBox:ClearFocus()
+        end)
+        AutoCompleteFrame:SetFrameLevel(self:GetFrameLevel() + 50)
+    end
+
+    self.AutoCompleteFrame     = AutoCompleteFrame
+    self.ActivityList          = ActivityList
+    self.ActivityDropdown      = ActivityDropdown
+    self.SignUpButton          = SignUpButton
+    self.SearchingBlocker      = SearchingBlocker
+    self.NoResultBlocker       = NoResultBlocker
+    self.SearchInput           = SearchInput
+    self.ActivityTotals        = ActivityTotals
+    self.RefreshButton         = RefreshButton
+    self.AdvFilterPanel        = AdvFilterPanel
+    self.AdvButton             = AdvButton
+    self.FilterButton          = FilterButton
     self.SearchProfileDropdown = SearchProfileDropdown
-    self.DeleteButton = DeleteButton
-
-    self.RefreshFilterHandler = RefreshFilter
+    self.DeleteButton          = DeleteButton
+    self.SearchBox             = SearchBox
+    self.RefreshFilterButton   = RefreshFilterButton
+    self.ResetFilterButton     = ResetFilterButton
 
     self:RegisterEvent('LFG_LIST_AVAILABILITY_UPDATE')
-    self:RegisterEvent('LFG_LIST_SEARCH_RESULTS_RECEIVED')
-    self:RegisterEvent('LFG_LIST_SEARCH_FAILED', 'LFG_LIST_SEARCH_RESULTS_RECEIVED')
 
-    self:RegisterBucketEvent('LFG_LIST_SEARCH_RESULT_UPDATED', 0.1, 'LFG_LIST_SEARCH_RESULT_UPDATED_BUCKET')
-    -- self:RegisterEvent('LFG_LIST_SEARCH_RESULT_UPDATED')
-    self:RegisterEvent('LFG_LIST_APPLICATION_STATUS_UPDATED', 'LFG_LIST_SEARCH_RESULT_UPDATED')
-    self:RegisterMessage('MEETINGSTONE_SEARCH_PROFILE_UPDATE')
+    self:RegisterMessage('MEETINGSTONE_ACTIVITIES_RESULT_RECEIVED')
+    self:RegisterMessage('MEETINGSTONE_ACTIVITIES_RESULT_UPDATED')
 
     self:RegisterMessage('MEETINGSTONE_SETTING_CHANGED_packedPvp', 'LFG_LIST_AVAILABILITY_UPDATE')
 
-    self:RegisterMessage('MEETINGSTONE_SPAMWORD_STATUS_UPDATE', 'OnToggleSpamWord')
-    self:RegisterMessage('MEETINGSTONE_SPAMWORD_UPDATE', RefreshFilter)
+    self:RegisterMessage('MEETINGSTONE_FILTERS_UPDATE', 'UpdateFilters')
 
     self:RegisterMessage('MEETINGSTONE_OPEN')
 
-    LFGListApplicationDialog.SignUpButton:SetScript('OnClick', function(self)
-        local dialog = self:GetParent()
-        PlaySound(SOUNDKIT and SOUNDKIT.IG_MAINMENU_OPTION_CHECKBOX_ON or 'igMainMenuOptionCheckBoxOn')
-        local id = dialog.resultID
-        local comment = format('%s%s', dialog.Description.EditBox:GetText(), dialog.playerData or '')
-        local tank = dialog.TankButton:IsShown() and dialog.TankButton.CheckButton:GetChecked()
-        local healer = dialog.HealerButton:IsShown() and dialog.HealerButton.CheckButton:GetChecked()
-        local damager = dialog.DamagerButton:IsShown() and dialog.DamagerButton.CheckButton:GetChecked()
+    self:SetScript('OnShow', self.OnShow)
 
-        C_LFGList.ApplyToGroup(id, comment, tank, healer, damager)
-        if dialog.playerData then
-            Logic:SEJ(dialog.activityData, dialog.Description.EditBox:GetText(), tank, healer, damager, dialog.isBlizzard)
+    self.SearchBox:SetScript('OnEnterPressed', function(SearchBox)
+        local item = self.AutoCompleteFrame:IsShown() and self.AutoCompleteFrame:GetSelectedItem()
+        if item then
+            self.ActivityDropdown:SetValue(item.code)
+        else
+            self:DoSearch()
         end
-        StaticPopupSpecial_Hide(dialog)
+        SearchBox:ClearFocus()
+    end)
+    self.SearchBox:SetScript('OnTextChanged', function(SearchBox)
+        SearchBoxTemplate_OnTextChanged(SearchBox)
+
+        local text = SearchBox:GetText():trim()
+        local list = text ~= '' and SearchBox:HasFocus() and C_LFGList.GetAvailableActivities(nil, nil, nil, text)
+        if not list or #list == 0 then
+            self.AutoCompleteFrame:Hide()
+        else
+            for i, v in ipairs(list) do
+                list[i] = GetAutoCompleteItem(v)
+            end
+            table.sort(list, function(lhs, rhs)
+                return lhs.order < rhs.order
+            end)
+            self.AutoCompleteFrame:SetItemList(list)
+            self.AutoCompleteFrame:Refresh()
+            self.AutoCompleteFrame:Show()
+        end
+    end)
+    self.SearchBox:SetScript('OnEditFocusGained', function(SearchBox)
+        SearchBox:GetScript('OnTextChanged')(SearchBox, true)
+    end)
+    self.SearchBox:SetScript('OnEditFocusLost', function()
+        self.AutoCompleteFrame:Hide()
+    end)
+    self.SearchBox:SetScript('OnArrowPressed', function(SearchBox, key)
+        if not self.AutoCompleteFrame:IsShown() then
+            return
+        end
+        local delta = key == 'UP' and -1 or 1
+        local index = self.AutoCompleteFrame:GetSelected()
+        local count = self.AutoCompleteFrame:GetItemCount()
+
+        if not index then
+            index = delta == 1 and 1 or count
+        else
+            index = (index + delta - 1) % count + 1
+        end
+
+        local offset = self.AutoCompleteFrame:GetOffset()
+        local maxCount = self.AutoCompleteFrame:GetMaxCount()
+
+        if index < offset then
+            offset = index
+        elseif index >= offset + maxCount then
+            offset = index - maxCount + 1
+        end
+
+        self.AutoCompleteFrame:SetOffset(offset)
+        self.AutoCompleteFrame:SetSelected(index)
     end)
 
-    LFGListApplicationDialog:HookScript('OnHide', function(self)
-        self.isBlizzard = nil
-        self.playerData = nil
-        self.activityData = nil
-        self.Description.EditBox:SetMaxLetters(60)
+    self.SearchBox.clearButton:SetScript('OnClick', function(btn)
+        PlaySound(SOUNDKIT.IG_MAINMENU_OPTION_CHECKBOX_ON)
+        C_LFGList.ClearSearchTextFields()
+        btn:GetParent():ClearFocus()
+        self:DoSearch()
     end)
+
+    LFGListFrame.SearchPanel.AutoCompleteFrame:Hide()
+
+    -- LFGListApplicationDialog.SignUpButton:SetScript('OnClick', function(self)
+    --     local dialog = self:GetParent()
+    --     PlaySound(SOUNDKIT and SOUNDKIT.IG_MAINMENU_OPTION_CHECKBOX_ON or 'igMainMenuOptionCheckBoxOn')
+    --     local id = dialog.resultID
+    --     local comment = format('%s%s', dialog.Description.EditBox:GetText(), dialog.playerData or '')
+    --     local tank = dialog.TankButton:IsShown() and dialog.TankButton.CheckButton:GetChecked()
+    --     local healer = dialog.HealerButton:IsShown() and dialog.HealerButton.CheckButton:GetChecked()
+    --     local damager = dialog.DamagerButton:IsShown() and dialog.DamagerButton.CheckButton:GetChecked()
+
+    --     C_LFGList.ApplyToGroup(id, comment, tank, healer, damager)
+    --     if dialog.playerData then
+    --         Logic:SEJ(dialog.activityData, dialog.Description.EditBox:GetText(), tank, healer, damager, dialog.isBlizzard)
+    --     end
+    --     StaticPopupSpecial_Hide(dialog)
+    -- end)
+
+    -- LFGListApplicationDialog:HookScript('OnHide', function(self)
+    --     self.isBlizzard = nil
+    --     self.playerData = nil
+    --     self.activityData = nil
+    --     self.Description.EditBox:SetMaxLetters(60)
+    -- end)
+
+end
+
+function BrowsePanel:OnShow()
+    -- self.AutoCompleteFrame:SetParent(self)
+    -- self.AutoCompleteFrame:SetFrameLevel(self:GetFrameLevel() + 100)
+
+    self.SearchBox:ClearAllPoints()
+    self.SearchBox:SetParent(self)
+    self.SearchBox:SetPoint('LEFT', self.ActivityDropdown, 'RIGHT', 20, 0)
+    self.SearchBox:SetWidth(220)
+
 end
 
 function BrowsePanel:OnEnable()
-    self:MEETINGSTONE_SEARCH_PROFILE_UPDATE()
+    self:UpdateFilters()
 end
 
 function BrowsePanel:LFG_LIST_AVAILABILITY_UPDATE()
     self.ActivityDropdown:SetMenuTable(GetActivitesMenuTable(ACTIVITY_FILTER_BROWSE))
-    self.ActivityDropdown:SetValue(Profile:GetLastSearchValue())
+    self.ActivityDropdown:SetValue(Profile:GetLastSearchCode())
     -- self:Refresh()
 end
 
-function BrowsePanel:LFG_LIST_SEARCH_RESULT_UPDATED(_, id)
-    self:UpdateActivity(id)
+function BrowsePanel:MEETINGSTONE_ACTIVITIES_RESULT_UPDATED()
     self.ActivityList:Refresh()
 end
 
-function BrowsePanel:LFG_LIST_SEARCH_RESULT_UPDATED_BUCKET(results)
-    for id in ipairs(results) do
-        self:UpdateActivity(id)
-    end
-    self.ActivityList:Refresh()
-end
-
-function BrowsePanel:MEETINGSTONE_SEARCH_PROFILE_UPDATE()
-    self.SearchProfileDropdown:SetMenuTable(self:GetSearchProfileMenuTable())
-    self.SearchProfileDropdown:SetValue(nil)
-end
-
-function BrowsePanel:RemoveActivity(id)
-    tDeleteItem(self.activityList, self.activityHash[id])
-    self.activityHash[id] = nil
-end
-
-function BrowsePanel:UpdateActivity(id)
-    if not self.activityHash[id] then
-        self:CacheActivity(id)
-        self:SendMessage('MEETINGSTONE_ACTIVITIES_COUNT_UPDATED', #self.activityList)
-    else
-        self.activityHash[id]:Update(true)
-    end
-end
-
-function BrowsePanel:IterateActivities()
-    return pairs(self.activityList)
-end
-
-function BrowsePanel:CacheActivity(id)
-    local _id, activityId, title, comment = C_LFGList.GetSearchResultInfo(id)
-    if not _id then
-        return
-    elseif not activityId then
-        return
-    end
-
-    local activityItem = self.ActivityDropdown:GetItem()
-    local activity = Activity:New(id)
-
-    if not activity:Update() then
-        return
-    end
-
-    if activityItem then
-        -- if activityItem.activityId and not ACTIVITY_CUSTOM_DATA.A[activityItem.activityId] then
-        --     if activityItem.activityId ~= activity:GetActivityID() or activityItem.customId ~= activity:GetCustomID() then
-        --         return
-        --     end
-        -- end
-        if activity:IsSoloActivity() and activityItem.customId ~= activity:GetCustomID() then
-            return
-        end
-    end
-    if activity:HasInvalidContent() then
-        return
-    end
-    if not activity:IsValidCustomActivity() then
-        return
-    end
-
-    tinsert(self.activityList, activity)
-    self.activityHash[id] = activity
-end
-
-function BrowsePanel:LFG_LIST_SEARCH_RESULTS_RECEIVED(event)
+function BrowsePanel:MEETINGSTONE_ACTIVITIES_RESULT_RECEIVED(event, isFailed)
     self.lastReceived = time()
     self.SearchingBlocker:Hide()
 
-    wipe(self.activityList)
-    wipe(self.activityHash)
+    local resultCount = LfgService:GetActivityCount()
 
-    local applications = C_LFGList.GetApplications()
-
-    for _, id in ipairs(applications) do
-        self:CacheActivity(id)
-    end
-
-    local _, resultList = C_LFGList.GetSearchResults()
-    for _, id in ipairs(resultList) do
-        self:CacheActivity(id)
-    end
-
-    local resultCount = #self.activityList
-
-    self:SendMessage('MEETINGSTONE_ACTIVITIES_COUNT_UPDATED', resultCount)
-
-    local isFailed = event == 'LFG_LIST_SEARCH_FAILED'
     self.NoResultBlocker:SetShown(resultCount == 0)
     self.NoResultBlocker.Label:SetText(isFailed and [[|TInterface\DialogFrame\UI-Dialog-Icon-AlertNew:30|t  ]] .. LFG_LIST_SEARCH_FAILED or LFG_LIST_NO_RESULTS_FOUND)
     self.NoResultBlocker.Button:SetShown(not isFailed)
@@ -842,10 +811,6 @@ end
 
 function BrowsePanel:SignUp(activity)
     if activity then
-        local data, length = CodeDescriptionData(activity)
-        LFGListApplicationDialog.playerData = data
-        LFGListApplicationDialog.activityData = activity
-        LFGListApplicationDialog.Description.EditBox:SetMaxLetters(60 - length)
         LFGListApplicationDialog_Show(LFGListApplicationDialog, activity:GetID())
     end
 end
@@ -854,6 +819,7 @@ function BrowsePanel:DoSearch()
     self.SearchingBlocker:Show()
     self.NoResultBlocker:Hide()
     self.RefreshButton:Disable()
+    self.RefreshFilterButton:Disable()
     self:Search()
     self:CancelTimer(self.disableRefreshTimer)
     self.disableRefreshTimer = self:ScheduleTimer('OnRefreshTimer', 3)
@@ -872,28 +838,53 @@ function BrowsePanel:Search()
     end
 
     local categoryId = activityItem.categoryId
-    local fullName = activityItem.fullName
-    local filters= activityItem.filters
     local baseFilter = activityItem.baseFilter
-    local searchValue = activityItem.value
+    local searchCode = activityItem.value
+    local activityId = activityItem.activityId
 
     if not categoryId or not MainPanel:IsVisible() then
         return
     end
 
-    local searchText = self:GetSearchCode(fullName, self.ModeDropdown:GetValue(), self.LootDropdown:GetValue(), activityItem.customId)
+    if self.SearchBox:GetText() ~= activityItem.fullName then
+        activityId = nil
+    end
 
-    searchText = LFGListSearchPanel_ParseSearchTerms(searchText)
-
-    Profile:SetLastSearchValue(searchValue)
-
-    C_LFGList.Search(categoryId, searchText, 0, baseFilter)
+    Profile:SetLastSearchCode(searchCode)
+    LfgService:Search(categoryId, baseFilter, activityId)
+    self:UpdateFilters()
 
     self.searchTimer = nil
     self.searchedInFrame = true
 
     C_Timer.After(0, function()
         self.searchedInFrame = nil
+    end)
+end
+
+function BrowsePanel:UpdateFilters()
+    local item = self.ActivityDropdown:GetItem()
+    if not item or not item.categoryId then
+        return
+    end
+
+    self.inUpdateFilters = true
+
+    local filters = Profile:GetFilters(item.categoryId)
+
+    for _, box in ipairs(self.filters) do
+        local key = box.key
+        local filter = filters[key] or {}
+
+        box.MinBox:SetText(filter.min or '')
+        box.MaxBox:SetText(filter.max or '')
+        box.Check:SetChecked(filter.enable)
+    end
+
+    self.ActivityList:SetFilterText(filters)
+
+    C_Timer.After(0, function()
+        self.inUpdateFilters = false
     end)
 end
 
@@ -922,6 +913,39 @@ end
 
 function BrowsePanel:OnRefreshTimer()
     self.RefreshButton:Enable()
+    self.RefreshFilterButton:Enable()
+end
+
+function BrowsePanel:OnFilterButtonClicked()
+    GUI:ToggleMenu(self.FilterButton, {
+        {
+            text = L['关键字过滤'],
+            checkable = true,
+            isNotRadio = true,
+            keepShownOnClick = true,
+            checked = function()
+                return Profile:GetSetting('spamWord')
+            end,
+            func = function(_, _, _, checked)
+                Profile:SetSetting('spamWord', checked)
+            end,
+        },
+        {
+            text = L['活动说明字数过滤'],
+            checkable = true,
+            isNotRadio = true,
+            keepShownOnClick = true,
+            checked = function()
+                return Profile:GetSetting('spamLengthEnabled')
+            end,
+            func = function(_, _, _, checked)
+                Profile:SetSetting('spamLengthEnabled', checked)
+            end
+        },
+        {
+            text = CANCEL
+        }
+    })
 end
 
 function BrowsePanel:ToggleActivityMenu(anchor, activity)
@@ -993,45 +1017,10 @@ function BrowsePanel:GetCurrentActivity()
 end
 
 function BrowsePanel:MEETINGSTONE_OPEN()
-    if self.lastReceived and time() - self.lastReceived < 300 then
+    if not LfgService:IsDirty() and self.lastReceived and time() - self.lastReceived < 300 then
         return
     end
     self:DoSearch()
-end
-
-function BrowsePanel:UpdateBossFilter(activityId, customId, bossFilter)
-    if bossFilter then
-        self.bossFilter = CopyTable(bossFilter)
-    else
-        wipe(self.bossFilter)
-    end
-
-    local bossList = GetRaidProgressionData(activityId, customId)
-    if bossList then
-        for i, v in ipairs(bossList) do
-            local button = self.BossFilter.buttons[i]
-            button:Show()
-            button:SetText(v.name)
-            button:SetChecked(self.bossFilter[v.name])
-        end
-    end
-
-    for i = (bossList and #bossList or 0) + 1, #self.BossFilter.buttons do
-        self.BossFilter.buttons[i]:Hide()
-    end
-end
-
-function BrowsePanel:UpdateModeDropdown(categoryId)
-    self.ModeDropdown:SetMenuTable(ACTIVITY_MODE_MENUTABLES_WITHALL[categoryId])
-    self.ModeDropdown:SetValue(nil)
-    self.LootDropdown:SetValue(nil)
-end
-
-function BrowsePanel:OnToggleSpamWord(_, enable, onUser)
-    if onUser or self.SpamWord:GetChecked() ~= enable then
-        self.SpamWord:SetChecked(enable)
-        self.RefreshFilterHandler()
-    end
 end
 
 local function tooltipMore(tip, data)
@@ -1083,8 +1072,6 @@ function BrowsePanel:SaveSearchProfile()
     local profile = {
         code = activityItem.value,
         name = activityItem.text,
-        mode = self.ModeDropdown:GetValue() or 0,
-        loot = self.LootDropdown:GetValue() or 0,
         activityId = activityItem.activityId,
         customId = activityItem.customId,
     }
@@ -1108,30 +1095,6 @@ function BrowsePanel:SaveSearchProfile()
     )
 end
 
-function BrowsePanel:DeleteSearchProfile()
-    local item = self.SearchProfileDropdown:GetItem()
-    if not item then
-        return
-    end
-
-    local name = item.text
-
-    GUI:CallMessageDialog(format(L['你确定要删除搜索配置“%s”吗？'], name), function(result)
-        if not result then
-            return
-        end
-        Profile:DeleteSearchProfile(name)
-        self.DeleteButton:Disable()
-    end)
-end
-
-function BrowsePanel:ClearSearchProfile()
-    if not self.lockProfile then
-        self.SearchProfileDropdown:SetValue(nil)
-        self.DeleteButton:Disable()
-    end
-end
-
 function BrowsePanel:StartSet()
     self.inSet = true
 end
@@ -1147,10 +1110,22 @@ end
 
 function BrowsePanel:QuickSearch(activityCode, mode, loot, searchText)
     self:StartSet()
-    Profile:SetLastSearchValue(activityCode)
+    Profile:SetLastSearchCode(activityCode)
     self.ActivityDropdown:SetValue(activityCode)
-    self.ModeDropdown:SetValue(mode or nil)
-    self.LootDropdown:SetValue(loot or nil)
-    self.SearchInput:SetText(searchText or '')
+    if not NO_SCAN_WORD then
+        self.SearchInput:SetText(searchText or '')
+    end
     self:EndSet()
+end
+
+function BrowsePanel:GetFilters()
+    local filters = {}
+    for _, box in ipairs(self.filters) do
+        filters[box.key] = {
+            min = box.MinBox:GetNumber(),
+            max = box.MaxBox:GetNumber(),
+            enable = not not box.Check:GetChecked(),
+        }
+    end
+    return filters
 end

@@ -10,6 +10,7 @@ ADDON_VERSION_SHORT = ADDON_VERSION:gsub('(%d)%d(%d)%d%d%.(%d%d)','%1%2%3')
 ADDON_REGIONSUPPORT = GetCurrentRegion() == 5
 ADDON_SERVER        = (NETEASE_SERVER_PREFIX or 'S1') .. UnitFactionGroup('player')
 SERVER_TIMEOUT      = 120
+NO_SCAN_WORD        = true
 
 _G.BINDING_NAME_MEETINGSTONE_TOGGLE = L['打开/关闭集合石']
 _G.BINDING_HEADER_NETEASE           = '网易插件'
@@ -30,6 +31,7 @@ MAX_LOTTERY_COUNT = 8
 LOTTERY_ORDER     = [[10101010102102021031203210432034105340251062345601234567]]
 
 MAX_SUMMARY_LETTERS = 255
+MAX_MEETINGSTONE_SUMMARY_LETTERS = 30
 MIN_PLAYER_LEVEL    = 10
 
 ACTIVITY_FILTER_BROWSE = 1
@@ -52,11 +54,11 @@ DEFAULT_LOOT_LIST = {
     ['6-0-17-5']     = 4,
     ['6-0-17-0']     = 4,
     ['1-71-280-998'] = 3,
+    ['1-71-280-999']  = 3,
 }
 
 DEFAULT_MODE_LIST = {
     [1]             = 9,
-    ['8-0-15-999']  = 12,
     ['1-124-419-0'] = 14,
     ['1-124-420-0'] = 14,
     ['1-124-421-0'] = 14,
@@ -182,7 +184,9 @@ CATEGORY = {
             [73] = true,
             [74] = true,
         },
-        activities = {}
+        activities = {
+            [303] = true,
+        }
     },
     [3] = {
         groups = {
@@ -280,6 +284,27 @@ CATEGORY = {
         activities = {
             [458] = true,
         },
+    },
+    [7] = {
+        groups = {
+            [135] = true,
+            [136] = true,
+            [137] = true,
+            [138] = true,
+            [139] = true,
+            [140] = true,
+            [141] = true,
+            [142] = true,
+            [143] = true,
+            [144] = true,
+            [145] = true,
+            [146] = true,
+            [251] = true,
+            [252] = true,
+        },
+        activities = {
+            [657] = true,
+        },
     }
 }
 
@@ -329,7 +354,7 @@ RAID_PROGRESSION_LIST = {
     [482] = {
         { id = 11954, name = '加洛西灭世者' },
         { id = 11957, name = '萨格拉斯的恶犬' },
-        { id = 11960, name = '安托兰统帅的议会' },
+        { id = 11960, name = '安托兰统帅议会' },
         { id = 11963, name = '传送门守护者哈萨贝尔' },
         { id = 11966, name = '生命缚誓者艾欧娜尔' },
         { id = 11969, name = '猎魂者伊墨纳尔' },
@@ -342,7 +367,7 @@ RAID_PROGRESSION_LIST = {
     [483] = {
         { id = 11955, name = '加洛西灭世者' },
         { id = 11958, name = '萨格拉斯的恶犬' },
-        { id = 11961, name = '安托兰统帅的议会' },
+        { id = 11961, name = '安托兰统帅议会' },
         { id = 11964, name = '传送门守护者哈萨贝尔' },
         { id = 11967, name = '生命缚誓者艾欧娜尔' },
         { id = 11970, name = '猎魂者伊墨纳尔' },
@@ -352,19 +377,19 @@ RAID_PROGRESSION_LIST = {
         { id = 11982, name = '阿格拉玛' },
         { id = 11985, name = '寂灭者阿古斯' },
     },  -- 安托鲁斯，燃烧王座（英雄）
-    -- [0] = {
-    --     { id = 11956, name = '加洛西灭世者' },
-    --     { id = 11959, name = '萨格拉斯的恶犬' },
-    --     { id = 11962, name = '安托兰统帅的议会' },
-    --     { id = 11965, name = '传送门守护者哈萨贝尔' },
-    --     { id = 11968, name = '生命缚誓者艾欧娜尔' },
-    --     { id = 11971, name = '猎魂者伊墨纳尔' },
-    --     { id = 11974, name = '金加洛斯' },
-    --     { id = 11977, name = '瓦里玛萨斯' },
-    --     { id = 11980, name = '破坏魔女巫会' },
-    --     { id = 11983, name = '阿格拉玛' },
-    --     { id = 11986, name = '寂灭者阿古斯' },
-    -- },  -- 安托鲁斯，燃烧王座（史诗）
+    [493] = {
+        { id = 11956, name = '加洛西灭世者' },
+        { id = 11959, name = '萨格拉斯的恶犬' },
+        { id = 11962, name = '安托兰统帅议会' },
+        { id = 11965, name = '传送门守护者哈萨贝尔' },
+        { id = 11968, name = '生命缚誓者艾欧娜尔' },
+        { id = 11971, name = '猎魂者伊墨纳尔' },
+        { id = 11974, name = '金加洛斯' },
+        { id = 11977, name = '瓦里玛萨斯' },
+        { id = 11980, name = '破坏魔女巫会' },
+        { id = 11983, name = '阿格拉玛' },
+        { id = 11986, name = '寂灭者阿古斯' },
+    },  -- 安托鲁斯，燃烧王座（史诗）
     [479] = {
         { id = 11878, name = '格罗斯' },
         { id = 11882, name = '恶魔审判庭' },
@@ -387,17 +412,17 @@ RAID_PROGRESSION_LIST = {
         { id = 11907, name = '堕落的化身' },
         { id = 11911, name = '基尔加丹' },
     },  -- 萨格拉斯之墓（英雄）
-    -- [0] = {
-    --     { id = 11880, name = '格罗斯' },
-    --     { id = 11884, name = '恶魔审判庭' },
-    --     { id = 11888, name = '哈亚坦' },
-    --     { id = 11892, name = '月之姐妹' },
-    --     { id = 11896, name = '主母萨丝琳' },
-    --     { id = 11900, name = '绝望的聚合体' },
-    --     { id = 11904, name = '戒卫侍女' },
-    --     { id = 11908, name = '堕落的化身' },
-    --     { id = 11912, name = '基尔加丹' },
-    -- },  -- 萨格拉斯之墓（史诗）
+    [492] = {
+        { id = 11880, name = '格罗斯' },
+        { id = 11884, name = '恶魔审判庭' },
+        { id = 11888, name = '哈亚坦' },
+        { id = 11892, name = '月之姐妹' },
+        { id = 11896, name = '主母萨丝琳' },
+        { id = 11900, name = '绝望的聚合体' },
+        { id = 11904, name = '戒卫侍女' },
+        { id = 11908, name = '堕落的化身' },
+        { id = 11912, name = '基尔加丹' },
+    },  -- 萨格拉斯之墓（史诗）
     [456] = {
         { id = 11408, name = '奥丁' },
         { id = 11412, name = '高姆' },
@@ -791,6 +816,7 @@ DEFAULT_SPAMWORD = [[
 5173
 平台
 门票
+LFG:
 ]]
 
 ZONE_ACTIVITY_MAP = {

@@ -72,46 +72,46 @@ function AppSupport:StatInit()
     --     return count
     -- end)
 
-    RegisterStat('OrderHallQuestCount', 'GARRISON_MISSION_COMPLETE_RESPONSE', function()
-        return tonumber((GetStatistic(11236)))
-    end)
+    -- RegisterStat('OrderHallQuestCount', 'GARRISON_MISSION_COMPLETE_RESPONSE', function()
+    --     return tonumber((GetStatistic(11236)))
+    -- end)
 
     ---- Achievement
-    RegisterStat('AchievementPoint', 'ACHIEVEMENT_EARNED', function()
-        local value = 0
-        for id = 10439, 13000 do
-            local _, _, points, completed, _, _, _, _, _, _, _, isGuild = GetAchievementInfo(id)
-            if not isGuild and completed then
-                value = value + points
-            end
-        end
-        return value
-    end)
+    -- RegisterStat('AchievementPoint', 'ACHIEVEMENT_EARNED', function()
+    --     local value = 0
+    --     for id = 10439, 13000 do
+    --         local _, _, points, completed, _, _, _, _, _, _, _, isGuild = GetAchievementInfo(id)
+    --         if not isGuild and completed then
+    --             value = value + points
+    --         end
+    --     end
+    --     return value
+    -- end)
 
     ---- Mount
-    RegisterStat('MountCount', 'COMPANION_LEARNED', function()
-        local count = 0
-        for _, mountId in ipairs(C_MountJournal.GetMountIDs()) do
-            local _, id, _, _, _, _, _, _, _, _, collected = C_MountJournal.GetMountInfoByID(mountId)
-            if collected and MOUNT_MAP[id] then
-                count = count + 1
-            end
-        end
-        return count
-    end)
+    -- RegisterStat('MountCount', 'COMPANION_LEARNED', function()
+    --     local count = 0
+    --     for _, mountId in ipairs(C_MountJournal.GetMountIDs()) do
+    --         local _, id, _, _, _, _, _, _, _, _, collected = C_MountJournal.GetMountInfoByID(mountId)
+    --         if collected and MOUNT_MAP[id] then
+    --             count = count + 1
+    --         end
+    --     end
+    --     return count
+    -- end)
 
     ----
-    RegisterStat('ArtifactPower', {'ARTIFACT_XP_UPDATE', 'PLAYER_EQUIPMENT_CHANGED'}, function()
-        local count = 0
-        local id, _, _, _, xp, pointsSpent, _, _, _, _, _, _, artifactTier = C_ArtifactUI.GetEquippedArtifactInfo()
-        if not id then
-            return
-        end
-        for i = 1, pointsSpent - 1 do
-            count = count + C_ArtifactUI.GetCostForPointAtRank(i, artifactTier)
-        end
-        return count + xp, id
-    end)
+    -- RegisterStat('ArtifactPower', {'ARTIFACT_XP_UPDATE', 'PLAYER_EQUIPMENT_CHANGED'}, function()
+    --     local count = 0
+    --     local id, _, _, _, xp, pointsSpent, _, _, _, _, _, _, artifactTier = C_ArtifactUI.GetEquippedArtifactInfo()
+    --     if not id then
+    --         return
+    --     end
+    --     for i = 1, pointsSpent - 1 do
+    --         count = count + C_ArtifactUI.GetCostForPointAtRank(i, artifactTier)
+    --     end
+    --     return count + xp, id
+    -- end)
 
     for key, api in pairs(statApis) do
         local value, id = api()
@@ -162,7 +162,7 @@ function AppSupport:DataInit()
     end
 
     RegisterData('Zone', {'ZONE_CHANGED_NEW_AREA', 'ZONE_CHANGED_INDOORS', 'ZONE_CHANGED'}, GetZoneText, COMMIT_INTERVAL)
-    RegisterData('ItemPush2', 'CHAT_MSG_LOOT', GetLegendaryItem, 0, true)
+    -- RegisterData('ItemPush2', 'CHAT_MSG_LOOT', GetLegendaryItem, 0, true)
 end
 
 ---- Group Member
@@ -374,7 +374,10 @@ end
 
 function AppSupport:ENCOUNTER_END(_, bossId, name, difficulty, maxPlayers, status)
     local instanceId = self:GetInstanceId()
-    if instanceId and status == 1 then
+    if not instanceId then
+        return
+    end
+    if status == 1 then
         local class = select(3, UnitClass('player'))
         local itemLevel = math.floor( select(2, GetAverageItemLevel()) )
         local combatData = CombatStat:GetCombatData()

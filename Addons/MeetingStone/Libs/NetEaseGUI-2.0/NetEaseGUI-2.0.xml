@@ -48,7 +48,6 @@
   <Script file="Widget\InTabPanel.lua" />
   <Script file="Widget\TitleButton.lua" />
   <Script file="Widget\NumericBox.lua" />
-  <Script file="Widget\Feedback.lua" />
   <Script file="Widget\AlphaFlash.lua" />
   <Script file="Widget\VerticalLine.lua" />
   <Script file="Widget\PanelBlocker.lua" />

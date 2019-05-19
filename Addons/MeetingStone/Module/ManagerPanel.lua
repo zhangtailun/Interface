@@ -6,7 +6,6 @@ ManagerPanel = Addon:NewModule(CreateFrame('Frame'), 'ManagerPanel', 'AceEvent-3
 local CHECK_USEABLE_EVENTS = {
     'PARTY_LEADER_CHANGED',
     'GROUP_ROSTER_UPDATE',
-    'PVP_ROLE_CHECK_UPDATED',
     'UPDATE_BATTLEFIELD_STATUS',
     'LFG_UPDATE',
     'LFG_ROLE_CHECK_UPDATE',
@@ -42,7 +41,7 @@ function ManagerPanel:OnInitialize()
         RefreshButton:SetPoint('TOPRIGHT', self:GetOwner(), 'TOPRIGHT', -10, -23)
         RefreshButton:SetTooltip(LFG_LIST_REFRESH)
         RefreshButton:SetScript('OnClick', function()
-            if self:GetActivity() then
+            if self:HasActivity() then
                 C_LFGList.RefreshApplicants()
             end
         end)
@@ -69,11 +68,10 @@ function ManagerPanel:CheckUseable()
     local isLeader = IsGroupLeader()
     local isManager = IsActivityManager()
     local msg = LFGListUtil_GetActiveQueueMessage(false)
-    local activity = self:GetActivity()
 
     self.RefreshButton:Disable()
 
-    if activity then
+    if self:HasActivity() then
         if isLeader or isManager then
             self.RefreshButton:Enable()
             self:SetApplicantListBlocker(false)
@@ -90,7 +88,7 @@ function ManagerPanel:CheckUseable()
     self:SendMessage('MEETINGSTONE_PERMISSION_UPDATE', isLeader and not msg, isManager)
 end
 
-function ManagerPanel:GetActivity()
+function ManagerPanel:HasActivity()
     return C_LFGList.GetActiveEntryInfo()
 end
 

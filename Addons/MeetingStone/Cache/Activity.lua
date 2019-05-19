@@ -22,6 +22,8 @@ Activity:InitAttr{
     'ApplicationDuration',
     'ApplicationExpiration',
     'DisplayType',
+    'MaxMembers',
+    'KilledBossCount',
 }
 
 Activity._Objects = setmetatable({}, {__mode = 'v'})
@@ -38,14 +40,33 @@ function Activity:Get(id)
 end
 
 function Activity:Update()
-    local id, activityId, title, comment, voiceChat, iLvl, honorLevel, age,
-        numBNetFriends, numCharFriends, numGuildMates, isDelisted, leader, numMembers = C_LFGList.GetSearchResultInfo(self:GetID())
+    local info = C_LFGList.GetSearchResultInfo(self:GetID())
+    if not info then
+        return
+    end
+    local id = info.searchResultID
+    local activityId = info.activityID
+    local title = info.name
+    local comment = info.comment
+    local voiceChat = info.voiceChat
+    local iLvl = info.requiredItemLevel
+    local honorLevel = info.requiredHonorLevel
+    local age = info.age
+    local numBNetFriends = info.numBNetFriends
+    local numCharFriends = info.numCharFriends
+    local numGuildMates = info.numGuildMates
+    local isDelisted = info.isDelisted
+    local leader = info.leaderName
+    local numMembers = info.numMembers
 
     if not activityId then
         return false
     end
+    if iLvl and iLvl < 0 then
+        iLvl = 0
+    end
 
-    local name, shortName, category, group, iLevel, filters, minLevel, maxPlayers, displayType = C_LFGList.GetActivityInfo(activityId)
+    local name, shortName, category, group, iLevel, filters, minLevel, maxMembers, displayType = C_LFGList.GetActivityInfo(activityId)
     local _, appStatus, pendingStatus, appDuration = C_LFGList.GetApplicationInfo(id)
 
     if leader then
@@ -61,6 +82,7 @@ function Activity:Update()
     self:SetIsDelisted(isDelisted)
     self:SetLeader(leader)
     self:SetNumMembers(numMembers)
+    self:SetMaxMembers(maxMembers > 0 and maxMembers or 40)
     self:SetIsAnyFriend(numBNetFriends > 0 or numCharFriends > 0 or numGuildMates > 0)
 
     self:SetDisplayType(displayType)
@@ -93,6 +115,7 @@ function Activity:Update()
                 self.killedBosses[v] = true
             end
         end
+        self:SetKilledBossCount(completedEncounters and #completedEncounters or 0)
     end
 
     self:UpdateSortValue()
@@ -132,8 +155,9 @@ function Activity:UpdateSortValue()
                             self:IsSelf() and 3 or
                             self:IsInActivity() and 4 or 7
 
-    self._baseSortValue = format('%d%s%02x%02x%08x',
+    self._baseSortValue = format('%d%04x%s%02x%02x%08x',
         self._statusSortValue,
+        0xFFFF - self:GetItemLevel(),
         self:GetTypeSortValue(),
         self:GetLoot(),
         self:GetMode(),
@@ -149,41 +173,81 @@ function Activity:IsSelf()
     return self:GetLeader() and UnitIsUnit(self:GetLeader(), 'player')
 end
 
-function Activity:Match(search, bossFilter, enableSpamWord)
-    local summary, comment = self:GetSummary(), self:GetComment()
-    if summary then
-        summary = summary:lower()
-    end
-    if comment then
-        comment = comment:lower()
-    end
+-- function Activity:Match(search, bossFilter, enableSpamWord, spamLength, enableSpamChar)
+--     local summary, comment = self:GetSummary(), self:GetComment()
+--     if summary then
+--         summary = summary:lower()
+--     end
+--     if comment then
+--         comment = comment:lower()
+--     end
 
-    if enableSpamWord and (CheckSpamWord(summary) or CheckSpamWord(comment)) then
-        return false
-    end
+--     if enableSpamWord and (CheckSpamWord(summary) or CheckSpamWord(comment)) then
+--         return false
+--     end
 
-    if search then
-        if summary and summary:find(search, 1, true) then
-            return true
-        elseif comment and comment:find(search, 1, true) then
-            return true
-        elseif self:GetLeader() and self:GetLeader():lower():find(search, 1, true) then
-            return true
-        else
-            return false
-        end
-    end
+--     if enableSpamChar then
+--         return false
+--     end
 
-    if bossFilter and next(bossFilter) then
-        for boss, flag in pairs(bossFilter) do
-            if flag then
-                if self:IsBossKilled(boss) then
-                    return false
-                end
-            else
-                if not self:IsBossKilled(boss) then
-                    return false
-                end
+--     if search then
+--         if summary and summary:find(search, 1, true) then
+--             return true
+--         elseif comment and comment:find(search, 1, true) then
+--             return true
+--         elseif self:GetLeader() and self:GetLeader():lower():find(search, 1, true) then
+--             return true
+--         else
+--             return false
+--         end
+--     end
+
+--     if spamLength and ((summary and strlenutf8(summary) > spamLength) or (comment and strlenutf8(comment) > spamLength)) then
+
+--         return false
+--     end
+
+--     if bossFilter and next(bossFilter) then
+--         for boss, flag in pairs(bossFilter) do
+--             if flag then
+--                 if self:IsBossKilled(boss) then
+--                     return false
+--                 end
+--             else
+--                 if not self:IsBossKilled(boss) then
+--                     return false
+--                 end
+--             end
+--         end
+--     end
+--     return true
+-- end
+
+local FILTERS = {
+    ItemLevel = function(activity)
+        return activity:GetItemLevel()
+    end,
+    BossKilled = function(activity)
+        return activity:GetKilledBossCount()
+    end,
+    Age = function(activity)
+        return activity:GetAge() / 60
+    end,
+    Members = function(activity)
+        return activity:GetNumMembers()
+    end
+}
+
+function Activity:Match(filters)
+    for key, func in pairs(FILTERS) do
+        local filter = filters[key]
+        if filter and filter.enable then
+            local value = func(self)
+            if filter.min and filter.min ~= 0 and value < filter.min then
+                return false
+            end
+            if filter.max and filter.max ~= 0 and value > filter.max then
+                return false
             end
         end
     end

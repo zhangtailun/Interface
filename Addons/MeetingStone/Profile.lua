@@ -27,6 +27,8 @@ function Profile:OnInitialize()
             ignoreHash     = {},
             spamWord       = {},
             searchProfiles = {},
+            filters = {
+            }
         },
     }
 
@@ -40,6 +42,8 @@ function Profile:OnInitialize()
                 ignore    = true,
                 spamWord  = true,
                 packedPvp = true,
+                spamLengthEnabled = true,
+                spamLength = 20,
             },
             minimap = {
                 minimapPos = 192.68,
@@ -63,18 +67,28 @@ function Profile:OnInitialize()
     self.gdb = LibStub('AceDB-3.0'):New('MEETINGSTONE_UI_DB', gdb, true)
     self.cdb = LibStub('AceDB-3.0'):New('MEETINGSTONE_CHARACTER_DB', cdb)
 
-    self.cdb.profile.settings.onlyms = nil
+    local settingVersion = self:GetLastCharacterVersion()
+    if settingVersion < 70300.12 then
+        self.cdb.profile.settings.onlyms = nil
 
-    for _, v in pairs(self.cdb.profile.followMemberList) do
-        if not v.status then
-            if v.bitfollow then
-                v.status = FOLLOW_STATUS_FRIEND
-            else
-                v.status = FOLLOW_STATUS_STARED
+        for _, v in pairs(self.cdb.profile.followMemberList) do
+            if not v.status then
+                if v.bitfollow then
+                    v.status = FOLLOW_STATUS_FRIEND
+                else
+                    v.status = FOLLOW_STATUS_STARED
+                end
+            v.bitfollow = nil
             end
-	    v.bitfollow = nil
         end
+
+        self.cdb.profile.lastSearchCode = self.cdb.profile.lastSearchValue or self.cdb.profile.lastSearchCode
+        self.cdb.profile.lastSearchValue = nil
     end
+    if settingVersion < 80000.03 then
+        wipe(self.cdb.profile.searchHistoryList)
+    end
+    self.cdb.profile.version = ADDON_VERSION
 
     self.cdb.RegisterCallback(self, 'OnDatabaseShutdown')
 end
@@ -87,6 +101,8 @@ function Profile:OnEnable()
         'ignore',
         'spamWord',
         'packedPvp',
+        'spamLengthEnabled',
+        'spamLength',
     }
 
     for _, key in ipairs(settings) do
@@ -134,12 +150,12 @@ function Profile:GetCharacterDB()
     return self.cdb
 end
 
-function Profile:GetLastSearchValue()
-    return self.cdb.profile.lastSearchValue or '6-0-0-0'
+function Profile:GetLastSearchCode()
+    return self.cdb.profile.lastSearchCode or '6-0-0-0'
 end
 
-function Profile:SetLastSearchValue(searchValue)
-    self.cdb.profile.lastSearchValue = searchValue
+function Profile:SetLastSearchCode(searchValue)
+    self.cdb.profile.lastSearchCode = searchValue
 
     self:SaveSearchHistory(searchValue)
 end
@@ -504,4 +520,14 @@ function Profile:ResetCombatData()
         dd = 0, dt = 0, hd = 0, dead = 0, time = 0,
     }
     return self.cdb.profile.combatData
+end
+
+function Profile:GetFilters(categoryId)
+    return self.gdb.global.filters[categoryId] or {}
+end
+
+function Profile:SetFilters(categoryId, filters)
+    
+    self.gdb.global.filters[categoryId] = filters
+    self:SendMessage('MEETINGSTONE_FILTERS_UPDATE')
 end

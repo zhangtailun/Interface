@@ -16,10 +16,10 @@ end
 
 function App:OnEnable()
     self.appWhispers = {}
-    self:RegisterServer('APP_WHISPER')
-    self:RegisterServer('APP_WHISPER_FAILED')
-    self:RegisterServer('APP_WHISPER_INFORM')
-    self:RawHook('SendChatMessage', true)
+    -- self:RegisterServer('APP_WHISPER')
+    -- self:RegisterServer('APP_WHISPER_FAILED')
+    -- self:RegisterServer('APP_WHISPER_INFORM')
+    -- self:RawHook('SendChatMessage', true)
 
     self:RegisterServer('SERVER_CONNECTED')
 
@@ -93,48 +93,48 @@ end
 
 ---- App Whisper
 
-function App:APP_WHISPER_RAW(_, target, guid, text)
-    if _G.IsIgnored(Ambiguate(target, 'none')) then
-        return
-    end
-    self.appWhispers[target] = guid
-    self:MakeAppWhisper('CHAT_MSG_APP_WHISPER', text, ChatTargetSystemToApp(target))
-end
+-- function App:APP_WHISPER_RAW(_, target, guid, text)
+--     if _G.IsIgnored(Ambiguate(target, 'none')) then
+--         return
+--     end
+--     self.appWhispers[target] = guid
+--     self:MakeAppWhisper('CHAT_MSG_APP_WHISPER', text, ChatTargetSystemToApp(target))
+-- end
 
-function App:APP_WHISPER_FAILED(_, target, guid, text, status)
-    self:APP_WHISPER_RAW(_, target, guid, text)
-    Profile:AddFollow(target, guid, status)
-end
+-- function App:APP_WHISPER_FAILED(_, target, guid, text, status)
+--     self:APP_WHISPER_RAW(_, target, guid, text)
+--     Profile:AddFollow(target, guid, status)
+-- end
 
-function App:APP_WHISPER(_, target, guid, text)
-    self:APP_WHISPER_RAW(_, target, guid, text)
-    Profile:AddFollow(target, guid, FOLLOW_STATUS_FRIEND)
-end
+-- function App:APP_WHISPER(_, target, guid, text)
+--     self:APP_WHISPER_RAW(_, target, guid, text)
+--     Profile:AddFollow(target, guid, FOLLOW_STATUS_FRIEND)
+-- end
 
-function App:APP_WHISPER_INFORM(_, target, guid, text)
-    self:MakeAppWhisper('CHAT_MSG_APP_WHISPER_INFORM', text, ChatTargetSystemToApp(target))
-    Profile:AddFollow(target, guid, FOLLOW_STATUS_FRIEND)
-end
+-- function App:APP_WHISPER_INFORM(_, target, guid, text)
+--     self:MakeAppWhisper('CHAT_MSG_APP_WHISPER_INFORM', text, ChatTargetSystemToApp(target))
+--     Profile:AddFollow(target, guid, FOLLOW_STATUS_FRIEND)
+-- end
 
-function App:SendChatMessage(text, chatType, languageIndex, channel)
-    if chatType == 'WHISPER' and IsChatTargetApp(channel) then
-        local target = ChatTargetAppToSystem(channel)
-        local guid = self:GetWhisperGuid(target)
+-- function App:SendChatMessage(text, chatType, languageIndex, channel)
+--     if chatType == 'WHISPER' and IsChatTargetApp(channel) then
+--         local target = ChatTargetAppToSystem(channel)
+--         local guid = self:GetWhisperGuid(target)
 
-        self:MakeAppWhisper('CHAT_MSG_APP_WHISPER_INFORM', text, channel)
-        self:SendServer('APP_WHISPER', target, guid, text)
-    else
-        return self.hooks.SendChatMessage(text, chatType, languageIndex, channel)
-    end
-end
+--         self:MakeAppWhisper('CHAT_MSG_APP_WHISPER_INFORM', text, channel)
+--         self:SendServer('APP_WHISPER', target, guid, text)
+--     else
+--         return self.hooks.SendChatMessage(text, chatType, languageIndex, channel)
+--     end
+-- end
 
-function App:GetWhisperGuid(target)
-    return self.appWhispers[target] or Profile:GetFollowGuid(target)
-end
+-- function App:GetWhisperGuid(target)
+--     return self.appWhispers[target] or Profile:GetFollowGuid(target)
+-- end
 
-function App:MakeAppWhisper(...)
-    return AppWhisper:MakeAppWhisper(...)
-end
+-- function App:MakeAppWhisper(...)
+--     return AppWhisper:MakeAppWhisper(...)
+-- end
 
 ----
 
